@@ -31,13 +31,12 @@ jobs:
           hugo-version: latest
           extended: true
 
-      - name: Build Hugo Wiki
+      - name: Build Hugo
         run: hugo --minify --gc
-        working-directory: ./wiki
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: ./wiki/public
+          path: ./public
 
   deploy:
     needs: build

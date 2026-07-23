@@ -28,3 +28,6 @@ enableGitInfo = true
 [sitemap]
   changefreq = "weekly"
   priority   = 0.5
+
+[params]
+  BookSection = "wiki"

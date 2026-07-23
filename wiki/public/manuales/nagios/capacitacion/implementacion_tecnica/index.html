@@ -1,0 +1,5058 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Instalación de Nagios# Dependencias para compilación y puesta en marcha# Sistema Operativo Debian GNU/Linux Compilador GNU GCC Utilidades de comunicación
+Notificaciones MTA
+SMS Interfaz de usuario
+(Opcional) Servidor Web Dependencias de Software# Para una correcta instalación de Nagios, con todas sus características es necesario tener instalados ciertos paquetes de software en el sistema, la instalación puede variar según la distribución de Linux que elijamos, si los tenemos empaquetados, o si los tenemos que compilar en instalar manualmente.
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/manuales/nagios/capacitacion/implementacion_tecnica/">
+  <meta property="og:site_name" content="Wiki de Sergio Cayuqueo">
+  <meta property="og:title" content="Implementación Técnica de Nagios">
+  <meta property="og:description" content="Instalación de Nagios# Dependencias para compilación y puesta en marcha# Sistema Operativo Debian GNU/Linux Compilador GNU GCC Utilidades de comunicación
+Notificaciones MTA
+SMS Interfaz de usuario
+(Opcional) Servidor Web Dependencias de Software# Para una correcta instalación de Nagios, con todas sus características es necesario tener instalados ciertos paquetes de software en el sistema, la instalación puede variar según la distribución de Linux que elijamos, si los tenemos empaquetados, o si los tenemos que compilar en instalar manualmente.">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="website">
+
+
+  <meta itemprop="name" content="Implementación Técnica de Nagios">
+  <meta itemprop="description" content="Instalación de Nagios# Dependencias para compilación y puesta en marcha# Sistema Operativo Debian GNU/Linux Compilador GNU GCC Utilidades de comunicación
+Notificaciones MTA
+SMS Interfaz de usuario
+(Opcional) Servidor Web Dependencias de Software# Para una correcta instalación de Nagios, con todas sus características es necesario tener instalados ciertos paquetes de software en el sistema, la instalación puede variar según la distribución de Linux que elijamos, si los tenemos empaquetados, o si los tenemos que compilar en instalar manualmente.">
+  <meta itemprop="datePublished" content="2017-07-21T12:54:09-03:00">
+  <meta itemprop="dateModified" content="2026-07-22T23:28:56-03:00">
+  <meta itemprop="wordCount" content="5432">
+
+<title>Implementación Técnica de Nagios • Wiki de Sergio Cayuqueo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/manuales/nagios/capacitacion/implementacion_tecnica/">
+<link rel="stylesheet" href="/book.min.b67edd162318c5083c6df0a88fb33841277a463a19631410445e4034ec6e651c.css" integrity="sha256-tn7dFiMYxQg8bfCoj7M4QSd6RjoZYxQQRF5ANOxuZRw=" crossorigin="anonymous">
+
+
+  <script defer type="module" src="/es.search.min.0d8ef5a46e9d73ded2792bc4dc404ee89897a364056761a43c441c32a9c30525.js" integrity="sha256-DY71pG6dc97SeSvE3EBO6JiXo2QFZ2GkPEQcMqnDBSU=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/manuales/nagios/capacitacion/implementacion_tecnica/index.xml" title="Implementación Técnica de Nagios" />
+
+  
+</head>
+<body dir="ltr" class="book-kind-section book-type-manuales">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Wiki de Sergio Cayuqueo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Buscar"
+    aria-label="Buscar"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Notas</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Hardware</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/" class="">
+      VMWare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/instalar_vmware_tools/" class="">
+      Instalar VMware Tools</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/agregar_cpu_en_caliente_en_vmware/" class="">
+      Agregar CPU en caliente en VMWare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/datetime/" class="">
+      Parametros para Vmware por cambio de hora de servidores</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/idrac/" class="">
+      iDrac Dell</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/strace/" class="">
+      Strace</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/nginx/" class="">
+      Nginx</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/" class="">
+      Squid</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/hearbeat/" class="">
+      LVS - Hearbeat - Ldirectord - Balanceo de carga y alta disponibilidad</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/rhcs/" class="">
+      Squid &#43; Red Hat Cluster Suite</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bind/" class="">
+      Configuración de Servidor DNS Bind</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/" class="">
+      Linux</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Networking</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/networking/wan_optimization/" class="">
+      WAN Optimization</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/actualizar_suse_linux/" class="">
+      Actualizar SuSE Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/cambiar_planificador_de_disco/" class="">
+      Cambiar planificador de acceso a disco</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/medicion_de_velocidad_de_cambio_en_filesystems_en_un_sistema_linux_fisico_o_virtual/" class="">
+      Medición de velocidad de cambio en filesystems en un sistema Linux (físico o virtual)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/midiendo_el_rendimiento_del_sistema_con_iostat/" class="">
+      Midiendo el rendimiento del sistema con IOSTAT</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/sistema_de_archivos_proc/" class="">
+      Sistema de archivos /proc</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/lvm/" class="">
+      Logical Volume Management 2 (LVM2)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/manejo_de_memoria_en_linux/" class="">
+      Manejo de memoria en Linux</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/manejo_de_memoria_en_linux/hugepages/" class="">
+      Hugepages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/ver_el_dmesg_en_formato_humano/" class="">
+      Ver el dmesg en formato humano</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/midiendo_el_rendimiento_del_sistema_con_sar/" class="">
+      Midiendo el rendimiento del sistema con SAR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/cron/" class="">
+      CRON</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/sed/" class="">
+      SED - Stream EDitor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/configuracion_vpn/" class="">
+      Configuración de acceso VPN desde Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openssh/" class="">
+      OpenSSH</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/compartir_archivos_por_nfs/" class="">
+      Como compartir filesystems por NFS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/" class="">
+      Microsoft</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/windows/" class="">
+      Sistema Operativo Windows</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/windows/scripts_varios_de_powershell/" class="">
+      Scripts varios de PowerShell</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/network_policy_server_nps/" class="">
+      Network Policy Server (NPS)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/apache/" class="">
+      Tips de Apache</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/analisis_forense/" class="">
+      Análisis forense</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/qlikview/" class="">
+      QlikView</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/owncloud/" class="">
+      OwnCloud</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/iptables/" class="">
+      TIPs varios de IPTables</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/celulares/" class="">
+      Teléfonos celulares</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openldap/" class="">
+      Implementacion de un servidor OpenLDAP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/arduino/" class="">
+      Arduino</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/kickstart/" class="">
+      Kickstart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/raspberry_pi/" class="">
+      Raspberry Pi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/postfix/" class="">
+      Postfix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openssl/" class="">
+      OpenSSL</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/" class="">
+      Programación</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Python</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Webscraping</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/webscraping/beautifulsoup/" class="">
+      Beautiful Soup</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/sistema_de_archivos/" class="">
+      Operaciones sobre el sistema de archivos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/django/" class="">
+      Django</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/introduccion_a_awk/" class="">
+      Uso básico de AWK</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/the_linux_cdrom_interface/" class="">
+      The Linux CDROM interface</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/reproductor_de_cd/" class="">
+      Reproductor De Cd</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/console_ioctls_under_linux/" class="">
+      Console IOCTLs Under Linux</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/tools_of_the_trade_--_iostat_vmstat_and_netstat/" class="">
+      Tools of the Trade -- Iostat, Vmstat, and Netstat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/solaris_performance_monitoring/" class="">
+      Solaris Performance Monitoring &amp; Tuning - iostat , vmstat &amp; netstat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/" class="">
+      Bases De Datos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/mysql/" class="">
+      Task MySQL</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/oracle/" class="">
+      Oracle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/mssql/" class="">
+      Microsoft SQL Server</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/postgresql/" class="">
+      PostgreSQL</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/valgrind/" class="">
+      Valgrind</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/kamailio/" class="">
+      Kamailio</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/syslog_centralizado/" class="">
+      Sistema de LOG centralizado</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/inicio_rapido_de_csync2/" class="">
+      Csync para centralizar la configuracion de servicios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/xen_multi_bridge/" class="">
+      Utilizar dos o mas placas de red con Xen</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/sysinfo_dokuwiki/" class="">
+      Dump some hardware info in DokuWiki format</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/ubuntu_domu_en_red_hat/" class="">
+      Xen Red Hat Dom0 y Ubuntu DomU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/enomalism/" class="">
+      Configuraciones a mano</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Fotografia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/fotografia/conceptos/" class="">
+      Sobre el 18-55</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Legales</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Legislacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Nacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/nacion/decreto_155_89/" class="">
+      Decreto 155 89</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/nacion/ley_23302/" class="">
+      LEY 23.302</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/caba/" class="">
+      Legislación Indígena Ciudad Autónoma de Buenos Aires</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/jurisprudencia/" class="">
+      Jurisprudencia</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/" class="">
+      Seguridad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Criptografia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/truecrypt/" class="">
+      Privacidad datos utilizando TrueCrypt</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/veracrypt/" class="">
+      Privacidad datos utilizando VeraCrypt</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/gnupg/" class="">
+      The GNU Privacy Guard</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Gestion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/gestion/itil/" class="">
+      ITIL - Information Technology Infrastructure Library</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      How To</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/how_to/prevent_a_fork_bomb_by_limiting_user_process/" class="">
+      How to: Prevent a fork bomb by limiting user process</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Programacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Redes</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/nodejs/" class="">
+      NodeJS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/python/" class="">
+      Scripts simples en python</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/python/scapy/" class="">
+      Scapy</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/scanner_de_puertos_simple/" class="">
+      Scanner De Puertos Simple</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/shellcode/" class="">
+      Shellcode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/" class="">
+      Seguridad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Certificaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/" class="">
+      Profesional certificado en seguridad ofensiva (OSCP)</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/preparacion_personal/" class="">
+      Preparación personal para rendir la certificación OSCP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/oscp_prep_class/" class="">
+      OSCP Prep class</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/oscp-survival-guide/" class="">
+      OSCP-Survival-Guide</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Exploits</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/exploits/mempodipper/" class="">
+      mempodipper</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/exploits/dirty_cow/" class="">
+      Dirty COW</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/why_i_would_never_buy_a_dell_powerconnect_2724/" class="">
+      Why I would never buy a Dell PowerConnect 2724</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/understanding_bash_fork_bomb/" class="">
+      Understanding Bash fork() bomb ~ :(){ :|:&amp; };:</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/pequena_guia_de_seguridad_informatica/" class="">
+      Pequeña guía de seguridad informática</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/auditd/" class="">
+      Auditoría en Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/process_accounting_psacct/" class="">
+      Process Accounting (PSACCT)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/" class="">
+      Enlaces útiles</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/" class="">
+      Utilidades de Red</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/ngrep/" class="">
+      Network Grep - ngrep</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/msndump/" class="">
+      MSN Dump</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/tcpdump/" class="">
+      TCPDUMP</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/" class="">
+      Aprendiendo SAP</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/sap_hana/" class="">
+      SAP HANA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/desarrollo_y_programacion_en_abap/" class="">
+      Desarrollo y programación en ABAP</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/" class="">
+      Redes y comunicaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Conectividad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/conectividad/fibra_optica/" class="">
+      Fibra óptica</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Firewalls</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/fortinet/" class="">
+      Fortinet</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/fortinet/fortiap/" class="">
+      FortiGate como controlador Wireless</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/pfsense/" class="">
+      pfSense</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Notas</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/notas/nc/" class="">
+      Netcat</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Telefonia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Asterisk</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/" class="">
+      Conectividad con Asterisk</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/spa400/" class="">
+      SPA400</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/tdm400p/" class="">
+      Instalar Placa TDM400P</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Cisco</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/call_manager/" class="">
+      Cisco Call Manager</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/routers/" class="">
+      Routers Cisco</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/telefonos/" class="">
+      Teléfonos CISCO</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Videoconferencia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/videoconferencia/openmcu-ru/" class="">
+      OpenMCU-ru</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/flows/" class="">
+      Network Flow</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/flows/ntop/" class="">
+      Ntop</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/rancid/" class="">
+      Rancid (Really Awesome New Cisco confIg Differ)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/conceptos/" class="">
+      Conceptos de redes informáticas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/" class="">
+      Switches</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Cisco</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/2960c/" class="">
+      CISCO - 2960-C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/2960x/" class="">
+      CISCO - 2960-X</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/sf300/" class="">
+      CISCO - SF300</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/extreme_networks/" class="">
+      Extreme Networks</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/" class="">
+      Hewlett Packard</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/aruba/" class="">
+      Switches Aruba</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/" class="">
+      3COM</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Voice</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/voice/vlan/" class="">
+      VLAN de voz</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/debug_y_analisis_de_equipos_hp_3com/" class="">
+      Debug y análisis de equipos HP/3com</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cumulus_networks/" class="">
+      Cumulus Networks</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/gestion/" class="">
+      Gestión</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/gestion/taiga/" class="">
+      Taiga</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/leyes/" class="">
+      Leyes, Decretos y Ordenanzas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/" class="">
+      Charlas y Eventos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/pueblos_originarios_y_la_industria_del_software/" class="">
+      Pueblos Originarios y la industria del Software</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/uso_de_la_consola_linux/" class="">
+      Taller de uso de Consola Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/lanux_agosto_2010/" class="">
+      Servidores VPS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/" class="">
+      Manuales de proyectos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Tivoli Tsm</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/manual_de_manejo_de_backups_con_tivoli/" class="">
+      Manual de manejo de respaldos con Tivoli</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/tsm_sql_tips/" class="">
+      Mandatos de prueba de validación de la actualización de la base de datos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/tsm_sql_hints/" class="">
+      TSM SQL Hints</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/sql_for_tivoli_storage_manager/" class="">
+      SQL for Tivoli Storage Manager</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/emc_data_domain/" class="">
+      EMC Data Domain</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/" class="">
+      Monitoria y análisis de Red con Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/" class="">
+      Monitoreo de Red con Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Productos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/oracle/" class="">
+      Oracle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/argentina_-_arba_-_codigo_de_operacion_de_traslado_cot/" class="">
+      Argentina - ARBA - Código de Operación de Traslado (COT)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/asterisk/" class="">
+      Asterisk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/riverbed/" class="">
+      Riverbed</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/argentina_-_afip_-_factura_electronica/" class="">
+      Argentina AFIP Factura Electrónica</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/sap/" class="">
+      SAP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/ibm_tivoli_tsm/" class="">
+      Tivoli Storage Manager - TSM</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/brasil_-_nota_fiscal_electronica_nfe/" class="">
+      Brasil - Nota Fiscal Electrónica NFe</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/brasil_-_nota_fiscal_electronica_nfe/referencias_utiles_de_nfe/" class="">
+      Referencias útiles de NFE</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/microstrategy/" class="">
+      MicroStrategy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/qlikview/" class="">
+      QlikView</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/servidor_web/" class="">
+      Configuración del servidor Web</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/pnp4nagios/" class="">
+      PNP4Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/tipos_de_notificaciones/" class="">
+      Tipos de notificaciones</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_referencias_generales/" class="">
+      Referencias generales</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_referencias_generales/sistema_de_inventario/" class="">
+      Sistema de inventario</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagios_network_analyzer/" class="">
+      Nagios Network Analyzer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/" class="">
+      Correlación de eventos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/rsyslog/" class="">
+      Reliable system and kernel logging daemon</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/eventdb/" class="">
+      EventDB</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/syslog_ng/" class="">
+      Syslog-NG</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/implementacion_tecnica/" class="active">
+      Implementación Técnica de Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/implementacion_tecnica/implementacion_tecnica_version_ubuntu_server_20.04/" class="">
+      Implementación Técnica de Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/capacitacion_en_monitoreo_de_red/" class="">
+      Capacitación en monitoreo de Red</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Certificaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/capacitacion_en_monitoreo_de_red/certificaciones/sox_-_sarbanes-oxley/" class="">
+      SOX</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/desarrollo_de_plugins_de_nagios/" class="">
+      Desarrollo de plugins de Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/desarrollo_de_plugins_de_nagios/problemas_comunes/" class="">
+      Problemas comunes de los plugins de Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/snmp/" class="">
+      SNMP (Simple Network Management Protocol)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagios_event_radio_dispatcher_nerd/" class="">
+      Nagios Event Radio Dispatcher (NERD)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/mk_livestatus/" class="">
+      MK Livestatus</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/ndo2utils/" class="">
+      NDO2Utils</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagvis/" class="">
+      Nagvis</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagvis/diseno_de_tablero_de_control/" class="">
+      Diseño de tablero de control</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/graficos_en_ajax/" class="">
+      Gráficos en AJAX</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_tips_y_recomendaciones/" class="">
+      TIPS y recomendaciones</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_otras_soluciones_basadas_en_nagios/" class="">
+      Anexo - Otras soluciones basadas en Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_comandos_externos/" class="">
+      Comandos externos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/plugins_usuales_de_nagios/" class="">
+      Plugins usuales de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/icmp/" class="">
+      ICMP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_codigo_fuente_de_nagios/" class="">
+      Análisis del código fuente de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_configuracion_desde_version_3_a_4/" class="">
+      Incompatibilidades de configuración v3 a v4</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/codigo_fuente/" class="">
+      Análisis del código fuente de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/thruk/" class="">
+      Thruk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/portugues/" class="">
+      Monitoração de rede e análise com Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/italiano/" class="">
+      Implementazione di un sistema di rete, monitor con Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_freeradius/" class="">
+      Servidor FreeRadius</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_systemimager/" class="">
+      Proyecto Servidor de Backups</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/an_introduction_to_linux_shell_scripting_for_dbas/" class="">
+      An Introduction to Linux Shell Scripting for DBAs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/filtrador_de_logs/" class="">
+      Filtrador de LOGS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/drbd/" class="">
+      DRBD (Distributed Replicated Block Device)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/" class="">
+      Lotus Notes</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/problemas_winmail.dat_outlook/" class="">
+      Problemas Winmail.dat Outlook</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/listar_ultimo_mes_de_login_de_usuarios/" class="">
+      Listar último mes de login de usuarios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/reemplazar_diseno_base_de_datos/" class="">
+      Reemplazar Diseño Base de Datos</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_squid/" class="">
+      Squid Proxy Server</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/red_restringida/" class="">
+      Red restringida</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/novell_audit/" class="">
+      Novell Identity Audit</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_dhcp/" class="">
+      Servicio DHCP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/ils/" class="">
+      ILS (Internet Locator Server)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Implementación Técnica de Nagios</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#instalación-de-nagios">Instalación de Nagios</a>
+      <ul>
+        <li><a href="#dependencias-para-compilación-y-puesta-en-marcha">Dependencias para compilación y puesta en marcha</a></li>
+        <li><a href="#dependencias-de-software">Dependencias de Software</a></li>
+        <li><a href="#tareas">Tareas</a>
+          <ul>
+            <li><a href="#descarga-y-compilación">Descarga y compilación</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#instalación-de-nagios-orientada-a-la-distribución">Instalación de Nagios orientada a la distribución</a>
+      <ul>
+        <li><a href="#caso-concreto">Caso concreto</a></li>
+      </ul>
+    </li>
+    <li><a href="#configuración">Configuración</a>
+      <ul>
+        <li><a href="#implementación">Implementación</a></li>
+        <li><a href="#en-el-servidor">En el servidor</a></li>
+        <li><a href="#nagios">Nagios</a>
+          <ul>
+            <li></li>
+            <li><a href="#archivos-de-configuracion-nagiosetc">Archivos de configuracion nagios/etc</a></li>
+          </ul>
+        </li>
+        <li><a href="#en-el-monitoreo">En el Monitoreo</a></li>
+      </ul>
+    </li>
+    <li><a href="#creando-directivas">Creando directivas</a>
+      <ul>
+        <li><a href="#agregando-grupos-de-servicios">Agregando Grupos de Servicios</a></li>
+        <li><a href="#agregando-servicios">Agregando Servicios</a>
+          <ul>
+            <li><a href="#dependencia-del-estado-del-servicio-por-el-estado-de-otro-servicio">Dependencia del estado del servicio por el estado de otro servicio</a></li>
+            <li><a href="#informacion-extendida-de-servicio">Informacion extendida de servicio</a></li>
+          </ul>
+        </li>
+        <li><a href="#agregando-grupos-de-hosts">Agregando Grupos de Hosts</a></li>
+        <li><a href="#agregando-hosts">Agregando Hosts</a>
+          <ul>
+            <li><a href="#informacion-extendida-de-host">Informacion extendida de host</a></li>
+            <li><a href="#dependencia-del-estado-de-host-por-el-estado-de-otro-host">Dependencia del estado de host por el estado de otro host</a></li>
+          </ul>
+        </li>
+        <li><a href="#definiendo-tiempos-de-chequeo">Definiendo tiempos de chequeo</a></li>
+        <li><a href="#agregando-comandos">Agregando Comandos</a></li>
+        <li><a href="#manejadores-de-eventos---event-handler">Manejadores de Eventos - Event Handler</a></li>
+        <li><a href="#configuración-de-alertas">Configuración de alertas</a>
+          <ul>
+            <li><a href="#agregando-grupos-de-contacto">Agregando Grupos de contacto</a></li>
+            <li><a href="#agregando-contactos">Agregando Contactos</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 id="instalación-de-nagios">Instalación de Nagios<a class="anchor" href="#instalaci%c3%b3n-de-nagios">#</a></h2>
+<h3 id="dependencias-para-compilación-y-puesta-en-marcha">Dependencias para compilación y puesta en marcha<a class="anchor" href="#dependencias-para-compilaci%c3%b3n-y-puesta-en-marcha">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Sistema Operativo</th>
+<th>Debian GNU/Linux</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compilador</td>
+<td>GNU GCC</td>
+</tr>
+<tr>
+<td>Utilidades de comunicación<br />
+Notificaciones</td>
+<td>MTA<br />
+SMS</td>
+</tr>
+<tr>
+<td>Interfaz de usuario<br />
+(Opcional)</td>
+<td>Servidor Web</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dependencias-de-software">Dependencias de Software<a class="anchor" href="#dependencias-de-software">#</a></h3>
+<p>Para una correcta instalación de Nagios, con todas sus características es necesario tener instalados ciertos paquetes de software en el sistema, la instalación puede variar según la distribución de Linux que elijamos, si los tenemos empaquetados, o si los tenemos que compilar en instalar manualmente.</p>
+<table>
+<thead>
+<tr>
+<th>Paquete</th>
+<th>Descripción</th>
+<th>Sitio web</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Perl</td>
+<td>Interprete para el lenguaje de script Perl</td>
+<td><a href="http://www.perl.org">http://www.perl.org</a></td>
+</tr>
+<tr>
+<td>Net::SNMP</td>
+<td>Modulo de Perl para consultas SNMP</td>
+<td><a href="http://search.cpan.org/dist/Net-SNMP">http://search.cpan.org/dist/Net-SNMP</a></td>
+</tr>
+<tr>
+<td>Crypt::DES</td>
+<td>Modulo de Perl para encripción DES, necesario para consultas SNMPv3</td>
+<td><a href="http://search.cpan.org/~dparis/Crypt-DES/">http://search.cpan.org/~dparis/Crypt-DES/</a></td>
+</tr>
+<tr>
+<td>Digest::HMAC</td>
+<td>Keyed-Hashing for Message Authentication</td>
+<td><a href="http://search.cpan.org/dist/Digest-HMAC/">http://search.cpan.org/dist/Digest-HMAC/</a></td>
+</tr>
+<tr>
+<td>Digest::SHA1</td>
+<td>Perl interface to the SHA-1 algorithm</td>
+<td><a href="http://search.cpan.org/dist/Digest-SHA1/">http://search.cpan.org/dist/Digest-SHA1/</a></td>
+</tr>
+<tr>
+<td>RRDTool</td>
+<td>Utilitario para generación de gráficas de red y además<br />
+su módulo de integración con el lenguaje Perl</td>
+<td><a href="http://oss.oetiker.ch/rrdtool">http://oss.oetiker.ch/rrdtool</a></td>
+</tr>
+<tr>
+<td>Zlib</td>
+<td>Librería de compresión utilizada por las utilidades graficas</td>
+<td><a href="http://www.gzip.org/zlib/">http://www.gzip.org/zlib/</a></td>
+</tr>
+<tr>
+<td>LibJPEG</td>
+<td>Librería para exportación jpg</td>
+<td><a href="http://www.ijg.org/">http://www.ijg.org/</a></td>
+</tr>
+<tr>
+<td>LibPNG</td>
+<td>Librería para exportación png</td>
+<td><a href="http://www.libpng.org/pub/png/">http://www.libpng.org/pub/png/</a></td>
+</tr>
+<tr>
+<td>Freetype2</td>
+<td>Librería para procesamiento de fuentes</td>
+<td><a href="http://www.freetype.org/">http://www.freetype.org/</a></td>
+</tr>
+<tr>
+<td>Graphviz</td>
+<td>Utilitario para generación de graficas</td>
+<td><a href="http://www.graphviz.org/">http://www.graphviz.org/</a></td>
+</tr>
+<tr>
+<td>XFree86-libs</td>
+<td>Librerías gráficas generales</td>
+<td><a href="http://koala.ilog.fr/lehors/xpm.html">http://koala.ilog.fr/lehors/xpm.html</a></td>
+</tr>
+<tr>
+<td>Apache 2</td>
+<td>Servidor Web</td>
+<td><a href="http://httpd.apache.org/">http://httpd.apache.org/</a></td>
+</tr>
+<tr>
+<td>PHP</td>
+<td>Interprete de lenguaje de script</td>
+<td><a href="http://www.php.net">http://www.php.net</a></td>
+</tr>
+<tr>
+<td>MySQL</td>
+<td>Sistema de base de datos</td>
+<td><a href="http://www.mysql.com">http://www.mysql.com</a></td>
+</tr>
+<tr>
+<td>Postfix</td>
+<td>SMTP para enviar mail</td>
+<td><a href="http://www.postfix.org/">http://www.postfix.org/</a></td>
+</tr>
+<tr>
+<td>GD</td>
+<td>Librería para generación de formatos graficos</td>
+<td><a href="http://www.libgd.org/">http://www.libgd.org/</a></td>
+</tr>
+<tr>
+<td>Nagvis</td>
+<td>Aditivo para la generación de diagramas dinamicos</td>
+<td><a href="http://www.nagvis.org/">http://www.nagvis.org/</a></td>
+</tr>
+<tr>
+<td>PNP4Nagios</td>
+<td>Aditivo para la generación de gráficos estadísticos y reportes visuales</td>
+<td><a href="http://www.pnp4nagios.org/">http://www.pnp4nagios.org/</a></td>
+</tr>
+<tr>
+<td>NDO</td>
+<td>Agregado para articular Nagios con MySQL</td>
+<td><a href="http://www.nagios.org">http://www.nagios.org</a></td>
+</tr>
+<tr>
+<td>Plugins</td>
+<td>Plugins de chequeo standard de Nagios</td>
+<td><a href="http://www.nagios.org">http://www.nagios.org</a></td>
+</tr>
+<tr>
+<td>SNMP Plugins</td>
+<td>Plugins para la integración de chequeos SNMP de Nagios</td>
+<td><a href="http://nagios.manubulon.com/">http://nagios.manubulon.com/</a></td>
+</tr>
+<tr>
+<td>Nagios</td>
+<td>Sitio de descarga oficial</td>
+<td><a href="http://www.nagios.org">http://www.nagios.org</a></td>
+</tr>
+<tr>
+<td>NagiosQL</td>
+<td>Herramienta visual de configuración de Nagios via Web</td>
+<td><a href="http://www.nagiosql.org/">http://www.nagiosql.org/</a></td>
+</tr>
+<tr>
+<td>Dokuwiki</td>
+<td>Herramienta de documentación colaborativa</td>
+<td><a href="http://www.dokuwiki.org/">http://www.dokuwiki.org/</a></td>
+</tr>
+<tr>
+<td>Syslog-Ng</td>
+<td>Logueo de eventos del sistema</td>
+<td><a href="http://www.balabit.com/network-security/syslog-ng/">http://www.balabit.com/network-security/syslog-ng/</a></td>
+</tr>
+<tr>
+<td>SNARE</td>
+<td>Agente Syslog para clientes Windows</td>
+<td><a href="http://www.intersectalliance.com/projects/index.html">http://www.intersectalliance.com/projects/index.html</a></td>
+</tr>
+<tr>
+<td>MK Livestatus</td>
+<td>Aditivo para obtener los datos de Nagios<br />
+en Vivo via Socket (muy útil para abandonar NDO)</td>
+<td><a href="http://mathias-kettner.de/checkmk_livestatus.html">http://mathias-kettner.de/checkmk_livestatus.html</a></td>
+</tr>
+<tr>
+<td>Gnokii</td>
+<td>Aplicación de interfaz para celulares y modems 3G,<br />
+para la realización de llamadas y alertas SMS</td>
+<td><a href="http://gnokii.org">http://gnokii.org</a></td>
+</tr>
+<tr>
+<td>Thruk</td>
+<td>Interfaz alternativa para Nagios, con muchas funciones extras,<br />
+basado en MK Livestatus</td>
+<td>www.thruk.org</td>
+</tr>
+<tr>
+<td>Interfacetable_v3t</td>
+<td>Plugin para detectar y chequear las interfaces de un Router</td>
+<td><a href="http://www.tontonitch.com/tiki/tiki-index.php?page=Nagios%20plugins%20-%20interfacetable_v3t">http://www.tontonitch.com/</a></td>
+</tr>
+<tr>
+<td>Check TSM</td>
+<td>Plugin para hacer chequeos generales en Tivoli TSM</td>
+<td><a href="https://github.com/osklil/nagios-misc">https://github.com/osklil/nagios-misc</a></td>
+</tr>
+<tr>
+<td>Check Iostat</td>
+<td>Estadisticas y alertas en base a los datos de iostat</td>
+<td><a href="http://sysengineers.wordpress.com/2010/05/27/check_iostat-pl-version-0-9-7/">http://sysengineers.wordpress.com/2010/05/27/check_iostat-pl-version-0-9-7/</a></td>
+</tr>
+<tr>
+<td>Cliente Oracle<br />
+Basic<br />
+SQL*Plus</td>
+<td>Cliente de Oracle para realizar los chequeos</td>
+<td><a href="http://www.oracle.com/technetwork/database/features/instant-client/">http://www.oracle.com/technetwork/database/features/instant-client/</a></td>
+</tr>
+<tr>
+<td>Eventdb</td>
+<td>Integración de chequeos de Syslog</td>
+<td><a href="https://www.netways.org/projects/eventdb">https://www.netways.org/projects/eventdb</a></td>
+</tr>
+<tr>
+<td>Highchart for Nagios</td>
+<td>Gráficos de PNP4Nagios en AJAX</td>
+<td><a href="http://sourceforge.net/projects/highchartfornag/">http://sourceforge.net/projects/highchartfornag/</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="tareas">Tareas<a class="anchor" href="#tareas">#</a></h3>
+<h4 id="descarga-y-compilación">Descarga y compilación<a class="anchor" href="#descarga-y-compilaci%c3%b3n">#</a></h4>
+<p>En este apartado nos concentraremos en la descarga y compilación de los diferentes paquetes bajados en formato de <em>código fuente</em>.</p>
+<p>Para empezar deberemos descargar el <em>código fuente</em> del software Nagios desde su sitio web, en formato tar.gz</p>
+<p>Para ello descomprimiremos el paquete descargado y luego procederemos a compilarlo.</p>
+<p>Luego ejecutaremos el script <strong>configure</strong>, lo que hacer dicho script, es generar el ambiente propicio para poder ejecutar el proceso de compilación, ayudados por medio de la utilidad <strong>make</strong>.</p>
+<p>Ejemplo de salida de ejecución del script configure :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="o">./</span><span class="n">configure</span> <span class="o">--</span><span class="n">enable</span><span class="o">-</span><span class="n">corewindow</span> <span class="o">--</span><span class="n">enable</span><span class="o">-</span><span class="n">event</span><span class="o">-</span><span class="n">broker</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="n">Creating</span> <span class="n">sample</span> <span class="n">config</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">sample</span><span class="o">-</span><span class="n">config</span><span class="o">/</span> <span class="o">...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">***</span> <span class="n">Configuration</span> <span class="n">summary</span> <span class="k">for</span> <span class="n">nagios</span> <span class="mf">4.3</span><span class="o">.</span><span class="mi">1</span> <span class="mi">02</span><span class="o">-</span><span class="mi">23</span><span class="o">-</span><span class="mi">2017</span> <span class="o">***</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="n">General</span> <span class="n">Options</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-------------------------</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Nagios</span> <span class="n">executable</span><span class="p">:</span>  <span class="n">nagios</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Nagios</span> <span class="n">user</span><span class="o">/</span><span class="n">group</span><span class="p">:</span>  <span class="n">nagios</span><span class="p">,</span><span class="n">nagios</span>
+</span></span><span class="line"><span class="cl">       <span class="n">Command</span> <span class="n">user</span><span class="o">/</span><span class="n">group</span><span class="p">:</span>  <span class="n">nagios</span><span class="p">,</span><span class="n">nagios</span>
+</span></span><span class="line"><span class="cl">             <span class="n">Event</span> <span class="n">Broker</span><span class="p">:</span>  <span class="n">yes</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Install</span> <span class="o">$</span><span class="p">{</span><span class="n">prefix</span><span class="p">}:</span>  <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">nagios</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Install</span> <span class="o">$</span><span class="p">{</span><span class="n">includedir</span><span class="p">}:</span>  <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">nagios</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">nagios</span>
+</span></span><span class="line"><span class="cl">                <span class="n">Lock</span> <span class="n">file</span><span class="p">:</span>  <span class="o">$</span><span class="p">{</span><span class="n">prefix</span><span class="p">}</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">nagios</span><span class="o">.</span><span class="n">lock</span>
+</span></span><span class="line"><span class="cl">   <span class="n">Check</span> <span class="n">result</span> <span class="n">directory</span><span class="p">:</span>  <span class="o">$</span><span class="p">{</span><span class="n">prefix</span><span class="p">}</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">spool</span><span class="o">/</span><span class="n">checkresults</span>
+</span></span><span class="line"><span class="cl">           <span class="n">Init</span> <span class="n">directory</span><span class="p">:</span>  <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">d</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Apache</span> <span class="n">conf</span><span class="o">.</span><span class="n">d</span> <span class="n">directory</span><span class="p">:</span>  <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">httpd</span><span class="o">/</span><span class="n">conf</span><span class="o">.</span><span class="n">d</span>
+</span></span><span class="line"><span class="cl">             <span class="n">Mail</span> <span class="n">program</span><span class="p">:</span>  <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">mail</span>
+</span></span><span class="line"><span class="cl">                  <span class="n">Host</span> <span class="ne">OS</span><span class="p">:</span>  <span class="n">linux</span><span class="o">-</span><span class="n">gnu</span>
+</span></span><span class="line"><span class="cl">          <span class="n">IOBroker</span> <span class="n">Method</span><span class="p">:</span>  <span class="n">epoll</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="n">Web</span> <span class="n">Interface</span> <span class="n">Options</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl"> <span class="o">------------------------</span>
+</span></span><span class="line"><span class="cl">                 <span class="n">HTML</span> <span class="n">URL</span><span class="p">:</span>  <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="o">/</span><span class="n">nagios</span><span class="o">/</span>
+</span></span><span class="line"><span class="cl">                  <span class="n">CGI</span> <span class="n">URL</span><span class="p">:</span>  <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="o">/</span><span class="n">nagios</span><span class="o">/</span><span class="n">cgi</span><span class="o">-</span><span class="n">bin</span><span class="o">/</span>
+</span></span><span class="line"><span class="cl"> <span class="n">Traceroute</span> <span class="p">(</span><span class="n">used</span> <span class="n">by</span> <span class="n">WAP</span><span class="p">):</span>  <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">traceroute</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Review</span> <span class="n">the</span> <span class="n">options</span> <span class="n">above</span> <span class="k">for</span> <span class="n">accuracy</span><span class="o">.</span>  <span class="n">If</span> <span class="n">they</span> <span class="n">look</span> <span class="n">okay</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">type</span> <span class="s1">&#39;make all&#39;</span> <span class="n">to</span> <span class="n">compile</span> <span class="n">the</span> <span class="n">main</span> <span class="n">program</span> <span class="ow">and</span> <span class="n">CGIs</span><span class="o">.</span></span></span></code></pre></div><h2 id="instalación-de-nagios-orientada-a-la-distribución">Instalación de Nagios orientada a la distribución<a class="anchor" href="#instalaci%c3%b3n-de-nagios-orientada-a-la-distribuci%c3%b3n">#</a></h2>
+<p>Es útil pensar en utilizar varios paquetes de plugins disponibles en la distribución para poder facilitar el proceso de actualizaciones, igualmente es recomendable los componentes base de Nagios compilarlos y dejar separados los plugins personalizados para poder dejarlos independientes de las actualizaciones que apliquemos a los paquetes de la distribución.</p>
+<h3 id="caso-concreto">Caso concreto<a class="anchor" href="#caso-concreto">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>Sistema Operativo</th>
+          <th>Debian 9</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Version de Nagios</td>
+          <td>4.3.1</td>
+      </tr>
+  </tbody>
+</table>
+<p>Desinstalar paquetes o cosas innecesarias del paquete base de debian netinst e instalar el compilador GCC, realizar pruebas con el FLAG O3 al momento de la compilación.</p>
+<p>make install-base</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">cd ./base &amp;&amp; make install
+</span></span><span class="line"><span class="cl">make[1]: Entering directory &#39;/root/nagios-4.3.1/base&#39;
+</span></span><span class="line"><span class="cl">make install-basic
+</span></span><span class="line"><span class="cl">make[2]: Entering directory &#39;/root/nagios-4.3.1/base&#39;
+</span></span><span class="line"><span class="cl">/usr/bin/install -c -m 775 -o nagios -g nagios -d /usr/local/nagios/bin
+</span></span><span class="line"><span class="cl">/usr/bin/install -c -m 774 -o nagios -g nagios nagios /usr/local/nagios/bin
+</span></span><span class="line"><span class="cl">/usr/bin/install -c -m 774 -o nagios -g nagios nagiostats /usr/local/nagios/bin
+</span></span><span class="line"><span class="cl">make[2]: Leaving directory &#39;/root/nagios-4.3.1/base&#39;
+</span></span><span class="line"><span class="cl">make strip-post-install
+</span></span><span class="line"><span class="cl">make[2]: Entering directory &#39;/root/nagios-4.3.1/base&#39;
+</span></span><span class="line"><span class="cl">/usr/bin/strip /usr/local/nagios/bin/nagios
+</span></span><span class="line"><span class="cl">/usr/bin/strip /usr/local/nagios/bin/nagiostats
+</span></span><span class="line"><span class="cl">make[2]: Leaving directory &#39;/root/nagios-4.3.1/base&#39;
+</span></span><span class="line"><span class="cl">make[1]: Leaving directory &#39;/root/nagios-4.3.1/base&#39;</span></span></code></pre></div><p>make install-init</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">/usr/bin/install -c -m 755 -d -o root -g root /etc/init.d
+</span></span><span class="line"><span class="cl">/usr/bin/install -c -m 755 -o root -g root daemon-init /etc/init.d/nagios
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">*** Init script installed ***</span></span></code></pre></div><p>make install-commandmode</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="o">-</span><span class="n">m</span> <span class="mi">775</span> <span class="o">-</span><span class="n">o</span> <span class="n">nagios</span> <span class="o">-</span><span class="n">g</span> <span class="n">nagios</span> <span class="o">-</span><span class="n">d</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">nagios</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">rw</span>
+</span></span><span class="line"><span class="cl"><span class="n">chmod</span> <span class="n">g</span><span class="o">+</span><span class="n">s</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">nagios</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">rw</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">***</span> <span class="n">External</span> <span class="n">command</span> <span class="n">directory</span> <span class="n">configured</span> <span class="o">***</span></span></span></code></pre></div><p>Paquetes debian de plugins a instalar junto con sus dependencias :</p>
+<ul>
+<li>monitoring-plugins-basic</li>
+<li>monitoring-plugins-common</li>
+<li>monitoring-plugins-standard</li>
+<li>nagios-plugins-contrib</li>
+<li>nagios-snmp-plugins</li>
+<li>nagios-nrpe-plugin</li>
+<li>nagios-plugin-check-multi</li>
+<li>python-nagiosplugin</li>
+<li>python3-nagiosplugin</li>
+<li>libnagios-plugin-perl (si Debian &lt; 9)</li>
+</ul>
+<p>Paquetes extra para la administración del sistema :</p>
+<ul>
+<li>htop</li>
+<li>bmon</li>
+<li>tcpdump</li>
+<li>strace</li>
+<li>tcptrack</li>
+<li>ltrace</li>
+</ul>
+<p>Paquetes extra para agregados de Nagios :</p>
+<ul>
+<li>rrdtool,librrds-perl</li>
+<li>Cliente oracle
+<ul>
+<li>oracle-instantclient-basic_10.2.0.5-2_amd64.deb</li>
+<li>oracle-instantclient-sqlplus_10.2.0.5-2_amd64.deb</li>
+</ul>
+</li>
+<li>php7.0-cli</li>
+<li>php7.0-curl</li>
+<li>php7.0-gd</li>
+<li>ntpstat</li>
+<li>ntpdate</li>
+<li>nmap</li>
+<li>xmlstarlet</li>
+<li>libmail-sendmail-perl</li>
+<li>php7.0-snmp</li>
+</ul>
+<p>Nótese que no se realizó la instalación del servidor Web, lo máximo a dejar en el mismo servidor de Nagios es un <strong>MTA</strong> para notificaciones, por ejemplo postfix. Ya que el uso de un servidor Web dentro de la misma instalación de Nagios, dependiendo de su tamaño, puede afectar en seria forma a la performance del servidor.</p>
+<h2 id="configuración">Configuración<a class="anchor" href="#configuraci%c3%b3n">#</a></h2>
+<p>Ahora nos referiremos a la configuración de los elementos instalados para su posterior <em>articulación</em> y funcionamiento en <em>conjunto</em>.</p>
+<h3 id="implementación">Implementación<a class="anchor" href="#implementaci%c3%b3n">#</a></h3>
+<p>Para el correcto funcionamiento de Nagios, y asegurar escalabilidad con orden, se debe seguir una estructura de configuración y tener previamente planteados temas como:</p>
+<ul>
+<li>Definición una estructura de archivos y directorios acorde a la situación, haciéndolo a su vez mas entendible para su posterior administración</li>
+<li>Configurar Apache para su permitir su acceso via web por HTTP o HTTPS</li>
+<li>En la mayoría de los equipos a monitorear mientras fuera posible instalar y dejar corriendo los servicios de SNMP</li>
+<li>Configurar servicio de envío de emails</li>
+<li>Definir grupos de contactos a los cuales se les enviarían los avisos de notificaciones, dependiendo de que hosts o servicio se trate.</li>
+<li>Definir grupos de hosts y servicios, al tenerlos agrupados y verlos mas facilmente</li>
+</ul>
+<p><em>A continuación se detalla como llevar a cabo dichos pasos necesarios para su implementación.</em></p>
+<h3 id="en-el-servidor">En el servidor<a class="anchor" href="#en-el-servidor">#</a></h3>
+<p>Configuraciones necesarias en el servidor de monitoreo.</p>
+<h3 id="nagios">Nagios<a class="anchor" href="#nagios">#</a></h3>
+<p>Algunos puntos basicos previos a la instalacion :</p>
+<ul>
+<li><strong>PATH</strong> Esta es la ruta de instalación. Por defecto es /usr/local/nagios</li>
+<li><strong>Usuario</strong> Usuario que va a usar nagios par ejecutarse. Debe crearse con adduser especificarle el PATH de Nagios como <em>su directorio home de inicio</em>, usualmente deberemos llamarlo nagios y debe estar dentro del grupo nagios</li>
+<li><strong>Grupo</strong> Grupo de usuario que va a usar Nagios. Este grupo tendrá permisos sobre todos los ficheros y directorios de Nagios. Por defecto es nagios. Puede crearse con groupadd.</li>
+<li><strong>URL</strong> Nagios utiliza una interfaz web para ejecutarse. Esta URL determina cual va a ser el directorio virtual que debe usar para instalarse. Por defecto /nagios, es decir, las peticiones irán dirigidas a <a href="http://host/nagios">http://host/nagios</a></li>
+</ul>
+<h5 id="estructura-de-archivos">Estructura de archivos<a class="anchor" href="#estructura-de-archivos">#</a></h5>
+<p>Una vez que compilamos e instalamos el paquete Nagios nos termina quedando una nomenclatura de directorios como la siguiente :</p>
+<ul>
+<li><strong>bin</strong>
+<ul>
+<li><em>Aqui se almacenan los binarios ejecutables</em></li>
+</ul>
+</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>etc</strong>
+<ul>
+<li><em>Guarda la configuracion de Nagios</em></li>
+</ul>
+</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>libexec</strong>
+<ul>
+<li><em>Se almacenan los plugins que efectuaran los chequeos a monitorear</em></li>
+</ul>
+</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>sbin</strong>
+<ul>
+<li><em>Dentro de este directorio se mantienen los ejecutables CGI de la interfaz web</em></li>
+</ul>
+</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>share</strong>
+<ul>
+<li><em>Organiza el contenido web a mostrar, iconos, html, php etc</em></li>
+</ul>
+</li>
+</ul>
+<!-- -->
+<ul>
+<li><strong>var</strong>
+<ul>
+<li><em>Guarda los datos de ejecucion del monitoreo, estado de servicios, hosts, y logs</em></li>
+</ul>
+</li>
+</ul>
+<p><strong>bin</strong></p>
+<p>Dentro de este directorio encontramos los ejecutable principales, como el binario <em><strong>nagios</strong></em> que es el que se ejecuta como proceso en segundo plano, el objeto <em><strong>ndomod.o</strong></em> que es el modulo que se encarga de traducir las estadisticas de nagios en formato de consultas <em>MySQL</em>, y <em><strong>ndo2db</strong></em> que el proceso en segundo plano que se encarga conectarse con la base de datos para posteriormente ejecutar esas consultas.</p>
+<p><strong>etc</strong></p>
+<p>Este directorio guarda la configuración de Nagios, sus componentes, hosts/servicios a chequear, comandos de ejecucion, contactos de notificación, intervalos de chequeos. Dentro de el hay diferentes subdirectorios y archivos.</p>
+<p><strong>libexec</strong></p>
+<p>Alli se contienen lo ejecutables de los plugins que efectuan los chequeos, SNMP, SAP, Oracle, SSH, que pueden ser binarios, scripts en Perl, PHP, Shell, Java, etc.</p>
+<p><strong>sbin</strong></p>
+<p>Aqui se almacenan los ejecutables cgi que se ejecutaran para la visualizacion por web de la consola Nagios.</p>
+<p><strong>share</strong></p>
+<p>Aqui encontramos el contenido web, imagenes, logos, los aditivos como PNP, Nagvis y los datos que necesitan para funcionar estos.</p>
+<p><strong>var</strong></p>
+<p>Aqui se guardan los datos internos de Nagios, estadisticas de los chequeos, informacion de ejecucion actual, archivos de sockets, registros de logs, colas de ejecución de chequeos.</p>
+<h4 id="archivos-de-configuracion-nagiosetc">Archivos de configuracion nagios/etc<a class="anchor" href="#archivos-de-configuracion-nagiosetc">#</a></h4>
+<p><strong>cgi.cfg</strong></p>
+<ul>
+<li><em>Definir archivo de configuracion principal de Nagios</em>
+<ul>
+<li>main_config_file=/usr/local/nagios/etc/nagios.cfg</li>
+</ul>
+</li>
+<li><em>Ruta donde se ubican los archivos a mostrar via web</em>
+<ul>
+<li>physical_html_path=/usr/local/nagios/share</li>
+</ul>
+</li>
+<li><em>Ruta del url a donde ubicar Nagios desde el navegador</em>
+<ul>
+<li>url_html_path=/nagios</li>
+</ul>
+</li>
+<li><em>Mostrar o no el icono de ayuda en la interfaz web</em>
+<ul>
+<li>show_context_help=0</li>
+</ul>
+</li>
+<li><em>Mostrar objetos pendientes de chequeo</em>
+<ul>
+<li>use_pending_states=1</li>
+</ul>
+</li>
+<li><em>Usar autenticacion para acceder a Nagios</em>
+<ul>
+<li>use_authentication=1</li>
+</ul>
+</li>
+<li><em>Tener usuario logueado por default (no recomendado, dejar comentado)</em>
+<ul>
+<li>#default_user_name=guest</li>
+</ul>
+</li>
+<li><em>Usuarios con acceso permitido para ver la informacion de objetos (separados por comas)</em>
+<ul>
+<li>authorized_for_system_information=nagiosadmin</li>
+</ul>
+</li>
+<li><em>Usuarios con acceso permitido para ver la informacion de configuracion (separados por comas)</em>
+<ul>
+<li>authorized_for_configuration_information=nagiosadmin</li>
+</ul>
+</li>
+<li><em>Usuarios con acceso permitido ejecucion de comandos nagios (separados por comas)</em>
+<ul>
+<li>authorized_for_system_commands=nagiosadmin</li>
+</ul>
+</li>
+<li><em>Usuarios permitidos a ver informacion de hosts y servicios (separados por comas)</em>
+<ul>
+<li>authorized_for_all_services=nagiosadmin</li>
+<li>authorized_for_all_hosts=nagiosadmin</li>
+</ul>
+</li>
+<li><em>Usuarios permitidos para ejecutar comandos sobre hosts y servicios (separados por comas)</em>
+<ul>
+<li>authorized_for_all_service_commands=nagiosadmin</li>
+<li>authorized_for_all_host_commands=nagiosadmin</li>
+</ul>
+</li>
+<li><em>Tasa de refresco para la interfaz web en segundos</em>
+<ul>
+<li>refresh_rate=90</li>
+</ul>
+</li>
+</ul>
+<p><strong>htpasswd.users</strong></p>
+<ul>
+<li>Archivo con passwords encriptadas de los usuarios que se autentificaran por HTTP</li>
+</ul>
+<p><strong>nagios.cfg</strong></p>
+<ul>
+<li>Archivo de configuracion principal de Nagios, aqui se especifican los directorios de trabajo y se incluyen los archivos de configuracion extra a utilizar por Nagios</li>
+<li>Con diversos parametros :
+<ul>
+<li><strong>log_file</strong> se especifica el archivo de log a utilizar por Nagios</li>
+<li><strong>cfg_file</strong> se especifica un archivo de configuracion extra a incluir en la ejecucion de Nagios</li>
+<li><strong>cfg_dir</strong> se especifica un directorio con archivos de configuracion extra a incluir recursivamente en la ejecucion de Nagios</li>
+<li><strong>log_archive_path</strong> path donde se alojaran los archivos de log</li>
+<li><strong>use_syslog</strong> integracion con syslog</li>
+</ul>
+</li>
+</ul>
+<p><strong>ndo2db.cfg</strong></p>
+<ul>
+<li>Archivo de configuracion del daemon que se encarga de introducir las consultar generadas por el modulo ndomod</li>
+</ul>
+<p><strong>ndomod.cfg</strong></p>
+<ul>
+<li>Modulo de Nagios que se encarga de traducir la informacion de ejecucion de Nagios en consultas MySQL, disponiendolas por medio de un socket</li>
+</ul>
+<p><strong>resource.cfg</strong></p>
+<ul>
+<li>Archivo de configuracion donde se definen macros de ejecucion</li>
+</ul>
+<p>Ejemplo de configuración teniendo en cuenta el ambiente mixto con plugins de paquetes Debian y compilados manualmente :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="o">**</span><span class="n">objects</span><span class="o">/**</span>
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="n">Directorio</span> <span class="n">de</span> <span class="n">archivos</span> <span class="n">generales</span> <span class="n">de</span> <span class="n">configuracion</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">**</span><span class="n">objects</span><span class="o">/</span><span class="n">commands</span><span class="o">.</span><span class="n">cfg</span><span class="o">**</span>
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="n">Definicion</span> <span class="n">de</span> <span class="n">comandos</span> <span class="n">de</span> <span class="n">ejecucion</span> <span class="n">por</span> <span class="n">default</span><span class="p">,</span> <span class="n">con</span> <span class="n">los</span> <span class="n">alias</span> <span class="n">que</span> <span class="n">queremos</span> <span class="n">usar</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">**</span><span class="n">objects</span><span class="o">/</span><span class="n">contacts</span><span class="o">.</span><span class="n">cfg</span><span class="o">**</span>
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="n">Definicion</span> <span class="n">de</span> <span class="n">contactos</span> <span class="n">de</span> <span class="n">notificacion</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">**</span><span class="n">objects</span><span class="o">/</span><span class="n">localhost</span><span class="o">.</span><span class="n">cfg</span><span class="o">**</span>
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="n">Plantilla</span> <span class="n">inicial</span> <span class="n">para</span> <span class="n">el</span> <span class="n">chequeo</span> <span class="n">del</span> <span class="n">host</span> <span class="n">local</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">**</span><span class="n">objects</span><span class="o">/</span><span class="n">printer</span><span class="o">.</span><span class="n">cfg</span><span class="o">**</span>
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="n">Plantilla</span> <span class="n">de</span> <span class="n">ejemplo</span> <span class="n">de</span> <span class="n">chequeo</span> <span class="n">de</span> <span class="n">impresoras</span> <span class="n">por</span> <span class="n">SNMP</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">**</span><span class="n">objects</span><span class="o">/</span><span class="k">switch</span><span class="o">.</span><span class="n">cfg</span><span class="o">**</span>
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="n">Plantilla</span> <span class="n">de</span> <span class="n">ejemplo</span> <span class="n">de</span> <span class="n">chequeo</span> <span class="n">de</span> <span class="k">switch</span> <span class="n">por</span> <span class="n">SNMP</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">**</span><span class="n">objects</span><span class="o">/</span><span class="n">templates</span><span class="o">.</span><span class="n">cfg</span><span class="o">**</span>
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="n">Plantillas</span> <span class="n">generales</span> <span class="n">de</span> <span class="n">host</span><span class="p">,</span> <span class="n">contactos</span><span class="p">,</span> <span class="n">y</span> <span class="n">servicios</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">**</span><span class="n">objects</span><span class="o">/</span><span class="n">timeperiods</span><span class="o">.</span><span class="n">cfg</span><span class="o">**</span>
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="n">Plantilla</span> <span class="n">inicial</span> <span class="n">para</span> <span class="n">definir</span> <span class="n">periodos</span> <span class="n">de</span> <span class="n">chequeos</span><span class="p">,</span> <span class="n">aquí</span> <span class="n">se</span> <span class="n">definen</span> <span class="n">los</span> <span class="n">rangos</span> <span class="n">de</span> <span class="n">tiempo</span> <span class="n">donde</span> <span class="n">son</span> <span class="n">válidos</span> <span class="n">el</span> <span class="n">envío</span> <span class="n">de</span> <span class="n">alertas</span> <span class="n">y</span> <span class="n">las</span> <span class="n">verificaciones</span> <span class="n">de</span> <span class="n">los</span> <span class="n">servicios</span> <span class="n">que</span> <span class="n">están</span> <span class="n">funcionando</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">**</span><span class="n">objects</span><span class="o">/</span><span class="n">windows</span><span class="o">.</span><span class="n">cfg</span><span class="o">**</span>
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="n">Plantilla</span> <span class="n">de</span> <span class="n">ejemplo</span> <span class="n">de</span> <span class="n">chequeo</span> <span class="n">de</span> <span class="n">equipos</span> <span class="n">Windows</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">**</span><span class="n">services</span><span class="o">/**</span>
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="n">Aqui</span> <span class="n">vamos</span> <span class="n">a</span> <span class="n">definir</span> <span class="n">los</span> <span class="n">servicios</span> <span class="n">que</span> <span class="n">usaremos</span> <span class="n">en</span> <span class="n">los</span> <span class="n">chequeos</span><span class="o">.</span> <span class="n">Se</span> <span class="n">define</span> <span class="n">la</span> <span class="n">métrica</span> <span class="n">o</span> <span class="n">el</span> <span class="n">servicio</span> <span class="n">a</span> <span class="n">monitorizar</span> <span class="n">y</span> <span class="n">el</span> <span class="n">host</span><span class="o">/</span><span class="n">grupo</span> <span class="n">de</span> <span class="n">hosts</span> <span class="n">sobre</span> <span class="n">el</span> <span class="n">que</span> <span class="n">se</span> <span class="n">ejecuta</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">**</span><span class="k">var</span><span class="o">/</span><span class="n">rw</span><span class="o">/**</span>
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="n">Alli</span> <span class="n">se</span> <span class="n">encuentra</span> <span class="n">un</span> <span class="n">archivo</span> <span class="n">special</span> <span class="n">de</span> <span class="n">socket</span> <span class="n">que</span> <span class="n">realiza</span> <span class="n">la</span> <span class="n">comunicacion</span> <span class="n">de</span> <span class="n">los</span> <span class="n">comando</span> <span class="n">y</span> <span class="n">ordenes</span> <span class="n">de</span> <span class="n">la</span> <span class="n">interfaz</span> <span class="n">web</span> <span class="n">hacia</span> <span class="n">nagios</span><span class="p">,</span> <span class="n">como</span> <span class="n">cambiar</span> <span class="n">horarios</span> <span class="n">de</span> <span class="n">chequeo</span><span class="p">,</span> <span class="n">deshabilitar</span> <span class="n">notificaciones</span> <span class="n">etc</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">    <span class="o">*</span> <span class="n">El</span> <span class="n">archivo</span> <span class="n">que</span> <span class="n">alli</span> <span class="n">se</span> <span class="n">encuentra</span> <span class="o">//</span><span class="n">nagios</span><span class="o">.</span><span class="n">cmd</span><span class="o">//</span> <span class="n">debe</span> <span class="n">tener</span> <span class="n">permisos</span> <span class="n">de</span> <span class="n">escritura</span> <span class="n">y</span> <span class="n">lectura</span> <span class="n">por</span> <span class="n">el</span> <span class="n">propietario</span> <span class="n">y</span> <span class="n">el</span> <span class="n">grupo</span> <span class="n">de</span> <span class="n">pertenencia</span> <span class="o">//</span><span class="n">nagios</span><span class="p">:</span><span class="n">nagcmd</span> <span class="p">(</span><span class="mi">660</span><span class="p">)</span><span class="o">//</span><span class="p">,</span> <span class="o">//</span><span class="n">nagcmd</span><span class="o">//</span> <span class="n">es</span> <span class="n">un</span> <span class="n">grupo</span> <span class="n">especial</span> <span class="n">en</span> <span class="n">el</span> <span class="n">cual</span> <span class="n">vamos</span> <span class="n">a</span> <span class="n">incluir</span> <span class="n">al</span> <span class="n">usuario</span> <span class="n">que</span> <span class="n">ejecuta</span> <span class="n">el</span> <span class="n">servidor</span> <span class="n">web</span> <span class="p">(</span><span class="o">//</span><span class="n">ej</span><span class="o">.</span> <span class="n">en</span> <span class="n">apache</span> <span class="n">sobre</span> <span class="n">Debian</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span><span class="o">//</span><span class="p">),</span> <span class="n">y</span> <span class="n">asi</span> <span class="n">poder</span> <span class="n">enviar</span> <span class="n">ordenes</span> <span class="n">desde</span> <span class="n">la</span> <span class="n">interfaz</span> <span class="n">web</span> <span class="n">CGI</span><span class="o">.</span> <span class="n">Esta</span> <span class="n">es</span> <span class="n">una</span> <span class="n">característica</span> <span class="n">avanzada</span> <span class="n">de</span> <span class="n">Nagios</span> <span class="n">es</span> <span class="n">que</span> <span class="n">permite</span> <span class="n">vía</span> <span class="n">web</span> <span class="n">la</span> <span class="n">ejecución</span> <span class="n">de</span> <span class="n">ciertas</span> <span class="n">tareas</span> <span class="n">más</span> <span class="n">allá</span> <span class="n">del</span> <span class="n">propio</span> <span class="n">conjunto</span> <span class="n">de</span> <span class="n">CGI</span><span class="err">’</span><span class="n">s</span> <span class="n">que</span> <span class="n">vienen</span> <span class="n">de</span> <span class="n">serie</span><span class="p">,</span> <span class="n">como</span> <span class="n">por</span> <span class="n">ejemplo</span> <span class="n">la</span>
+</span></span><span class="line"><span class="cl"><span class="n">caída</span> <span class="n">o</span> <span class="n">el</span> <span class="n">reinicio</span> <span class="n">del</span> <span class="n">propio</span> <span class="n">Nagios</span><span class="p">,</span> <span class="n">etcétera</span><span class="o">.</span> <span class="n">Para</span> <span class="n">poder</span> <span class="n">ejecutar</span> <span class="n">este</span> <span class="n">tipo</span> <span class="n">de</span> <span class="n">comandos</span> <span class="n">es</span>
+</span></span><span class="line"><span class="cl"><span class="n">necesario</span> <span class="n">también</span> <span class="n">configurar</span> <span class="n">el</span> <span class="n">sistema</span> <span class="n">de</span> <span class="n">una</span> <span class="n">forma</span> <span class="n">un</span> <span class="n">tanto</span> <span class="n">especial</span><span class="o">.</span> <span class="n">No</span> <span class="n">hay</span> <span class="n">que</span> <span class="n">olvidar</span> <span class="n">que</span>
+</span></span><span class="line"><span class="cl"><span class="n">al</span> <span class="n">configurar</span> <span class="n">Nagios</span> <span class="n">de</span> <span class="n">este</span> <span class="n">modo</span> <span class="n">se</span> <span class="n">está</span> <span class="n">permitiendo</span> <span class="n">desde</span> <span class="n">la</span> <span class="n">web</span> <span class="n">activar</span> <span class="n">o</span> <span class="n">desactivar</span> <span class="n">opciones</span> <span class="n">que</span> <span class="n">en</span> <span class="n">principio</span> <span class="n">sólo</span> <span class="n">estaban</span> <span class="n">disponibles</span> <span class="n">desde</span> <span class="n">la</span> <span class="n">consola</span> <span class="n">del</span> <span class="n">sistema</span><span class="o">.</span> <span class="n">Para</span> <span class="n">configurar</span> <span class="n">Nagios</span> <span class="n">de</span> <span class="n">esta</span> <span class="n">forma</span><span class="p">,</span> <span class="n">hay</span> <span class="n">que</span>
+</span></span><span class="line"><span class="cl"><span class="n">editar</span> <span class="n">el</span> <span class="n">fichero</span> <span class="n">principal</span> <span class="o">//</span><span class="n">nagios</span><span class="o">.</span><span class="n">cfg</span><span class="o">//</span> <span class="n">y</span> <span class="n">añadir</span> <span class="p">(</span><span class="n">o</span> <span class="n">modificar</span> <span class="n">si</span> <span class="n">ya</span> <span class="n">existen</span><span class="p">)</span> <span class="n">las</span> <span class="n">siguientes</span> <span class="n">líneas</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="n">check_external_commands</span><span class="o">=</span><span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">command_check_interval</span><span class="o">=-</span><span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">command_file</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">nagios</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">rw</span><span class="o">/</span><span class="n">nagios</span><span class="o">.</span><span class="n">cmd</span></span></span></code></pre></div><p>Lo que hará que Nagios active el chequeo para buscar comandos externos, con tanta frecuencia como sea posible por el sistema y buscará los comandos en el archivo <em>nagios.cmd</em>.</p>
+<p>En el siguiente gráfico detalla la organización recomendada de la configuración de Nagios.</p>
+<img src="/manuales/nagios/funcionamiento_nagios2.png" class="align-center" alt="funcionamiento_nagios2.png" />
+<img src="/manuales/nagios/diagrama_nagios.dia.gz" class="align-center" alt="diagrama_nagios.dia.gz" />
+<p>Si por ejemplo tenemos estos dos casos :</p>
+<p><strong>Nagios un país multiples provincias o localidades</strong></p>
+<ul>
+<li><strong>Buenos Aires</strong>
+<ul>
+<li>Lanús</li>
+<li>Florencio Varela</li>
+<li>CABA</li>
+<li>Olavarria</li>
+<li>Bahia Blanca</li>
+</ul>
+</li>
+<li><strong>Santa Fe</strong>
+<ul>
+<li>Rosario</li>
+</ul>
+</li>
+<li><strong>Neuquén</strong>
+<ul>
+<li>Zapala</li>
+<li>San Martin</li>
+</ul>
+</li>
+</ul>
+<p>En este caso, simplemente deberemos tener templates para hosts y servicios, que se dividan por tipo. Si es un servidor, equipo de red, scada etc.</p>
+<p><strong>Nagios múltiples países y multiples provincias o localidades</strong></p>
+<ul>
+<li><strong>Argentina</strong>
+<ul>
+<li>Buenos Aires</li>
+<li>Neuquen</li>
+<li>Tucuman</li>
+</ul>
+</li>
+<li><strong>Brasil</strong>
+<ul>
+<li>Rio</li>
+<li>Cajati</li>
+</ul>
+</li>
+<li><strong>Paraguay</strong>
+<ul>
+<li>Ciudad del este</li>
+<li>Villa hayes</li>
+</ul>
+</li>
+<li><strong>Portugal</strong>
+<ul>
+<li>Lisboa</li>
+</ul>
+</li>
+</ul>
+<p>En este caso algo mas complejo, deberemos tener templates para hosts divididos para cada país, templates para servicios divididos para cada país, templates para contactos divididos para cada país.</p>
+<p>Siempre debemos utilizar templates para todo, porque cuando debemos hacer un cambio en masa es mucho mas simple y con menos posibilidad a errores.</p>
+<h3 id="en-el-monitoreo">En el Monitoreo<a class="anchor" href="#en-el-monitoreo">#</a></h3>
+<h2 id="creando-directivas">Creando directivas<a class="anchor" href="#creando-directivas">#</a></h2>
+<p>Debemos crear algunas entradas de configuración para especificar donde encontramos los servicios, grupos, contactos etc, las mismas debemos incluirlas en nuestro archivo de configuración nagios.cfg</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># Directorio con la configuración de grupos de Hosts de los Servidores
+</span></span><span class="line"><span class="cl">cfg_dir=/usr/local/nagios/etc/hostgroups
+</span></span><span class="line"><span class="cl"># Directorio con la configuración de grupos de servicios de los Servidores
+</span></span><span class="line"><span class="cl">cfg_dir=/usr/local/nagios/etc/servicegroup
+</span></span><span class="line"><span class="cl"># Directorio con la configuración de contactos
+</span></span><span class="line"><span class="cl">cfg_dir=/usr/local/nagios/etc/contacts
+</span></span><span class="line"><span class="cl"># Directorio con la configuración de grupos de contacto
+</span></span><span class="line"><span class="cl">cfg_dir=/usr/local/nagios/etc/contactgroups
+</span></span><span class="line"><span class="cl"># Directorio con la configuración de servicios
+</span></span><span class="line"><span class="cl">cfg_dir=/usr/local/nagios/etc/services
+</span></span><span class="line"><span class="cl"># Directorio con la configuración de los comandos
+</span></span><span class="line"><span class="cl">cfg_dir=/usr/local/nagios/etc/commands
+</span></span><span class="line"><span class="cl"># Directorio con la configuración de los equipos a monitorear
+</span></span><span class="line"><span class="cl">cfg_dir=/usr/local/nagios/etc/servers</span></span></code></pre></div><p>Con la directiva cfg_dir el indicamos Nagios que tome como configuración los archivos con extencion “cfg” encontrados en tal directorio.</p>
+<h3 id="agregando-grupos-de-servicios">Agregando Grupos de Servicios<a class="anchor" href="#agregando-grupos-de-servicios">#</a></h3>
+<p>Los grupos de servicio se utilizan para denotar un variedad de servicios sobre otros, debemos tener asignado aunque sea un servicio a ese grupo por que si no de lo contrario el Nagios mostrara un error al arranque, para eso lo asignamos en la propiedad <em>servicegroups</em> de un servicio en particular. Ejemplo de una entrada de grupo de servicios:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">define servicegroup{
+</span></span><span class="line"><span class="cl">        servicegroup_name       lotus_response
+</span></span><span class="line"><span class="cl">        alias                   Lotus Reponse Services
+</span></span><span class="line"><span class="cl">        }</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">define servicegroup{
+</span></span><span class="line"><span class="cl">        servicegroup_name       {nombre corto del grupo de servicio}
+</span></span><span class="line"><span class="cl">        alias                   {alias descriptivo completo del grupo}
+</span></span><span class="line"><span class="cl">        }</span></span></code></pre></div><p>Se deberá crear el archivo {nagios-dir}/etc/servicegroup/{nombregrupodeservicios.cfg} con las entradas correspondientes anteriormente explicadas.</p>
+<h3 id="agregando-servicios">Agregando Servicios<a class="anchor" href="#agregando-servicios">#</a></h3>
+<p>A continuacion se muestra una tipica entrada de configuración de un servicio</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">define service {
+</span></span><span class="line"><span class="cl">        use                             windows
+</span></span><span class="line"><span class="cl">        host_name                       srv1,srv2
+</span></span><span class="line"><span class="cl">        hostgroup_name                  servidores-windows
+</span></span><span class="line"><span class="cl">        service_description             Verification disco F:
+</span></span><span class="line"><span class="cl">        servicegroups                   storage
+</span></span><span class="line"><span class="cl">        is_volatile                     0
+</span></span><span class="line"><span class="cl">        check_period                    24x7
+</span></span><span class="line"><span class="cl">        max_check_attempts              3
+</span></span><span class="line"><span class="cl">        normal_check_interval           5
+</span></span><span class="line"><span class="cl">        retry_check_interval            1
+</span></span><span class="line"><span class="cl">        contact_groups                  windows
+</span></span><span class="line"><span class="cl">        notification_interval           240
+</span></span><span class="line"><span class="cl">        notification_period             24x7
+</span></span><span class="line"><span class="cl">        notification_options            c,r
+</span></span><span class="line"><span class="cl">        check_command                   check_snmp_storage!^F!60!90!-C public!-r
+</span></span><span class="line"><span class="cl">}</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">define service {
+</span></span><span class="line"><span class="cl">        use                             {template de servicio a utilizar}
+</span></span><span class="line"><span class="cl">        host_name                       {hosts que ejecutan dicho servicio}
+</span></span><span class="line"><span class="cl">        hostgroup_name                  {grupos de host que ejecutan ese servicio}
+</span></span><span class="line"><span class="cl">        service_description             {descripcion del servicio}
+</span></span><span class="line"><span class="cl">        servicegroups                   {grupo al cual pertenece}
+</span></span><span class="line"><span class="cl">        is_volatile                     {si el servicio es volatil}
+</span></span><span class="line"><span class="cl">        check_period                    {periodo de tiempo para el chequeo}
+</span></span><span class="line"><span class="cl">        max_check_attempts              {maximo de intentos de chequeo}
+</span></span><span class="line"><span class="cl">        normal_check_interval           {intervalo de tiempo a programar los chequeos}
+</span></span><span class="line"><span class="cl">        retry_check_interval            {intervalo de tiempo para un re-chequeo}
+</span></span><span class="line"><span class="cl">        contact_groups                  {grupo de contacto};
+</span></span><span class="line"><span class="cl">        max_check_attempts              {maxima cantidad de chequeos}
+</span></span><span class="line"><span class="cl">        notification_interval           {intervalo de tiempo entre notificaciones}
+</span></span><span class="line"><span class="cl">        notification_period             {priodo de tiempo de notificaciones}
+</span></span><span class="line"><span class="cl">        notification_options            {cuando enviar notificaciones}
+</span></span><span class="line"><span class="cl">        check_command                   {comando de chequeo con sus argumentos}
+</span></span><span class="line"><span class="cl">}</span></span></code></pre></div><p><strong>use</strong></p>
+<p>Template de servicio a utilizar</p>
+<p><strong>host_name</strong></p>
+<p>Nombre del o los host a los cuales esta asignado dicho servicio</p>
+<p><strong>hostgroup_name</strong></p>
+<p>Nombre del grupo de host en los cuales esta asignado dicho servicio, es útil para cuando se vuelve tedioso poner uno por uno los nombres de los hosts a los cuales se asigna el servicio</p>
+<p><strong>service_description</strong></p>
+<p>Alias descriptivo del nombre del servicio</p>
+<p><strong>contact_groups</strong></p>
+<p>Grupos de contacto a los que enviar las notificaciones</p>
+<p><strong>max_check_attempts</strong></p>
+<p>Maxima cantidad de chequeos a efectuar por Nagios, antes de enviar un OK como resultado</p>
+<p><strong>normal_check_interval</strong></p>
+<p>Intervalo de tiempo antes de programar un nuevo chequeo del servicio</p>
+<p><strong>retry_check_interval</strong></p>
+<p>Intervalo de tiempo antes de realizar un re-chequeo del servicio</p>
+<p><strong>notification_interval</strong></p>
+<p>Esta directiva se utiliza para definir el número de las “unidades del tiempo” para esperar antes de re-notificar a un contacto que este servidor todavía está abajo o inalcanzable. A menos que se haya cambiado la directiva interval_length del valor prefijado de 60, este número significará minutos. Si este valor se establece a 0, Nagios re-no notificará contactos sobre los problemas para este host - solamente una notificación del problema será enviada.</p>
+<p><strong>notification_period</strong></p>
+<p>Periodo de tiempo en el cualse envia notificacion y notificacion</p>
+<p><strong>notification_options</strong></p>
+<p>Esta directiva indica a Nagios en que momentos debe enviar notificaciones de estado</p>
+<ul>
+<li>d = DOWN cuando el host esta caido</li>
+</ul>
+<!-- -->
+<ul>
+<li>u = UNREACHABLE cuando el host no es visible o es inalcanzable</li>
+</ul>
+<!-- -->
+<ul>
+<li>r = RECOVERY (OK) cuando el host se recupero</li>
+</ul>
+<!-- -->
+<ul>
+<li>f = FLAPPING cuando es de estado cambiante</li>
+</ul>
+<!-- -->
+<ul>
+<li>n = NONE no enviar notificaciones</li>
+</ul>
+<p><strong>check_command</strong></p>
+<p>Comando para efectuar el chequeo de dicho servicio</p>
+<p><em>Se deberá crear el archivo {nagios-dir}/etc/services/{nombreservicio.cfg} con las entradas correspondientes anteriormente explicadas.</em></p>
+<h4 id="dependencia-del-estado-del-servicio-por-el-estado-de-otro-servicio">Dependencia del estado del servicio por el estado de otro servicio<a class="anchor" href="#dependencia-del-estado-del-servicio-por-el-estado-de-otro-servicio">#</a></h4>
+<p>En caso en los cuales el estado de un servicio dependa de la disponibilidad o el estado de otro, se pueden definir dependencias. Una entrada a modo ejemplo puede ser:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">define servicedependency{
+</span></span><span class="line"><span class="cl">	host_name			Host A
+</span></span><span class="line"><span class="cl">	service_description		Service A
+</span></span><span class="line"><span class="cl">	dependent_host_name		Host B
+</span></span><span class="line"><span class="cl">	dependent_service_description	Service D
+</span></span><span class="line"><span class="cl">	execution_failure_criteria	u
+</span></span><span class="line"><span class="cl">	notification_failure_criteria	n
+</span></span><span class="line"><span class="cl">	}</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">define servicedependency{
+</span></span><span class="line"><span class="cl">	host_name			{host donde se ejecuta el servicio dependiente}
+</span></span><span class="line"><span class="cl">	service_description		{servicio dependiente}
+</span></span><span class="line"><span class="cl">	dependent_host_name		{host donde se ejecuta el servicio del cual se depende}
+</span></span><span class="line"><span class="cl">	dependent_service_description	{servicio del cual se depende}
+</span></span><span class="line"><span class="cl">	execution_failure_criteria	{criterio para establecer el estado}
+</span></span><span class="line"><span class="cl">	notification_failure_criteria	{notificar segun x estado}
+</span></span><span class="line"><span class="cl">	}</span></span></code></pre></div><p><strong>host_name</strong></p>
+<p>Nombre del o los host dentro de los cuales se ejecuta el servicio dependiente</p>
+<p><strong>service_description</strong></p>
+<p>Descripcion del servicio dependiente, debe ser igual a la entrada que aparece en la configuracion del servicio.</p>
+<p><strong>dependent_host_name</strong></p>
+<p>Host donde se esta ejecutando el servicio del cual se depende</p>
+<p><strong>dependent_service_description</strong></p>
+<p>Nombre descriptivo que corresponde al servicio del cual se depende, debe ser igual al de su configuracion de servicio</p>
+<p><strong>execution_failure_criteria</strong></p>
+<p>Criterios para definir el estado del servicio</p>
+<p><strong>notification_failure_criteria</strong></p>
+<p>En base a que estado realizar las notificaciones, si esta caido, si esta ok o no realizar notificaciones</p>
+<h4 id="informacion-extendida-de-servicio">Informacion extendida de servicio<a class="anchor" href="#informacion-extendida-de-servicio">#</a></h4>
+<p>En algunos casos podemos agregar un link informativo u externo haciendo referencia al servicio en ejecution</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">define serviceextinfo{
+</span></span><span class="line"><span class="cl">	host_name		linux2
+</span></span><span class="line"><span class="cl">	service_description	Carga del sistema Linux
+</span></span><span class="line"><span class="cl">	notes			Carga sistema
+</span></span><span class="line"><span class="cl">	notes_url		http://localhost/cargalinux.pl?host=linux2&amp;service=Carga+Sistema
+</span></span><span class="line"><span class="cl">	icon_image		carga.png 
+</span></span><span class="line"><span class="cl">	icon_image_alt		Alertas de carga
+</span></span><span class="line"><span class="cl">	}</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">define serviceextinfo{
+</span></span><span class="line"><span class="cl">	host_name		{nombre del host}
+</span></span><span class="line"><span class="cl">	service_description	{nombre descriptivo del servicio}
+</span></span><span class="line"><span class="cl">	notes			{nota descriptiva sobre la informacion extra}
+</span></span><span class="line"><span class="cl">	notes_url		{url donde se encuentra la informacion extra}
+</span></span><span class="line"><span class="cl">	icon_image		{imagen de icono}
+</span></span><span class="line"><span class="cl">	icon_image_alt		{texto alternativo de la imagen}
+</span></span><span class="line"><span class="cl">	}</span></span></code></pre></div><p><strong>host_name</strong></p>
+<p>Host donde se ejecuta dicho servicio</p>
+<p><strong>service_description</strong></p>
+<p>Nombre descriptivo del servicio al cual corresponde la informacion extra</p>
+<p><strong>notes</strong></p>
+<p>Descripcion sobre “que es” o “a que corresponde” la información extra a mostrar</p>
+<p><strong>notes_url</strong></p>
+<p>Url donde encontrar la informacion extra</p>
+<p><strong>icon_image</strong></p>
+<p>Icono a referenciar el link de la información extra</p>
+<p><strong>icon_image_alt</strong></p>
+<p>Texto alternativo del icono</p>
+<h3 id="agregando-grupos-de-hosts">Agregando Grupos de Hosts<a class="anchor" href="#agregando-grupos-de-hosts">#</a></h3>
+<p>Los host en nagios de puede agrupar mediante grupos y asi tener un listado aparte que los diferencia de los demas. por ejemplo tener por un lado los servidores SAP con Oracle y por otro los servidores Lotus, o Linux y Windows por separado etc.</p>
+<p>Un archivo tipo de grupos de host se presenta a continuacion</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">define</span> <span class="n">hostgroup</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">hostgroup_name</span>                      <span class="n">florencio_varela</span>
+</span></span><span class="line"><span class="cl">    <span class="n">alias</span>                               <span class="n">Equipos</span> <span class="n">de</span> <span class="n">Florencio</span> <span class="n">Varela</span>
+</span></span><span class="line"><span class="cl">    <span class="n">members</span>                             <span class="n">varela01</span><span class="p">,</span><span class="n">router</span><span class="o">-</span><span class="n">flv</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">srvfvl001</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">define hostgroup {
+</span></span><span class="line"><span class="cl">    hostgroup_name                      {nombre del grupo}
+</span></span><span class="line"><span class="cl">    alias                               {alias descriptivo}
+</span></span><span class="line"><span class="cl">    members                             {host miembros}
+</span></span><span class="line"><span class="cl">}</span></span></code></pre></div><p><strong>hostgroup_name</strong></p>
+<p>Nombre del grupo de hosts</p>
+<p><strong>alias</strong></p>
+<p>Alias descriptivo del grupo</p>
+<p><strong>members</strong></p>
+<p>Host que son miembros del grupo, debemos ingresar el host_name de cada uno separado por comas “,”</p>
+<p><em>Se deberá crear el archivo {nagios-dir}/etc/hostgroups/{nombregrupodehosts.cfg} con las entradas correspondientes anteriormente explicadas.</em></p>
+<h3 id="agregando-hosts">Agregando Hosts<a class="anchor" href="#agregando-hosts">#</a></h3>
+<p>Para configurar un host con o sin SNMP previamente instalado y configurado como lo indicado anteriormente, para su posterior monitoreo. Se debe crear una entrada en la configuracion de Nagios.</p>
+<p>Un tipico archivos hosts.cfg</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  define host{
+</span></span><span class="line"><span class="cl">        use                             servidores
+</span></span><span class="line"><span class="cl">        host_name                       servidorsap2
+</span></span><span class="line"><span class="cl">        hostgroup_name                  servidores-linux
+</span></span><span class="line"><span class="cl">        alias                           SAP SERVER
+</span></span><span class="line"><span class="cl">        address                         192.168.10.84
+</span></span><span class="line"><span class="cl">        parents                         buenos_aires
+</span></span><span class="line"><span class="cl">        contact_groups                  linux;
+</span></span><span class="line"><span class="cl">        max_check_attempts              10
+</span></span><span class="line"><span class="cl">        notification_interval           120
+</span></span><span class="line"><span class="cl">        notification_period             24x7
+</span></span><span class="line"><span class="cl">        notification_options            d,u,r
+</span></span><span class="line"><span class="cl">    }</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  define host{
+</span></span><span class="line"><span class="cl">        use                             {template-host}
+</span></span><span class="line"><span class="cl">        host_name                       {nombre-host}
+</span></span><span class="line"><span class="cl">        hostgroup_name                  {grupos al que pertenece este host}
+</span></span><span class="line"><span class="cl">        alias                           {alias-descriptivo}
+</span></span><span class="line"><span class="cl">        address                         {ip}
+</span></span><span class="line"><span class="cl">        parents                         {host del que depende}   
+</span></span><span class="line"><span class="cl">        contact_groups                  {grupo de contacto};
+</span></span><span class="line"><span class="cl">        max_check_attempts              {maxima cantidad de chequeos}
+</span></span><span class="line"><span class="cl">        notification_interval           {intervalo de tiempo entre notificaciones}
+</span></span><span class="line"><span class="cl">        notification_period             {priodo de tiempo de notificaciones}
+</span></span><span class="line"><span class="cl">        notification_options            {cuando enviar notificaciones}
+</span></span><span class="line"><span class="cl">    }</span></span></code></pre></div><p><strong>use</strong></p>
+<p>Template de host a utilizar</p>
+<p><strong>host_name</strong></p>
+<p>Nombre del host</p>
+<p><strong>hostgroup_name</strong></p>
+<p>Grupos a los que pertenece este host</p>
+<p><strong>address</strong></p>
+<p>Direccion IP del host</p>
+<p><strong>parents</strong></p>
+<p>Host del que depende y que esta delante suyo, por ejemplo puede ser un router o un equipo que le brinde la conectividad etc, y en el mapa se dibujara como dependiente de ese nodo</p>
+<p><strong>contact_groups</strong></p>
+<p>Grupos de contacto a los que enviar las notificaciones</p>
+<p><strong>max_check_attempts</strong></p>
+<p>Maxima cantidad de chequeos a efectuar por Nagios, antes de enviar un OK como resultado</p>
+<p><strong>notification_interval</strong></p>
+<p>Esta directiva se utiliza para definir el número de las “unidades del tiempo” para esperar antes de re-notificar a un contacto que este servidor todavía está abajo o inalcanzable. A menos que se haya cambiado la directiva interval_length del valor prefijado de 60, este número significará minutos. Si este valor se establece a 0, Nagios re-no notificará contactos sobre los problemas para este host - solamente una notificación del problema será enviada.</p>
+<p><strong>notification_period</strong></p>
+<p>Periodo de tiempo en el cualse envia notificacion y notificacion</p>
+<p><strong>notification_options</strong></p>
+<p>Esta directiva indica a Nagios en que momentos debe enviar notificaciones de estado</p>
+<ul>
+<li>d = DOWN cuando el host esta caido</li>
+</ul>
+<!-- -->
+<ul>
+<li>u = UNREACHABLE cuando el host no es visible o es inalcanzable</li>
+</ul>
+<!-- -->
+<ul>
+<li>r = RECOVERY (OK) cuando el host se recupero</li>
+</ul>
+<!-- -->
+<ul>
+<li>f = FLAPPING cuando es de estado cambiante</li>
+</ul>
+<!-- -->
+<ul>
+<li>n = NONE no enviar notificaciones</li>
+</ul>
+<p>//Se deberá crear el un subdirectorio correspondiente al nombre del host y segun corresponda ubicarlo en el directorio servers/{linux-windows-lotus} o routers y deentro crear un archivo hosts.cfg con la configuración anteriormente explicada, //</p>
+<h4 id="informacion-extendida-de-host">Informacion extendida de host<a class="anchor" href="#informacion-extendida-de-host">#</a></h4>
+<p>La informacion extendida de host se utiliza para el look and feel de los host dentro de los mapas de estado, ya sea tanto el 2D como el 3D</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  define hostextinfo{
+</span></span><span class="line"><span class="cl">        host_name       linuxoracle
+</span></span><span class="line"><span class="cl">        notes           Servidor Oracle de uniface
+</span></span><span class="line"><span class="cl">        icon_image      oracle.png
+</span></span><span class="line"><span class="cl">        icon_image_alt  Oracle
+</span></span><span class="line"><span class="cl">        vrml_image      oracle.png
+</span></span><span class="line"><span class="cl">        statusmap_image oracle.gd2
+</span></span><span class="line"><span class="cl">    }</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  define hostextinfo{
+</span></span><span class="line"><span class="cl">        host_name       {nombre de host}
+</span></span><span class="line"><span class="cl">        notes           {descripcion para el host}
+</span></span><span class="line"><span class="cl">        icon_image      {logo para ver en la interfaz web}
+</span></span><span class="line"><span class="cl">        icon_image_alt  {texto para el logo}
+</span></span><span class="line"><span class="cl">        vrml_image      {logo para ver en el mapa 3D}
+</span></span><span class="line"><span class="cl">        statusmap_image {logo para ver en el mapa 2D}
+</span></span><span class="line"><span class="cl">    }</span></span></code></pre></div><p><strong>host_name</strong></p>
+<p>Nombre del host al cual corresponde la información dada</p>
+<p><strong>notes</strong></p>
+<p>Pequeña nota descriptiva de la informacion del host a presentar en los mapas de estado</p>
+<p><strong>icon_image</strong></p>
+<p>Icono a visualizar en el entorno html de la consola Nagios</p>
+<p><strong>icon_image_alt</strong></p>
+<p>Texto alternativo para mostrar al logo</p>
+<p><strong>vrml_image</strong></p>
+<p>Icono a visualizar en el mapa 3D</p>
+<p><strong>statusmap_image</strong></p>
+<p>Icono a visualizar en el mapa 2D</p>
+<p><em>Se deberá crear en el archivo hostextinfo.cfg dentro subdirectorio correspondiente al host con las entradas de configuración anteriormente explicadas. Lo iconos se encuentran dentro del directorio {nagiosdir}share/images/logos/ tanto en su version png como gd</em></p>
+<p>Para convertir una imagen png comun a un icono gd2 (necesario para la generacion del grafico de statusmap 2D) debemos ejecutar el siguiente comando:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">pngtogd2 mi-icono.png mi-icono.gd2  1  1</span></span></code></pre></div><p>El primer parametro es mi ya existente imagen png, el segundo parametro es el nombre de archivo de salida en formato gd2, el parametro 1 se refiere a que la cree en formato raw (crudo), y el segudo parametro es para que lo cree sin compresion, todo esto se realiza dentro del directorio logos anteriormente explciado.</p>
+<h4 id="dependencia-del-estado-de-host-por-el-estado-de-otro-host">Dependencia del estado de host por el estado de otro host<a class="anchor" href="#dependencia-del-estado-de-host-por-el-estado-de-otro-host">#</a></h4>
+<p>En casos donde hay host donde su estado depende del estado de otro host, es posible especificar dependencias. Aqui vemos una entrada tipica</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> define hostdependency{
+</span></span><span class="line"><span class="cl">        host_name                               linuxsap2
+</span></span><span class="line"><span class="cl">        dependent_host_name                     linuxoracle
+</span></span><span class="line"><span class="cl">        notification_failure_criteria           d
+</span></span><span class="line"><span class="cl">    }</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> define hostdependency{
+</span></span><span class="line"><span class="cl">        host_name                               {nombre del host a referise}
+</span></span><span class="line"><span class="cl">        dependent_host_name                     {nombre del host del cual depende}
+</span></span><span class="line"><span class="cl">        notification_failure_criteria           {opciones de notificacion}
+</span></span><span class="line"><span class="cl">    }</span></span></code></pre></div><p><strong>host_name</strong></p>
+<p>Nombre del host al cual corresponde la información dada</p>
+<p><strong>dependent_host_name</strong></p>
+<p>Nombre del host del cual depende</p>
+<p><strong>notification_failure_criteria</strong></p>
+<p>Opciones de notificacion en caso de cada estado</p>
+<p><em>Se deberá crear en el archivo hostdependency.cfg dentro subdirectorio correspondiente al host con las entradas de configuración anteriormente explicadas.</em></p>
+<h3 id="definiendo-tiempos-de-chequeo">Definiendo tiempos de chequeo<a class="anchor" href="#definiendo-tiempos-de-chequeo">#</a></h3>
+<p>Dentro de Nagios se pueden establecer definiciones para controlar cuando diversos aspectos de la lógica de vigilancia y alerta sobre elementos monitoreador por ejemplo que tal servicio o host se chequee en ciertos intervalos de tiempo, por ejemplo si un host no debe ser chequeado los domingos o un servicio debe ser chequeado solo de lunes a viernes de 08:00 HS a 18:00 HS etc</p>
+<p>A su ves las definiciones Timeperod pueden contener varios tipos de directivas, entre los días de semana, días del mes, y las fechas. El orden de precedencia de los distintos tipos de directivas (en orden descendente) es el siguiente:</p>
+<ul>
+<li>Fecha del calendario (2008-01-01)</li>
+<li>Mes específico fecha (1 de enero)</li>
+<li>Mes día genéricos (Día 15)</li>
+<li>Compensar los días de la semana de mes específico (2 º martes de diciembre)</li>
+<li>Compensar los días de la semana (3 º lunes)</li>
+<li>Normal del día de la semana (martes)</li>
+</ul>
+<p>Ejemplos de las diferentes directivas timeperiod que podemos implementar :</p>
+<p><em>Chequeos las 24 horas los 7 dias de la semana</em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">define timeperiod{
+</span></span><span class="line"><span class="cl">        timeperiod_name 24x7
+</span></span><span class="line"><span class="cl">        alias           24 Hours A Day, 7 Days A Week
+</span></span><span class="line"><span class="cl">        sunday          00:00-24:00
+</span></span><span class="line"><span class="cl">        monday          00:00-24:00
+</span></span><span class="line"><span class="cl">        tuesday         00:00-24:00
+</span></span><span class="line"><span class="cl">        wednesday       00:00-24:00
+</span></span><span class="line"><span class="cl">        thursday        00:00-24:00
+</span></span><span class="line"><span class="cl">        friday          00:00-24:00
+</span></span><span class="line"><span class="cl">        saturday        00:00-24:00
+</span></span><span class="line"><span class="cl">        }</span></span></code></pre></div><p><em>Chequeos en las horas laborales lunes a viernes de 9 a 17</em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">define timeperiod{
+</span></span><span class="line"><span class="cl">        timeperiod_name workhours
+</span></span><span class="line"><span class="cl">        alias           Normal Work Hours
+</span></span><span class="line"><span class="cl">        monday          09:00-17:00
+</span></span><span class="line"><span class="cl">        tuesday         09:00-17:00
+</span></span><span class="line"><span class="cl">        wednesday       09:00-17:00
+</span></span><span class="line"><span class="cl">        thursday        09:00-17:00
+</span></span><span class="line"><span class="cl">        friday          09:00-17:00
+</span></span><span class="line"><span class="cl">        }</span></span></code></pre></div><p><em>Chequeos sin tiempos, o sea no chequea en ningún momento</em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># &#39;none&#39; timeperiod definition
+</span></span><span class="line"><span class="cl">define timeperiod{
+</span></span><span class="line"><span class="cl">        timeperiod_name none
+</span></span><span class="line"><span class="cl">        alias           No Time Is A Good Time
+</span></span><span class="line"><span class="cl">        }</span></span></code></pre></div><p><em>En ciertos dias feriados excluir el chequeo servicios, ej Navidad, Año nuevo etc</em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">define timeperiod{
+</span></span><span class="line"><span class="cl">        name                    us-holidays
+</span></span><span class="line"><span class="cl">        timeperiod_name         us-holidays
+</span></span><span class="line"><span class="cl">        alias                   U.S. Holidays
+</span></span><span class="line"><span class="cl">        january 1               00:00-00:00     ; New Years
+</span></span><span class="line"><span class="cl">        monday -1 may           00:00-00:00     ; Memorial Day (last Monday in May)
+</span></span><span class="line"><span class="cl">        july 4                  00:00-00:00     ; Independence Day
+</span></span><span class="line"><span class="cl">        monday 1 september      00:00-00:00     ; Labor Day (first Monday in September)
+</span></span><span class="line"><span class="cl">        thursday -1 november    00:00-00:00     ; Thanksgiving (last Thursday in November)
+</span></span><span class="line"><span class="cl">        december 25             00:00-00:00     ; Christmas
+</span></span><span class="line"><span class="cl">        }</span></span></code></pre></div><p><em>Definimos un periodo de tiempo que chequee las 24 horas del dia los 7 dias de la semana, pero que incluya las excepciones anteriormente mostradas</em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">define timeperiod{
+</span></span><span class="line"><span class="cl">        timeperiod_name 24x7_sans_holidays
+</span></span><span class="line"><span class="cl">        alias           24x7 Sans Holidays
+</span></span><span class="line"><span class="cl">        use             us-holidays             ; Agregar excepciones
+</span></span><span class="line"><span class="cl">        sunday          00:00-24:00
+</span></span><span class="line"><span class="cl">        monday          00:00-24:00
+</span></span><span class="line"><span class="cl">        tuesday         00:00-24:00
+</span></span><span class="line"><span class="cl">        wednesday       00:00-24:00
+</span></span><span class="line"><span class="cl">        thursday        00:00-24:00
+</span></span><span class="line"><span class="cl">        friday          00:00-24:00
+</span></span><span class="line"><span class="cl">        saturday        00:00-24:00
+</span></span><span class="line"><span class="cl">        }</span></span></code></pre></div><p><em>Otra manera de evitar tiempos de chequeo es con la directiva exclude</em></p>
+<p>// Como ejemplo podemos definir 3 timeperiods//</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">define timeperiod{
+</span></span><span class="line"><span class="cl">        name                    weekdays
+</span></span><span class="line"><span class="cl">        timeperiod_name         weekdays
+</span></span><span class="line"><span class="cl">        monday                  00:00-24:00
+</span></span><span class="line"><span class="cl">        tuesday                 00:00-24:00
+</span></span><span class="line"><span class="cl">        wednesday               00:00-24:00
+</span></span><span class="line"><span class="cl">        thursday                00:00-24:00
+</span></span><span class="line"><span class="cl">        friday                  00:00-24:00
+</span></span><span class="line"><span class="cl">        }
+</span></span><span class="line"><span class="cl">define timeperiod{
+</span></span><span class="line"><span class="cl">        name                    weekends
+</span></span><span class="line"><span class="cl">        timeperiod_name         weekends
+</span></span><span class="line"><span class="cl">        saturday                00:00-24:00
+</span></span><span class="line"><span class="cl">        sunday                  00:00-24:00
+</span></span><span class="line"><span class="cl">	}
+</span></span><span class="line"><span class="cl">define timeperiod{
+</span></span><span class="line"><span class="cl">        name                    holidays
+</span></span><span class="line"><span class="cl">        timeperiod_name         holidays
+</span></span><span class="line"><span class="cl">        january 1               00:00-24:00	; New Year&#39;s Day
+</span></span><span class="line"><span class="cl">        2008-03-23              00:00-24:00	; Easter (2008)
+</span></span><span class="line"><span class="cl">        2009-04-12              00:00-24:00	; Easter (2009)
+</span></span><span class="line"><span class="cl">        monday -1 may           00:00-24:00	; Memorial Day (Last Monday in May)
+</span></span><span class="line"><span class="cl">        july 4                  00:00-24:00	; Independence Day
+</span></span><span class="line"><span class="cl">        monday 1 september      00:00-24:00	; Labor Day (1st Monday in September)
+</span></span><span class="line"><span class="cl">        thursday 4 november     00:00-24:00	; Thanksgiving (4th Thursday in November)
+</span></span><span class="line"><span class="cl">        december 25             00:00-24:00	; Christmas
+</span></span><span class="line"><span class="cl">        december 31             17:00-24:00	; New Year&#39;s Eve (5pm onwards)
+</span></span><span class="line"><span class="cl">	}</span></span></code></pre></div><p><em>Ahora definimos un timeperiod llamadas por ejemplo, incluya los dias de la semana, pero excluya los dias festivos</em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">define timeperiod{
+</span></span><span class="line"><span class="cl">	timeperiod_name		llamadas
+</span></span><span class="line"><span class="cl">	use			weekdays	; Include weekdays
+</span></span><span class="line"><span class="cl">	exclude			holidays	; Exclude holiday dates/times defined elsewhere
+</span></span><span class="line"><span class="cl">	}</span></span></code></pre></div><p><em>Alternando dias, o sea desde el primero de agosto de 2007 cada dos dias notificar, si en vez de / 2 ponemos / 14 lo realizara cada 14 dias</em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">define timeperiod{
+</span></span><span class="line"><span class="cl">	timeperiod_name		john-oncall
+</span></span><span class="line"><span class="cl">	2007-08-01 / 2		00:00-24:00	; Every two days, starting August 1st, 2007
+</span></span><span class="line"><span class="cl">	}</span></span></code></pre></div><p><em>En la entrada del contacto deberemos especificarle los timeperiods para hosts y servicios</em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">define contact{
+</span></span><span class="line"><span class="cl">	contact_name			john
+</span></span><span class="line"><span class="cl">	...
+</span></span><span class="line"><span class="cl">	host_notification_period	john-oncall
+</span></span><span class="line"><span class="cl">	service_notification_period	john-oncall
+</span></span><span class="line"><span class="cl">	}</span></span></code></pre></div><h3 id="agregando-comandos">Agregando Comandos<a class="anchor" href="#agregando-comandos">#</a></h3>
+<p>En Nagios los encargados de recabar los datos del monitoreo, de mostrar alertas, de todas las tareas, son los comandos.</p>
+<p>Los mismos se dividen en comandos de performance y en comandos de chequeo, los primeros son utilizados para algunos casos en particular.</p>
+<p>Los comandos de chequeo no traen datos de los equipos a monitorear, como consumo de CPU, Memoria, Disco, procesos corriendo, puertos abiertos etc, es decir todos los datos necesarios de la monitoria.</p>
+<p>Los comandos de performance se utilizan cuando hay que guardar ciertos datos o enviarlos a algún host externo etc, con información de algún servicio.</p>
+<p>Una entrada en un archivo de configuración de comandos puede ser como la siguiente</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">define command{
+</span></span><span class="line"><span class="cl">        command_name check_snmp_mem
+</span></span><span class="line"><span class="cl">        command_line $USER1$/check_snmp_mem.pl -H $HOSTADDRESS$ $ARG1$ -w $ARG2$ -c $ARG3$ $ARG4$
+</span></span><span class="line"><span class="cl">        }</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">define command{
+</span></span><span class="line"><span class="cl">        command_name {nombre del comando}
+</span></span><span class="line"><span class="cl">        command_line {datos de  ejecucion}
+</span></span><span class="line"><span class="cl">        }</span></span></code></pre></div><p><strong>command_name</strong></p>
+<p>El nombre que el comando tendra para nuestra configuración personal de Nagios</p>
+<p><strong>command_line</strong></p>
+<p>Modo del cual Nagios ejecutara el comando en cuestión, con su ruta física y argumentos Lo que vemos en entre signos $ son variables internas de nagios, llamadas macros, las mas comunes son:</p>
+<p><strong>$USER1$</strong> : Contiene datos del path de ejecución de los plugins de Nagios</p>
+<p><strong>$HOSTADDRESS$</strong> : Tiene la IP de hosts desde el cual se esta corriendo el servicio</p>
+<p><strong>$ARG1$ $ARG2$ $ARG3$ $ARG4$</strong> : Son los números en orden de argumentos que recibe el comando a ejecutar</p>
+<p>Podemos definir nuestros propios macros seteando variables en el archivo resource.cfg</p>
+<p><em>Se deberán agregar al archivo {nagios-dir}/etc/commands.cfg las entradas correspondientes anteriormente explicadas.</em></p>
+<h3 id="manejadores-de-eventos---event-handler">Manejadores de Eventos - Event Handler<a class="anchor" href="#manejadores-de-eventos---event-handler">#</a></h3>
+<p>Cuando hablamos de <strong>event handler</strong> o <strong>manejador de eventos</strong>, nos referimos a funciones que responden a eventos que se producen, como pueden ser un cambio de estado.</p>
+<h3 id="configuración-de-alertas">Configuración de alertas<a class="anchor" href="#configuraci%c3%b3n-de-alertas">#</a></h3>
+<h4 id="agregando-grupos-de-contacto">Agregando Grupos de contacto<a class="anchor" href="#agregando-grupos-de-contacto">#</a></h4>
+<p>Para que el Nagios envíe notificaciones sobre el estado de los servicios es necesario definir grupos a los cuales enviárselas, y dentro de ellos estarán los miembros a cuales enviarlos</p>
+<p>A continuación podemos ver una configuración típica de un grupo de contactos</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">   define contactgroup{
+</span></span><span class="line"><span class="cl">        contactgroup_name               admin
+</span></span><span class="line"><span class="cl">        alias                           Administrators
+</span></span><span class="line"><span class="cl">        members                         admin-sap,admin-windows
+</span></span><span class="line"><span class="cl">    }</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">   define contactgroup{
+</span></span><span class="line"><span class="cl">        contactgroup_name               {nombre del grupo contacto}
+</span></span><span class="line"><span class="cl">        alias                           {descripcion}
+</span></span><span class="line"><span class="cl">        members                         {miembros del grupo}
+</span></span><span class="line"><span class="cl">    }</span></span></code></pre></div><p><strong>contactgroup_name</strong></p>
+<p>Nombre que se le asignara al grupo de contacto</p>
+<p><strong>alias</strong></p>
+<p>Descripción corta para identificar al grupo</p>
+<p><strong>members</strong></p>
+<p>Miembros del grupo separados por comas</p>
+<p><em>Se deberá crear el archivo {nagios-dir}/etc/contactgroups/{nombregrupodecontacto.cfg} con las entradas correspondientes anteriormente explicadas.</em></p>
+<h4 id="agregando-contactos">Agregando Contactos<a class="anchor" href="#agregando-contactos">#</a></h4>
+<p>Para recibir las notificaciones de Nagios es necesario generar contactos que estén incluidos en diferentes grupos de contactos, una configuración simple para un contacto se ve como la siguiente entrada</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">   define contact{
+</span></span><span class="line"><span class="cl">        contact_name                   admin
+</span></span><span class="line"><span class="cl">        alias                          Administrador Nagios
+</span></span><span class="line"><span class="cl">        contactgroups                  admin
+</span></span><span class="line"><span class="cl">        service_notification_period    24x7
+</span></span><span class="line"><span class="cl">        host_notification_period       24x7
+</span></span><span class="line"><span class="cl">        service_notification_options   w,u,c,r
+</span></span><span class="line"><span class="cl">        host_notification_options      d,u,r
+</span></span><span class="line"><span class="cl">        service_notification_commands  notify-by-email
+</span></span><span class="line"><span class="cl">        host_notification_commands     host-notify-by-email
+</span></span><span class="line"><span class="cl">        email                          root@localhost
+</span></span><span class="line"><span class="cl">    }</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">   define contact{
+</span></span><span class="line"><span class="cl">        contact_name                   {nombre del contacto}
+</span></span><span class="line"><span class="cl">        alias                          {descripcion del contacto}
+</span></span><span class="line"><span class="cl">        contactgroups                  {grupo de contactos al cual pertenece}
+</span></span><span class="line"><span class="cl">        service_notification_period    {priodo de tiempo de notificaciones de servicios}
+</span></span><span class="line"><span class="cl">        host_notification_period       {priodo de tiempo de notificaciones de hosts}
+</span></span><span class="line"><span class="cl">        service_notification_options   {opciones de notificacion por servicio}
+</span></span><span class="line"><span class="cl">        host_notification_options      {opciones de notificacion por host}
+</span></span><span class="line"><span class="cl">        service_notification_commands  {comando de notificacion a utilizar por servicio}
+</span></span><span class="line"><span class="cl">        host_notification_commands     {comando de notificacion a utilizar por host}
+</span></span><span class="line"><span class="cl">        email                          {direccion de email del contacto}
+</span></span><span class="line"><span class="cl">    }</span></span></code></pre></div><p><strong>contact_name</strong></p>
+<p>Nombre literal a asignarle al contacto</p>
+<p><strong>alias</strong></p>
+<p>Alias descriptivo del contacto, ej Administrador de Routers</p>
+<p><strong>contactgroups</strong></p>
+<p>Grupos de contactos a los cuales pertenece</p>
+<p><strong>service_notification_period</strong></p>
+<p>Periodo de tiempo en el cual recibir notificaciones sobre el estado de los servicios</p>
+<p><strong>host_notification_period</strong></p>
+<p>Periodo de tiempo en el cual recibir notificaciones sobre el estado de los hosts</p>
+<p><strong>service_notification_options</strong></p>
+<p>Opciones de cuando realizar una notificación sobre el estado de un servicio</p>
+<p><strong>host_notification_options</strong></p>
+<p>Opciones de cuando realizar una notificación sobre el estado de un host</p>
+<p><strong>service_notification_commands</strong></p>
+<p>Comando para realizar la notificación del estado del servicio, podemos definir múltiples comandos</p>
+<p><strong>host_notification_commands</strong></p>
+<p>Comando para realizar la notificacion del estado del host, podemos definir múltiples comandos</p>
+<p><strong>email</strong></p>
+<p>Email perteneciente al contacto en el cual recibira las notificaciones por email. Para que esto funcione se debe tener correctamente configurado el mail delivery local.</p>
+<p><em>Se deberá crear el archivo {nagios-dir}/etc/contacts/{nombredecontacto.cfg} con las entradas correspondientes anteriormente explicadas.</em></p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/syslog_ng/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Syslog-NG</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/manuales/nagios/capacitacion/implementacion_tecnica/implementacion_tecnica_version_ubuntu_server_20.04/" class="flex align-center">
+        <span>Implementación Técnica de Nagios</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#instalación-de-nagios">Instalación de Nagios</a>
+      <ul>
+        <li><a href="#dependencias-para-compilación-y-puesta-en-marcha">Dependencias para compilación y puesta en marcha</a></li>
+        <li><a href="#dependencias-de-software">Dependencias de Software</a></li>
+        <li><a href="#tareas">Tareas</a>
+          <ul>
+            <li><a href="#descarga-y-compilación">Descarga y compilación</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#instalación-de-nagios-orientada-a-la-distribución">Instalación de Nagios orientada a la distribución</a>
+      <ul>
+        <li><a href="#caso-concreto">Caso concreto</a></li>
+      </ul>
+    </li>
+    <li><a href="#configuración">Configuración</a>
+      <ul>
+        <li><a href="#implementación">Implementación</a></li>
+        <li><a href="#en-el-servidor">En el servidor</a></li>
+        <li><a href="#nagios">Nagios</a>
+          <ul>
+            <li></li>
+            <li><a href="#archivos-de-configuracion-nagiosetc">Archivos de configuracion nagios/etc</a></li>
+          </ul>
+        </li>
+        <li><a href="#en-el-monitoreo">En el Monitoreo</a></li>
+      </ul>
+    </li>
+    <li><a href="#creando-directivas">Creando directivas</a>
+      <ul>
+        <li><a href="#agregando-grupos-de-servicios">Agregando Grupos de Servicios</a></li>
+        <li><a href="#agregando-servicios">Agregando Servicios</a>
+          <ul>
+            <li><a href="#dependencia-del-estado-del-servicio-por-el-estado-de-otro-servicio">Dependencia del estado del servicio por el estado de otro servicio</a></li>
+            <li><a href="#informacion-extendida-de-servicio">Informacion extendida de servicio</a></li>
+          </ul>
+        </li>
+        <li><a href="#agregando-grupos-de-hosts">Agregando Grupos de Hosts</a></li>
+        <li><a href="#agregando-hosts">Agregando Hosts</a>
+          <ul>
+            <li><a href="#informacion-extendida-de-host">Informacion extendida de host</a></li>
+            <li><a href="#dependencia-del-estado-de-host-por-el-estado-de-otro-host">Dependencia del estado de host por el estado de otro host</a></li>
+          </ul>
+        </li>
+        <li><a href="#definiendo-tiempos-de-chequeo">Definiendo tiempos de chequeo</a></li>
+        <li><a href="#agregando-comandos">Agregando Comandos</a></li>
+        <li><a href="#manejadores-de-eventos---event-handler">Manejadores de Eventos - Event Handler</a></li>
+        <li><a href="#configuración-de-alertas">Configuración de alertas</a>
+          <ul>
+            <li><a href="#agregando-grupos-de-contacto">Agregando Grupos de contacto</a></li>
+            <li><a href="#agregando-contactos">Agregando Contactos</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

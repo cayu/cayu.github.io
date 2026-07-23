@@ -1,0 +1,5215 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content=" Tivoli Storage Manager (TSM) o más recientemente llamado IBM Tivoli Storage Manager (ITSM) es un software centralizado y basado en políticas que permite la administración de los recursos de almacenamiento.
+Este programa es parte de la serie IBM TotalStorage. Previamente se conocía como ADSTAR Distributed Storage Manager (ADSM).
+Implementación tipica de TSM# Instalación del Servidor Tivoli TSM# Desde paquetes# Para instalar sobre Debian, deberemos convertir los paquetes RPM a DEB por medio de la herramienta alien.
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/manuales/tivoli_tsm/manual_de_manejo_de_backups_con_tivoli/">
+  <meta property="og:site_name" content="Wiki de Sergio Cayuqueo">
+  <meta property="og:title" content="Manual de manejo de respaldos con Tivoli">
+  <meta property="og:description" content="Tivoli Storage Manager (TSM) o más recientemente llamado IBM Tivoli Storage Manager (ITSM) es un software centralizado y basado en políticas que permite la administración de los recursos de almacenamiento.
+Este programa es parte de la serie IBM TotalStorage. Previamente se conocía como ADSTAR Distributed Storage Manager (ADSM).
+Implementación tipica de TSM# Instalación del Servidor Tivoli TSM# Desde paquetes# Para instalar sobre Debian, deberemos convertir los paquetes RPM a DEB por medio de la herramienta alien.">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="manuales">
+    <meta property="article:published_time" content="2015-05-04T16:53:21-03:00">
+    <meta property="article:modified_time" content="2026-07-22T23:28:56-03:00">
+
+
+  <meta itemprop="name" content="Manual de manejo de respaldos con Tivoli">
+  <meta itemprop="description" content="Tivoli Storage Manager (TSM) o más recientemente llamado IBM Tivoli Storage Manager (ITSM) es un software centralizado y basado en políticas que permite la administración de los recursos de almacenamiento.
+Este programa es parte de la serie IBM TotalStorage. Previamente se conocía como ADSTAR Distributed Storage Manager (ADSM).
+Implementación tipica de TSM# Instalación del Servidor Tivoli TSM# Desde paquetes# Para instalar sobre Debian, deberemos convertir los paquetes RPM a DEB por medio de la herramienta alien.">
+  <meta itemprop="datePublished" content="2015-05-04T16:53:21-03:00">
+  <meta itemprop="dateModified" content="2026-07-22T23:28:56-03:00">
+  <meta itemprop="wordCount" content="6708">
+
+<title>Manual de manejo de respaldos con Tivoli • Wiki de Sergio Cayuqueo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/manuales/tivoli_tsm/manual_de_manejo_de_backups_con_tivoli/">
+<link rel="stylesheet" href="/book.min.b67edd162318c5083c6df0a88fb33841277a463a19631410445e4034ec6e651c.css" integrity="sha256-tn7dFiMYxQg8bfCoj7M4QSd6RjoZYxQQRF5ANOxuZRw=" crossorigin="anonymous">
+
+
+  <script defer type="module" src="/es.search.min.0d8ef5a46e9d73ded2792bc4dc404ee89897a364056761a43c441c32a9c30525.js" integrity="sha256-DY71pG6dc97SeSvE3EBO6JiXo2QFZ2GkPEQcMqnDBSU=" crossorigin="anonymous"></script>
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-manuales">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Wiki de Sergio Cayuqueo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Buscar"
+    aria-label="Buscar"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Notas</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Hardware</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/" class="">
+      VMWare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/instalar_vmware_tools/" class="">
+      Instalar VMware Tools</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/agregar_cpu_en_caliente_en_vmware/" class="">
+      Agregar CPU en caliente en VMWare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/datetime/" class="">
+      Parametros para Vmware por cambio de hora de servidores</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/idrac/" class="">
+      iDrac Dell</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/strace/" class="">
+      Strace</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/nginx/" class="">
+      Nginx</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/" class="">
+      Squid</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/hearbeat/" class="">
+      LVS - Hearbeat - Ldirectord - Balanceo de carga y alta disponibilidad</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/rhcs/" class="">
+      Squid &#43; Red Hat Cluster Suite</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bind/" class="">
+      Configuración de Servidor DNS Bind</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/" class="">
+      Linux</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Networking</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/networking/wan_optimization/" class="">
+      WAN Optimization</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/actualizar_suse_linux/" class="">
+      Actualizar SuSE Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/cambiar_planificador_de_disco/" class="">
+      Cambiar planificador de acceso a disco</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/medicion_de_velocidad_de_cambio_en_filesystems_en_un_sistema_linux_fisico_o_virtual/" class="">
+      Medición de velocidad de cambio en filesystems en un sistema Linux (físico o virtual)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/midiendo_el_rendimiento_del_sistema_con_iostat/" class="">
+      Midiendo el rendimiento del sistema con IOSTAT</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/sistema_de_archivos_proc/" class="">
+      Sistema de archivos /proc</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/lvm/" class="">
+      Logical Volume Management 2 (LVM2)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/manejo_de_memoria_en_linux/" class="">
+      Manejo de memoria en Linux</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/manejo_de_memoria_en_linux/hugepages/" class="">
+      Hugepages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/ver_el_dmesg_en_formato_humano/" class="">
+      Ver el dmesg en formato humano</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/midiendo_el_rendimiento_del_sistema_con_sar/" class="">
+      Midiendo el rendimiento del sistema con SAR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/cron/" class="">
+      CRON</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/sed/" class="">
+      SED - Stream EDitor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/configuracion_vpn/" class="">
+      Configuración de acceso VPN desde Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openssh/" class="">
+      OpenSSH</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/compartir_archivos_por_nfs/" class="">
+      Como compartir filesystems por NFS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/" class="">
+      Microsoft</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/windows/" class="">
+      Sistema Operativo Windows</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/windows/scripts_varios_de_powershell/" class="">
+      Scripts varios de PowerShell</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/network_policy_server_nps/" class="">
+      Network Policy Server (NPS)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/apache/" class="">
+      Tips de Apache</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/analisis_forense/" class="">
+      Análisis forense</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/qlikview/" class="">
+      QlikView</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/owncloud/" class="">
+      OwnCloud</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/iptables/" class="">
+      TIPs varios de IPTables</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/celulares/" class="">
+      Teléfonos celulares</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openldap/" class="">
+      Implementacion de un servidor OpenLDAP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/arduino/" class="">
+      Arduino</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/kickstart/" class="">
+      Kickstart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/raspberry_pi/" class="">
+      Raspberry Pi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/postfix/" class="">
+      Postfix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openssl/" class="">
+      OpenSSL</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/" class="">
+      Programación</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Python</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Webscraping</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/webscraping/beautifulsoup/" class="">
+      Beautiful Soup</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/sistema_de_archivos/" class="">
+      Operaciones sobre el sistema de archivos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/django/" class="">
+      Django</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/introduccion_a_awk/" class="">
+      Uso básico de AWK</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/the_linux_cdrom_interface/" class="">
+      The Linux CDROM interface</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/reproductor_de_cd/" class="">
+      Reproductor De Cd</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/console_ioctls_under_linux/" class="">
+      Console IOCTLs Under Linux</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/tools_of_the_trade_--_iostat_vmstat_and_netstat/" class="">
+      Tools of the Trade -- Iostat, Vmstat, and Netstat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/solaris_performance_monitoring/" class="">
+      Solaris Performance Monitoring &amp; Tuning - iostat , vmstat &amp; netstat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/" class="">
+      Bases De Datos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/mysql/" class="">
+      Task MySQL</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/oracle/" class="">
+      Oracle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/mssql/" class="">
+      Microsoft SQL Server</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/postgresql/" class="">
+      PostgreSQL</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/valgrind/" class="">
+      Valgrind</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/kamailio/" class="">
+      Kamailio</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/syslog_centralizado/" class="">
+      Sistema de LOG centralizado</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/inicio_rapido_de_csync2/" class="">
+      Csync para centralizar la configuracion de servicios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/xen_multi_bridge/" class="">
+      Utilizar dos o mas placas de red con Xen</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/sysinfo_dokuwiki/" class="">
+      Dump some hardware info in DokuWiki format</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/ubuntu_domu_en_red_hat/" class="">
+      Xen Red Hat Dom0 y Ubuntu DomU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/enomalism/" class="">
+      Configuraciones a mano</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Fotografia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/fotografia/conceptos/" class="">
+      Sobre el 18-55</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Legales</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Legislacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Nacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/nacion/decreto_155_89/" class="">
+      Decreto 155 89</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/nacion/ley_23302/" class="">
+      LEY 23.302</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/caba/" class="">
+      Legislación Indígena Ciudad Autónoma de Buenos Aires</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/jurisprudencia/" class="">
+      Jurisprudencia</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/" class="">
+      Seguridad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Criptografia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/truecrypt/" class="">
+      Privacidad datos utilizando TrueCrypt</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/veracrypt/" class="">
+      Privacidad datos utilizando VeraCrypt</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/gnupg/" class="">
+      The GNU Privacy Guard</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Gestion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/gestion/itil/" class="">
+      ITIL - Information Technology Infrastructure Library</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      How To</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/how_to/prevent_a_fork_bomb_by_limiting_user_process/" class="">
+      How to: Prevent a fork bomb by limiting user process</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Programacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Redes</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/nodejs/" class="">
+      NodeJS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/python/" class="">
+      Scripts simples en python</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/python/scapy/" class="">
+      Scapy</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/scanner_de_puertos_simple/" class="">
+      Scanner De Puertos Simple</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/shellcode/" class="">
+      Shellcode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/" class="">
+      Seguridad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Certificaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/" class="">
+      Profesional certificado en seguridad ofensiva (OSCP)</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/preparacion_personal/" class="">
+      Preparación personal para rendir la certificación OSCP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/oscp_prep_class/" class="">
+      OSCP Prep class</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/oscp-survival-guide/" class="">
+      OSCP-Survival-Guide</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Exploits</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/exploits/mempodipper/" class="">
+      mempodipper</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/exploits/dirty_cow/" class="">
+      Dirty COW</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/why_i_would_never_buy_a_dell_powerconnect_2724/" class="">
+      Why I would never buy a Dell PowerConnect 2724</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/understanding_bash_fork_bomb/" class="">
+      Understanding Bash fork() bomb ~ :(){ :|:&amp; };:</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/pequena_guia_de_seguridad_informatica/" class="">
+      Pequeña guía de seguridad informática</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/auditd/" class="">
+      Auditoría en Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/process_accounting_psacct/" class="">
+      Process Accounting (PSACCT)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/" class="">
+      Enlaces útiles</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/" class="">
+      Utilidades de Red</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/ngrep/" class="">
+      Network Grep - ngrep</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/msndump/" class="">
+      MSN Dump</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/tcpdump/" class="">
+      TCPDUMP</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/" class="">
+      Aprendiendo SAP</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/sap_hana/" class="">
+      SAP HANA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/desarrollo_y_programacion_en_abap/" class="">
+      Desarrollo y programación en ABAP</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/" class="">
+      Redes y comunicaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Conectividad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/conectividad/fibra_optica/" class="">
+      Fibra óptica</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Firewalls</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/fortinet/" class="">
+      Fortinet</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/fortinet/fortiap/" class="">
+      FortiGate como controlador Wireless</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/pfsense/" class="">
+      pfSense</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Notas</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/notas/nc/" class="">
+      Netcat</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Telefonia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Asterisk</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/" class="">
+      Conectividad con Asterisk</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/spa400/" class="">
+      SPA400</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/tdm400p/" class="">
+      Instalar Placa TDM400P</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Cisco</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/call_manager/" class="">
+      Cisco Call Manager</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/routers/" class="">
+      Routers Cisco</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/telefonos/" class="">
+      Teléfonos CISCO</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Videoconferencia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/videoconferencia/openmcu-ru/" class="">
+      OpenMCU-ru</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/flows/" class="">
+      Network Flow</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/flows/ntop/" class="">
+      Ntop</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/rancid/" class="">
+      Rancid (Really Awesome New Cisco confIg Differ)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/conceptos/" class="">
+      Conceptos de redes informáticas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/" class="">
+      Switches</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Cisco</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/2960c/" class="">
+      CISCO - 2960-C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/2960x/" class="">
+      CISCO - 2960-X</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/sf300/" class="">
+      CISCO - SF300</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/extreme_networks/" class="">
+      Extreme Networks</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/" class="">
+      Hewlett Packard</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/aruba/" class="">
+      Switches Aruba</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/" class="">
+      3COM</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Voice</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/voice/vlan/" class="">
+      VLAN de voz</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/debug_y_analisis_de_equipos_hp_3com/" class="">
+      Debug y análisis de equipos HP/3com</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cumulus_networks/" class="">
+      Cumulus Networks</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/gestion/" class="">
+      Gestión</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/gestion/taiga/" class="">
+      Taiga</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/leyes/" class="">
+      Leyes, Decretos y Ordenanzas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/" class="">
+      Charlas y Eventos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/pueblos_originarios_y_la_industria_del_software/" class="">
+      Pueblos Originarios y la industria del Software</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/uso_de_la_consola_linux/" class="">
+      Taller de uso de Consola Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/lanux_agosto_2010/" class="">
+      Servidores VPS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/" class="">
+      Manuales de proyectos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Tivoli Tsm</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/manual_de_manejo_de_backups_con_tivoli/" class="active">
+      Manual de manejo de respaldos con Tivoli</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/tsm_sql_tips/" class="">
+      Mandatos de prueba de validación de la actualización de la base de datos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/tsm_sql_hints/" class="">
+      TSM SQL Hints</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/sql_for_tivoli_storage_manager/" class="">
+      SQL for Tivoli Storage Manager</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/emc_data_domain/" class="">
+      EMC Data Domain</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/" class="">
+      Monitoria y análisis de Red con Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/" class="">
+      Monitoreo de Red con Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Productos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/oracle/" class="">
+      Oracle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/argentina_-_arba_-_codigo_de_operacion_de_traslado_cot/" class="">
+      Argentina - ARBA - Código de Operación de Traslado (COT)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/asterisk/" class="">
+      Asterisk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/riverbed/" class="">
+      Riverbed</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/argentina_-_afip_-_factura_electronica/" class="">
+      Argentina AFIP Factura Electrónica</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/sap/" class="">
+      SAP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/ibm_tivoli_tsm/" class="">
+      Tivoli Storage Manager - TSM</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/brasil_-_nota_fiscal_electronica_nfe/" class="">
+      Brasil - Nota Fiscal Electrónica NFe</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/brasil_-_nota_fiscal_electronica_nfe/referencias_utiles_de_nfe/" class="">
+      Referencias útiles de NFE</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/microstrategy/" class="">
+      MicroStrategy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/qlikview/" class="">
+      QlikView</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/servidor_web/" class="">
+      Configuración del servidor Web</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/pnp4nagios/" class="">
+      PNP4Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/tipos_de_notificaciones/" class="">
+      Tipos de notificaciones</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_referencias_generales/" class="">
+      Referencias generales</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_referencias_generales/sistema_de_inventario/" class="">
+      Sistema de inventario</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagios_network_analyzer/" class="">
+      Nagios Network Analyzer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/" class="">
+      Correlación de eventos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/rsyslog/" class="">
+      Reliable system and kernel logging daemon</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/eventdb/" class="">
+      EventDB</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/syslog_ng/" class="">
+      Syslog-NG</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/implementacion_tecnica/" class="">
+      Implementación Técnica de Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/implementacion_tecnica/implementacion_tecnica_version_ubuntu_server_20.04/" class="">
+      Implementación Técnica de Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/capacitacion_en_monitoreo_de_red/" class="">
+      Capacitación en monitoreo de Red</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Certificaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/capacitacion_en_monitoreo_de_red/certificaciones/sox_-_sarbanes-oxley/" class="">
+      SOX</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/desarrollo_de_plugins_de_nagios/" class="">
+      Desarrollo de plugins de Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/desarrollo_de_plugins_de_nagios/problemas_comunes/" class="">
+      Problemas comunes de los plugins de Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/snmp/" class="">
+      SNMP (Simple Network Management Protocol)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagios_event_radio_dispatcher_nerd/" class="">
+      Nagios Event Radio Dispatcher (NERD)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/mk_livestatus/" class="">
+      MK Livestatus</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/ndo2utils/" class="">
+      NDO2Utils</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagvis/" class="">
+      Nagvis</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagvis/diseno_de_tablero_de_control/" class="">
+      Diseño de tablero de control</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/graficos_en_ajax/" class="">
+      Gráficos en AJAX</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_tips_y_recomendaciones/" class="">
+      TIPS y recomendaciones</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_otras_soluciones_basadas_en_nagios/" class="">
+      Anexo - Otras soluciones basadas en Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_comandos_externos/" class="">
+      Comandos externos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/plugins_usuales_de_nagios/" class="">
+      Plugins usuales de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/icmp/" class="">
+      ICMP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_codigo_fuente_de_nagios/" class="">
+      Análisis del código fuente de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_configuracion_desde_version_3_a_4/" class="">
+      Incompatibilidades de configuración v3 a v4</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/codigo_fuente/" class="">
+      Análisis del código fuente de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/thruk/" class="">
+      Thruk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/portugues/" class="">
+      Monitoração de rede e análise com Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/italiano/" class="">
+      Implementazione di un sistema di rete, monitor con Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_freeradius/" class="">
+      Servidor FreeRadius</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_systemimager/" class="">
+      Proyecto Servidor de Backups</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/an_introduction_to_linux_shell_scripting_for_dbas/" class="">
+      An Introduction to Linux Shell Scripting for DBAs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/filtrador_de_logs/" class="">
+      Filtrador de LOGS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/drbd/" class="">
+      DRBD (Distributed Replicated Block Device)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/" class="">
+      Lotus Notes</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/problemas_winmail.dat_outlook/" class="">
+      Problemas Winmail.dat Outlook</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/listar_ultimo_mes_de_login_de_usuarios/" class="">
+      Listar último mes de login de usuarios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/reemplazar_diseno_base_de_datos/" class="">
+      Reemplazar Diseño Base de Datos</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_squid/" class="">
+      Squid Proxy Server</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/red_restringida/" class="">
+      Red restringida</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/novell_audit/" class="">
+      Novell Identity Audit</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_dhcp/" class="">
+      Servicio DHCP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/ils/" class="">
+      ILS (Internet Locator Server)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Manual de manejo de respaldos con Tivoli</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#desde-paquetes">Desde paquetes</a></li>
+    <li><a href="#creación-de-los-archivos-de-la-base-de-datos">Creación de los archivos de la base de datos</a>
+      <ul>
+        <li><a href="#backup-de-la-base">Backup de la base</a></li>
+      </ul>
+    </li>
+    <li><a href="#configuración-del-servicio-de-backup">Configuración del servicio de backup</a></li>
+    <li><a href="#configurando-dispositivo-de-tape">Configurando dispositivo de Tape</a></li>
+    <li><a href="#configurando-dispositivo-de-vtl---data-domain">Configurando dispositivo de VTL - Data Domain</a></li>
+    <li><a href="#configuraciones-extras">Configuraciones extras</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#tipos-de-backups">Tipos de Backups</a>
+      <ul>
+        <li><a href="#backups-programados">Backups Programados</a>
+          <ul>
+            <li><a href="#compresión-del-lado-del-cliente">Compresión del lado del cliente</a></li>
+            <li><a href="#clientes-de-tivoli-storage-manager-en-sistemas-unix">Clientes de Tivoli Storage Manager en sistemas UNIX</a></li>
+            <li><a href="#clientes-de-tivoli-storage-manager-en-sistemas-windows">Clientes de Tivoli Storage Manager en sistemas Windows</a></li>
+          </ul>
+        </li>
+        <li><a href="#backups-tdp">Backups TDP</a>
+          <ul>
+            <li><a href="#backint">BACKINT</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#gnulinux">GNU/Linux</a>
+      <ul>
+        <li><a href="#init-script">Init script</a></li>
+      </ul>
+    </li>
+    <li><a href="#windows">Windows</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#restore-de-una-base-tsm">Restore de una base TSM</a></li>
+    <li><a href="#disaster-recovery-for-sap-r3-on-oracle">Disaster Recovery for SAP R/3 on Oracle</a></li>
+    <li><a href="#procedimiento-para-recuperar-una-base-de-datos-correspondiente-a-una-instancia-sap-luego-de-un-desastre">Procedimiento para recuperar una base de datos correspondiente a una instancia SAP luego de un desastre</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#introducción">Introducción</a>
+      <ul>
+        <li><a href="#formateo-de-consultas-sql">Formateo de consultas SQL</a></li>
+        <li><a href="#uso-de-columnas-indexadas-para-acelerar-consultas">Uso de columnas indexadas para acelerar consultas</a></li>
+        <li><a href="#como-combinar-dos-tablas-en-una-consulta">Como combinar dos tablas en una consulta</a>
+          <ul>
+            <li><a href="#ver-información-general-de-los-nodos">Ver información general de los nodos</a></li>
+            <li><a href="#ver-detalles-de-copygroups-de-archive">Ver detalles de Copygroups de Archive</a></li>
+            <li><a href="#ver-detalles-de-management-classes">Ver detalles de Management Classes</a></li>
+            <li><a href="#ver-slots-de-la-libreria-asociados-a-cada-cinta">Ver slots de la libreria asociados a cada cinta</a></li>
+            <li><a href="#cantidad-de-volúmenes-scratch-permitidos-por-storage-pool">Cantidad de volúmenes Scratch permitidos por storage pool</a></li>
+            <li><a href="#uso-por-storage-pool-en-mb-y-en-cantidad-de-archivos">Uso por storage pool en MB y en cantidad de archivos</a></li>
+            <li><a href="#número-de-volúmenes-por-libreria">Número de volúmenes por libreria</a></li>
+          </ul>
+        </li>
+        <li><a href="#consultas-rápidas-rutinarias">Consultas rápidas rutinarias</a>
+          <ul>
+            <li><a href="#listar-todas-las-cintas-utilizadas-por-un-nodo">Listar todas las cintas utilizadas por un nodo</a></li>
+            <li><a href="#cintas-usadas-hoy">Cintas usadas hoy</a></li>
+            <li><a href="#la-última-fecha-de-escritura-para-todas-las-cintas">La última fecha de escritura para todas las cintas</a></li>
+            <li><a href="#cantidad-de-mb-respaldados-las-últimas-24-horas-ordenado-por-nodo">Cantidad de MB respaldados las últimas 24 horas ordenado por nodo</a></li>
+            <li><a href="#cantidad-de-mb-total-respaldados-las-últimas-24-horas">Cantidad de MB total respaldados las últimas 24 horas</a></li>
+            <li><a href="#el-número-de-cintas-escritas-las-ultimas-24-horas">El número de cintas escritas las ultimas 24 horas</a></li>
+            <li><a href="#nodos-que-en-el-día-anterior-realizaron-restauraciones">Nodos que en el día anterior realizaron restauraciones</a></li>
+            <li><a href="#cintas-en-uso-y-máximo-de-scratch-permitidos">Cintas en uso y máximo de scratch permitidos</a></li>
+            <li><a href="#lista-paginas-expiradas-de-la-base-de-datos">Lista paginas expiradas de la Base de datos</a></li>
+          </ul>
+        </li>
+        <li><a href="#operaciones-de-conteo-de-elementos">Operaciones de conteo de elementos</a>
+          <ul>
+            <li><a href="#consultar-copias-de-seguridad-de-los-pooles">Consultar copias de seguridad de los pooles</a></li>
+            <li><a href="#consultar-cantidad-de-plataforma-por-nodo">Consultar cantidad de plataforma por nodo</a></li>
+            <li><a href="#consultar-cantidad-de-archivos-de-tipo-backup-por-nodo">Consultar cantidad de archivos de tipo Backup por nodo</a></li>
+            <li><a href="#consultar-numero-de-asociaciones-por-schedule">Consultar numero de asociaciones por Schedule</a></li>
+            <li><a href="#consultar-numero-de-opciones-de-cliente">Consultar numero de opciones de cliente</a></li>
+            <li><a href="#consultar-numero-de-archive-copygroups">Consultar numero de Archive CopyGroups</a></li>
+            <li><a href="#consultar-numero-de-data-movers">Consultar numero de Data Movers</a></li>
+            <li><a href="#consultar-numero-de-dominios">Consultar numero de Dominios</a></li>
+            <li><a href="#consultar-numero-de-librerias">Consultar numero de Librerias</a></li>
+            <li><a href="#consultar-numero-de-cintas-totales">Consultar numero de Cintas totales</a></li>
+            <li><a href="#consultar-grupos-de-nodos">Consultar grupos de nodos</a></li>
+            <li><a href="#consultar-set-de-politicas">Consultar set de Politicas</a></li>
+            <li><a href="#consultar-numero-de-tareas-programadas">Consultar numero de tareas programadas</a></li>
+            <li><a href="#consultar-numero-de-servidores-definidos">Consultar numero de servidores definidos</a></li>
+            <li><a href="#consultar-numero-de-storage-pools-definidos">Consultar numero de storage pools definidos</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><p><img src="/manuales/tivoli_tsm/manual_de_manejo_de_backups_con_tivoli/tsm.png" class="align-right" /> Tivoli Storage Manager (TSM) o más recientemente llamado IBM Tivoli Storage Manager (ITSM) es un software centralizado y basado en políticas que permite la administración de los recursos de almacenamiento.</p>
+<p>Este programa es parte de la serie IBM TotalStorage. Previamente se conocía como ADSTAR Distributed Storage Manager (ADSM).</p>
+<h1 id="implementación-tipica-de-tsm">Implementación tipica de TSM<a class="anchor" href="#implementaci%c3%b3n-tipica-de-tsm">#</a></h1>
+<p><img src="/manuales/tivoli_tsm/manual_de_manejo_de_backups_con_tivoli/esquema_tsm.jpg" alt="esquema_tsm.jpg" /></p>
+<h1 id="instalación-del-servidor-tivoli-tsm">Instalación del Servidor Tivoli TSM<a class="anchor" href="#instalaci%c3%b3n-del-servidor-tivoli-tsm">#</a></h1>
+<h2 id="desde-paquetes">Desde paquetes<a class="anchor" href="#desde-paquetes">#</a></h2>
+<p>Para instalar sobre Debian, deberemos convertir los paquetes <strong>RPM</strong> a <strong>DEB</strong> por medio de la herramienta <strong>alien</strong>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">tivsm-license_5.4.0-1_i386.deb
+</span></span><span class="line"><span class="cl">tivsm-server_5.4.0-1_i386.deb
+</span></span><span class="line"><span class="cl">tivsm-tsmscsi_5.4.0-1_i386.deb</span></span></code></pre></div><p>y los archivo del cliente de Tivoli TSM para poder administrarlo desde la consola</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">tivsm-api_5.4.2-1_i386.deb
+</span></span><span class="line"><span class="cl">tivsm-ba_5.4.2-1_i386.deb
+</span></span><span class="line"><span class="cl">tivsm-msg.es-es_5.4.2-1_i386.deb</span></span></code></pre></div><h2 id="creación-de-los-archivos-de-la-base-de-datos">Creación de los archivos de la base de datos<a class="anchor" href="#creaci%c3%b3n-de-los-archivos-de-la-base-de-datos">#</a></h2>
+<p>Generación de los archivos :</p>
+<p>Un tamaño recomendable para la base de datos es de 5GB y para el log de 2GB</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dd if=/dev/zero of=/opt/tivoli/tsm_data/dbvol.dsm bs=1024 count=5000000
+</span></span><span class="line"><span class="cl">dd if=/dev/zero of=/opt/tivoli/tsm_data/logvol.dsm bs=1024 count=2000000</span></span></code></pre></div><p>Debemos formatearlos a TSM</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="o">./</span><span class="n">dsmserv</span> <span class="n">format</span> <span class="mi">1</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">tivoli</span><span class="o">/</span><span class="n">tsm_data</span><span class="o">/</span><span class="n">logvol</span><span class="o">.</span><span class="n">dsm</span> <span class="mi">1</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">tivoli</span><span class="o">/</span><span class="n">tsm_data</span><span class="o">/</span><span class="n">dbvol</span><span class="o">.</span><span class="n">dsm</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Tivoli</span> <span class="n">Storage</span> <span class="n">Manager</span> <span class="k">for</span> <span class="n">Linux</span><span class="o">/</span><span class="n">i386</span>
+</span></span><span class="line"><span class="cl"><span class="n">Version</span> <span class="mi">5</span><span class="p">,</span> <span class="n">Release</span> <span class="mi">4</span><span class="p">,</span> <span class="n">Level</span> <span class="mf">0.0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Licensed</span> <span class="n">Materials</span> <span class="o">-</span> <span class="n">Property</span> <span class="n">of</span> <span class="n">IBM</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="n">Copyright</span> <span class="n">IBM</span> <span class="n">Corporation</span> <span class="mi">1990</span><span class="p">,</span> <span class="mf">2007.</span>
+</span></span><span class="line"><span class="cl"><span class="n">All</span> <span class="n">rights</span> <span class="n">reserved</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">U</span><span class="o">.</span><span class="n">S</span><span class="o">.</span> <span class="n">Government</span> <span class="n">Users</span> <span class="n">Restricted</span> <span class="n">Rights</span> <span class="o">-</span> <span class="n">Use</span><span class="p">,</span> <span class="n">duplication</span> <span class="ow">or</span> <span class="n">disclosure</span>
+</span></span><span class="line"><span class="cl"><span class="n">restricted</span> <span class="n">by</span> <span class="n">GSA</span> <span class="n">ADP</span> <span class="n">Schedule</span> <span class="n">Contract</span> <span class="n">with</span> <span class="n">IBM</span> <span class="n">Corporation</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ANR7800I</span> <span class="n">DSMSERV</span> <span class="n">generated</span> <span class="n">at</span> <span class="mi">16</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mi">56</span> <span class="n">on</span> <span class="n">Dec</span>  <span class="mi">7</span> <span class="mf">2006.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR7801I</span> <span class="n">Subsystem</span> <span class="n">process</span> <span class="n">ID</span> <span class="n">is</span> <span class="mf">1916.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR0900I</span> <span class="n">Processing</span> <span class="n">options</span> <span class="n">file</span> <span class="n">dsmserv</span><span class="o">.</span><span class="n">opt</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR4726I</span> <span class="n">The</span> <span class="n">ICC</span> <span class="n">support</span> <span class="n">module</span> <span class="n">has</span> <span class="n">been</span> <span class="n">loaded</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR0300I</span> <span class="n">Recovery</span> <span class="nb">log</span> <span class="n">format</span> <span class="n">started</span><span class="p">;</span> <span class="n">assigned</span> <span class="n">capacity</span> <span class="mi">1952</span> <span class="n">megabytes</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR0301I</span> <span class="n">Recovery</span> <span class="nb">log</span> <span class="n">format</span> <span class="ow">in</span> <span class="n">progress</span><span class="p">;</span> <span class="mi">4</span> <span class="n">megabytes</span> <span class="n">of</span> <span class="mf">1952.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR0301I</span> <span class="n">Recovery</span> <span class="nb">log</span> <span class="n">format</span> <span class="ow">in</span> <span class="n">progress</span><span class="p">;</span> <span class="mi">8</span> <span class="n">megabytes</span> <span class="n">of</span> <span class="mf">1952.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR0301I</span> <span class="n">Recovery</span> <span class="nb">log</span> <span class="n">format</span> <span class="ow">in</span> <span class="n">progress</span><span class="p">;</span> <span class="mi">12</span> <span class="n">megabytes</span> <span class="n">of</span> <span class="mf">1952.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR0301I</span> <span class="n">Recovery</span> <span class="nb">log</span> <span class="n">format</span> <span class="ow">in</span> <span class="n">progress</span><span class="p">;</span> <span class="mi">16</span> <span class="n">megabytes</span> <span class="n">of</span> <span class="mf">1952.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR0301I</span> <span class="n">Recovery</span> <span class="nb">log</span> <span class="n">format</span> <span class="ow">in</span> <span class="n">progress</span><span class="p">;</span> <span class="mi">20</span> <span class="n">megabytes</span> <span class="n">of</span> <span class="mf">1952.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR0301I</span> <span class="n">Recovery</span> <span class="nb">log</span> <span class="n">format</span> <span class="ow">in</span> <span class="n">progress</span><span class="p">;</span> <span class="mi">24</span> <span class="n">megabytes</span> <span class="n">of</span> <span class="mf">1952.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR0301I</span> <span class="n">Recovery</span> <span class="nb">log</span> <span class="n">format</span> <span class="ow">in</span> <span class="n">progress</span><span class="p">;</span> <span class="mi">28</span> <span class="n">megabytes</span> <span class="n">of</span> <span class="mf">1952.</span>
+</span></span><span class="line"><span class="cl"><span class="o">......</span></span></span></code></pre></div><p>Si al ejecutar el comando <strong>dsmserv</strong> obtenemos un mensaje como este :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ANR0000E Unable to open language en_US for message formatting.
+</span></span><span class="line"><span class="cl">ANR0000E Unable to open message text file for message formatting.</span></span></code></pre></div><p>Debemos copiar el archivo <strong>dsmen_US.txt</strong> a <strong>dsmen_us.txt</strong>.</p>
+<p>Debemos configurarlos en <strong>/opt/tivoli/tsm/server/bin/dsmserv.dsk</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">/opt/tivoli/tsm_data/logvol.dsm
+</span></span><span class="line"><span class="cl">/opt/tivoli/tsm_data/dbvol.dsm</span></span></code></pre></div><h3 id="backup-de-la-base">Backup de la base<a class="anchor" href="#backup-de-la-base">#</a></h3>
+<p>Podemos ir tomando backups diarios de la base de datos, para ello necesitamos generar una clase de dispositivo.</p>
+<p>Ejemplo si es sobre un servidor TSM sobre Windows o Linux :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">DEFINE DEVCLASS FILE DEVTYPE=FILE FORMAT=DRIVE DIRECTORY=/opt/TSMDATA/file
+</span></span><span class="line"><span class="cl">DEFINE DEVCLASS FILE DEVTYPE=FILE FORMAT=DRIVE DIRECTORY=E:\TSMDATA\file</span></span></code></pre></div><p>Ejemplo para una base pequeña : <strong>backup db t=f dev=file wait=yes</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ANR0984I Process 4 for DATABASE BACKUP started in the FOREGROUND at 11:59:24.
+</span></span><span class="line"><span class="cl">ANR2280I Full database backup started as process 4.
+</span></span><span class="line"><span class="cl">ANR4554I Backed up 67712 of 135502 database pages.
+</span></span><span class="line"><span class="cl">ANR4554I Backed up 135424 of 135502 database pages.
+</span></span><span class="line"><span class="cl">ANR4550I Full database backup (process 4) complete, 135502 pages copied.
+</span></span><span class="line"><span class="cl">ANR0985I Process 4 for DATABASE BACKUP running in the FOREGROUND completed with completion state SUCCESS at 11:59:</span></span></code></pre></div><p>Tomamos registros de otros historicos que nos interesan :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">backup volhist file=E:\TSMDATA\file\volhist.out
+</span></span><span class="line"><span class="cl">backup devconfig file=E:\TSMDATA\file\devconfig.out</span></span></code></pre></div><h2 id="configuración-del-servicio-de-backup">Configuración del servicio de backup<a class="anchor" href="#configuraci%c3%b3n-del-servicio-de-backup">#</a></h2>
+<p>Debemos configurar el nombre del servidor :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Set SERVername SERVERTSM</span></span></code></pre></div><p>Ver las opciones tomadas del archivo dsmserv.opt</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">tsm: SERVER1&gt;q opt    
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Server Option         Option Setting           Server Option         Option Setting      
+</span></span><span class="line"><span class="cl">-----------------     --------------------     -----------------     --------------------
+</span></span><span class="line"><span class="cl">CommTimeOut           60                       IdleTimeOut           15                  
+</span></span><span class="line"><span class="cl">BufPoolSize           32768                    LogPoolSize           512                 
+</span></span><span class="line"><span class="cl">DateFormat            1 (mm/dd/yyyy)           TimeFormat            1 (hh:mm:ss)        
+</span></span><span class="line"><span class="cl">NumberFormat          1 (1,000.00)             MessageFormat         1                   
+</span></span><span class="line"><span class="cl">Language              en_US                    Alias Halt            HALT                
+</span></span><span class="line"><span class="cl">MaxSessions           25                       ExpInterval           24                  
+</span></span><span class="line"><span class="cl">ExpQuiet              No                       EventServer           Yes                 
+</span></span><span class="line"><span class="cl">ReportRetrieve        No                       DISPLAYLFINFO         No                  
+</span></span><span class="line"><span class="cl">MirrorRead DB         Normal                   MirrorRead LOG        Normal              
+</span></span><span class="line"><span class="cl">MirrorWrite DB        Sequential               MirrorWrite LOG       Parallel            
+</span></span><span class="line"><span class="cl">TxnGroupMax           256                      MoveBatchSize         1000                
+</span></span><span class="line"><span class="cl">MoveSizeThresh        2048                     RestoreInterval       1,440               
+</span></span><span class="line"><span class="cl">DisableScheds         No                       NOBUFPREfetch         No                  
+</span></span><span class="line"><span class="cl">AuditStorage          Yes                      REQSYSauthoutfile     Yes                 
+</span></span><span class="line"><span class="cl">SELFTUNEBUFpools-     No                       DBPAGEShadow          No                  
+</span></span><span class="line"><span class="cl"> ize                                                                                     
+</span></span><span class="line"><span class="cl">DBPAGESHADOWFile      dbpgshdw.bdt             MsgStackTrace         On                  
+</span></span><span class="line"><span class="cl">QueryAuth             None                     LogWarnFullPerCe-     90                  
+</span></span><span class="line"><span class="cl">                                                nt                                       
+</span></span><span class="line"><span class="cl">ThroughPutDataTh-     0                        ThroughPutTimeTh-     0                   
+</span></span><span class="line"><span class="cl"> reshold                                        reshold                                  
+</span></span><span class="line"><span class="cl">NOPREEMPT             ( No )                   Resource Timeout      60                  
+</span></span><span class="line"><span class="cl">TEC UTF8 Events       No                       AdminOnClientPort     Yes                 
+</span></span><span class="line"><span class="cl">NORETRIEVEDATE        No                       IMPORTMERGEUsed       Yes                 
+</span></span><span class="line"><span class="cl">DNSLOOKUP             Yes                      NDMPControlPort       10,000              
+</span></span><span class="line"><span class="cl">NDMPPortRange         0,0                      SHREDding             Automatic           
+</span></span><span class="line"><span class="cl">TCPPort               1500                     TcpAdminport          1500                
+</span></span><span class="line"><span class="cl">HTTPPort              1580                     TCPWindowsize         64512               
+</span></span><span class="line"><span class="cl">TCPBufsize            16384                    TCPNoDelay            Yes                 
+</span></span><span class="line"><span class="cl">CommMethod            TCPIP                    CommMethod            HTTP                
+</span></span><span class="line"><span class="cl">MsgInterval           1                        ShmPort               1510                
+</span></span><span class="line"><span class="cl">FileExit                                       FileTextExit                              
+</span></span><span class="line"><span class="cl">UserExit                                       AcsAccessId                               
+</span></span><span class="line"><span class="cl">AcsTimeoutX           1                        AcsLockDrive          No                  
+</span></span><span class="line"><span class="cl">AcsQuickInit          No                       SNMPSubagentPort      1521                
+</span></span><span class="line"><span class="cl">SNMPSubagentHost      127.0.0.1                SNMPHeartBeatInt      5                   
+</span></span><span class="line"><span class="cl">TECHost                                        TECPort               0                   
+</span></span><span class="line"><span class="cl">UNIQUETECevents       No                       UNIQUETDPTECeven-     No                  
+</span></span><span class="line"><span class="cl">                                                ts                                       
+</span></span><span class="line"><span class="cl">SHAREDLIBIDLE         No                       3494Shared            No                  
+</span></span><span class="line"><span class="cl">CheckTrailerOnFr-     On                       SANdiscovery          Off                 
+</span></span><span class="line"><span class="cl"> ee                                                                                      </span></span></code></pre></div><p>Debemos crear un usuario administrador para poder conectarnos al servicio por red, para esto debemo arrancar manualmente el servidor y registrar el usuario por ejemplo admin con el passwor ‘admin’ :</p>
+<p>Registramos el usuario</p>
+<ul>
+<li><strong>register admin admin admin</strong></li>
+</ul>
+<p>Le otorgamos permisos de administración al mismo</p>
+<ul>
+<li><strong>GRANT AUTHORITY admin classes=system</strong></li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">root</span><span class="err">@</span><span class="n">localhost</span><span class="p">:</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">tivoli</span><span class="o">/</span><span class="n">tsm</span><span class="o">/</span><span class="n">server</span><span class="o">/</span><span class="n">bin</span><span class="c1"># ./dsmserv</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Tivoli</span> <span class="n">Storage</span> <span class="n">Manager</span> <span class="k">for</span> <span class="n">Linux</span><span class="o">/</span><span class="n">i386</span>
+</span></span><span class="line"><span class="cl"><span class="n">Version</span> <span class="mi">5</span><span class="p">,</span> <span class="n">Release</span> <span class="mi">4</span><span class="p">,</span> <span class="n">Level</span> <span class="mf">0.0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Licensed</span> <span class="n">Materials</span> <span class="o">-</span> <span class="n">Property</span> <span class="n">of</span> <span class="n">IBM</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="n">Copyright</span> <span class="n">IBM</span> <span class="n">Corporation</span> <span class="mi">1990</span><span class="p">,</span> <span class="mf">2007.</span>
+</span></span><span class="line"><span class="cl"><span class="n">All</span> <span class="n">rights</span> <span class="n">reserved</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">U</span><span class="o">.</span><span class="n">S</span><span class="o">.</span> <span class="n">Government</span> <span class="n">Users</span> <span class="n">Restricted</span> <span class="n">Rights</span> <span class="o">-</span> <span class="n">Use</span><span class="p">,</span> <span class="n">duplication</span> <span class="ow">or</span> <span class="n">disclosure</span>
+</span></span><span class="line"><span class="cl"><span class="n">restricted</span> <span class="n">by</span> <span class="n">GSA</span> <span class="n">ADP</span> <span class="n">Schedule</span> <span class="n">Contract</span> <span class="n">with</span> <span class="n">IBM</span> <span class="n">Corporation</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ANR7800I</span> <span class="n">DSMSERV</span> <span class="n">generated</span> <span class="n">at</span> <span class="mi">16</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mi">56</span> <span class="n">on</span> <span class="n">Dec</span>  <span class="mi">7</span> <span class="mf">2006.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR7801I</span> <span class="n">Subsystem</span> <span class="n">process</span> <span class="n">ID</span> <span class="n">is</span> <span class="mf">2436.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR0900I</span> <span class="n">Processing</span> <span class="n">options</span> <span class="n">file</span> <span class="n">dsmserv</span><span class="o">.</span><span class="n">opt</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR4726I</span> <span class="n">The</span> <span class="n">ICC</span> <span class="n">support</span> <span class="n">module</span> <span class="n">has</span> <span class="n">been</span> <span class="n">loaded</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR0990I</span> <span class="n">Server</span> <span class="n">restart</span><span class="o">-</span><span class="n">recovery</span> <span class="ow">in</span> <span class="n">progress</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR0200I</span> <span class="n">Recovery</span> <span class="nb">log</span> <span class="n">assigned</span> <span class="n">capacity</span> <span class="n">is</span> <span class="mi">1952</span> <span class="n">megabytes</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR0201I</span> <span class="n">Database</span> <span class="n">assigned</span> <span class="n">capacity</span> <span class="n">is</span> <span class="mi">4880</span> <span class="n">megabytes</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR0306I</span> <span class="n">Recovery</span> <span class="nb">log</span> <span class="n">volume</span> <span class="n">mount</span> <span class="ow">in</span> <span class="n">progress</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR0353I</span> <span class="n">Recovery</span> <span class="nb">log</span> <span class="n">analysis</span> <span class="k">pass</span> <span class="ow">in</span> <span class="n">progress</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR0354I</span> <span class="n">Recovery</span> <span class="nb">log</span> <span class="n">redo</span> <span class="k">pass</span> <span class="ow">in</span> <span class="n">progress</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR0355I</span> <span class="n">Recovery</span> <span class="nb">log</span> <span class="n">undo</span> <span class="k">pass</span> <span class="ow">in</span> <span class="n">progress</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR0352I</span> <span class="n">Transaction</span> <span class="n">recovery</span> <span class="n">complete</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR1635I</span> <span class="n">The</span> <span class="n">server</span> <span class="n">machine</span> <span class="n">GUID</span><span class="p">,</span> <span class="n">fd</span><span class="o">.</span><span class="n">fa</span><span class="o">.</span><span class="mf">36.</span><span class="n">ba</span><span class="o">.</span><span class="mi">7</span><span class="n">c</span><span class="o">.</span><span class="mi">3</span><span class="n">d</span><span class="o">.</span><span class="mf">11.e2</span><span class="o">.</span><span class="mf">87.5</span><span class="n">c</span><span class="o">.</span><span class="mf">00.18</span><span class="o">.</span><span class="n">fe</span><span class="o">.</span><span class="mf">75.50</span><span class="o">.</span><span class="mi">26</span><span class="p">,</span> <span class="n">has</span> <span class="n">initialized</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR2100I</span> <span class="n">Activity</span> <span class="nb">log</span> <span class="n">process</span> <span class="n">has</span> <span class="n">started</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR4726I</span> <span class="n">The</span> <span class="n">NAS</span><span class="o">-</span><span class="n">NDMP</span> <span class="n">support</span> <span class="n">module</span> <span class="n">has</span> <span class="n">been</span> <span class="n">loaded</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR1794W</span> <span class="n">TSM</span> <span class="n">SAN</span> <span class="n">discovery</span> <span class="n">is</span> <span class="n">disabled</span> <span class="n">by</span> <span class="n">options</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR0984I</span> <span class="n">Process</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">EXPIRATION</span> <span class="n">started</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">BACKGROUND</span> <span class="n">at</span> <span class="mi">18</span><span class="p">:</span><span class="mi">17</span><span class="p">:</span><span class="mf">40.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR0811I</span> <span class="n">Inventory</span> <span class="n">client</span> <span class="n">file</span> <span class="n">expiration</span> <span class="n">started</span> <span class="n">as</span> <span class="n">process</span> <span class="mf">1.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR2803I</span> <span class="n">License</span> <span class="n">manager</span> <span class="n">started</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR8200I</span> <span class="n">TCP</span><span class="o">/</span><span class="ne">IP</span> <span class="n">driver</span> <span class="n">ready</span> <span class="k">for</span> <span class="n">connection</span> <span class="n">with</span> <span class="n">clients</span> <span class="n">on</span> <span class="n">port</span> <span class="mf">1500.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR8190I</span> <span class="n">HTTP</span> <span class="n">driver</span> <span class="n">ready</span> <span class="k">for</span> <span class="n">connection</span> <span class="n">with</span> <span class="n">clients</span> <span class="n">on</span> <span class="n">port</span> <span class="mf">1580.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR2560I</span> <span class="n">Schedule</span> <span class="n">manager</span> <span class="n">started</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR4747W</span> <span class="n">The</span> <span class="n">web</span> <span class="n">administrative</span> <span class="n">interface</span> <span class="n">is</span> <span class="n">no</span> <span class="n">longer</span> <span class="n">supported</span><span class="o">.</span> <span class="n">Begin</span> <span class="n">using</span> <span class="n">the</span> <span class="n">Integrated</span> <span class="n">Solutions</span> <span class="n">Console</span> <span class="n">instead</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR0993I</span> <span class="n">Server</span> <span class="n">initialization</span> <span class="n">complete</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR0916I</span> <span class="n">TIVOLI</span> <span class="n">STORAGE</span> <span class="n">MANAGER</span> <span class="n">distributed</span> <span class="n">by</span> <span class="n">Tivoli</span> <span class="n">is</span> <span class="n">now</span> <span class="n">ready</span> <span class="k">for</span> <span class="n">use</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR0985I</span> <span class="n">Process</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">EXPIRATION</span> <span class="n">running</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">BACKGROUND</span> <span class="n">completed</span> <span class="n">with</span> <span class="n">completion</span> <span class="n">state</span> <span class="n">SUCCESS</span> <span class="n">at</span> <span class="mi">18</span><span class="p">:</span><span class="mi">17</span><span class="p">:</span><span class="mf">40.</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR2841W</span> <span class="n">Server</span> <span class="n">is</span> <span class="n">NOT</span> <span class="n">IN</span> <span class="n">COMPLIANCE</span> <span class="n">with</span> <span class="n">license</span> <span class="n">terms</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">TSM</span><span class="p">:</span><span class="n">SERVER1</span><span class="o">&gt;</span> 
+</span></span><span class="line"><span class="cl"><span class="n">register</span> <span class="n">admin</span> <span class="n">admin</span> <span class="n">admin</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR2017I</span> <span class="n">Administrator</span> <span class="n">SERVER_CONSOLE</span> <span class="n">issued</span> <span class="n">command</span><span class="p">:</span> <span class="n">REGISTER</span> <span class="n">ADMIN</span> <span class="n">admin</span> <span class="err">?</span><span class="o">***</span><span class="err">?</span> 
+</span></span><span class="line"><span class="cl"><span class="n">ANR2068I</span> <span class="n">Administrator</span> <span class="n">ADMIN</span> <span class="n">registered</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">TSM</span><span class="p">:</span><span class="n">SERVER1</span><span class="o">&gt;</span> 
+</span></span><span class="line"><span class="cl"><span class="n">GRANT</span> <span class="n">AUTHORITY</span> <span class="n">admin</span> <span class="n">classes</span><span class="o">=</span><span class="n">system</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR2017I</span> <span class="n">Administrator</span> <span class="n">SERVER_CONSOLE</span> <span class="n">issued</span> <span class="n">command</span><span class="p">:</span> <span class="n">GRANT</span> <span class="n">AUTHORITY</span> <span class="n">admin</span> <span class="n">classes</span><span class="o">=</span><span class="n">system</span> 
+</span></span><span class="line"><span class="cl"><span class="n">ANR2076I</span> <span class="n">System</span> <span class="n">privilege</span> <span class="n">granted</span> <span class="n">to</span> <span class="n">administrator</span> <span class="n">ADMIN</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">TSM</span><span class="p">:</span><span class="n">SERVER1</span><span class="o">&gt;</span> 
+</span></span><span class="line"><span class="cl"><span class="n">QUERY</span> <span class="n">ADMIN</span>
+</span></span><span class="line"><span class="cl"><span class="n">ANR2017I</span> <span class="n">Administrator</span> <span class="n">SERVER_CONSOLE</span> <span class="n">issued</span> <span class="n">command</span><span class="p">:</span> <span class="n">QUERY</span> <span class="n">ADMIN</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Administrator</span>        <span class="n">Days</span> <span class="n">Since</span>       <span class="n">Days</span> <span class="n">Since</span>      <span class="n">Locked</span><span class="err">?</span>       <span class="n">Privilege</span> <span class="n">Classes</span>      
+</span></span><span class="line"><span class="cl"><span class="n">Name</span>                <span class="n">Last</span> <span class="n">Access</span>     <span class="n">Password</span> <span class="n">Set</span>                    
+</span></span><span class="line"><span class="cl"><span class="o">--------------</span>     <span class="o">------------</span>     <span class="o">------------</span>     <span class="o">----------</span>     <span class="o">-----------------------</span>
+</span></span><span class="line"><span class="cl"><span class="n">ADMIN</span>                        <span class="o">&lt;</span><span class="mi">1</span>               <span class="o">&lt;</span><span class="mi">1</span>         <span class="n">No</span>         <span class="n">System</span>                 
+</span></span><span class="line"><span class="cl"><span class="n">ADMIN_CENTER</span>                 <span class="o">&lt;</span><span class="mi">1</span>              <span class="p">(</span><span class="err">?</span><span class="p">)</span>        <span class="n">Yes</span>                                
+</span></span><span class="line"><span class="cl"><span class="n">SERVER_CONSOLE</span>                                           <span class="n">No</span>         <span class="n">System</span>                 </span></span></code></pre></div><p>Configuración de Storage Pools</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">UPDATE STGPOOL ARCHIVEPOOL NEXTSTGPOOL=SPACEMGPOOL
+</span></span><span class="line"><span class="cl">UPDATE STGPOOL BACKUPPOOL NEXTSTGPOOL=SPACEMGPOOL
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">tsm: SERVER1&gt;q stg
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Storage         Device          Estimated       Pct       Pct     High     Low     Next Stora-
+</span></span><span class="line"><span class="cl">Pool Name       Class Name       Capacity      Util      Migr      Mig     Mig     ge Pool    
+</span></span><span class="line"><span class="cl">                                                                   Pct     Pct     
+</span></span><span class="line"><span class="cl">-----------     ----------     ----------     -----     -----     ----     ---     -----------
+</span></span><span class="line"><span class="cl">ARCHIVEPOOL     DISK                0.0 M       0.0       0.0       90      70     SPACEMGPOOL
+</span></span><span class="line"><span class="cl">BACKUPPOOL      DISK                0.0 M       0.0       0.0       90      70     SPACEMGPOOL
+</span></span><span class="line"><span class="cl">SPACEMGPOOL     DISK                0.0 M       0.0       0.0       90      70                </span></span></code></pre></div><p>Debemos definir un volumen para el pool de disco, por ejemplo de 50GB</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">DEFINE VOLUME SPACEMGPOOL /opt/tivoli/tsm_data/disk.dsm f=50000</span></span></code></pre></div><h2 id="configurando-dispositivo-de-tape">Configurando dispositivo de Tape<a class="anchor" href="#configurando-dispositivo-de-tape">#</a></h2>
+<img src="/manuales/tivoli_tsm/manual_de_manejo_de_backups_con_tivoli/tsm_lto.gif" class="align-right" alt="tsm_lto.gif" />
+<p>Debemos instalar y compilar el paquete lin_tape “Linux – IBM LinTape driver”</p>
+<p>Obtendremos dos paquetes RPM</p>
+<ul>
+<li>lin_tape-1.61.0-1.src.rpm &lt;= Módulo del Kernel</li>
+<li>lin_taped-1.61.0-rhel5.i386.rpm &lt;= Servicio</li>
+</ul>
+<p>Debemos compilar el codigo fuente del módulo del Kernel y luego instalar el servicio.</p>
+<p>Con lo cual obtendremos estos dispositivos especiales en <strong>/dev</strong>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">IBMtape
+</span></span><span class="line"><span class="cl">IBMtape0
+</span></span><span class="line"><span class="cl">IBMtape0n</span></span></code></pre></div><p><strong>/proc/scsi/IBM</strong>*</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">lin_tape version: 1.76.0
+</span></span><span class="line"><span class="cl">lin_tape major number: 250
+</span></span><span class="line"><span class="cl">Attached Changer Devices:
+</span></span><span class="line"><span class="cl">Number  model       SN                HBA             SCSI            FO Path   
+</span></span><span class="line"><span class="cl">lin_tape version: 1.76.0
+</span></span><span class="line"><span class="cl">lin_tape major number: 250
+</span></span><span class="line"><span class="cl">Attached Tape Devices:
+</span></span><span class="line"><span class="cl">Number  model       SN                HBA             SCSI            FO Path   
+</span></span><span class="line"><span class="cl">0       ULT3580-TD3 1210342411        MPT SPI Host    2:0:6:0         NA      </span></span></code></pre></div><p>Luego de esto debemos ejecutar <strong>/opt/tivoli/tsm/devices/bin/autoconf</strong></p>
+<p>Definiendo la libreria :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">DEFINE LIBRARY TAPE_LIBR LIBTYPE=MANUAL</span></span></code></pre></div><p>Definiendo el drive :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">DEFINE DRIVE TAPE_LIBR TAPE_DRIVE ONLINE=YES</span></span></code></pre></div><p>Definiendo la clase de dispositivo :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">DEFINE DEVCLASS TAPE_DEVICE_CLASS DEVTYPE=LTO FORMAT=DRIVE LIBRARY=TAPE_LIBR MOUNTLIMIT=1 MOUNTRETENTION=60 PREFIX=ADSM MOUNTWAIT=60</span></span></code></pre></div><p>Definiendo el path :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">DEFINE PATH TSERVER1 TAPE_DRIVE SRCTYPE=SERVER DESTTYPE=DRIVE LIBRARY=TAPE_LIBR DEVICE=/dev/IBMtape0 ONLINE=YES</span></span></code></pre></div><p>Definimos un pool de cintas :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">DEFINE STGPOOL BACKUP TAPE_DEVICE_CLASS maxscratch=999 </span></span></code></pre></div><p>Definimos como poolde migracion del pool de disco al pool de cintas :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">UPDATE STGPOOL SPACEMGPOOL nextstgpool=BACKUP</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ACTIVATE POLICYSET STANDARD STANDARD</span></span></code></pre></div><h2 id="configurando-dispositivo-de-vtl---data-domain">Configurando dispositivo de VTL - Data Domain<a class="anchor" href="#configurando-dispositivo-de-vtl---data-domain">#</a></h2>
+<p>Para poder utilizar esta configuración deberemos contar con la version de Tivoli TSM 5.5.7 o superior y dar de alta la configuación en el Data Domain</p>
+<p>Ejemplo de definición para una emulación VTL tipo IBM 3584 con cuatros drives LTO4</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">DEFINE LIBRARY lb0.0.0.6 libtype=scsi
+</span></span><span class="line"><span class="cl">DEFINE PATH  TSM1 lb0.0.0.6 srctype=server desttype=library device=lb0.0.0.6
+</span></span><span class="line"><span class="cl">DEFINE DRIVE lb0.0.0.6 mt0.1.0.6 element=257
+</span></span><span class="line"><span class="cl">DEFINE PATH  TSM1 mt0.1.0.6 srctype=server desttype=drive device=mt0.1.0.6 library=lb0.0.0.6
+</span></span><span class="line"><span class="cl">DEFINE DRIVE lb0.0.0.6 mt0.2.0.6 element=258
+</span></span><span class="line"><span class="cl">DEFINE PATH  TSM1 mt0.2.0.6 srctype=server desttype=drive device=mt0.2.0.6 library=lb0.0.0.6
+</span></span><span class="line"><span class="cl">DEFINE DRIVE lb0.0.0.6 mt0.3.0.6 element=259
+</span></span><span class="line"><span class="cl">DEFINE PATH  TSM1 mt0.3.0.6 srctype=server desttype=drive device=mt0.3.0.6 library=lb0.0.0.6
+</span></span><span class="line"><span class="cl">DEFINE DRIVE lb0.0.0.6 mt0.4.0.6 element=260
+</span></span><span class="line"><span class="cl">DEFINE PATH  TSM1 mt0.4.0.6 srctype=server desttype=drive device=mt0.4.0.6 library=lb0.0.0.6
+</span></span><span class="line"><span class="cl">DEFINE DEVCLASS LTOCLASS2 devtype=LTO library=lb0.0.0.6 format=ULTRIUM4
+</span></span><span class="line"><span class="cl">DEFINE STGPOOL LTOPOOL2 LTOCLASS2 maxscratch=500 dataformat=NATIVE</span></span></code></pre></div><p>Luego podemos etiquetar las cintas presentes en la VTL :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">LABEL LIBVolume LB0.0.0.3 SEARCH=yes LABELSource=b checkin=priv overwrite=no</span></span></code></pre></div><h2 id="configuraciones-extras">Configuraciones extras<a class="anchor" href="#configuraciones-extras">#</a></h2>
+<p>./dsmserv runfile /opt/tivoli/tsm/server/bin/scripts.smp</p>
+<h1 id="registro-de-un-nodo-cliente">Registro de un nodo cliente<a class="anchor" href="#registro-de-un-nodo-cliente">#</a></h1>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">register node nodo contraseña</span></span></code></pre></div><h2 id="tipos-de-backups">Tipos de Backups<a class="anchor" href="#tipos-de-backups">#</a></h2>
+<p>Esquema de como se organizan los datos de Backup del nodo</p>
+<p><img src="/manuales/tivoli_tsm/manual_de_manejo_de_backups_con_tivoli/tsm_esquema_nodos.gif" alt="tsm_esquema_nodos.gif" /></p>
+<h3 id="backups-programados">Backups Programados<a class="anchor" href="#backups-programados">#</a></h3>
+<h4 id="compresión-del-lado-del-cliente">Compresión del lado del cliente<a class="anchor" href="#compresi%c3%b3n-del-lado-del-cliente">#</a></h4>
+<p>EL uso de la compresión en el cliente de Tivoli Storage Manager puede ahorrar espacio de almacenamiento para las copias de seguridad. La compresión ocurre en el cliente antes de ser enviado el respaldo al servidor de TSM con lo cual también ahorra ancho de banda en la red. El algoritmo de compresión hace uso adicional de CPU y puede causar que la copia de seguridad tarde un poco más.</p>
+<p><img src="/manuales/tivoli_tsm/manual_de_manejo_de_backups_con_tivoli/tsm_compress.gif" alt="tsm_compress.gif" /></p>
+<h4 id="clientes-de-tivoli-storage-manager-en-sistemas-unix">Clientes de Tivoli Storage Manager en sistemas UNIX<a class="anchor" href="#clientes-de-tivoli-storage-manager-en-sistemas-unix">#</a></h4>
+<h5 id="problemas-comúnes-con-el-cliente-tivoli-tsm">Problemas comúnes con el cliente Tivoli TSM<a class="anchor" href="#problemas-com%c3%banes-con-el-cliente-tivoli-tsm">#</a></h5>
+<p>El cliente Java arroja este error :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ANS2600S Browser trying to establish connection to client: received
+</span></span><span class="line"><span class="cl">socket exception: java.net.ConnectException: Connection refused</span></span></code></pre></div><p>Debemos ejecutar <strong>/opt/tivoli/tsm/client/ba/bin/dsmagent</strong> y ver si nos arroja errores de libreria. Si es así probablemente deberemos agregar a nuestro <strong>LD_LIBRARY_PATH</strong> la siguiente ruta <strong>/opt/tivoli/tsm/client/api/bin64/</strong>.</p>
+<h4 id="clientes-de-tivoli-storage-manager-en-sistemas-windows">Clientes de Tivoli Storage Manager en sistemas Windows<a class="anchor" href="#clientes-de-tivoli-storage-manager-en-sistemas-windows">#</a></h4>
+<p><a href="http://publib.boulder.ibm.com/tividd/td/ITSMERP/SC33-6340-04/es_ES/HTML/fbrg33m069.htm">http://publib.boulder.ibm.com/tividd/td/ITSMERP/SC33-6340-04/es_ES/HTML/fbrg33m069.htm</a></p>
+<p><a href="http://www.ajpdsoft.com/modules.php?name=News&amp;file=print&amp;sid=257">http://www.ajpdsoft.com/modules.php?name=News&file=print&sid=257</a></p>
+<h3 id="backups-tdp">Backups TDP<a class="anchor" href="#backups-tdp">#</a></h3>
+<h4 id="backint">BACKINT<a class="anchor" href="#backint">#</a></h4>
+<img src="/manuales/tivoli_tsm/manual_de_manejo_de_backups_con_tivoli/backint.gif" class="align-right" />
+<p>Las herramientas de administración de bases de datos de SAP ofrecen todas las funciones necesarias para administrar una base de datos. Las herramientas SAP DBA BRTOOLS para Oracle (BRBACKUP, BRARCHIVE, BRRESTORE) ofrecen funciones de copia de seguridad en línea o fuera de línea, parcial o completa de espacios de tabla (mediante BRBACKUP), copia de seguridad de archivos de registro redolog archivados (mediante BRARCHIVE) y funciones de restauración/recuperación guiadas por el sistema (mediante BRRESTORE y BRRECOVER).</p>
+<p>Las herramientas de mySAP.com (programas de utilidad de SAPDBA) utilizan tablas de la base de datos Oracle y datos del sistema para registrar el estado de las copias de seguridad de los archivos de datos y de las copias de seguridad de los archivos de registro. Esta información permitirá a mySAP.com restaurar automáticamente los archivos de datos correctos y sus archivos específicos de registro de transacciones de bases de datos (archivos de registro redolog), si es necesario. Los archivos de datos residen en la base de datos de Oracle (Instancia de Oracle). Data Protection for mySAP.com se ejecuta como un proceso independiente de la base de datos. Recibe los datos a través de la interfaz de Backint y los guarda en Tivoli Storage Manager.</p>
+<p>Una ejecución de copia de seguridad se realizará del siguiente modo (consulte los números incluidos en un círculo):</p>
+<ol>
+<li>El programa de utilidad de SAPDBA BRBACKUP informa a Oracle sobre los datos de los que hay que hacer copia de seguridad y coloca la base de datos en el estado de copia de seguridad adecuado (‘en línea’ o ‘fuera de línea’).</li>
+<li>BRBACKUP llama a DP for mySAP.com a través de la interfaz de BACKINT con una lista de todos los archivos de los que hay que hacer copia de seguridad.</li>
+<li>DP for mySAP.com (a través de la interfaz de BACKINT) hace copia de seguridad de todos los archivos solicitados de la base de datos e informa a BRBACKUP. BRBACKUP aumenta sus datos para incluir los archivos de los que se ha hecho copia de seguridad (corriente de datos a repositorio de archivos).</li>
+<li>BACKINT guarda los datos en TSM.</li>
+<li>SAPDBA actualiza el repositorio de archivos, que alberga información sobre el estado de los archivos.</li>
+</ol>
+<h5 id="instalación-de-backint">Instalación de BACKINT<a class="anchor" href="#instalaci%c3%b3n-de-backint">#</a></h5>
+<p><strong>Instalación de Data Protection for mySAP.com en UNIX (AIX, Solaris, HP-UX, Linux)</strong></p>
+<p>Data Protection for mySAP.com para sistemas UNIX se suministra como un solo archivo ejecutable denominado</p>
+<p>install_tdpr3_ora_&lt;sistema operativo&gt;_&lt;xx&gt;bit.bin donde &lt;xx&gt; es 32 ó 64 &lt;sistema operativo&gt; es aix43 para AIX 4.3 o aix51 para AIX 5.X o solaris o hpux o linux</p>
+<p>Cuando invoque el archivo, se le guiará por el procedimiento de configuración de Data Protection for mySAP.com. Para asegurarse de que el procedimiento de configuración se lleva a cabo correctamente, lea detenidamente la siguiente descripción y siga las directrices de los paneles que se muestran durante la configuración.</p>
+<p>Para instalar Data Protection for mySAP.com en un sistema UNIX, siga los pasos siguientes:</p>
+<p>Lea el Aviso de release (RELNOTE) y el archivo README que se suministra con Data Protection for mySAP.com.</p>
+<p>Conéctese como usuario root en la máquina servidor de bases de datos de mySAP.com.</p>
+<p>El programa de instalación le guía por la instalación mediante una X-Window gráfica. Asegúrese de haber establecido la variable DISPLAY correctamente.</p>
+<p>Invoque el archivo de instalación correspondiente a Data Protection for mySAP.com que se ajuste a su sistema operativo y a sus bases de datos Oracle.</p>
+<p>Compruebe el resumen al final del diálogo de instalación. En el resumen, entre otra información, encontrará la ruta de instalación de Data Protection for mySAP.com. Los resultados de la instalación también quedan registrados en el registro de la instalación denominado log.txt situado en la ruta de instalación.</p>
+<p>Durante la instalación, se realizan automáticamente las siguientes modificaciones en el sistema:</p>
+<ul>
+<li>se crea una entrada en /etc/inittab para iniciar el prole del proceso de fondo</li>
+<li>se crea una entrada en /etc/services necesaria para la comunicación interna.</li>
+</ul>
+<p>Después de la instalación, dispone de los siguientes archivos en el sistema:</p>
+<p>En la ruta de instalación de Data Protection for mySAP.com:</p>
+<ul>
+<li>backint</li>
+<li>prole</li>
+<li>createinfo</li>
+<li>backfm</li>
+<li>backintv3.cat</li>
+<li>initSID.bki</li>
+<li>libtdp_r3.&lt;ext&gt;</li>
+<li>archive.ksh</li>
+<li>backup.ksh</li>
+<li>crontab.sample</li>
+<li>dsm.opt</li>
+<li>dsm.sys</li>
+<li>gensortfile.sh</li>
+<li>inclexcl.list</li>
+<li>README</li>
+<li>RELNOTE</li>
+<li>TIPHINTS</li>
+</ul>
+<p>se crea una carpeta denominada _uninst, que contiene varios archivos.</p>
+<p>Los archivos de configuración de DP for mySAP.com bajo los directorios de SAP (generalmente, /oracle/SID/dbs) son los siguientes:</p>
+<ul>
+<li>init&lt;SID&gt;.utl, donde ‘SID’ se sustituye por el SID de la base de datos Oracle proporcionado durante la instalación</li>
+<li>init&lt;SID&gt;.bki, donde ‘SID’ se sustituye por el SID de la base de datos Oracle proporcionado durante la instalación</li>
+<li>agent.lic (Sólo después de la instalación desde CD-ROM, no está contenido en el paquete de la web).</li>
+</ul>
+<p>La configuración de Data Protection for mySAP.com se realiza con el siguiente valor básico de rendimiento:</p>
+<p>Multiplexing 1</p>
+<p>Parallel Sessions 1</p>
+<p>Para ajustar los valores a sus requisitos, en el soporte de instalación se proporciona un perfil de ejemplo, initSID.utl. El procedimiento de instalación para UNIX copia el archivo y cambia su nombre por $ORACLE_HOME/dbs/init$ORACLE_SID.utl, donde $ORACLE_HOME es el directorio inicial de Oracle y $ORACLE_SID es el ID del sistema Oracle, por ejemplo /oracle/&lt;SID&gt;/dbs/init&lt;SID&gt;.utl.</p>
+<p>Se aplican a la sintaxis las reglas siguientes:</p>
+<ul>
+<li>Cada línea se analiza por separado.</li>
+<li>Las palabras clave pueden empezar en cualquier columna de la línea.</li>
+<li>Las palabras clave no deben ir precedidas de ninguna cadena, a excepción de espacios en blanco.</li>
+<li>Si una palabra clave se encuentra varias veces, se utiliza la última.</li>
+<li>El proceso de archivos finaliza cuando se encuentra la palabra clave END o se llega al final del archivo.</li>
+<li>El símbolo de comentario es #. Una exploración de la línea actual se detiene cuando se encuentra el símbolo de comentario. No se permite ningún comentario entre la palabra clave y los valores. Por ejemplo:</li>
+</ul>
+<!-- -->
+<pre><code>      #BRARCHIVEMGTCLASS   MLOG1                    &lt;--  correcto
+      BRARCHIVEMGTCLASS    MLOG1  #                 &lt;--  correcto
+      BRARCHIVEMGTCLASS  # MLOG1                    &lt;--  INCORRECTO
+</code></pre>
+<p>En cualquier caso se requieren unas cuantas palabras clave, pero la mayoría son opcionales. Cada una de las palabras clave opcionales tiene preestablecido un valor predeterminado.</p>
+<p><strong>La contraseña</strong></p>
+<p>Data Protection for mySAP.com se debe instalar una vez finalizada la instalación de TSM. TSM proporciona dos métodos de contraseña diferentes para proteger los datos. Data Protection for mySAP.com debe utilizar el mismo método que se haya especificado en TSM. Cuando se instala Data Protection for mySAP.com, se da por supuesto que el método de contraseña, seleccionado durante la instalación de TSM, es manejo manual de contraseñas (indicador PASSWORDACCESS). Los parámetros predeterminados para Data Protection for mySAP.com se establecen según este supuesto. Si para TSM se establece un método de contraseña diferente, consulte el apartado Métodos de manejo de contraseñas para ajustar los parámetros de Data Protection for mySAP.com.</p>
+<p>Para poder trabajar con Data Protection for mySAP.com, tiene que proporcionar a Data Protection for mySAP.com la contraseña correspondiente al nodo de TSM. Este es un paso manual en el shell:</p>
+<p>Conéctese como usuario de Oracle. Ejecutar el siguiente comando :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">backint -p &lt;ruta completa a archivo UTL&gt;/init&lt;SID&gt;.utl -f contraseña</span></span></code></pre></div><p>Introdusca la contraseña cuando se le solicite.</p>
+<h5 id="problemas-comúnes-con-backint">Problemas comúnes con BACKINT<a class="anchor" href="#problemas-com%c3%banes-con-backint">#</a></h5>
+<p>Los mas errores frecuentes son:</p>
+<p>Mensaje de error:</p>
+<ul>
+<li>BKI2001E: Error de socket al conectar con PROLE en &lt;Dirección-IP&gt;:&lt;PUERTO&gt;: Conexión rechazada.</li>
+</ul>
+<p><img src="/manuales/tivoli_tsm/manual_de_manejo_de_backups_con_tivoli/backint_problema.gif" class="align-right" /> Compruebe que el daemon background se está ejecutando, en UNIX.</p>
+<p>Para comprobar el daemon, ejecute el comando:</p>
+<ul>
+<li>ps -ef | grep prole</li>
+</ul>
+<p>Compruebe la entrada contenida en /etc/services.</p>
+<p>Compare el número de puerto indicado en el mensaje de error con el número de puerto que aparece en /etc/services. Vea también /etc/inittab. Si se ha establecido otro puerto mediante la opción -p&lt;PUERTO&gt;, compruébelo también.</p>
+<p>Si todo esto no le sirve de ayuda, inicie el prole desde otro shell, prole -p &lt;PUERTO&gt;, y vuelva a intentar iniciar backint.</p>
+<p>Mensaje de error:</p>
+<ul>
+<li>BKI5001E: Error de Tivoli Storage Manager: No se ha encontrado el servidor en el archivo de configuración.</li>
+</ul>
+<p>El Servidor de TSM indicado en init&lt;SID&gt;.utl no coincide con el especificado en el archivo dsm.sys utilizado.</p>
+<p>Mensaje de error:</p>
+<ul>
+<li>BKI5001E: Error de Tivoli Storage Manager: ANS1353E (RC53) Sesión rechazada: Se ha entrado un ID desconocido o incorrecto</li>
+</ul>
+<p>Se puede producir este mensaje si el nodo de la stanza de servidor en el archivo UTL no es válido en el servidor. Vea también la referencia de la API (es decir, busque el mensaje en tivoli.com)</p>
+<p>COLGADO: Si backint se cuelga después de entrar la contraseña, es posible que la dirección IP del servidor indicada en dsm.sys sea incorrecta.</p>
+<h1 id="configuracion-de-clientes">Configuracion de Clientes<a class="anchor" href="#configuracion-de-clientes">#</a></h1>
+<h1 id="cliente-standard">Cliente Standard<a class="anchor" href="#cliente-standard">#</a></h1>
+<h2 id="gnulinux">GNU/Linux<a class="anchor" href="#gnulinux">#</a></h2>
+<blockquote class="book-hint success" >
+<p>It seems to be a better solution, I haven’t tested yet <a href="http://adsm.org/files/TSM/Clients/Linux/Debian/">http://adsm.org/files/TSM/Clients/Linux/Debian/</a></p>
+</blockquote>
+<blockquote class="book-hint danger" >
+<p>It doesn’t work as expected, I’ll spend more time on it, but actually I don’t have time</p>
+</blockquote>
+The TSM Client is proposed only as a RPM. With `alien` you can convert the `rpm` to a `deb`. Download the `tar` file : <ftp://ftp.software.ibm.com/storage/tivoli-storage-management/maintenance/client/v5r5/Linux/> from IBM website then untar the file and alien all the `rpm` :
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">test# tar xf 5.5.0.0-TIV-TSMBAC-LinuxX86.tar
+</span></span><span class="line"><span class="cl">test# alien *.rpm</span></span></code></pre></div><p>Now you’ve got all <code>rpm</code> in <code>deb</code> format, you can install those packages with <code>dpkg</code> :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">test# dpkg --force-all -i *.deb</span></span></code></pre></div><p>You would notice there’s <code>api64</code> and <code>api</code> files, do not install the <code>api64</code> file on 32 bits system.</p>
+<p>Now all your files are installed on <code>/opt/tivoli</code>. You have to add library in your ld cache first, those library are stored on <code>/opt/tivoli/tsm/client/api/bin</code>. You have to create a file in <code>/etc/ld.so.conf.d/</code>, for example <code>tivoli.conf</code> and add the path in it :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">test# echo &#34;/opt/tivoli/tsm/client/api/bin&#34; &gt; /etc/ld.so.conf.d/tivoli.conf</span></span></code></pre></div><p>And then run <code>ldconfig</code> :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">test# ldconfig</span></span></code></pre></div><p>Finally just create a symbolic link in <code>/opt/tivoli/tsm/client/ba/bin</code> to <code>/opt/tivoli/tsm/client/lang/en_US</code> :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">test# cd /opt/tivoli/tsm/client/ba/bin
+</span></span><span class="line"><span class="cl">test# ln -s ../../lang/en_US en_US</span></span></code></pre></div><p>Now your client is ready to use. The rest is well documented in the IBM documentation.</p>
+<h3 id="init-script">Init script<a class="anchor" href="#init-script">#</a></h3>
+<p>Now you need an init script. So this is mine (based on <code>/etc/init.d/skeleton</code>) :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#! /bin/sh
+</span></span></span><span class="line"><span class="cl"><span class="c1">### BEGIN INIT INFO</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Provides:          dsmcad </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Required-Start:    $all</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Required-Stop:     </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Default-Start:     2 3 4 5</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Default-Stop:      0 1 6</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Short-Description: Run the TSM Client acceptator</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Description:       Run the TSM Client acceptator provided by the IBM rpm.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">### END INIT INFO</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Author: Etienne Bagnoud &lt;tchetch@i-james.com&gt; </span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">PATH</span><span class="o">=</span>/sbin:/usr/sbin:/bin:/usr/bin:/opt/tivoli/tsm/client/ba/bin
+</span></span><span class="line"><span class="cl"><span class="nv">DESC</span><span class="o">=</span><span class="s2">&#34;TSM Client acceptator&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">NAME</span><span class="o">=</span>dsmcad
+</span></span><span class="line"><span class="cl"><span class="nv">DAEMON</span><span class="o">=</span>/opt/tivoli/tsm/client/ba/bin/<span class="nv">$NAME</span>
+</span></span><span class="line"><span class="cl"><span class="nv">SCRIPTNAME</span><span class="o">=</span>/etc/init.d/<span class="nv">$NAME</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Exit if the package is not installed</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span> -x <span class="s2">&#34;</span><span class="nv">$DAEMON</span><span class="s2">&#34;</span> <span class="o">]</span> <span class="o">||</span> <span class="nb">exit</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">. /lib/init/vars.sh
+</span></span><span class="line"><span class="cl">. /lib/lsb/init-functions
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">do_start<span class="o">()</span>
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">        start-stop-daemon --start --quiet --exec <span class="nv">$DAEMON</span> --test &gt; /dev/null <span class="se">\
+</span></span></span><span class="line"><span class="cl">                <span class="o">||</span> <span class="k">return</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">        start-stop-daemon --start --quiet --exec <span class="nv">$DAEMON</span> -- <span class="se">\
+</span></span></span><span class="line"><span class="cl">                <span class="o">||</span> <span class="k">return</span> <span class="m">2</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">do_stop<span class="o">()</span>
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># TODO It seems that start-stop-daemon crash when stopping dsmcad</span>
+</span></span><span class="line"><span class="cl">        start-stop-daemon --stop --quiet --retry<span class="o">=</span>20/TERM/5/KILL --name <span class="nv">$NAME</span>
+</span></span><span class="line"><span class="cl">        <span class="nv">RETVAL</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$?</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s2">&#34;</span><span class="nv">$RETVAL</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">case</span> <span class="s2">&#34;</span><span class="nv">$1</span><span class="s2">&#34;</span> in
+</span></span><span class="line"><span class="cl">  start<span class="o">)</span>
+</span></span><span class="line"><span class="cl">        <span class="o">[</span> <span class="s2">&#34;</span><span class="nv">$VERBOSE</span><span class="s2">&#34;</span> !<span class="o">=</span> no <span class="o">]</span> <span class="o">&amp;&amp;</span> log_daemon_msg <span class="s2">&#34;Starting </span><span class="nv">$DESC</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="nv">$NAME</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">        do_start
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="s2">&#34;</span><span class="nv">$?</span><span class="s2">&#34;</span> in
+</span></span><span class="line"><span class="cl">                0<span class="p">|</span>1<span class="o">)</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="nv">$VERBOSE</span><span class="s2">&#34;</span> !<span class="o">=</span> no <span class="o">]</span> <span class="o">&amp;&amp;</span> log_end_msg <span class="m">0</span> <span class="p">;;</span>
+</span></span><span class="line"><span class="cl">                2<span class="o">)</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="nv">$VERBOSE</span><span class="s2">&#34;</span> !<span class="o">=</span> no <span class="o">]</span> <span class="o">&amp;&amp;</span> log_end_msg <span class="m">1</span> <span class="p">;;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">esac</span>
+</span></span><span class="line"><span class="cl">        <span class="p">;;</span>
+</span></span><span class="line"><span class="cl">  stop<span class="o">)</span>
+</span></span><span class="line"><span class="cl">        <span class="o">[</span> <span class="s2">&#34;</span><span class="nv">$VERBOSE</span><span class="s2">&#34;</span> !<span class="o">=</span> no <span class="o">]</span> <span class="o">&amp;&amp;</span> log_daemon_msg <span class="s2">&#34;Stopping </span><span class="nv">$DESC</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="nv">$NAME</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">        do_stop
+</span></span><span class="line"><span class="cl">        <span class="k">case</span> <span class="s2">&#34;</span><span class="nv">$?</span><span class="s2">&#34;</span> in
+</span></span><span class="line"><span class="cl">                0<span class="p">|</span>1<span class="o">)</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="nv">$VERBOSE</span><span class="s2">&#34;</span> !<span class="o">=</span> no <span class="o">]</span> <span class="o">&amp;&amp;</span> log_end_msg <span class="m">0</span> <span class="p">;;</span>
+</span></span><span class="line"><span class="cl">                2<span class="o">)</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="nv">$VERBOSE</span><span class="s2">&#34;</span> !<span class="o">=</span> no <span class="o">]</span> <span class="o">&amp;&amp;</span> log_end_msg <span class="m">1</span> <span class="p">;;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">esac</span>
+</span></span><span class="line"><span class="cl">        <span class="p">;;</span>
+</span></span><span class="line"><span class="cl">  *<span class="o">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">echo</span> <span class="s2">&#34;Usage: </span><span class="nv">$SCRIPTNAME</span><span class="s2"> {start|stop}&#34;</span> &gt;<span class="p">&amp;</span><span class="m">2</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">exit</span> <span class="m">3</span>
+</span></span><span class="line"><span class="cl">        <span class="p">;;</span>
+</span></span><span class="line"><span class="cl"><span class="k">esac</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">:</span></span></code></pre></div><h2 id="windows">Windows<a class="anchor" href="#windows">#</a></h2>
+<p>Ejemplo para el nodo SRVWINDOWS con el password client</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dsmcutil inst /name:&#34;TSM Client Scheduler&#34; /node:SRVWINDOWS /password:client /autostart:yes</span></span></code></pre></div><p>Ref.: <a href="http://publib.boulder.ibm.com/infocenter/tivihelp/v1r1/index.jsp?topic=%2Fcom.ibm.itsmfdt.doc%2Fans60000542.htm">http://publib.boulder.ibm.com/infocenter/tivihelp/v1r1/index.jsp?topic=%2Fcom.ibm.itsmfdt.doc%2Fans60000542.htm</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">C:\Tivoli\TSM\baclient&gt;dsmcutil inst /name:&#34;TSM Client Scheduler&#34; /node:SRVWINDOWS
+</span></span><span class="line"><span class="cl"> /password:client
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">TSM Windows NT Client Service Configuration Utility
+</span></span><span class="line"><span class="cl">Command Line Interface - Version 5, Release 5, Level 2.0
+</span></span><span class="line"><span class="cl">(C) Copyright IBM Corporation, 1990, 2009, All Rights Reserved.
+</span></span><span class="line"><span class="cl">Last Updated Mar 22 2009
+</span></span><span class="line"><span class="cl">TSM Api Verison 5.5.2
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Command: Install TSM Client Service
+</span></span><span class="line"><span class="cl">Machine: SRVWINDOWS(Local Machine)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Installing TSM Client Service:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">       Machine          : SRVWINDOWS
+</span></span><span class="line"><span class="cl">       Service Name     : TSM Client Scheduler
+</span></span><span class="line"><span class="cl">       Client Directory : C:\Tivoli\TSM\baclient
+</span></span><span class="line"><span class="cl">       Automatic Start  : no
+</span></span><span class="line"><span class="cl">       Logon Account    : LocalSystem
+</span></span><span class="line"><span class="cl">The service was successfully installed.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Creating Registry Keys ...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Updated registry value &#39;ImagePath&#39; .
+</span></span><span class="line"><span class="cl">Updated registry value &#39;EventMessageFile&#39; .
+</span></span><span class="line"><span class="cl">Updated registry value &#39;TypesSupported&#39; .
+</span></span><span class="line"><span class="cl">Updated registry value &#39;TSM Client Scheduler&#39; .
+</span></span><span class="line"><span class="cl">Updated registry value &#39;ADSMClientKey&#39; .
+</span></span><span class="line"><span class="cl">Updated registry value &#39;OptionsFile&#39; .
+</span></span><span class="line"><span class="cl">Updated registry value &#39;ClientNodeName&#39; .
+</span></span><span class="line"><span class="cl">Updated registry value &#39;EventLogging&#39; .
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Generating registry password ...
+</span></span><span class="line"><span class="cl">Authenticating TSM password for node SRVWINDOWS ...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Connecting to TSM Server via client options file &#39;C:\Tivoli\TSM\baclient\dsm.opt
+</span></span><span class="line"><span class="cl">&#39; ...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Password authentication successful.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">The registry password for TSM node SRVWINDOWS has been updated.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Starting the &#39;TSM Client Scheduler&#39; service ...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">The service was successfully started.</span></span></code></pre></div><p>Ejemplo de como instalar el servicio TDP para Domino</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dsmcutil install /name:&#34;TDP for Lotus Domino Schedule&#34; /node:SRVLOTUS01 /password:client /optfile:&#34;c:\tivoli\tsm\domino\dsm.opt&#34; /clientdir:&#34;c:\tivoli\tsm\baclient&#34; /schedlog:&#34;c:\tivoli\tsm\domino\domsch.log&#34;</span></span></code></pre></div><h1 id="cliente-tdp">Cliente TDP<a class="anchor" href="#cliente-tdp">#</a></h1>
+<h1 id="configuración-de-nodo-tdp-para-backup-online-de-sap">Configuración de nodo TDP para Backup Online de SAP<a class="anchor" href="#configuraci%c3%b3n-de-nodo-tdp-para-backup-online-de-sap">#</a></h1>
+<img src="/manuales/tivoli_tsm/manual_de_manejo_de_backups_con_tivoli/esquema.gif" class="align-center" alt="esquema.gif" />
+<p>1 - La base debe estar en modo ARCHIVE LOG</p>
+<p>2 – Instalación</p>
+<p>Debemos correr el ejecutable del instalador</p>
+<p>Elegir SID</p>
+<p>Elegir Oracle_Home/dbs</p>
+<p>Configurar primero el nodo en TSM server</p>
+<p>Configurar en /opt/tivoli/tsm/client/api/bin los archivos dsm.sys y dsm.opt</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># cat dsm.opt
+</span></span><span class="line"><span class="cl">************************************************************************
+</span></span><span class="line"><span class="cl">* IBM Tivoli Storage Manager                                           *
+</span></span><span class="line"><span class="cl">*                                                                      *
+</span></span><span class="line"><span class="cl">* Sample Client User Options file for AIX and SunOS                    *
+</span></span><span class="line"><span class="cl">************************************************************************
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SErvername       TSERVER1
+</span></span><span class="line"><span class="cl">Quiet</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># cat dsm.sys
+</span></span><span class="line"><span class="cl">************************************************************************
+</span></span><span class="line"><span class="cl">* IBM Tivoli Storage Manager                                           *
+</span></span><span class="line"><span class="cl">*                                                                      *
+</span></span><span class="line"><span class="cl">* Sample Client System Options file for AIX and SunOS                  *
+</span></span><span class="line"><span class="cl">************************************************************************
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SErvername  TSERVER1
+</span></span><span class="line"><span class="cl">  COMMmethod         TCPip
+</span></span><span class="line"><span class="cl">  TCPPort            1500
+</span></span><span class="line"><span class="cl">  TCPServeraddress   10.1.1.90
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">ERRORLOGNAME /tmp/dsmerror.log</span></span></code></pre></div><p>Crear links simbólicos en /opt/tivoli/tsm/client/api/bin64 apuntando a los creados anteriormente.</p>
+<p>Configuración TDP :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">/oracle/&lt;SID&gt;/102_64/dbs # vi init&lt;SID&gt;.utl
+</span></span><span class="line"><span class="cl">/oracle/&lt;SID&gt;/102_64/dbs # vi init&lt;SID&gt;.sap</span></span></code></pre></div><p><strong>ini&lt;SID&gt;.utl</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">#**************************************************************************
+</span></span><span class="line"><span class="cl"># Statement for servers and paths.
+</span></span><span class="line"><span class="cl"># Multiple servers may be defined.
+</span></span><span class="line"><span class="cl">#**************************************************************************
+</span></span><span class="line"><span class="cl">SERVER         TSMSERVER                  # Servername
+</span></span><span class="line"><span class="cl">  SESSIONS            2                  # Maximum number of sessions 
+</span></span><span class="line"><span class="cl">                                         # to server_a
+</span></span><span class="line"><span class="cl">  PASSWORDREQUIRED    YES                # Use a password
+</span></span><span class="line"><span class="cl">  ADSMNODE            SERVER_TDP               # Tivoli Storage Manager Nodename
+</span></span><span class="line"><span class="cl">  BRBACKUPMGTCLASS    BACKUP_ONLINE                # Mgmt-Classes
+</span></span><span class="line"><span class="cl">  BRARCHIVEMGTCLASS   LOGS        # Mgmt-Classes
+</span></span><span class="line"><span class="cl"># TCP_ADDRESS         192.168.1.1        # IP address of network interface 
+</span></span><span class="line"><span class="cl">                                         # on server_a 
+</span></span><span class="line"><span class="cl">                                         # Overrides IP address of dsm.sys
+</span></span><span class="line"><span class="cl"># USE_AT              0 1 2 3 4 5 6      # Days when server_a is used for 
+</span></span><span class="line"><span class="cl">                                         # backup
+</span></span><span class="line"><span class="cl">#**************************************************************************
+</span></span><span class="line"><span class="cl"># USE_AT : 0=Su 1=Mo 2=Tu 3=We 4=Th 5=Fr 6=Sa
+</span></span><span class="line"><span class="cl"># The valid range of USE_AT is from 0 to 6.
+</span></span><span class="line"><span class="cl"># Default: all days
+</span></span><span class="line"><span class="cl">#**************************************************************************</span></span></code></pre></div><p>Podemos por ejemplo espejar el backup a dos pools</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  BRARCHIVEMGTCLASS   LOGS LOGS2        # Mgmt-Classes</span></span></code></pre></div><p>Si hay problemas en que el backup no arranca verificar:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># ps -ef | grep prole
+</span></span><span class="line"><span class="cl">root      1123 26374  0 10:38 pts/1    00:00:00 grep prole
+</span></span><span class="line"><span class="cl">root     32757     1  0 10:17 ?        00:00:00 /opt/tivoli/tsm/tdp_r3/ora64/prole -p tdpr3ora64</span></span></code></pre></div><p>Luego hay que inicializar el nodo por única vez con la password</p>
+<p>Ejecutar</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">orasid # backint -p /oracle/&lt;SID&gt;/102_64/dbs/init&lt;SID&gt;.utl -f password</span></span></code></pre></div><p>Importante: verificar que el archivo /tmp/dsmerror.log tenga permisos 777</p>
+<p>Luego hay que poner en modo archive la base de datos y probar un los backup online desde SAP por medio de la <strong>Trx. DB13</strong>.</p>
+<h1 id="problemas-comunes">Problemas comunes<a class="anchor" href="#problemas-comunes">#</a></h1>
+<p><strong>Reinstalar la licencia de TSM</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">register license file=*.lic </span></span></code></pre></div><p><strong>ANS1316E The server does not have enough recovery log space</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dsmserv reset logm</span></span></code></pre></div><h1 id="problemas-no-comunes">Problemas no comunes<a class="anchor" href="#problemas-no-comunes">#</a></h1>
+<h2 id="restore-de-una-base-tsm">Restore de una base TSM<a class="anchor" href="#restore-de-una-base-tsm">#</a></h2>
+<ol>
+<li>Instalar el servidor TSM y todos sus parches hasta llegar a la versión que tenía el dañado.</li>
+<li>Copiar del servidor TSM viejo en la carpeta F:\tsmdata\dbbackup los archivos volhist.out, devconf.out y el último *.dbb a la carpeta c:\tivoli\tsm\server1.</li>
+<li>Ejecutar c:\tivoli\tsm\server\dsmserv loadformat 1 f:\tsmdata\server1\log1.dsm 1000 1 f:\tsmdata\server1\db1.dsm</li>
+<li>DSMSERV RESTORE DB DEV=FILE VOL=f:\tsmdata\dbbackup\63423647.dbb COMMIT=Yes</li>
+<li>Ejecutar dsmserv auditdb fix=yes</li>
+<li>Conectarse a la consola y verificar que se vea la unidad de tape con query path y query dr.</li>
+<li>Recrear los storage pool de disco.</li>
+<li>Verificar el path de la device class FILE para que apunte a F:\TSMDATA\DBBACKUP.</li>
+<li>Ejecutar un backup de la base desde la consola de TSM <strong>backup db t=f dev=file wait=yes</strong>.</li>
+</ol>
+<h2 id="disaster-recovery-for-sap-r3-on-oracle">Disaster Recovery for SAP R/3 on Oracle<a class="anchor" href="#disaster-recovery-for-sap-r3-on-oracle">#</a></h2>
+<h2 id="procedimiento-para-recuperar-una-base-de-datos-correspondiente-a-una-instancia-sap-luego-de-un-desastre">Procedimiento para recuperar una base de datos correspondiente a una instancia SAP luego de un desastre<a class="anchor" href="#procedimiento-para-recuperar-una-base-de-datos-correspondiente-a-una-instancia-sap-luego-de-un-desastre">#</a></h2>
+<p>Este procedimiento está basado en la nota de SAP número 96848, cualquier duda referirse a la misma.</p>
+<p>Requisitos:</p>
+<p>Contar con un full backup online u offline (en este procedimiento el ejemplo es con full backup online realizado con brbackup) La base de datos debe estar en modo archive (lo más lógico es que esté) En caso de haberse perdido todo debe instalarse previamente TSM y luego recuperarse de un backup realizado con TSM para los binarios de SAP y Oracle más todos los archivos de configuración. Para utilizar el brrestore debe existir el archivo initSID.sap, ej. initDE1.sap</p>
+<p>Pasos del recovery:</p>
+<ol>
+<li>Ubicar el archivo de log del último backup online bueno, el nombre figura en el archivo /oracle/SID/sapbackup/backSID.log, ahífigura la fecha y hora de realización del backup, y la primer columna denota el nombre buscado, ej: bdnrsjbq anf.</li>
+<li>Primero habría que asegurarse que ese backup se realizócorrectamente, entonces editando ese archivo, vi bdnrsjbq anf, buscar que el código de retorno sea cero, ej BKI0024I: Return code is: 0, lo mismo para el brarchive al final del mismo.</li>
+<li>Loguearse con el usuario ora&lt;SID&gt; y realizar el full restore con el comando: <strong>brrestore -b bdnrsjbq.anf -m full</strong>, siendo bdnrsjbq.anf el archivo que contiene el detalle del backup online.</li>
+<li>Recuperar todos los archive logs necesarios, esto se realiza con el comando <strong>brrestore -a log_seq1-loq_seqN</strong>, donde estos dos parámetros son los números de secuencia de los archive logs ya salvados por el brarchive que figuran en el archivo /oracle/SID/saparch/archSID.log.</li>
+<li>Luego de recuperados los archivos realizar los siguientes pasos conectandose a oracle con <strong>sqlplus “/ as sysdba”</strong>.</li>
+</ol>
+<!-- -->
+<pre><code>      SQL&gt; set autorecovery off
+      SQL&gt; startup mount
+      SQL&gt; recover database using backup controlfile until cancel;    --&gt; acá va a ir sugiriendo los archive logs hasta que uno tipee cancel.
+      SQL&gt; alter database open resetlogs;             --&gt; esto pone a cero los redo logs online y los recrea.
+</code></pre>
+<h1 id="consultas-sql-de-tivoli">Consultas SQL de Tivoli<a class="anchor" href="#consultas-sql-de-tivoli">#</a></h1>
+<h2 id="introducción">Introducción<a class="anchor" href="#introducci%c3%b3n">#</a></h2>
+<p>La sintaxis básica de SQL es</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">La</span> <span class="n">norma</span> <span class="n">de</span> <span class="n">operador</span> <span class="n">de</span> <span class="n">SQL</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="n">mayúsculas</span> <span class="n">y</span> <span class="n">minúsculas</span> <span class="n">al</span> <span class="n">comparar</span> <span class="n">cadenas</span><span class="o">.</span> <span class="n">Se</span> <span class="n">puede</span> <span class="n">utilizar</span> <span class="n">SELECT</span> <span class="n">DISTINCT</span><span class="p">,</span> <span class="n">para</span> <span class="n">eliminar</span> <span class="n">los</span> <span class="n">registros</span> <span class="n">duplicados</span><span class="p">,</span> <span class="n">y</span> <span class="n">obtener</span> <span class="n">datos</span> <span class="n">de</span> <span class="n">más</span> <span class="n">de</span> <span class="n">una</span> <span class="n">tabla</span> <span class="n">utilizando</span> <span class="n">el</span> <span class="n">operador</span> <span class="n">de</span> <span class="n">combinación</span><span class="o">.</span> <span class="n">También</span> <span class="n">se</span> <span class="n">pueden</span> <span class="n">combinar</span> <span class="n">cuando</span> <span class="n">las</span> <span class="n">declaraciones</span> <span class="n">están</span> <span class="n">utilizando</span> <span class="n">el</span> <span class="n">operador</span> <span class="n">AND</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">NOTA</span><span class="p">:</span> <span class="n">El</span> <span class="n">SQL</span> <span class="n">de</span> <span class="n">Tivoli</span> <span class="n">TSM</span> <span class="o">**</span><span class="n">Es</span> <span class="n">un</span> <span class="n">lenguaje</span> <span class="n">de</span> <span class="n">consulta</span> <span class="n">de</span> <span class="n">sólo</span> <span class="n">lectura</span><span class="o">**.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">TSM</span> <span class="n">SQL</span> <span class="n">query</span> <span class="n">command</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">support</span> <span class="n">the</span> <span class="n">full</span> <span class="n">SQL</span> <span class="n">language</span> <span class="n">syntax</span><span class="o">.</span> <span class="n">The</span> <span class="n">following</span> <span class="n">operations</span> <span class="n">will</span> <span class="ow">not</span> <span class="n">work</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl"><span class="n">Los</span> <span class="n">comandos</span> <span class="n">de</span> <span class="n">consulta</span> <span class="n">SQL</span> <span class="n">de</span> <span class="n">Tivoli</span> <span class="n">TSM</span> <span class="n">no</span> <span class="n">son</span> <span class="n">compatibles</span> <span class="n">con</span> <span class="n">toda</span> <span class="n">la</span> <span class="n">sintaxis</span> <span class="n">de</span> <span class="n">lenguaje</span> <span class="n">SQL</span><span class="o">.</span> <span class="n">Las</span> <span class="n">siguientes</span> <span class="n">operaciones</span> <span class="n">no</span> <span class="n">van</span> <span class="n">a</span> <span class="n">funcionar</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="o">**</span><span class="n">UNION</span><span class="o">**</span>
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="o">**</span><span class="n">INTERSECT</span><span class="o">**</span>
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="o">**</span><span class="n">EXCEPT</span><span class="o">**</span>
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="o">//</span><span class="n">Las</span> <span class="n">subconsultas</span> <span class="n">que</span> <span class="n">devuelven</span> <span class="n">varios</span> <span class="n">valores</span><span class="o">//</span>
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="o">//</span><span class="n">No</span> <span class="n">se</span> <span class="n">puede</span> <span class="n">utilizar</span> <span class="n">un</span> <span class="n">punto</span> <span class="n">y</span> <span class="n">coma</span> <span class="n">como</span> <span class="n">terminador</span> <span class="n">de</span> <span class="n">comando</span><span class="o">//</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Se</span> <span class="n">pueden</span> <span class="n">combinar</span> <span class="n">dos</span> <span class="n">tablas</span> <span class="n">por</span> <span class="n">consulta</span><span class="p">,</span> <span class="n">como</span> <span class="n">por</span> <span class="n">ejemplo</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="n">code</span> <span class="n">sql</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="n">SELECT</span> <span class="n">nodes</span><span class="o">.</span><span class="n">domain_name</span><span class="p">,</span><span class="n">summary</span><span class="o">.</span><span class="n">activity</span> <span class="n">FROM</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">summary</span></span></span></code></pre></div><p>Se pueden también estableces alias para la consulta :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="o">====</span> <span class="n">Como</span> <span class="n">son</span> <span class="n">las</span> <span class="n">tablas</span> <span class="n">de</span> <span class="n">TSM</span> <span class="o">====</span>
+</span></span><span class="line"><span class="cl"><span class="n">Para</span> <span class="n">conocer</span> <span class="n">las</span> <span class="n">tablas</span> <span class="n">que</span> <span class="n">existen</span> <span class="n">en</span> <span class="n">TSM</span> <span class="n">y</span> <span class="n">lo</span> <span class="n">que</span> <span class="n">contienen</span><span class="p">,</span> <span class="n">ejecute</span> <span class="n">las</span> <span class="n">siguientes</span> <span class="n">consultas</span> <span class="p">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="n">code</span> <span class="n">sql</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="n">select</span> <span class="o">*</span> <span class="n">from</span> <span class="n">syscat</span><span class="o">.</span><span class="n">tables</span>
+</span></span><span class="line"><span class="cl"><span class="n">select</span> <span class="o">*</span> <span class="n">from</span> <span class="n">syscat</span><span class="o">.</span><span class="n">columns</span>
+</span></span><span class="line"><span class="cl"><span class="n">select</span> <span class="o">*</span> <span class="n">from</span> <span class="n">syscat</span><span class="o">.</span><span class="n">enumtypes</span></span></span></code></pre></div><table>
+  <thead>
+      <tr>
+          <th>Tabla</th>
+          <th>Campo</th>
+          <th>Descripcion</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>ADSM</td>
+          <td>ACTLOG</td>
+          <td>Server activity log</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>ADMINS</td>
+          <td>Server administrators</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>ADMIN_SCHEDULES</td>
+          <td>Administrative command schedules</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>ARCHIVES</td>
+          <td>Client archive files</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>AR_COPYGROUPS</td>
+          <td>Management class archive copy groups</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>ASSOCIATIONS</td>
+          <td>Client schedule associations</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>AUDITOCC</td>
+          <td>Server audit occupancy results</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>BACKUPS</td>
+          <td>Client backup files</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>BACKUPSETS</td>
+          <td>Backup Set</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>BU_COPYGROUPS</td>
+          <td>Management class backup copy groups</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>CLIENTOPTS</td>
+          <td>Client Options</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>CLIENT_SCHEDULES</td>
+          <td>Client schedules</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>CLOPTSETS</td>
+          <td>Client Option Sets</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>COLLOCGROUP</td>
+          <td>Collocation groups</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>CONTENTS</td>
+          <td>Storage pool volume contents</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>DATAMOVERS</td>
+          <td>Data Movers</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>DB</td>
+          <td>Server database information</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>DBBACKUPTRIGGER</td>
+          <td>Database backup trigger information</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>DBSPACETRIGGER</td>
+          <td>Database space trigger information</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>DBVOLUMES</td>
+          <td>Database volumes</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>DEVCLASSES</td>
+          <td>Device Classes</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>DOMAINS</td>
+          <td>Policy domains</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>DRIVES</td>
+          <td>Drives</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>DRMCSTGPOOLS</td>
+          <td>Copy storage pools managed by the disaster recovery manager</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>DRMEDIA</td>
+          <td>Physical volumes managed by move drmedia</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>DRMMACHINE</td>
+          <td>Disaster recovery manager machine information</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>DRMMACHINECHARS</td>
+          <td>Disaster recovery manager machine characteristics</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>DRMMACHINENODE</td>
+          <td>Disaster recovery manager machine node associations</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>DRMMACHINERECINST</td>
+          <td>Disaster recovery manager machine recovery instructions</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>DRMMACHINERECMEDIA</td>
+          <td>Disaster recovery manager machine recovery media associations</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>DRMPSTGPOOLS</td>
+          <td>Primary storage pools managed by the disaster recovery manager</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>DRMRECOVERYMEDIA</td>
+          <td>Disaster recovery manager recovery media</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>DRMSRPF</td>
+          <td>Recovery plan files in source server</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>DRMSTANZA</td>
+          <td>Recovery plan file stanza names</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>DRMSTATUS</td>
+          <td>Disaster recovery manager status information</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>DRMTRPF</td>
+          <td>Recovery plan files in target server</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>EVENTS</td>
+          <td>Scheduled Event Results</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>FILESPACES</td>
+          <td>Client file spaces</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>GROUP_MEMBER</td>
+          <td>Group Members</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>LIBRARIES</td>
+          <td>Libraries</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>LIBVOLUMES</td>
+          <td>Library volumes</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>LICENSES</td>
+          <td>Server feature licenses</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>LICENSE_DETAILS</td>
+          <td>License usage details</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>LOG</td>
+          <td>Server recovery log information</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>LOGSPACETRIGGER</td>
+          <td>Recovery Log space trigger information</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>LOGVOLUMES</td>
+          <td>Recovery log volumes</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>MEDIA</td>
+          <td>Physical volumes managed by move media</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>MGMTCLASSES</td>
+          <td>Management classes</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>NODEGROUP</td>
+          <td>Node Groups</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>NODES</td>
+          <td>Client nodes</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>OCCUPANCY</td>
+          <td>Client storage occupancy</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>OPTIONS</td>
+          <td>Server Options</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>PATHS</td>
+          <td>Paths</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>POLICYSETS</td>
+          <td>Policy sets</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>PROCESSES</td>
+          <td>Client schedule associations</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>PROFILES</td>
+          <td>Profiles</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>PROF_ASSOCIATIONS</td>
+          <td>Profile associations</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>RECLAIM_ANALYSIS</td>
+          <td>Server reclamation analysis table</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>RESTORES</td>
+          <td>Client restore operations</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>SAN</td>
+          <td>SAN attached devices</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>SCRIPTS</td>
+          <td>Server Command Scripts</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>SCRIPT_NAMES</td>
+          <td>Server Command Script Names</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>SERVERS</td>
+          <td>Remote server nodes</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>SERVER_GROUP</td>
+          <td>Server Groups</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>SESSIONS</td>
+          <td>Active client sessions</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>SHREDSTATUS</td>
+          <td>Shred Status</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>SPACEMGFILES</td>
+          <td>Client space-managed files</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>STATUS</td>
+          <td>Server status</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>STGPOOLS</td>
+          <td>Storage pools</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>STGSPACETRIGGER</td>
+          <td>Storage Pool space trigger information</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>SUBSCRIPTIONS</td>
+          <td>Subscriptions</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>SUMMARY</td>
+          <td>Server Activity Summary Table</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>VFSMAPPINGS</td>
+          <td>Virtual Filespace Mappings</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>VOLHISTORY</td>
+          <td>Volume history information</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>VOLUMES</td>
+          <td>Storage pool volumes</td>
+      </tr>
+      <tr>
+          <td>ADSM</td>
+          <td>VOLUMEUSAGE</td>
+          <td>SEQUENTIAL volume usage by client node</td>
+      </tr>
+      <tr>
+          <td>SYSCAT</td>
+          <td>COLUMNS</td>
+          <td>SQL Table Column Catalog</td>
+      </tr>
+      <tr>
+          <td>SYSCAT</td>
+          <td>ENUMTYPES</td>
+          <td>SQL Enumerated Types Catalog</td>
+      </tr>
+      <tr>
+          <td>SYSCAT</td>
+          <td>TABLES</td>
+          <td>SQL Table Catalog</td>
+      </tr>
+  </tbody>
+</table>
+<p>La tabla <strong>SUMMARY</strong> contiene una gran cantidad de entradas útiles para las estadísticas generales. Un par de los campos son <strong>SUMMARY.ACTIVITY</strong> Y <strong>SUMMARY.SUCCESFUL</strong>. El campo de la actividad contiene en la actualidad, ‘TAPE MOUNT’, ‘FULL_DBBACKUP’, ‘INCR_DBBACKUP’, ‘EXPIRATION’, ‘RECLAMATION’, ‘MIGRATION’, ‘MOVE DATA’, ‘STGPOOL BACKUP’, ‘BACKUP’, ‘RESTORE’, ‘ARCHIVE’ y ‘RETRIEVE’. El campo successful puede ser ‘YES’ o ‘NO’. Sin embargo, no se puede confiar en la tabla de resumen para informar sobre el éxito de los eventos de cliente como de backup y restauración, ya que sólo informa sobre los progresos realizados hasta el momento.</p>
+<p>El campo DATE en la tabla EVENTS no admite expresiones como ‘scheduled_start &gt;= current_timestamp-24 hours’. Si emite esta consulta a las 14:00 devolverá todos los eventos que se inició después de la medianoche de hoy, pero no las que existen entre las 14:00 y la medianoche de ayer. Usted puede obtener los resultados correctos mediante la combinación de la marca de tiempo en relación con una marca de tiempo constante, por ejemplo, si ayer fue el 25 de marzo, entonces este va a funcionar.</p>
+<h3 id="formateo-de-consultas-sql">Formateo de consultas SQL<a class="anchor" href="#formateo-de-consultas-sql">#</a></h3>
+<p>Si se introduce consultas SQL desde la línea de comandos los resultados se obtendrán en formato tabular. Se puede canalizar el comando a un archivo y obtener los resultados en formato delimitado por comas para importar a una hoja de cálculo Excel o similar.</p>
+<p>Ejemplo de como exportar los resultados a un archivo CSV con campos delimitados por comas :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dsmadmc -id=adminid -password=adminpassword -commadelimited &#39;select etc &#39;  &gt; filename</span></span></code></pre></div><p>Ejemplo de como direccionar la salida a archivos :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> summary.txt
+</span></span><span class="line"><span class="cl">select * from summary where date&gt;current_timestamp - 24 hours &gt; summary.out</span></span></code></pre></div><h3 id="uso-de-columnas-indexadas-para-acelerar-consultas">Uso de columnas indexadas para acelerar consultas<a class="anchor" href="#uso-de-columnas-indexadas-para-acelerar-consultas">#</a></h3>
+<p>En TSM las consultas SQL se pueden ejecutar durante mucho tiempo, y utilizar una gran cantidad de recursos. Esto es generalmente debido a que están buscando en la base de datos completa para obtener los datos que desee. Puede reducir la cantidad de datos de la búsqueda mediante la selección de los datos específicos de una columna indexada utilizando una sentencia WHERE.</p>
+<p>Para saber qué columnas están indexadas, utilice la siguiente consulta :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Obtendremos un resultado como este :
+</span></span><span class="line"><span class="cl">&lt;code&gt;
+</span></span><span class="line"><span class="cl"> TABSCHEMA: ADSM
+</span></span><span class="line"><span class="cl">      TABNAME: MEDIA
+</span></span><span class="line"><span class="cl">      COLNAME: LRD
+</span></span><span class="line"><span class="cl">        COLNO: 9
+</span></span><span class="line"><span class="cl"> INDEX_KEYSEQ: 
+</span></span><span class="line"><span class="cl">  INDEX_ORDER: 
+</span></span><span class="line"><span class="cl">     TYPENAME: TIMESTAMP
+</span></span><span class="line"><span class="cl">       LENGTH: 0
+</span></span><span class="line"><span class="cl">        SCALE: 0
+</span></span><span class="line"><span class="cl">        NULLS: TRUE
+</span></span><span class="line"><span class="cl">      REMARKS: Last Reference Date
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    TABSCHEMA: ADSM
+</span></span><span class="line"><span class="cl">      TABNAME: MGMTCLASSES
+</span></span><span class="line"><span class="cl">      COLNAME: DOMAIN_NAME
+</span></span><span class="line"><span class="cl">        COLNO: 1
+</span></span><span class="line"><span class="cl"> INDEX_KEYSEQ: 1
+</span></span><span class="line"><span class="cl">  INDEX_ORDER: A
+</span></span><span class="line"><span class="cl">     TYPENAME: VARCHAR
+</span></span><span class="line"><span class="cl">       LENGTH: 30
+</span></span><span class="line"><span class="cl">        SCALE: 0
+</span></span><span class="line"><span class="cl">        NULLS: FALSE
+</span></span><span class="line"><span class="cl">      REMARKS: Policy Domain Name</span></span></code></pre></div><p>Esto indica que la columna DOMAIN_NAME de la tabla de MGMTCLASSES está indexada, pero la columna LRD en la tabla MEDIA no esta indexada. Así que si usted ejecuta una consulta, como :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">La consulta se ejecutará mas rápido.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">==== Formato de datos SQL ====
+</span></span><span class="line"><span class="cl">El formato timestamp o marca de tiempo para consultas SQL de TSM es el siguiente:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;code&gt;
+</span></span><span class="line"><span class="cl">  &#39;yyyy-mm-dd hh:mm:ss.nnnnnn&#39;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  yyyy = año
+</span></span><span class="line"><span class="cl">  mm = mes
+</span></span><span class="line"><span class="cl">  dd = dia
+</span></span><span class="line"><span class="cl">  hh = hora
+</span></span><span class="line"><span class="cl">  mm = minutos
+</span></span><span class="line"><span class="cl">  ss = segundos 
+</span></span><span class="line"><span class="cl">  nnnnnn = fracción de segundo</span></span></code></pre></div><p>‘ss’ y ‘nnnnnn’ son parámetros opcionales. Cuando se hace referencia a una marca de tiempo, por ejemplo para seleccionar los registros que se iniciaron después de las 12:00 el 21 de julio se especificaría <strong>start_time &lt;= ‘2005-07-21 12:00:00’</strong>.<br>
+Se puede dividir el sello de tiempo usando una función de fecha o una función de tiempo. Por ejemplo, para seleccionar los registros que se iniciaron el 21 de julio usar <strong>date(start_time) &gt;= ‘2005-07-21’</strong>.<br>
+Si sólo desea ver los registros que comenzaron después de las 21:00, deberá añadir <strong>time(start_time) &lt;= ‘12:00:00’</strong>.</p>
+<h3 id="como-combinar-dos-tablas-en-una-consulta">Como combinar dos tablas en una consulta<a class="anchor" href="#como-combinar-dos-tablas-en-una-consulta">#</a></h3>
+<p>Es posible combinar dos tablas de TSM en una consulta, pero tenga en cuenta que la base de datos de Tivoli Storage Manager no es realmente relacional, por lo que el join toma algo de tiempo y utiliza altos recursos. Puede ser más rápido que hacer dos consultas, copiar los resultados a continuación y combinar los datos con un programa externo. Para realizar el join :</p>
+<ul>
+<li>Ambas tablas deben tener una columna que contenga los mismos datos</li>
+<li>Se debe asignar un alias a cada table en el FROM</li>
+<li>Seleccione la columna común en ambas tablas usando el nombre de aliasname.table</li>
+<li>El JOIN de datos se debe realizar con un WHERE alias1.column2=alias2.column2</li>
+</ul>
+<p>Por ejemplo</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Esto combina la columna de porcentaje de volumen utilizado a partir de la tabla de volúmenes de la columna con nombre de nodo en la tabla volumeusage, combinado con la columna de volumen de cada uno. Tener en cuenta que esta es una consulta que hace uso intensivo de CPU.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">===== Consultas SQL =====
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">==== Consultas de Administración ====
+</span></span><span class="line"><span class="cl">=== Ver información del servidor ===
+</span></span><span class="line"><span class="cl">&lt;code sql&gt;
+</span></span><span class="line"><span class="cl">SELECT server_name, platform, - 
+</span></span><span class="line"><span class="cl">VARCHAR(version)||&#39;.&#39;||VARCHAR(release)||&#39;.&#39;||VARCHAR(level)||&#39;-&#39;||VARCHAR(sublevel), -
+</span></span><span class="line"><span class="cl">server_hla, server_lla, server_url, logmode, crossdefine, licensecompliance FROM status</span></span></code></pre></div><h4 id="ver-información-general-de-los-nodos">Ver información general de los nodos<a class="anchor" href="#ver-informaci%c3%b3n-general-de-los-nodos">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;code sql&gt;
+</span></span><span class="line"><span class="cl">select NODE_NAME as Nodo, PLATFORM_NAME as Plat, CLIENT_OS_LEVEL as Os, -
+</span></span><span class="line"><span class="cl">(concat(concat(concat(trim(cast(CLIENT_VERSION as character(4))),&#39;-&#39;), -
+</span></span><span class="line"><span class="cl">concat(trim(cast(CLIENT_RELEASE as character(4))),&#39;-&#39;)), -
+</span></span><span class="line"><span class="cl">cast(cast(CLIENT_LEVEL as decimal(4,0)) as character(2)))) as TSM, -
+</span></span><span class="line"><span class="cl">tcp_address, tcp_name  as Host, -
+</span></span><span class="line"><span class="cl">CURRENT_DATE-date(LASTACC_TIME) as Ult_Acceso from nodes order by ULT_ACCESO</span></span></code></pre></div><h4 id="ver-detalles-de-copygroups-de-archive">Ver detalles de Copygroups de Archive<a class="anchor" href="#ver-detalles-de-copygroups-de-archive">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">=== Ver detalles de Copygroups de Backup ===
+</span></span><span class="line"><span class="cl">&lt;code sql&gt;
+</span></span><span class="line"><span class="cl">SELECT DOMAIN_NAME,SET_NAME,CLASS_NAME,VEREXISTS,VERDELETED,RETEXTRA,RETONLY,DESTINATION FROM bu_copygroups             </span></span></code></pre></div><h4 id="ver-detalles-de-management-classes">Ver detalles de Management Classes<a class="anchor" href="#ver-detalles-de-management-classes">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">=== Ver nodo bloqueados ===
+</span></span><span class="line"><span class="cl">&lt;code sql&gt;
+</span></span><span class="line"><span class="cl">SELECT nodes,locked FROM nodes WHERE locked=&#39;YES&#39;</span></span></code></pre></div><h4 id="ver-slots-de-la-libreria-asociados-a-cada-cinta">Ver slots de la libreria asociados a cada cinta<a class="anchor" href="#ver-slots-de-la-libreria-asociados-a-cada-cinta">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">=== Ver información de Backup de la base de datos ===
+</span></span><span class="line"><span class="cl">&lt;code sql&gt;
+</span></span><span class="line"><span class="cl">SELECT * FROM volhistory WHERE ( type=&#39;BACKUPFULL&#39; OR type=&#39;BACKUPINCR&#39; ) -
+</span></span><span class="line"><span class="cl">AND date_time&gt;=current_timestamp-24 hours</span></span></code></pre></div><h4 id="cantidad-de-volúmenes-scratch-permitidos-por-storage-pool">Cantidad de volúmenes Scratch permitidos por storage pool<a class="anchor" href="#cantidad-de-vol%c3%bamenes-scratch-permitidos-por-storage-pool">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">=== Porcentaje de uso por storage pool ===
+</span></span><span class="line"><span class="cl">&lt;code sql&gt;
+</span></span><span class="line"><span class="cl">SELECT stgpool_name,pct_utilized FROM stgpools</span></span></code></pre></div><h4 id="uso-por-storage-pool-en-mb-y-en-cantidad-de-archivos">Uso por storage pool en MB y en cantidad de archivos<a class="anchor" href="#uso-por-storage-pool-en-mb-y-en-cantidad-de-archivos">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">=== Estado de los volúmenes dentro de la libreria ===
+</span></span><span class="line"><span class="cl">&lt;code sql&gt;
+</span></span><span class="line"><span class="cl">SELECT volumes.volume_name, volumes.stgpool_name, volumes.pct_utilized, volumes.pct_reclaim, volumes.status, -
+</span></span><span class="line"><span class="cl">volumes.access FROM volumes, libvolumes WHERE volumes.volume_name=libvolumes.volume_name ORDER BY stgpool_name</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">=== Cantidad de volúmenes por storage pool dentro de la libreria ===
+</span></span><span class="line"><span class="cl">&lt;code sql&gt;
+</span></span><span class="line"><span class="cl">SELECT volumes.stgpool_name, count(*) FROM volumes, libvolumes WHERE -
+</span></span><span class="line"><span class="cl">volumes.volume_name=libvolumes.volume_name GROUP BY stgpool_name</span></span></code></pre></div><h4 id="número-de-volúmenes-por-libreria">Número de volúmenes por libreria<a class="anchor" href="#n%c3%bamero-de-vol%c3%bamenes-por-libreria">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">=== Número de volúmenes con errores dentro de la libreria ===
+</span></span><span class="line"><span class="cl">&lt;code sql&gt;
+</span></span><span class="line"><span class="cl">SELECT volumes.volume_name, volumes.stgpool_name, volumes.pct_utilized, volumes.status, -
+</span></span><span class="line"><span class="cl">volumes.write_errors, volumes.read_errors FROM volumes, libvolumes WHERE -
+</span></span><span class="line"><span class="cl">volumes.volume_name=libvolumes.volume_name AND ( volumes.write_errors&gt;0 OR volumes.read_errors&gt;0 )</span></span></code></pre></div><h3 id="consultas-rápidas-rutinarias">Consultas rápidas rutinarias<a class="anchor" href="#consultas-r%c3%a1pidas-rutinarias">#</a></h3>
+<h4 id="listar-todas-las-cintas-utilizadas-por-un-nodo">Listar todas las cintas utilizadas por un nodo<a class="anchor" href="#listar-todas-las-cintas-utilizadas-por-un-nodo">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">=== Listar todos los nodos que utilizan cierta cinta ===
+</span></span><span class="line"><span class="cl">&lt;code sql&gt;
+</span></span><span class="line"><span class="cl">SELECT DISTINCT node_name,volume_name,stgpool_name FROM volumeusage WHERE volume_name=&#39;xxx&#39;</span></span></code></pre></div><h4 id="cintas-usadas-hoy">Cintas usadas hoy<a class="anchor" href="#cintas-usadas-hoy">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">=current_timestamp - 24 hours)</span></span></code></pre></div><h4 id="la-última-fecha-de-escritura-para-todas-las-cintas">La última fecha de escritura para todas las cintas<a class="anchor" href="#la-%c3%baltima-fecha-de-escritura-para-todas-las-cintas">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">=== Litas las cintas con error y tipo de error ===
+</span></span><span class="line"><span class="cl">&lt;code sql&gt;
+</span></span><span class="line"><span class="cl">SELECT volume_name, read_errors,write_errors FROM volumes WHERE (read_errors &gt;= 1 OR write_errors &gt;= 1)</span></span></code></pre></div><h4 id="cantidad-de-mb-respaldados-las-últimas-24-horas-ordenado-por-nodo">Cantidad de MB respaldados las últimas 24 horas ordenado por nodo<a class="anchor" href="#cantidad-de-mb-respaldados-las-%c3%baltimas-24-horas-ordenado-por-nodo">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">= current_timestamp - 24 hours) -
+</span></span><span class="line"><span class="cl">GROUP BY ENTITY order by &#34;MB xfer&#34;</span></span></code></pre></div><h4 id="cantidad-de-mb-total-respaldados-las-últimas-24-horas">Cantidad de MB total respaldados las últimas 24 horas<a class="anchor" href="#cantidad-de-mb-total-respaldados-las-%c3%baltimas-24-horas">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">=current_timestamp - 24 hours)</span></span></code></pre></div><h4 id="el-número-de-cintas-escritas-las-ultimas-24-horas">El número de cintas escritas las ultimas 24 horas<a class="anchor" href="#el-n%c3%bamero-de-cintas-escritas-las-ultimas-24-horas">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">=current_timestamp - 24 hours)</span></span></code></pre></div><h4 id="nodos-que-en-el-día-anterior-realizaron-restauraciones">Nodos que en el día anterior realizaron restauraciones<a class="anchor" href="#nodos-que-en-el-d%c3%ada-anterior-realizaron-restauraciones">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">=current_timestamp - 24 hours)</span></span></code></pre></div><h4 id="cintas-en-uso-y-máximo-de-scratch-permitidos">Cintas en uso y máximo de scratch permitidos<a class="anchor" href="#cintas-en-uso-y-m%c3%a1ximo-de-scratch-permitidos">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">=== Listas de cintas en estado filling y cuanto esta lleno el storage pool ===
+</span></span><span class="line"><span class="cl">&lt;code sql&gt;
+</span></span><span class="line"><span class="cl">SELECT a.stgpool_name AS &#34;STORAGE POOL&#34;, -
+</span></span><span class="line"><span class="cl">CAST(a.EST_CAPACITY_MB AS DECIMAL(12,0)) AS &#34;SIZE MB&#34;, -
+</span></span><span class="line"><span class="cl">CAST(a.PCT_UTILIZED AS DECIMAL(2,0)) AS &#34;PCT&#34;, -
+</span></span><span class="line"><span class="cl">count(*) AS Filling, CAST(AVG(b.PCT_UTILIZED) AS DECIMAL(2,0)) AS &#34;PCT Full&#34; -
+</span></span><span class="line"><span class="cl">FROM stgpools a, volumes b -
+</span></span><span class="line"><span class="cl">WHERE ((a.stgpool_name = b.stgpool_name AND upper(status)=&#39;FILLING&#39;) -
+</span></span><span class="line"><span class="cl">OR (a.stgpool_name = b.stgpool_name AND devclass_name=&#39;DISK&#39;)) -
+</span></span><span class="line"><span class="cl">GROUP BY a.stgpool_name, a.EST_CAPACITY_MB, a.PCT_UTILIZED</span></span></code></pre></div><h4 id="lista-paginas-expiradas-de-la-base-de-datos">Lista paginas expiradas de la Base de datos<a class="anchor" href="#lista-paginas-expiradas-de-la-base-de-datos">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">=== Conocer resultados de eventos ===
+</span></span><span class="line"><span class="cl">&lt;code sql&gt;
+</span></span><span class="line"><span class="cl">SELECT SCHEDULED_START, events.node_name, events.STATUS, nodes.email_address FROM events, nodes WHERE events.node_name = nodes.node_name</span></span></code></pre></div><h3 id="operaciones-de-conteo-de-elementos">Operaciones de conteo de elementos<a class="anchor" href="#operaciones-de-conteo-de-elementos">#</a></h3>
+<h4 id="consultar-copias-de-seguridad-de-los-pooles">Consultar copias de seguridad de los pooles<a class="anchor" href="#consultar-copias-de-seguridad-de-los-pooles">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">=== Consultar cantidad de filespaces por nodo ===
+</span></span><span class="line"><span class="cl">&lt;code sql&gt;
+</span></span><span class="line"><span class="cl">SELECT node_name, count(*) AS &#34;Number of Filespaces&#34; FROM filespaces GROUP BY node_name ORDER BY 2</span></span></code></pre></div><h4 id="consultar-cantidad-de-plataforma-por-nodo">Consultar cantidad de plataforma por nodo<a class="anchor" href="#consultar-cantidad-de-plataforma-por-nodo">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">=== Consultar cantidad de usuarios administradores de algo ===
+</span></span><span class="line"><span class="cl">&lt;code sql&gt;
+</span></span><span class="line"><span class="cl">SELECT count(*) AS &#34;Number of Administrators&#34; FROM admins</span></span></code></pre></div><h4 id="consultar-cantidad-de-archivos-de-tipo-backup-por-nodo">Consultar cantidad de archivos de tipo Backup por nodo<a class="anchor" href="#consultar-cantidad-de-archivos-de-tipo-backup-por-nodo">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">=== Consultar cantidad de archivos de tipo Archive por nodo ===
+</span></span><span class="line"><span class="cl">&lt;code sql&gt;
+</span></span><span class="line"><span class="cl">SELECT node_name,sum(num_files) AS &#34;Number of Archive Files&#34; FROM occupancy WHERE type=&#39;Arch&#39; GROUP BY node_name</span></span></code></pre></div><h4 id="consultar-numero-de-asociaciones-por-schedule">Consultar numero de asociaciones por Schedule<a class="anchor" href="#consultar-numero-de-asociaciones-por-schedule">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">=== Consultar numero de backupsets ===
+</span></span><span class="line"><span class="cl">&lt;code sql&gt;
+</span></span><span class="line"><span class="cl">SELECT count(*) AS &#34;Number of Backupsets&#34; FROM backupsets</span></span></code></pre></div><h4 id="consultar-numero-de-opciones-de-cliente">Consultar numero de opciones de cliente<a class="anchor" href="#consultar-numero-de-opciones-de-cliente">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">=== Consultar numero de Collocation Groups ===
+</span></span><span class="line"><span class="cl">&lt;code sql&gt;
+</span></span><span class="line"><span class="cl">SELECT count(*) AS &#34;Number of Collocation Groups&#34; FROM collocgroup</span></span></code></pre></div><h4 id="consultar-numero-de-archive-copygroups">Consultar numero de Archive CopyGroups<a class="anchor" href="#consultar-numero-de-archive-copygroups">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">=== Consultar numero de Backup CopyGroups ===
+</span></span><span class="line"><span class="cl">&lt;code sql&gt;
+</span></span><span class="line"><span class="cl">SELECT count(*) AS &#34;Number of Backup CopyGroups&#34; FROM bu_copygroups</span></span></code></pre></div><h4 id="consultar-numero-de-data-movers">Consultar numero de Data Movers<a class="anchor" href="#consultar-numero-de-data-movers">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">=== Consultar numero de Device Classes ===
+</span></span><span class="line"><span class="cl">&lt;code sql&gt;
+</span></span><span class="line"><span class="cl">SELECT count(*) AS &#34;Number of Device Classes&#34; FROM devclasses</span></span></code></pre></div><h4 id="consultar-numero-de-dominios">Consultar numero de Dominios<a class="anchor" href="#consultar-numero-de-dominios">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">=== Consultar numero de Drives ===
+</span></span><span class="line"><span class="cl">&lt;code sql&gt;
+</span></span><span class="line"><span class="cl">SELECT count(*) AS &#34;Number of Drives&#34; FROM drives</span></span></code></pre></div><h4 id="consultar-numero-de-librerias">Consultar numero de Librerias<a class="anchor" href="#consultar-numero-de-librerias">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">=== Consultar numero de Cintas en la libreria ===
+</span></span><span class="line"><span class="cl">&lt;code sql&gt;
+</span></span><span class="line"><span class="cl">SELECT count(*) AS &#34;Number of Library Volumes&#34; FROM libvolumes</span></span></code></pre></div><h4 id="consultar-numero-de-cintas-totales">Consultar numero de Cintas totales<a class="anchor" href="#consultar-numero-de-cintas-totales">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">=== Consultar numero de Management Classes ===
+</span></span><span class="line"><span class="cl">&lt;code sql&gt;
+</span></span><span class="line"><span class="cl">SELECT count(*) AS &#34;Number of Management Classes&#34; FROM mgmtclasses</span></span></code></pre></div><h4 id="consultar-grupos-de-nodos">Consultar grupos de nodos<a class="anchor" href="#consultar-grupos-de-nodos">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">=== Consultar rutas de disposivitos ===
+</span></span><span class="line"><span class="cl">&lt;code sql&gt;
+</span></span><span class="line"><span class="cl">SELECT count(*) AS &#34;Number of Device Paths&#34; FROM paths</span></span></code></pre></div><h4 id="consultar-set-de-politicas">Consultar set de Politicas<a class="anchor" href="#consultar-set-de-politicas">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">=== Consultar set de Schedules de clientes ===
+</span></span><span class="line"><span class="cl">&lt;code sql&gt;
+</span></span><span class="line"><span class="cl">SELECT count(*) AS &#34;Number of Client Schedules&#34; FROM client_schedules</span></span></code></pre></div><h4 id="consultar-numero-de-tareas-programadas">Consultar numero de tareas programadas<a class="anchor" href="#consultar-numero-de-tareas-programadas">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">=== Consultar numero de scripts en el servidor ===
+</span></span><span class="line"><span class="cl">&lt;code sql&gt;
+</span></span><span class="line"><span class="cl">SELECT count(*) AS &#34;Number of Server Scripts&#34; FROM scripts</span></span></code></pre></div><h4 id="consultar-numero-de-servidores-definidos">Consultar numero de servidores definidos<a class="anchor" href="#consultar-numero-de-servidores-definidos">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">=== Consultar numero de grupos de servidores definidos ===
+</span></span><span class="line"><span class="cl">&lt;code sql&gt;
+</span></span><span class="line"><span class="cl">SELECT count(*) AS &#34;Number of Servers Groups Defined&#34; FROM server_group</span></span></code></pre></div><h4 id="consultar-numero-de-storage-pools-definidos">Consultar numero de storage pools definidos<a class="anchor" href="#consultar-numero-de-storage-pools-definidos">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">=== Cuantos clientes hay registrados por dominio ===
+</span></span><span class="line"><span class="cl">&lt;code sql&gt;
+</span></span><span class="line"><span class="cl">SELECT domain_name,num_nodes FROM domains</span></span></code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/manuales/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Manuales de proyectos</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/manuales/tivoli_tsm/tsm_sql_tips/" class="flex align-center">
+        <span>Mandatos de prueba de validación de la actualización de la base de datos</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#desde-paquetes">Desde paquetes</a></li>
+    <li><a href="#creación-de-los-archivos-de-la-base-de-datos">Creación de los archivos de la base de datos</a>
+      <ul>
+        <li><a href="#backup-de-la-base">Backup de la base</a></li>
+      </ul>
+    </li>
+    <li><a href="#configuración-del-servicio-de-backup">Configuración del servicio de backup</a></li>
+    <li><a href="#configurando-dispositivo-de-tape">Configurando dispositivo de Tape</a></li>
+    <li><a href="#configurando-dispositivo-de-vtl---data-domain">Configurando dispositivo de VTL - Data Domain</a></li>
+    <li><a href="#configuraciones-extras">Configuraciones extras</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#tipos-de-backups">Tipos de Backups</a>
+      <ul>
+        <li><a href="#backups-programados">Backups Programados</a>
+          <ul>
+            <li><a href="#compresión-del-lado-del-cliente">Compresión del lado del cliente</a></li>
+            <li><a href="#clientes-de-tivoli-storage-manager-en-sistemas-unix">Clientes de Tivoli Storage Manager en sistemas UNIX</a></li>
+            <li><a href="#clientes-de-tivoli-storage-manager-en-sistemas-windows">Clientes de Tivoli Storage Manager en sistemas Windows</a></li>
+          </ul>
+        </li>
+        <li><a href="#backups-tdp">Backups TDP</a>
+          <ul>
+            <li><a href="#backint">BACKINT</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#gnulinux">GNU/Linux</a>
+      <ul>
+        <li><a href="#init-script">Init script</a></li>
+      </ul>
+    </li>
+    <li><a href="#windows">Windows</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#restore-de-una-base-tsm">Restore de una base TSM</a></li>
+    <li><a href="#disaster-recovery-for-sap-r3-on-oracle">Disaster Recovery for SAP R/3 on Oracle</a></li>
+    <li><a href="#procedimiento-para-recuperar-una-base-de-datos-correspondiente-a-una-instancia-sap-luego-de-un-desastre">Procedimiento para recuperar una base de datos correspondiente a una instancia SAP luego de un desastre</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#introducción">Introducción</a>
+      <ul>
+        <li><a href="#formateo-de-consultas-sql">Formateo de consultas SQL</a></li>
+        <li><a href="#uso-de-columnas-indexadas-para-acelerar-consultas">Uso de columnas indexadas para acelerar consultas</a></li>
+        <li><a href="#como-combinar-dos-tablas-en-una-consulta">Como combinar dos tablas en una consulta</a>
+          <ul>
+            <li><a href="#ver-información-general-de-los-nodos">Ver información general de los nodos</a></li>
+            <li><a href="#ver-detalles-de-copygroups-de-archive">Ver detalles de Copygroups de Archive</a></li>
+            <li><a href="#ver-detalles-de-management-classes">Ver detalles de Management Classes</a></li>
+            <li><a href="#ver-slots-de-la-libreria-asociados-a-cada-cinta">Ver slots de la libreria asociados a cada cinta</a></li>
+            <li><a href="#cantidad-de-volúmenes-scratch-permitidos-por-storage-pool">Cantidad de volúmenes Scratch permitidos por storage pool</a></li>
+            <li><a href="#uso-por-storage-pool-en-mb-y-en-cantidad-de-archivos">Uso por storage pool en MB y en cantidad de archivos</a></li>
+            <li><a href="#número-de-volúmenes-por-libreria">Número de volúmenes por libreria</a></li>
+          </ul>
+        </li>
+        <li><a href="#consultas-rápidas-rutinarias">Consultas rápidas rutinarias</a>
+          <ul>
+            <li><a href="#listar-todas-las-cintas-utilizadas-por-un-nodo">Listar todas las cintas utilizadas por un nodo</a></li>
+            <li><a href="#cintas-usadas-hoy">Cintas usadas hoy</a></li>
+            <li><a href="#la-última-fecha-de-escritura-para-todas-las-cintas">La última fecha de escritura para todas las cintas</a></li>
+            <li><a href="#cantidad-de-mb-respaldados-las-últimas-24-horas-ordenado-por-nodo">Cantidad de MB respaldados las últimas 24 horas ordenado por nodo</a></li>
+            <li><a href="#cantidad-de-mb-total-respaldados-las-últimas-24-horas">Cantidad de MB total respaldados las últimas 24 horas</a></li>
+            <li><a href="#el-número-de-cintas-escritas-las-ultimas-24-horas">El número de cintas escritas las ultimas 24 horas</a></li>
+            <li><a href="#nodos-que-en-el-día-anterior-realizaron-restauraciones">Nodos que en el día anterior realizaron restauraciones</a></li>
+            <li><a href="#cintas-en-uso-y-máximo-de-scratch-permitidos">Cintas en uso y máximo de scratch permitidos</a></li>
+            <li><a href="#lista-paginas-expiradas-de-la-base-de-datos">Lista paginas expiradas de la Base de datos</a></li>
+          </ul>
+        </li>
+        <li><a href="#operaciones-de-conteo-de-elementos">Operaciones de conteo de elementos</a>
+          <ul>
+            <li><a href="#consultar-copias-de-seguridad-de-los-pooles">Consultar copias de seguridad de los pooles</a></li>
+            <li><a href="#consultar-cantidad-de-plataforma-por-nodo">Consultar cantidad de plataforma por nodo</a></li>
+            <li><a href="#consultar-cantidad-de-archivos-de-tipo-backup-por-nodo">Consultar cantidad de archivos de tipo Backup por nodo</a></li>
+            <li><a href="#consultar-numero-de-asociaciones-por-schedule">Consultar numero de asociaciones por Schedule</a></li>
+            <li><a href="#consultar-numero-de-opciones-de-cliente">Consultar numero de opciones de cliente</a></li>
+            <li><a href="#consultar-numero-de-archive-copygroups">Consultar numero de Archive CopyGroups</a></li>
+            <li><a href="#consultar-numero-de-data-movers">Consultar numero de Data Movers</a></li>
+            <li><a href="#consultar-numero-de-dominios">Consultar numero de Dominios</a></li>
+            <li><a href="#consultar-numero-de-librerias">Consultar numero de Librerias</a></li>
+            <li><a href="#consultar-numero-de-cintas-totales">Consultar numero de Cintas totales</a></li>
+            <li><a href="#consultar-grupos-de-nodos">Consultar grupos de nodos</a></li>
+            <li><a href="#consultar-set-de-politicas">Consultar set de Politicas</a></li>
+            <li><a href="#consultar-numero-de-tareas-programadas">Consultar numero de tareas programadas</a></li>
+            <li><a href="#consultar-numero-de-servidores-definidos">Consultar numero de servidores definidos</a></li>
+            <li><a href="#consultar-numero-de-storage-pools-definidos">Consultar numero de storage pools definidos</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

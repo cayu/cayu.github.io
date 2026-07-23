@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Manejo de memoria en Linux on Wiki de Sergio Cayuqueo</title>
+    <link>http://localhost:1313/notas/linux/manejo_de_memoria_en_linux/</link>
+    <description>Recent content in Manejo de memoria en Linux on Wiki de Sergio Cayuqueo</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Wed, 22 Jul 2026 23:28:56 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/notas/linux/manejo_de_memoria_en_linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugepages</title>
+      <link>http://localhost:1313/notas/linux/manejo_de_memoria_en_linux/hugepages/</link>
+      <pubDate>Thu, 07 Jul 2016 16:02:22 -0300</pubDate>
+      <guid>http://localhost:1313/notas/linux/manejo_de_memoria_en_linux/hugepages/</guid>
+      <description>&lt;p&gt;Los procesos no trabajan directamente con la memoria física, sino que lo hacen con la memoria virtual. Aplicaciones que realizan una gran cantidad de accesos a memoria pueden obtener mejoras de rendimiento usando páginas grandes gracias a la traducción reducida Lookaside Buffer (TLB). Hugetlbfs es una función de administración de memoria que se ofrece en el kernel de Linux, que es útil para aplicaciones que utilizan un gran espacio de direcciones virtuales.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

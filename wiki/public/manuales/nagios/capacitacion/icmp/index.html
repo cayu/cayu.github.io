@@ -1,0 +1,3895 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="El protocolo ICMP (Internet Control Message Protocol) puede ser considerado como parte de la capa IP. La especificación completa de este protocolo se encuentra en RFC 792. Aunque sus mensajes son encapsulados en datagramas IP como cualquier otro protocolo de capa superior, su uso corresponde a mensajes especiales de la propia capa de red, aunque también pueden acceder a él las propias aplicaciones (por ejemplo el programa ping).
+Algunos ejemplos de uso de ICMP son: obtención de máscaras de red (solicitud y respuesta), obtención de marcas de tiempo (solicitud y respuesta), condiciones de error del tipo “port unreachable” o “se necesita fragmentar el datagrama habiéndose solicitado la no-fragmentación“, petición y respuesta de eco para comprobar la actividad de otro host, información sobre el estado de las comunicaciones en una red, etc.
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/manuales/nagios/capacitacion/icmp/">
+  <meta property="og:site_name" content="Wiki de Sergio Cayuqueo">
+  <meta property="og:title" content="ICMP">
+  <meta property="og:description" content="El protocolo ICMP (Internet Control Message Protocol) puede ser considerado como parte de la capa IP. La especificación completa de este protocolo se encuentra en RFC 792. Aunque sus mensajes son encapsulados en datagramas IP como cualquier otro protocolo de capa superior, su uso corresponde a mensajes especiales de la propia capa de red, aunque también pueden acceder a él las propias aplicaciones (por ejemplo el programa ping).
+Algunos ejemplos de uso de ICMP son: obtención de máscaras de red (solicitud y respuesta), obtención de marcas de tiempo (solicitud y respuesta), condiciones de error del tipo “port unreachable” o “se necesita fragmentar el datagrama habiéndose solicitado la no-fragmentación“, petición y respuesta de eco para comprobar la actividad de otro host, información sobre el estado de las comunicaciones en una red, etc.">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="manuales">
+    <meta property="article:published_time" content="2015-09-18T14:33:27-03:00">
+    <meta property="article:modified_time" content="2026-07-23T18:22:08-03:00">
+
+
+  <meta itemprop="name" content="ICMP">
+  <meta itemprop="description" content="El protocolo ICMP (Internet Control Message Protocol) puede ser considerado como parte de la capa IP. La especificación completa de este protocolo se encuentra en RFC 792. Aunque sus mensajes son encapsulados en datagramas IP como cualquier otro protocolo de capa superior, su uso corresponde a mensajes especiales de la propia capa de red, aunque también pueden acceder a él las propias aplicaciones (por ejemplo el programa ping).
+Algunos ejemplos de uso de ICMP son: obtención de máscaras de red (solicitud y respuesta), obtención de marcas de tiempo (solicitud y respuesta), condiciones de error del tipo “port unreachable” o “se necesita fragmentar el datagrama habiéndose solicitado la no-fragmentación“, petición y respuesta de eco para comprobar la actividad de otro host, información sobre el estado de las comunicaciones en una red, etc.">
+  <meta itemprop="datePublished" content="2015-09-18T14:33:27-03:00">
+  <meta itemprop="dateModified" content="2026-07-23T18:22:08-03:00">
+  <meta itemprop="wordCount" content="1176">
+
+<title>ICMP • Wiki de Sergio Cayuqueo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/manuales/nagios/capacitacion/icmp/">
+<link rel="stylesheet" href="/book.min.b67edd162318c5083c6df0a88fb33841277a463a19631410445e4034ec6e651c.css" integrity="sha256-tn7dFiMYxQg8bfCoj7M4QSd6RjoZYxQQRF5ANOxuZRw=" crossorigin="anonymous">
+
+
+  <script defer type="module" src="/es.search.min.0d8ef5a46e9d73ded2792bc4dc404ee89897a364056761a43c441c32a9c30525.js" integrity="sha256-DY71pG6dc97SeSvE3EBO6JiXo2QFZ2GkPEQcMqnDBSU=" crossorigin="anonymous"></script>
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-manuales">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Wiki de Sergio Cayuqueo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Buscar"
+    aria-label="Buscar"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Notas</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Hardware</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/" class="">
+      VMWare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/instalar_vmware_tools/" class="">
+      Instalar VMware Tools</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/agregar_cpu_en_caliente_en_vmware/" class="">
+      Agregar CPU en caliente en VMWare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/datetime/" class="">
+      Parametros para Vmware por cambio de hora de servidores</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/idrac/" class="">
+      iDrac Dell</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/strace/" class="">
+      Strace</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/nginx/" class="">
+      Nginx</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/" class="">
+      Squid</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/hearbeat/" class="">
+      LVS - Hearbeat - Ldirectord - Balanceo de carga y alta disponibilidad</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/rhcs/" class="">
+      Squid &#43; Red Hat Cluster Suite</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bind/" class="">
+      Configuración de Servidor DNS Bind</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/" class="">
+      Linux</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Networking</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/networking/wan_optimization/" class="">
+      WAN Optimization</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/actualizar_suse_linux/" class="">
+      Actualizar SuSE Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/cambiar_planificador_de_disco/" class="">
+      Cambiar planificador de acceso a disco</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/medicion_de_velocidad_de_cambio_en_filesystems_en_un_sistema_linux_fisico_o_virtual/" class="">
+      Medición de velocidad de cambio en filesystems en un sistema Linux (físico o virtual)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/midiendo_el_rendimiento_del_sistema_con_iostat/" class="">
+      Midiendo el rendimiento del sistema con IOSTAT</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/sistema_de_archivos_proc/" class="">
+      Sistema de archivos /proc</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/lvm/" class="">
+      Logical Volume Management 2 (LVM2)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/manejo_de_memoria_en_linux/" class="">
+      Manejo de memoria en Linux</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/manejo_de_memoria_en_linux/hugepages/" class="">
+      Hugepages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/ver_el_dmesg_en_formato_humano/" class="">
+      Ver el dmesg en formato humano</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/midiendo_el_rendimiento_del_sistema_con_sar/" class="">
+      Midiendo el rendimiento del sistema con SAR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/cron/" class="">
+      CRON</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/sed/" class="">
+      SED - Stream EDitor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/configuracion_vpn/" class="">
+      Configuración de acceso VPN desde Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openssh/" class="">
+      OpenSSH</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/compartir_archivos_por_nfs/" class="">
+      Como compartir filesystems por NFS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/" class="">
+      Microsoft</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/windows/" class="">
+      Sistema Operativo Windows</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/windows/scripts_varios_de_powershell/" class="">
+      Scripts varios de PowerShell</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/network_policy_server_nps/" class="">
+      Network Policy Server (NPS)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/apache/" class="">
+      Tips de Apache</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/analisis_forense/" class="">
+      Análisis forense</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/qlikview/" class="">
+      QlikView</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/owncloud/" class="">
+      OwnCloud</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/iptables/" class="">
+      TIPs varios de IPTables</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/celulares/" class="">
+      Teléfonos celulares</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openldap/" class="">
+      Implementacion de un servidor OpenLDAP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/arduino/" class="">
+      Arduino</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/kickstart/" class="">
+      Kickstart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/raspberry_pi/" class="">
+      Raspberry Pi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/postfix/" class="">
+      Postfix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openssl/" class="">
+      OpenSSL</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/" class="">
+      Programación</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Python</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Webscraping</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/webscraping/beautifulsoup/" class="">
+      Beautiful Soup</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/sistema_de_archivos/" class="">
+      Operaciones sobre el sistema de archivos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/django/" class="">
+      Django</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/introduccion_a_awk/" class="">
+      Uso básico de AWK</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/the_linux_cdrom_interface/" class="">
+      The Linux CDROM interface</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/reproductor_de_cd/" class="">
+      Reproductor De Cd</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/console_ioctls_under_linux/" class="">
+      Console IOCTLs Under Linux</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/tools_of_the_trade_--_iostat_vmstat_and_netstat/" class="">
+      Tools of the Trade -- Iostat, Vmstat, and Netstat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/solaris_performance_monitoring/" class="">
+      Solaris Performance Monitoring &amp; Tuning - iostat , vmstat &amp; netstat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/" class="">
+      Bases De Datos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/mysql/" class="">
+      Task MySQL</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/oracle/" class="">
+      Oracle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/mssql/" class="">
+      Microsoft SQL Server</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/postgresql/" class="">
+      PostgreSQL</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/valgrind/" class="">
+      Valgrind</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/kamailio/" class="">
+      Kamailio</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/syslog_centralizado/" class="">
+      Sistema de LOG centralizado</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/inicio_rapido_de_csync2/" class="">
+      Csync para centralizar la configuracion de servicios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/xen_multi_bridge/" class="">
+      Utilizar dos o mas placas de red con Xen</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/sysinfo_dokuwiki/" class="">
+      Dump some hardware info in DokuWiki format</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/ubuntu_domu_en_red_hat/" class="">
+      Xen Red Hat Dom0 y Ubuntu DomU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/enomalism/" class="">
+      Configuraciones a mano</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Fotografia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/fotografia/conceptos/" class="">
+      Sobre el 18-55</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Legales</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Legislacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Nacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/nacion/decreto_155_89/" class="">
+      Decreto 155 89</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/nacion/ley_23302/" class="">
+      LEY 23.302</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/caba/" class="">
+      Legislación Indígena Ciudad Autónoma de Buenos Aires</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/jurisprudencia/" class="">
+      Jurisprudencia</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/" class="">
+      Seguridad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Criptografia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/truecrypt/" class="">
+      Privacidad datos utilizando TrueCrypt</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/veracrypt/" class="">
+      Privacidad datos utilizando VeraCrypt</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/gnupg/" class="">
+      The GNU Privacy Guard</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Gestion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/gestion/itil/" class="">
+      ITIL - Information Technology Infrastructure Library</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      How To</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/how_to/prevent_a_fork_bomb_by_limiting_user_process/" class="">
+      How to: Prevent a fork bomb by limiting user process</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Programacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Redes</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/nodejs/" class="">
+      NodeJS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/python/" class="">
+      Scripts simples en python</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/python/scapy/" class="">
+      Scapy</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/scanner_de_puertos_simple/" class="">
+      Scanner De Puertos Simple</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/shellcode/" class="">
+      Shellcode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/" class="">
+      Seguridad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Certificaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/" class="">
+      Profesional certificado en seguridad ofensiva (OSCP)</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/preparacion_personal/" class="">
+      Preparación personal para rendir la certificación OSCP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/oscp_prep_class/" class="">
+      OSCP Prep class</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/oscp-survival-guide/" class="">
+      OSCP-Survival-Guide</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Exploits</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/exploits/mempodipper/" class="">
+      mempodipper</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/exploits/dirty_cow/" class="">
+      Dirty COW</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/why_i_would_never_buy_a_dell_powerconnect_2724/" class="">
+      Why I would never buy a Dell PowerConnect 2724</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/understanding_bash_fork_bomb/" class="">
+      Understanding Bash fork() bomb ~ :(){ :|:&amp; };:</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/pequena_guia_de_seguridad_informatica/" class="">
+      Pequeña guía de seguridad informática</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/auditd/" class="">
+      Auditoría en Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/process_accounting_psacct/" class="">
+      Process Accounting (PSACCT)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/" class="">
+      Enlaces útiles</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/" class="">
+      Utilidades de Red</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/ngrep/" class="">
+      Network Grep - ngrep</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/msndump/" class="">
+      MSN Dump</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/tcpdump/" class="">
+      TCPDUMP</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/" class="">
+      Aprendiendo SAP</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/sap_hana/" class="">
+      SAP HANA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/desarrollo_y_programacion_en_abap/" class="">
+      Desarrollo y programación en ABAP</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/" class="">
+      Redes y comunicaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Conectividad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/conectividad/fibra_optica/" class="">
+      Fibra óptica</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Firewalls</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/fortinet/" class="">
+      Fortinet</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/fortinet/fortiap/" class="">
+      FortiGate como controlador Wireless</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/pfsense/" class="">
+      pfSense</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Notas</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/notas/nc/" class="">
+      Netcat</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Telefonia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Asterisk</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/" class="">
+      Conectividad con Asterisk</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/spa400/" class="">
+      SPA400</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/tdm400p/" class="">
+      Instalar Placa TDM400P</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Cisco</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/call_manager/" class="">
+      Cisco Call Manager</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/routers/" class="">
+      Routers Cisco</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/telefonos/" class="">
+      Teléfonos CISCO</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Videoconferencia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/videoconferencia/openmcu-ru/" class="">
+      OpenMCU-ru</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/flows/" class="">
+      Network Flow</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/flows/ntop/" class="">
+      Ntop</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/rancid/" class="">
+      Rancid (Really Awesome New Cisco confIg Differ)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/conceptos/" class="">
+      Conceptos de redes informáticas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/" class="">
+      Switches</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Cisco</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/2960c/" class="">
+      CISCO - 2960-C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/2960x/" class="">
+      CISCO - 2960-X</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/sf300/" class="">
+      CISCO - SF300</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/extreme_networks/" class="">
+      Extreme Networks</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/" class="">
+      Hewlett Packard</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/aruba/" class="">
+      Switches Aruba</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/" class="">
+      3COM</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Voice</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/voice/vlan/" class="">
+      VLAN de voz</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/debug_y_analisis_de_equipos_hp_3com/" class="">
+      Debug y análisis de equipos HP/3com</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cumulus_networks/" class="">
+      Cumulus Networks</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/gestion/" class="">
+      Gestión</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/gestion/taiga/" class="">
+      Taiga</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/leyes/" class="">
+      Leyes, Decretos y Ordenanzas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/" class="">
+      Charlas y Eventos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/pueblos_originarios_y_la_industria_del_software/" class="">
+      Pueblos Originarios y la industria del Software</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/uso_de_la_consola_linux/" class="">
+      Taller de uso de Consola Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/lanux_agosto_2010/" class="">
+      Servidores VPS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/" class="">
+      Manuales de proyectos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Tivoli Tsm</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/manual_de_manejo_de_backups_con_tivoli/" class="">
+      Manual de manejo de respaldos con Tivoli</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/tsm_sql_tips/" class="">
+      Mandatos de prueba de validación de la actualización de la base de datos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/tsm_sql_hints/" class="">
+      TSM SQL Hints</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/sql_for_tivoli_storage_manager/" class="">
+      SQL for Tivoli Storage Manager</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/emc_data_domain/" class="">
+      EMC Data Domain</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/" class="">
+      Monitoria y análisis de Red con Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/" class="">
+      Monitoreo de Red con Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Productos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/oracle/" class="">
+      Oracle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/argentina_-_arba_-_codigo_de_operacion_de_traslado_cot/" class="">
+      Argentina - ARBA - Código de Operación de Traslado (COT)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/asterisk/" class="">
+      Asterisk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/riverbed/" class="">
+      Riverbed</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/argentina_-_afip_-_factura_electronica/" class="">
+      Argentina AFIP Factura Electrónica</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/sap/" class="">
+      SAP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/ibm_tivoli_tsm/" class="">
+      Tivoli Storage Manager - TSM</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/brasil_-_nota_fiscal_electronica_nfe/" class="">
+      Brasil - Nota Fiscal Electrónica NFe</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/brasil_-_nota_fiscal_electronica_nfe/referencias_utiles_de_nfe/" class="">
+      Referencias útiles de NFE</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/microstrategy/" class="">
+      MicroStrategy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/qlikview/" class="">
+      QlikView</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/servidor_web/" class="">
+      Configuración del servidor Web</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/pnp4nagios/" class="">
+      PNP4Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/tipos_de_notificaciones/" class="">
+      Tipos de notificaciones</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_referencias_generales/" class="">
+      Referencias generales</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_referencias_generales/sistema_de_inventario/" class="">
+      Sistema de inventario</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagios_network_analyzer/" class="">
+      Nagios Network Analyzer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/" class="">
+      Correlación de eventos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/rsyslog/" class="">
+      Reliable system and kernel logging daemon</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/eventdb/" class="">
+      EventDB</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/syslog_ng/" class="">
+      Syslog-NG</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/implementacion_tecnica/" class="">
+      Implementación Técnica de Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/implementacion_tecnica/implementacion_tecnica_version_ubuntu_server_20.04/" class="">
+      Implementación Técnica de Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/capacitacion_en_monitoreo_de_red/" class="">
+      Capacitación en monitoreo de Red</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Certificaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/capacitacion_en_monitoreo_de_red/certificaciones/sox_-_sarbanes-oxley/" class="">
+      SOX</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/desarrollo_de_plugins_de_nagios/" class="">
+      Desarrollo de plugins de Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/desarrollo_de_plugins_de_nagios/problemas_comunes/" class="">
+      Problemas comunes de los plugins de Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/snmp/" class="">
+      SNMP (Simple Network Management Protocol)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagios_event_radio_dispatcher_nerd/" class="">
+      Nagios Event Radio Dispatcher (NERD)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/mk_livestatus/" class="">
+      MK Livestatus</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/ndo2utils/" class="">
+      NDO2Utils</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagvis/" class="">
+      Nagvis</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagvis/diseno_de_tablero_de_control/" class="">
+      Diseño de tablero de control</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/graficos_en_ajax/" class="">
+      Gráficos en AJAX</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_tips_y_recomendaciones/" class="">
+      TIPS y recomendaciones</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_otras_soluciones_basadas_en_nagios/" class="">
+      Anexo - Otras soluciones basadas en Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_comandos_externos/" class="">
+      Comandos externos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/plugins_usuales_de_nagios/" class="">
+      Plugins usuales de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/icmp/" class="active">
+      ICMP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_codigo_fuente_de_nagios/" class="">
+      Análisis del código fuente de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_configuracion_desde_version_3_a_4/" class="">
+      Incompatibilidades de configuración v3 a v4</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/codigo_fuente/" class="">
+      Análisis del código fuente de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/thruk/" class="">
+      Thruk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/portugues/" class="">
+      Monitoração de rede e análise com Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/italiano/" class="">
+      Implementazione di un sistema di rete, monitor con Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_freeradius/" class="">
+      Servidor FreeRadius</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_systemimager/" class="">
+      Proyecto Servidor de Backups</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/an_introduction_to_linux_shell_scripting_for_dbas/" class="">
+      An Introduction to Linux Shell Scripting for DBAs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/filtrador_de_logs/" class="">
+      Filtrador de LOGS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/drbd/" class="">
+      DRBD (Distributed Replicated Block Device)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/" class="">
+      Lotus Notes</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/problemas_winmail.dat_outlook/" class="">
+      Problemas Winmail.dat Outlook</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/listar_ultimo_mes_de_login_de_usuarios/" class="">
+      Listar último mes de login de usuarios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/reemplazar_diseno_base_de_datos/" class="">
+      Reemplazar Diseño Base de Datos</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_squid/" class="">
+      Squid Proxy Server</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/red_restringida/" class="">
+      Red restringida</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/novell_audit/" class="">
+      Novell Identity Audit</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_dhcp/" class="">
+      Servicio DHCP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/ils/" class="">
+      ILS (Internet Locator Server)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>ICMP</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><p>El protocolo ICMP (<em>Internet Control Message Protocol</em>) puede ser considerado como parte de la capa IP. La especificación completa de este protocolo se encuentra en <a href="http://www.ietf.org/rfc/rfc792.txt">RFC 792</a>. Aunque sus mensajes son encapsulados en datagramas IP como cualquier otro protocolo de capa superior, su uso corresponde a mensajes especiales de la propia capa de red, aunque también pueden acceder a él las propias aplicaciones (por ejemplo el programa ping).</p>
+<p>Algunos ejemplos de uso de ICMP son: obtención de máscaras de red (solicitud y respuesta), obtención de marcas de tiempo (solicitud y respuesta), condiciones de error del tipo “port unreachable” o “se necesita fragmentar el datagrama habiéndose solicitado la no-fragmentación“, petición y respuesta de eco para comprobar la actividad de otro host, información sobre el estado de las comunicaciones en una red, etc.</p>
+<h5 id="algunas-consultas-icmp">Algunas consultas ICMP<a class="anchor" href="#algunas-consultas-icmp">#</a></h5>
+<p>Los mensajes de query incluyen tras la cabecera 2 bytes de identificación, para que el cliente distinga las respuestas dirigidas a él de las dirigidas a otros procesos, y 2 btes de número de secuencia, para que el cliente pueda identificar ‘requests’ con ‘replays’. La generación de replys suele correr a cargo del kernel (no es un proceso de usuario). Los mensajes ICMP de ‘query’ más importantes son:</p>
+<ul>
+<li><em><strong>Petición/respuesta de máscara</strong></em>: Aunque normalmente se usa <a href="/dhcp/">DHCP</a>, también es posible para el host hacer una petición durante el proceso de arranque para obtener la máscara y una petición <a href="/arp/#rarp">ARP#RARP</a> para obtener su IP. La petición de máscara suele enviarse en difusión. Un servidor de máscaras se encarga de contestar.</li>
+<li><em><strong>Petición/respuesta de marca de tiempo</strong></em>: Se utiliza para conocer el tiempo que un host tarda en procesar un mensaje y contestarlo o para sincronizar relojes entre hosts. Los tiempos se ponen en milisegundos desde las 0h UTC (Tiempo Coordinado Universal). Se proveen tres campos, a parte de los anteriormente citados para este tipo de mensajes. ‘Marca de tiempo de generación’, a rellenar por el emisor, y ‘Marca de tiempo de recepción’, y ‘Marca de tiempo de transmisión’, a rellenar por el receptor. Los significados de los campos resultan evidentes.</li>
+<li><em><strong>Solicitud/anuncio de router</strong></em>: Se trata de una forma de inicializar la tabla de enrutamiento. Tras el arranque, un host envía en broadcast o multicast un mensaje de solicitud de router. Uno o más routers responderán con mensajes de anuncio de router. Esto lo podrán hacer periódicamente permitiendo a los hosts actualizar sus tablas de enrutamiento.</li>
+<li><em><strong>Petición/respuesta de eco</strong></em>: Se utiliza para conocer si un host está en red. El mensaje ICMP contiene unos datos OPCIONALES cuyo contenido es irrelevante. Muchos SO implementan este mensaje mediante el programa ping. En las implementaciones UNIX de ping el campo identificador suele asociarse con el ID del proceso que envía el request. Esto permite identificar las respuestas si hubiera varias instancias de ping corriendo en el mismo host. En el campo de secuencia, se suele llevar un contador que permite ver si se han perdido, duplicado o desordenado paquetes, cosa típica en la capa IP sobre la que se encapsulan los mensajes ICMP.</li>
+</ul>
+<p>Veamos un ejemplo de la salida del programa ping.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[deivid@localhost ~]$ ping www.virtuamanager.com
+</span></span><span class="line"><span class="cl">PING virtuamanager.com (213.194.149.188) 56(84) bytes of data.
+</span></span><span class="line"><span class="cl">64 bytes from virtuamanager.com (213.194.149.188): icmp_seq=1 ttl=56 time=42.6 ms
+</span></span><span class="line"><span class="cl">64 bytes from virtuamanager.com (213.194.149.188): icmp_seq=2 ttl=56 time=41.8 ms
+</span></span><span class="line"><span class="cl">64 bytes from virtuamanager.com (213.194.149.188): icmp_seq=3 ttl=56 time=41.6 ms
+</span></span><span class="line"><span class="cl">64 bytes from virtuamanager.com (213.194.149.188): icmp_seq=4 ttl=56 time=43.7 ms
+</span></span><span class="line"><span class="cl">64 bytes from virtuamanager.com (213.194.149.188): icmp_seq=5 ttl=56 time=42.7 ms
+</span></span><span class="line"><span class="cl">64 bytes from virtuamanager.com (213.194.149.188): icmp_seq=6 ttl=56 time=42.2 ms
+</span></span><span class="line"><span class="cl">64 bytes from virtuamanager.com (213.194.149.188): icmp_seq=7 ttl=56 time=46.2 ms
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">--- virtuamanager.com ping statistics ---
+</span></span><span class="line"><span class="cl">7 packets transmitted, 7 received, 0% packet loss, time 6005ms
+</span></span><span class="line"><span class="cl">rtt min/avg/max/mdev = 41.666/43.038/46.270/1.477 ms</span></span></code></pre></div><h5 id="algunos-icmps-de-error">ALGUNOS ICMP’S DE ERROR<a class="anchor" href="#algunos-icmps-de-error">#</a></h5>
+<p>Ya se ha dicho que el formato de los mensajes de error tan sólo incluye, además de la cabecera, una copia de la cabecera IP del datagrama que generó el error y los 8 primeros bytes del datagrama. En algunos de los ejemplos que siguen veremos la razón de ser de este formato:</p>
+<ul>
+<li><em><strong>Destination unreachable</strong></em>: Este tipo de mensajes de error se generan cuando por alguna razón, el datagrama no pudo alcanzar su destino (puerto, host, red inalcanzable, necesidad de fragmentar con bit DF activado…). La forma de comunicar este error a la capa superior es copiando la cabecera IP en el propio mensaje de error. Gracias al campo ‘protocolo’ el módulo ICMP que lo reciba sabrá asociarlo con el protocolo adecuado. Supongamos que se produce un ‘port unreachable’ en el envío de un datagrama UDP. La cabecera IP permite identificar que el error se produjo en el protocolo UDP, y además esto sirve para interpretar los 8 bytes adicionales, que pertenecerán a la cabecera UDP. Estos contendrán los puertos origen y destino (ver tema UDP). El puerto de origen puede servir para asociar el error con un determinado proceso de usuario (ej. puerto 2924 asociado a un cliente tftp), mientras que el destino nos indica qué puerto originó el error ‘port unreachable’.</li>
+</ul>
+<!-- -->
+<pre><code> Otro ejemplo, al intentar hacer ping al otro equipo de la red, que está apagado, se obtiene lo siguiente:
+</code></pre>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[deivid@localhost ~]$ ping 192.168.1.2
+</span></span><span class="line"><span class="cl">PING 192.168.1.2 (192.168.1.2) 56(84) bytes of data.
+</span></span><span class="line"><span class="cl">From 192.168.1.100 icmp_seq=2 Destination Host Unreachable
+</span></span><span class="line"><span class="cl">From 192.168.1.100 icmp_seq=3 Destination Host Unreachable
+</span></span><span class="line"><span class="cl">From 192.168.1.100 icmp_seq=4 Destination Host Unreachable
+</span></span><span class="line"><span class="cl">From 192.168.1.100 icmp_seq=6 Destination Host Unreachable
+</span></span><span class="line"><span class="cl">From 192.168.1.100 icmp_seq=7 Destination Host Unreachable
+</span></span><span class="line"><span class="cl">From 192.168.1.100 icmp_seq=8 Destination Host Unreachable
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">--- 192.168.1.2 ping statistics ---
+</span></span><span class="line"><span class="cl">9 packets transmitted, 0 received, +6 errors, 100% packet loss, time 8002ms
+</span></span><span class="line"><span class="cl">, pipe 3</span></span></code></pre></div><p>Se han producido mensajes ICMP de error en respuesta a mensajes ICMP de query, lo cual SI está permitido, como ya se ha dicho.</p>
+<ul>
+<li><em><strong>Source quench</strong></em>: Este tipo de mensaje es generado por un router con problemas de congestión para avisar al host fuente de que reduzca el flujo de transmisión. Es muy poco usado, normalmente los routers se limitan a tirar paquetes y a intentar solucionar la congestión mediante algoritmos de enrutamiento.</li>
+<li><em><strong>Parameter problem</strong></em>: Si un router intermedio o el host destino encuentran un problema en la cabecera IP que le obliga a desecharlo, puede enviar un mensaje ICMP de este tipo al host fuente. Si el código es cero, un puntero marca el lugar de la cabecera en el que se produjo el error.</li>
+<li><em><strong>Redirección</strong></em>: Son enviados por un router al remitente de un datagrama IP cuando éste debería haber sido enviado a través de otro router.</li>
+<li><em><strong>Time Exceeded</strong></em>: Son enviados al remitente de un datagrama IP cuando se cumple el tiempo de vida máximo del paquete. Esto puede ocurrir porque el campo TTL del datagrama se haya puesto a 0 en un router, o bien el tiempo de reensamblado de fragmentos se haya cumplido en el destino. Basándose en este mensaje, y variando el campo TTL de un mensaje de petición de eco es posible obtener la ruta a un destino. Si el TTL es insuficiente, se recibirá un mensaje de tiempo excedido por cada router donde al recalcular el TTL valga 0, y un mensaje de respuesta de eco cuando el TTL sea suficiente para llegar al destino. El comando <code>tracert</code> de windows se basa en este algoritmo.</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/manuales/nagios/capacitacion/plugins_usuales_de_nagios/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Plugins usuales de Nagios</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/manuales/nagios/capacitacion/anexo_-_codigo_fuente_de_nagios/" class="flex align-center">
+        <span>Análisis del código fuente de Nagios</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

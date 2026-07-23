@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on Wiki de Sergio Cayuqueo</title>
+    <link>http://localhost:1313/notas/linux/</link>
+    <description>Recent content in Linux on Wiki de Sergio Cayuqueo</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Thu, 23 Jul 2026 18:03:24 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/notas/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Actualizar SuSE Linux</title>
+      <link>http://localhost:1313/notas/linux/actualizar_suse_linux/</link>
+      <pubDate>Thu, 11 Feb 2016 11:09:10 -0300</pubDate>
+      <guid>http://localhost:1313/notas/linux/actualizar_suse_linux/</guid>
+      <description>&lt;h2 id=&#34;instalación-de-suse-9-en-vmware&#34;&gt;Instalación de SuSE 9 en VMware&lt;a class=&#34;anchor&#34; href=&#34;#instalaci%c3%b3n-de-suse-9-en-vmware&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;Si tenemos un mensaje como este : &lt;em&gt;Your computer doesn’t fulfill all requirements for a graphical installation&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;Tenemos que agregar la opcion &lt;em&gt;x11i=fbdev&lt;/em&gt; al booteo.&lt;/p&gt;&#xA;&lt;h2 id=&#34;actualizar-a-suse-11-sp1&#34;&gt;Actualizar a SUSE 11 SP1&lt;a class=&#34;anchor&#34; href=&#34;#actualizar-a-suse-11-sp1&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;Para actualizar un servidor SUSE SLES, por ejemplo de “SUSE Linux Enterprise Server 10 SP3” a “SUSE Linux Enterprise Server 11 SP1”, podemos utilizar el sistema automático de actualización de SUSE.&lt;/p&gt;&#xA;&lt;p&gt;Para ellos debemos reiniciar el servidor y luego iniciarlo con el CD/DVD booteable de SuSE, el proceso total dependiendo del número de paquetes a actualizar, demora como mínimo 40 minutos.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Cambiar planificador de acceso a disco</title>
+      <link>http://localhost:1313/notas/linux/cambiar_planificador_de_disco/</link>
+      <pubDate>Fri, 16 Jan 2015 11:41:13 -0300</pubDate>
+      <guid>http://localhost:1313/notas/linux/cambiar_planificador_de_disco/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Planificación de E/S (entrada/salida) es el término utilizado para describir el método mediante el cual los sistemas operativos deciden una cosa el orden por el cual se van a enviar las peticiones de lectura y escritura al disco.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;Este planificador lo que hace a groso modo es reorganizar las operaciones de E/S que le van llegando de una manera optima para que los movimientos mecanicos del disco sean los menos posibles. En determinadas ocasiones en las que no tiene mucho sentido este tipo de comportamiento, como podria ser con discos SSD que no tienen parte mecanica o cuando el acceso al disco se esta gestionando desde otra capa como es el caso de VMware.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Medición de velocidad de cambio en filesystems en un sistema Linux (físico o virtual)</title>
+      <link>http://localhost:1313/notas/linux/medicion_de_velocidad_de_cambio_en_filesystems_en_un_sistema_linux_fisico_o_virtual/</link>
+      <pubDate>Wed, 05 Nov 2014 17:51:52 -0300</pubDate>
+      <guid>http://localhost:1313/notas/linux/medicion_de_velocidad_de_cambio_en_filesystems_en_un_sistema_linux_fisico_o_virtual/</guid>
+      <description>&lt;p&gt;ACTUALIZACIÓN : &lt;a href=&#34;http://localhost:1313/notas/linux/midiendo_el_rendimiento_del_sistema_con_iostat/&#34;&gt;Ver aqui como recolectar los datos con iostat y explotarlos en una planilla de cálculo&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://docs.us.sios.com/Linux/7.5/DK4L/TechDoc/Content/installation_configuration/measuring_rate_change_on_linux_system_physical_or_virtual_.htm&#34;&gt;http://docs.us.sios.com/Linux/7.5/DK4L/TechDoc/Content/installation_configuration/measuring_rate_change_on_linux_system_physical_or_virtual_.htm&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Midiendo el rendimiento del sistema con IOSTAT</title>
+      <link>http://localhost:1313/notas/linux/midiendo_el_rendimiento_del_sistema_con_iostat/</link>
+      <pubDate>Tue, 07 Oct 2014 16:52:30 -0300</pubDate>
+      <guid>http://localhost:1313/notas/linux/midiendo_el_rendimiento_del_sistema_con_iostat/</guid>
+      <description>&lt;p&gt;Mediante el comando iostat podemos informarnos las estadísticas de entrada y salida de dispositivos y generar medidas de rendimiento de uso, lecturas/escrituras etc. Para obtener una descripción detallada del comando, podemos consultar el manual de dicho comando &lt;strong&gt;man iostat 1&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;presentación-de-los-datos&#34;&gt;Presentación de los datos&lt;a class=&#34;anchor&#34; href=&#34;#presentaci%c3%b3n-de-los-datos&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;escrituras&#34;&gt;Escrituras&lt;a class=&#34;anchor&#34; href=&#34;#escrituras&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Podemos confeccionar una planilla de calculo para mostras la tasa de cambios que hay en los discos. Esto es útil cuando por ejemplo tenemos replicación de los datos en caso de un disaster recovery. Para así saber cuando ancho de banda es necesario para cubrir nuestro respaldo.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Sistema de archivos /proc</title>
+      <link>http://localhost:1313/notas/linux/sistema_de_archivos_proc/</link>
+      <pubDate>Tue, 22 Jul 2014 15:44:20 -0300</pubDate>
+      <guid>http://localhost:1313/notas/linux/sistema_de_archivos_proc/</guid>
+      <description>&lt;p&gt;Dentro del directorio /proc/, se puede encontrar una gran cantidad de información con detalles sobre el hardware del sistema y cualquier proceso que se esté ejecutando actualmente. Además, algunos de los archivos dentro del directorio /proc/ pueden ser alterados por el usuario al kernel cambios en la configuración.&lt;/p&gt;&#xA;&lt;h1 id=&#34;archivos-en-proc&#34;&gt;Archivos en /proc&lt;a class=&#34;anchor&#34; href=&#34;#archivos-en-proc&#34;&gt;#&lt;/a&gt;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;procbuddyinfo&#34;&gt;/proc/buddyinfo&lt;a class=&#34;anchor&#34; href=&#34;#procbuddyinfo&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;Este archivo se utiliza principalmente para diagnosticar problemas de fragmentación de memoria. Utilizando el algoritmo buddy, cada columna representa el número de páginas de un cierto orden (de un cierto tamaño) que están disponibles en un momento dado. Por ejemplo, para la zona DMA (acceso directo a memoria), hay 90 de 2^(0*PAGE_SIZE) pedazos de memoria. De forma similar, hay 6 de 2^(1*PAGE_SIZE) pedazos, y 2 de 2^(2*PAGE_SIZE) pedazos de memoria disponibles. La fila DMA hace referencia a los primeros 16 MB en un sistema, la fila HighMem referencia toda la memoria mayor que 4 GB en un sistema, y la fila Normal se refiere a toda la memoria en medio de las anteriores.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Logical Volume Management 2 (LVM2)</title>
+      <link>http://localhost:1313/notas/linux/lvm/</link>
+      <pubDate>Fri, 06 Jun 2014 12:13:15 -0300</pubDate>
+      <guid>http://localhost:1313/notas/linux/lvm/</guid>
+      <description>&lt;p&gt;Las herramientas de LVM2 de Linux permiten un manejo más avanzado del los volúmenes de datos (filesystems, discos, etc.) respecto al común de Linux. LVM2 se podría dividir en tres partes, la primera o la más baja serían los Phisical Volumes, que como su nombre lo indica son los volúmenes físicos sobre los cuales luego se crearán los Volume Groups. Los Volume Groups son la capa intermedia que se monta sobre los Phisical Volumes, y permiten combinar las capacidades de los estos en un Volume Group del tamaño de la suma de las capacidad de los Phisical Volumes que lo integran, por ejemplo, si tenemos dos Phisical Volumes de 4Gb cada uno integrando un Volume Group, dicho Volume Group sera de aproximadamente 8Gb. Por último y en la capa superior tenemos a los Logical Volumes que son subdivisiones de los Volume Groups las cuales utilizaremos como si fuesen particiones de disco por ejemplo. Las operaciones básicas que podremos realizar sobre los Logical Voumes son&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Ver el dmesg en formato humano</title>
+      <link>http://localhost:1313/notas/linux/ver_el_dmesg_en_formato_humano/</link>
+      <pubDate>Thu, 02 Jan 2014 17:39:30 -0300</pubDate>
+      <guid>http://localhost:1313/notas/linux/ver_el_dmesg_en_formato_humano/</guid>
+      <description>&lt;h2 id=&#34;ver-el-dmesg-en-formato-humano&#34;&gt;Ver el dmesg en formato humano&lt;a class=&#34;anchor&#34; href=&#34;#ver-el-dmesg-en-formato-humano&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;alternativa-i&#34;&gt;Alternativa I&lt;a class=&#34;anchor&#34; href=&#34;#alternativa-i&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;==== Alternativa II ====&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;code perl&amp;gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#!/usr/bin/perl -wn&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;use strict;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;foreach my $line (&amp;lt;&amp;gt;) {&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    my ($uptime) = (do { local @ARGV=&amp;#39;/proc/uptime&amp;#39;;&amp;lt;&amp;gt;} =~ /^(\d+)\./);&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    $line=~/^\[\s*(\d+)\.\d+\](.+)/; &#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    printf &amp;#34;[%s]%s\n&amp;#34;, scalar localtime(time - $uptime + $1), $2;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Midiendo el rendimiento del sistema con SAR</title>
+      <link>http://localhost:1313/notas/linux/midiendo_el_rendimiento_del_sistema_con_sar/</link>
+      <pubDate>Thu, 02 Jan 2014 17:33:42 -0300</pubDate>
+      <guid>http://localhost:1313/notas/linux/midiendo_el_rendimiento_del_sistema_con_sar/</guid>
+      <description>&lt;p&gt;El nombre sar proviene de las siglas de “system activity report” (informe de la actividad del sistema). En Linux se encuentra normalmente en el paquete sysstat. El paquete sysstat incluye programas y scripts para recopilar y mostrar información sobre el rendimiento del sistema, generando informes detallados. Este conjunto de programas puede resultar de mucha utilidad a la hora de detectar cuellos de botella y para hacernos una idea de cómo se utiliza el sistema a lo largo del día&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CRON</title>
+      <link>http://localhost:1313/notas/linux/cron/</link>
+      <pubDate>Thu, 02 Jan 2014 17:23:54 -0300</pubDate>
+      <guid>http://localhost:1313/notas/linux/cron/</guid>
+      <description>&lt;h2 id=&#34;crontab&#34;&gt;CRONTAB&lt;a class=&#34;anchor&#34; href=&#34;#crontab&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;Cambiar editor Vim por defecto para poder usarlo con el comando crontab -e&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#echo &amp;#34;export EDITOR=vim&amp;#34; &amp;gt;&amp;gt; /root/.bashrc&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;COMANDOS&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#crontab -e (abrirá el editor preestablecido donde se podrá crear o editar el archivo crontab)   &#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#crontab -l (lista el crontab actual del usuario, sus tareas de cron)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;#crontab -r (elimina el crontab actual del usuario)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Como se componen las fechas&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;##########################################################################################&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# .---------------- minute (0 - 59)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# |  .------------- hour (0 - 23)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# |  |  .---------- day of month (1 - 31)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7)  OR sun,mon,tue,wed,thu,fri,sat&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# |  |  |  |  |&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# *  *  *  *  *  command to be executed&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;###########################################################################################&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Ejemplos:&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Notas on Wiki de Sergio Cayuqueo</title>
+    <link>http://localhost:1313/redes/notas/</link>
+    <description>Recent content in Notas on Wiki de Sergio Cayuqueo</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Wed, 22 Jul 2026 23:28:56 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/redes/notas/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Netcat</title>
+      <link>http://localhost:1313/redes/notas/nc/</link>
+      <pubDate>Thu, 01 Nov 2018 13:35:16 -0300</pubDate>
+      <guid>http://localhost:1313/redes/notas/nc/</guid>
+      <description>&lt;h3 id=&#34;netcat&#34;&gt;Netcat&lt;a class=&#34;anchor&#34; href=&#34;#netcat&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Netcat is a featured networking utility which reads and writes data across network connections, using the TCP/IP protocol. It is designed to be a reliable “back-end” tool that can be used directly or easily driven by other programs and scripts. At the same time, it is a feature-rich network debugging and exploration tool, since it can create almost any kind of connection you would need and has several interesting built-in capabilities.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

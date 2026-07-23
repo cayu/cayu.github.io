@@ -1,0 +1,4115 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="An Introduction to Linux Shell Scripting for DBAs# by Casimir Saternos
+Learn some basic bash shell scripts for installing, running, and maintaining Oracle databases on Linux.
+Published November 2005
+About seven years ago, Oracle released the first commercial database on Linux. Since then, Oracle, Red Hat, and Novell/SUSE have been steadily collaborating on changes to Linux kernel as they relate to database and application performance. For that reason, Oracle Database 10g for Linux includes enhancements that are closely related to the operating system. Now more than ever, DBAs need to have knowledge of and experience on this platform to best administer the systems under their watch.
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/manuales/an_introduction_to_linux_shell_scripting_for_dbas/">
+  <meta property="og:site_name" content="Wiki de Sergio Cayuqueo">
+  <meta property="og:title" content="An Introduction to Linux Shell Scripting for DBAs">
+  <meta property="og:description" content="An Introduction to Linux Shell Scripting for DBAs# by Casimir Saternos
+Learn some basic bash shell scripts for installing, running, and maintaining Oracle databases on Linux.
+Published November 2005
+About seven years ago, Oracle released the first commercial database on Linux. Since then, Oracle, Red Hat, and Novell/SUSE have been steadily collaborating on changes to Linux kernel as they relate to database and application performance. For that reason, Oracle Database 10g for Linux includes enhancements that are closely related to the operating system. Now more than ever, DBAs need to have knowledge of and experience on this platform to best administer the systems under their watch.">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="manuales">
+    <meta property="article:published_time" content="2014-05-09T11:42:02-03:00">
+    <meta property="article:modified_time" content="2026-07-22T23:28:56-03:00">
+
+
+  <meta itemprop="name" content="An Introduction to Linux Shell Scripting for DBAs">
+  <meta itemprop="description" content="An Introduction to Linux Shell Scripting for DBAs# by Casimir Saternos
+Learn some basic bash shell scripts for installing, running, and maintaining Oracle databases on Linux.
+Published November 2005
+About seven years ago, Oracle released the first commercial database on Linux. Since then, Oracle, Red Hat, and Novell/SUSE have been steadily collaborating on changes to Linux kernel as they relate to database and application performance. For that reason, Oracle Database 10g for Linux includes enhancements that are closely related to the operating system. Now more than ever, DBAs need to have knowledge of and experience on this platform to best administer the systems under their watch.">
+  <meta itemprop="datePublished" content="2014-05-09T11:42:02-03:00">
+  <meta itemprop="dateModified" content="2026-07-22T23:28:56-03:00">
+  <meta itemprop="wordCount" content="4366">
+
+<title>An Introduction to Linux Shell Scripting for DBAs • Wiki de Sergio Cayuqueo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/manuales/an_introduction_to_linux_shell_scripting_for_dbas/">
+<link rel="stylesheet" href="/book.min.b67edd162318c5083c6df0a88fb33841277a463a19631410445e4034ec6e651c.css" integrity="sha256-tn7dFiMYxQg8bfCoj7M4QSd6RjoZYxQQRF5ANOxuZRw=" crossorigin="anonymous">
+
+
+  <script defer type="module" src="/es.search.min.0d8ef5a46e9d73ded2792bc4dc404ee89897a364056761a43c441c32a9c30525.js" integrity="sha256-DY71pG6dc97SeSvE3EBO6JiXo2QFZ2GkPEQcMqnDBSU=" crossorigin="anonymous"></script>
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-manuales">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Wiki de Sergio Cayuqueo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Buscar"
+    aria-label="Buscar"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Notas</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Hardware</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/" class="">
+      VMWare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/instalar_vmware_tools/" class="">
+      Instalar VMware Tools</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/agregar_cpu_en_caliente_en_vmware/" class="">
+      Agregar CPU en caliente en VMWare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/datetime/" class="">
+      Parametros para Vmware por cambio de hora de servidores</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/idrac/" class="">
+      iDrac Dell</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/strace/" class="">
+      Strace</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/nginx/" class="">
+      Nginx</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/" class="">
+      Squid</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/hearbeat/" class="">
+      LVS - Hearbeat - Ldirectord - Balanceo de carga y alta disponibilidad</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/rhcs/" class="">
+      Squid &#43; Red Hat Cluster Suite</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bind/" class="">
+      Configuración de Servidor DNS Bind</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/" class="">
+      Linux</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Networking</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/networking/wan_optimization/" class="">
+      WAN Optimization</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/actualizar_suse_linux/" class="">
+      Actualizar SuSE Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/cambiar_planificador_de_disco/" class="">
+      Cambiar planificador de acceso a disco</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/medicion_de_velocidad_de_cambio_en_filesystems_en_un_sistema_linux_fisico_o_virtual/" class="">
+      Medición de velocidad de cambio en filesystems en un sistema Linux (físico o virtual)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/midiendo_el_rendimiento_del_sistema_con_iostat/" class="">
+      Midiendo el rendimiento del sistema con IOSTAT</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/sistema_de_archivos_proc/" class="">
+      Sistema de archivos /proc</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/lvm/" class="">
+      Logical Volume Management 2 (LVM2)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/manejo_de_memoria_en_linux/" class="">
+      Manejo de memoria en Linux</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/manejo_de_memoria_en_linux/hugepages/" class="">
+      Hugepages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/ver_el_dmesg_en_formato_humano/" class="">
+      Ver el dmesg en formato humano</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/midiendo_el_rendimiento_del_sistema_con_sar/" class="">
+      Midiendo el rendimiento del sistema con SAR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/cron/" class="">
+      CRON</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/sed/" class="">
+      SED - Stream EDitor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/configuracion_vpn/" class="">
+      Configuración de acceso VPN desde Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openssh/" class="">
+      OpenSSH</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/compartir_archivos_por_nfs/" class="">
+      Como compartir filesystems por NFS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/" class="">
+      Microsoft</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/windows/" class="">
+      Sistema Operativo Windows</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/windows/scripts_varios_de_powershell/" class="">
+      Scripts varios de PowerShell</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/network_policy_server_nps/" class="">
+      Network Policy Server (NPS)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/apache/" class="">
+      Tips de Apache</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/analisis_forense/" class="">
+      Análisis forense</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/qlikview/" class="">
+      QlikView</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/owncloud/" class="">
+      OwnCloud</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/iptables/" class="">
+      TIPs varios de IPTables</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/celulares/" class="">
+      Teléfonos celulares</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openldap/" class="">
+      Implementacion de un servidor OpenLDAP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/arduino/" class="">
+      Arduino</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/kickstart/" class="">
+      Kickstart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/raspberry_pi/" class="">
+      Raspberry Pi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/postfix/" class="">
+      Postfix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openssl/" class="">
+      OpenSSL</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/" class="">
+      Programación</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Python</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Webscraping</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/webscraping/beautifulsoup/" class="">
+      Beautiful Soup</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/sistema_de_archivos/" class="">
+      Operaciones sobre el sistema de archivos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/django/" class="">
+      Django</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/introduccion_a_awk/" class="">
+      Uso básico de AWK</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/the_linux_cdrom_interface/" class="">
+      The Linux CDROM interface</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/reproductor_de_cd/" class="">
+      Reproductor De Cd</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/console_ioctls_under_linux/" class="">
+      Console IOCTLs Under Linux</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/tools_of_the_trade_--_iostat_vmstat_and_netstat/" class="">
+      Tools of the Trade -- Iostat, Vmstat, and Netstat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/solaris_performance_monitoring/" class="">
+      Solaris Performance Monitoring &amp; Tuning - iostat , vmstat &amp; netstat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/" class="">
+      Bases De Datos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/mysql/" class="">
+      Task MySQL</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/oracle/" class="">
+      Oracle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/mssql/" class="">
+      Microsoft SQL Server</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/postgresql/" class="">
+      PostgreSQL</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/valgrind/" class="">
+      Valgrind</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/kamailio/" class="">
+      Kamailio</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/syslog_centralizado/" class="">
+      Sistema de LOG centralizado</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/inicio_rapido_de_csync2/" class="">
+      Csync para centralizar la configuracion de servicios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/xen_multi_bridge/" class="">
+      Utilizar dos o mas placas de red con Xen</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/sysinfo_dokuwiki/" class="">
+      Dump some hardware info in DokuWiki format</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/ubuntu_domu_en_red_hat/" class="">
+      Xen Red Hat Dom0 y Ubuntu DomU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/enomalism/" class="">
+      Configuraciones a mano</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Fotografia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/fotografia/conceptos/" class="">
+      Sobre el 18-55</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Legales</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Legislacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Nacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/nacion/decreto_155_89/" class="">
+      Decreto 155 89</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/nacion/ley_23302/" class="">
+      LEY 23.302</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/caba/" class="">
+      Legislación Indígena Ciudad Autónoma de Buenos Aires</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/jurisprudencia/" class="">
+      Jurisprudencia</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/" class="">
+      Seguridad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Criptografia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/truecrypt/" class="">
+      Privacidad datos utilizando TrueCrypt</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/veracrypt/" class="">
+      Privacidad datos utilizando VeraCrypt</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/gnupg/" class="">
+      The GNU Privacy Guard</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Gestion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/gestion/itil/" class="">
+      ITIL - Information Technology Infrastructure Library</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      How To</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/how_to/prevent_a_fork_bomb_by_limiting_user_process/" class="">
+      How to: Prevent a fork bomb by limiting user process</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Programacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Redes</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/nodejs/" class="">
+      NodeJS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/python/" class="">
+      Scripts simples en python</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/python/scapy/" class="">
+      Scapy</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/scanner_de_puertos_simple/" class="">
+      Scanner De Puertos Simple</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/shellcode/" class="">
+      Shellcode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/" class="">
+      Seguridad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Certificaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/" class="">
+      Profesional certificado en seguridad ofensiva (OSCP)</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/preparacion_personal/" class="">
+      Preparación personal para rendir la certificación OSCP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/oscp_prep_class/" class="">
+      OSCP Prep class</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/oscp-survival-guide/" class="">
+      OSCP-Survival-Guide</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Exploits</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/exploits/mempodipper/" class="">
+      mempodipper</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/exploits/dirty_cow/" class="">
+      Dirty COW</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/why_i_would_never_buy_a_dell_powerconnect_2724/" class="">
+      Why I would never buy a Dell PowerConnect 2724</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/understanding_bash_fork_bomb/" class="">
+      Understanding Bash fork() bomb ~ :(){ :|:&amp; };:</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/pequena_guia_de_seguridad_informatica/" class="">
+      Pequeña guía de seguridad informática</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/auditd/" class="">
+      Auditoría en Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/process_accounting_psacct/" class="">
+      Process Accounting (PSACCT)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/" class="">
+      Enlaces útiles</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/" class="">
+      Utilidades de Red</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/ngrep/" class="">
+      Network Grep - ngrep</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/msndump/" class="">
+      MSN Dump</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/tcpdump/" class="">
+      TCPDUMP</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/" class="">
+      Aprendiendo SAP</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/sap_hana/" class="">
+      SAP HANA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/desarrollo_y_programacion_en_abap/" class="">
+      Desarrollo y programación en ABAP</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/" class="">
+      Redes y comunicaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Conectividad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/conectividad/fibra_optica/" class="">
+      Fibra óptica</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Firewalls</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/fortinet/" class="">
+      Fortinet</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/fortinet/fortiap/" class="">
+      FortiGate como controlador Wireless</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/pfsense/" class="">
+      pfSense</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Notas</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/notas/nc/" class="">
+      Netcat</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Telefonia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Asterisk</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/" class="">
+      Conectividad con Asterisk</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/spa400/" class="">
+      SPA400</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/tdm400p/" class="">
+      Instalar Placa TDM400P</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Cisco</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/call_manager/" class="">
+      Cisco Call Manager</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/routers/" class="">
+      Routers Cisco</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/telefonos/" class="">
+      Teléfonos CISCO</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Videoconferencia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/videoconferencia/openmcu-ru/" class="">
+      OpenMCU-ru</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/flows/" class="">
+      Network Flow</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/flows/ntop/" class="">
+      Ntop</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/rancid/" class="">
+      Rancid (Really Awesome New Cisco confIg Differ)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/conceptos/" class="">
+      Conceptos de redes informáticas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/" class="">
+      Switches</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Cisco</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/2960c/" class="">
+      CISCO - 2960-C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/2960x/" class="">
+      CISCO - 2960-X</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/sf300/" class="">
+      CISCO - SF300</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/extreme_networks/" class="">
+      Extreme Networks</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/" class="">
+      Hewlett Packard</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/aruba/" class="">
+      Switches Aruba</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/" class="">
+      3COM</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Voice</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/voice/vlan/" class="">
+      VLAN de voz</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/debug_y_analisis_de_equipos_hp_3com/" class="">
+      Debug y análisis de equipos HP/3com</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cumulus_networks/" class="">
+      Cumulus Networks</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/gestion/" class="">
+      Gestión</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/gestion/taiga/" class="">
+      Taiga</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/leyes/" class="">
+      Leyes, Decretos y Ordenanzas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/" class="">
+      Charlas y Eventos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/pueblos_originarios_y_la_industria_del_software/" class="">
+      Pueblos Originarios y la industria del Software</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/uso_de_la_consola_linux/" class="">
+      Taller de uso de Consola Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/lanux_agosto_2010/" class="">
+      Servidores VPS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/" class="">
+      Manuales de proyectos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Tivoli Tsm</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/manual_de_manejo_de_backups_con_tivoli/" class="">
+      Manual de manejo de respaldos con Tivoli</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/tsm_sql_tips/" class="">
+      Mandatos de prueba de validación de la actualización de la base de datos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/tsm_sql_hints/" class="">
+      TSM SQL Hints</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/sql_for_tivoli_storage_manager/" class="">
+      SQL for Tivoli Storage Manager</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/emc_data_domain/" class="">
+      EMC Data Domain</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/" class="">
+      Monitoria y análisis de Red con Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/" class="">
+      Monitoreo de Red con Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Productos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/oracle/" class="">
+      Oracle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/argentina_-_arba_-_codigo_de_operacion_de_traslado_cot/" class="">
+      Argentina - ARBA - Código de Operación de Traslado (COT)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/asterisk/" class="">
+      Asterisk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/riverbed/" class="">
+      Riverbed</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/argentina_-_afip_-_factura_electronica/" class="">
+      Argentina AFIP Factura Electrónica</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/sap/" class="">
+      SAP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/ibm_tivoli_tsm/" class="">
+      Tivoli Storage Manager - TSM</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/brasil_-_nota_fiscal_electronica_nfe/" class="">
+      Brasil - Nota Fiscal Electrónica NFe</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/brasil_-_nota_fiscal_electronica_nfe/referencias_utiles_de_nfe/" class="">
+      Referencias útiles de NFE</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/microstrategy/" class="">
+      MicroStrategy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/qlikview/" class="">
+      QlikView</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/servidor_web/" class="">
+      Configuración del servidor Web</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/pnp4nagios/" class="">
+      PNP4Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/tipos_de_notificaciones/" class="">
+      Tipos de notificaciones</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_referencias_generales/" class="">
+      Referencias generales</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_referencias_generales/sistema_de_inventario/" class="">
+      Sistema de inventario</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagios_network_analyzer/" class="">
+      Nagios Network Analyzer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/" class="">
+      Correlación de eventos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/rsyslog/" class="">
+      Reliable system and kernel logging daemon</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/eventdb/" class="">
+      EventDB</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/syslog_ng/" class="">
+      Syslog-NG</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/implementacion_tecnica/" class="">
+      Implementación Técnica de Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/implementacion_tecnica/implementacion_tecnica_version_ubuntu_server_20.04/" class="">
+      Implementación Técnica de Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/capacitacion_en_monitoreo_de_red/" class="">
+      Capacitación en monitoreo de Red</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Certificaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/capacitacion_en_monitoreo_de_red/certificaciones/sox_-_sarbanes-oxley/" class="">
+      SOX</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/desarrollo_de_plugins_de_nagios/" class="">
+      Desarrollo de plugins de Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/desarrollo_de_plugins_de_nagios/problemas_comunes/" class="">
+      Problemas comunes de los plugins de Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/snmp/" class="">
+      SNMP (Simple Network Management Protocol)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagios_event_radio_dispatcher_nerd/" class="">
+      Nagios Event Radio Dispatcher (NERD)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/mk_livestatus/" class="">
+      MK Livestatus</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/ndo2utils/" class="">
+      NDO2Utils</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagvis/" class="">
+      Nagvis</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagvis/diseno_de_tablero_de_control/" class="">
+      Diseño de tablero de control</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/graficos_en_ajax/" class="">
+      Gráficos en AJAX</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_tips_y_recomendaciones/" class="">
+      TIPS y recomendaciones</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_otras_soluciones_basadas_en_nagios/" class="">
+      Anexo - Otras soluciones basadas en Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_comandos_externos/" class="">
+      Comandos externos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/plugins_usuales_de_nagios/" class="">
+      Plugins usuales de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/icmp/" class="">
+      ICMP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_codigo_fuente_de_nagios/" class="">
+      Análisis del código fuente de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_configuracion_desde_version_3_a_4/" class="">
+      Incompatibilidades de configuración v3 a v4</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/codigo_fuente/" class="">
+      Análisis del código fuente de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/thruk/" class="">
+      Thruk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/portugues/" class="">
+      Monitoração de rede e análise com Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/italiano/" class="">
+      Implementazione di un sistema di rete, monitor con Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_freeradius/" class="">
+      Servidor FreeRadius</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_systemimager/" class="">
+      Proyecto Servidor de Backups</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/an_introduction_to_linux_shell_scripting_for_dbas/" class="active">
+      An Introduction to Linux Shell Scripting for DBAs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/filtrador_de_logs/" class="">
+      Filtrador de LOGS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/drbd/" class="">
+      DRBD (Distributed Replicated Block Device)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/" class="">
+      Lotus Notes</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/problemas_winmail.dat_outlook/" class="">
+      Problemas Winmail.dat Outlook</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/listar_ultimo_mes_de_login_de_usuarios/" class="">
+      Listar último mes de login de usuarios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/reemplazar_diseno_base_de_datos/" class="">
+      Reemplazar Diseño Base de Datos</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_squid/" class="">
+      Squid Proxy Server</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/red_restringida/" class="">
+      Red restringida</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/novell_audit/" class="">
+      Novell Identity Audit</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_dhcp/" class="">
+      Servicio DHCP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/ils/" class="">
+      ILS (Internet Locator Server)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>An Introduction to Linux Shell Scripting for DBAs</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#an-introduction-to-linux-shell-scripting-for-dbas">An Introduction to Linux Shell Scripting for DBAs</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 id="an-introduction-to-linux-shell-scripting-for-dbas">An Introduction to Linux Shell Scripting for DBAs<a class="anchor" href="#an-introduction-to-linux-shell-scripting-for-dbas">#</a></h2>
+<p>by Casimir Saternos</p>
+<p><strong>Learn some basic bash shell scripts for installing, running, and maintaining Oracle databases on Linux</strong>.</p>
+<p>Published November 2005</p>
+<p>About seven years ago, Oracle released the first commercial database on Linux. Since then, Oracle, Red Hat, and Novell/SUSE have been steadily collaborating on changes to Linux kernel as they relate to database and application performance. For that reason, Oracle Database 10g for Linux includes enhancements that are closely related to the operating system. Now more than ever, DBAs need to have knowledge of and experience on this platform to best administer the systems under their watch.</p>
+<p>There is a traditional division of responsibilities between sysadmins and DBAs. However, in practice, the distinction is not always clear. Many IT shops employ individuals who address concerns at the database as well as the operating system levels. And of course the Oracle Database itself uses operating system resources and is designed to interact closely with its environment.</p>
+<p>Furthermore, many sysadmins and DBAs find it necessary or convenient to automate tasks related to their work. The installation of software, monitoring of system resources, and management of systems involve repetitive and error-prone tasks are better addressed through automated processes than manual procedures.</p>
+<p>One method that is used to automate such tasks is shell scripting. Shell scripts play a significant role in the Linux System from the time it is installed. Various scripts are called when the system is started up and shut down. Utilities by Oracle and other third-party vendors are invoked through shell scripts. Because they can be developed quickly, they have historically been used for prototyping applications. System Administrators have taken advantage of the functionality available through shell scripting to provide solutions that are tailored for the particular requirements and idiosyncrasies of the systems under their watch.</p>
+<p>In this article, I will introduce functionality available through “bash” shell scripting that is relevant to installing, running, and maintaining Oracle databases on a Linux platform. Note that this article is designed for Linux scripting beginners or DBAs who are relatively new to Linux; most experienced Linux sysadmins will not find it helpful.</p>
+<p>What Is a Shell Script?</p>
+<p>A shell script is simply a text file containing a sequence of commands. When you run the file—or script—it executes the commands contained in the file. The term shell simply refers to the particular command-line user interface you use to communicate with the Linux kernel. Several different shells are available, including the C shell (csh), Korn shell (ksh), Bourne shell (sh), and Bourne-Again shell (bash). The shell itself is a command that reads lines from either a file or the terminal, interprets them, and generally executes other commands. The Bourne-Again shell incorporates features of the other shells mentioned and is the one that was used for the scripts this article demonstrates.</p>
+<p>The first line in the script file can be used to dictate which shell will be used to run the script. This is the meaning of the first line found in all of the script examples:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#!/bin/bash</span></span></span></code></pre></div><p>Why Use Shell Scripts?</p>
+<p>Depending on your background, you may not see any immediate value to shell scripting as it relates to the DBA’s work. If you do not have experience with UNIX or UNIX-like systems, the myriad of cryptic commands might be cause for concern. Besides, in addition to being a relational database, Oracle 10g provides a robust platform for processing data within the database as well as several methods of interacting with the OS outside of the database.</p>
+<p>However, there are several reasons you might find yourself delving into the world of shell scripting, including the following:</p>
+<ul>
+<li>You are in a situation in which you must support already existing scripts.</li>
+<li>You want to automate system setup that occurs prior to the installation of the Oracle software. For instance, you could write a script to check the initial state of the OS and report any prerequisites that must be met before installation of the software. The script might also create relevant OS users and groups and set environmental variables for the users.</li>
+<li>A running Oracle database can be used to execute manual or scheduled tasks. However, some tasks need to be run when the database is not running. You can use a script to stop or start a database (as well as a listener or a related database process). Such an action cannot be initiated from within the database itself.</li>
+<li>You need a mechanism for monitoring the state of a database (i.e. if it is running and available to process queries). Such a script could also monitor other processes and resources that are not Oracle-specific to provide a fuller picture of what is occurring in the system.</li>
+<li>You need to automate backups. Oracle Recovery Manager (RMAN) is a utility that allows you to develop backup scripts that can run on any platform. You can call Oracle Recovery Manager from a shell script and use it to perform a wide range of backup and recovery activities.</li>
+<li>You might have a requirement that is not specific to a single database. Perhaps you have several databases on a single machine. It may not be advisable to fulfill the requirement by using a single database, and it introduces potential security issues as well. Under such circumstances, shell scripting provides a means for fulfilling the requirement in a manner that does not associate the process with a single database.</li>
+</ul>
+<p>When Not to Use Shell Scripts</p>
+<p>Oracle Database includes functionality that extends beyond the traditional definition of an RDBMS. Like any other piece of software, it uses resources that are provided by the operating system, but it can “see” and “change” its environment to a much greater degree than other software. SQL and Oracle’s fixed views provide a picture of the system from inside the database, whereas shell scripting provides a view of the system from outside of the database. Shell scripting is not the solution for every problem.</p>
+<p>It important to recognize that many aspects of the operating system can be monitored and modified from within the database. Oracle’s fixed views (the views with a v$ prefix) can be used to determine the host name of the machine (v$instance) or the platform name on which the database is running (v$database). The location and other attributes of the files associated with the database can be determined in this manner as well. The location and other attributes of datafiles (v$datafile, dba_data_files), temp files (v$tempfile, dba_temp_files), redo logs (v$logfile), archive logs (v$archived_log), and control files (v$controlfile) can be queried directly from the database. You can determine information about the flash recovery area ($recovery_file_dest) from this view, as well as by looking at some init.ora parameters (db_recovery_file_dest, db_recovery_file_dest_size). The status of processes (v$process) and memory (v$sga, v$sgastat, and so on) can be queried as well. There are various built-in PL/SQL packages as well as the ability to create Java and C database objects that allow for additional access to the underlying OS.</p>
+<p>If you are considering scripting for a task that requires a good deal of database access, scripting is probably not your best option. Later in this article, there is a description of how to access the database by using SQL*Plus but in many cases, you are better off approaching the problem by using another language.</p>
+<p>The charts below summarize information accessible from within the database itself:</p>
+<p><strong>Server/OS Information</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Server identification</strong></td>
+          <td><strong>Representative Query</strong></td>
+          <td><strong>Notes</strong></td>
+      </tr>
+      <tr>
+          <td>Host name where the instance is running</td>
+          <td><code>select host_namefrom v$instance;</code></td>
+          <td>You can also obtain this information by running the following from bash: <code>hostname</code> or <code>uname --n</code></td>
+      </tr>
+      <tr>
+          <td>Operating system platform</td>
+          <td><code>select platform_name from v$database ---(10g)</code></td>
+          <td>Similar information is returned if you run <code>uname --s</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>File Information</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Oracle file locations</strong></td>
+          <td><strong>Representative Query</strong></td>
+          <td><strong>Notes</strong></td>
+      </tr>
+      <tr>
+          <td>Control files</td>
+          <td><code>select namefrom v$controlfile;</code></td>
+          <td>Location of the database control files. The init.ora parameter control_files also contains this information.</td>
+      </tr>
+      <tr>
+          <td>Datafiles</td>
+          <td><code>select file_name</code> <code>from Dba_data_files;</code></td>
+          <td>Location of the database datafiles</td>
+      </tr>
+      <tr>
+          <td>Temp files</td>
+          <td><code>select file_namefrom Dba_temp_files;</code></td>
+          <td>Location of database temporary files</td>
+      </tr>
+      <tr>
+          <td>Log files</td>
+          <td><code>select memberfrom v$logfile;</code></td>
+          <td>Location of redo logs</td>
+      </tr>
+      <tr>
+          <td>Archived logs</td>
+          <td><code>select namefrom v$archived_log</code></td>
+          <td>Location of archived redo logs. The init.ora parameters log_archive_dest_n also contain this information. This query will not return results if your database is not in Archivelog mode.</td>
+      </tr>
+      <tr>
+          <td>Flash recovery area</td>
+          <td><code>select namefrom v$recovery_file_dest</code></td>
+          <td>The directory being used in an Oracle 10g installation for the flash recovery area. The init.ora parameter db_recovery_file_dest also contains this information.</td>
+      </tr>
+      <tr>
+          <td>Other points of access on the file system indicated by parameters</td>
+          <td><code>select *from v$parameter</code> <code>where value like '%/%</code>’ <code>or</code> <code>value like '%/%';</code></td>
+          <td>The results of this query can vary significantly, depending on your installation and version of Oracle Database. Parameters that may be returned include: spfilestandby_archive_destutl_file_dirbackground_dump_dest user_dump_destcore_dump_destaudit_file_destdg_broker_config_file1dg_broker_config_file2</td>
+      </tr>
+      <tr>
+          <td>Programmatic access to the file system</td>
+          <td><code>select directory_path from dba_directories</code></td>
+          <td>The Oracle UTL_FILE_DIR parameter and DIRECTORY database objects can be used to access files that are not a part of standard database functioning.</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Process Information</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Processor/Processes</strong></td>
+          <td><strong>Representative Query</strong></td>
+          <td><strong>Notes</strong></td>
+      </tr>
+      <tr>
+          <td>Session Processes</td>
+          <td><code>select p.spid, s.username, s.program</code> <code>from v$process p, v$session s</code> <code>where p.addr=s.paddr</code> <code>order by 2, 3, 1</code></td>
+          <td>The spid can be correlated with ps –ef results to compare the information available within the database with OS information for a given process.</td>
+      </tr>
+      <tr>
+          <td>Processes related to parallelism</td>
+          <td><code>select slave_name, statusfrom v$PQ_SLAVE</code></td>
+          <td>Many aspects of Oracle Database, such as loading, querying, object creation, recovery, and replication, can take advantage of parallelism to speed up activities that can be broken down. The parameter parallel_threads_per_cpu sets an instance’s default degree of parallelism.</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Memory Information</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Memory</strong></td>
+          <td><strong>Representative Query</strong></td>
+          <td><strong>Notes</strong></td>
+      </tr>
+      <tr>
+          <td>Program Global Area</td>
+          <td><code>select * from V$PGASTAT</code></td>
+          <td>The parameter pga_aggregate_target is used to configure memory for all dedicated server connections. Linux utilities, including vmstat and top, can be used to monitor memory usage.</td>
+      </tr>
+      <tr>
+          <td>System Global Area</td>
+          <td><code>select * from v$sga</code></td>
+          <td>The parameters SGA_MAX_SIZE and SGA_TARGET are used to configure dynamic memory allocation features of Oracle Database 10 g. Other parameters can be used to manually allocate memory for particular purposes. Again, various Linux utilities are available to monitor memory allocation.</td>
+      </tr>
+  </tbody>
+</table>
+<p>BASH Scripts</p>
+<p>Scripts are either called as part of an automated process (with no human intervention) or run interactively, with a user responding to prompts. As long as you have executable permission for a file, you can run it from the command line by typing its name. If you do not have executable permission for the file but do have read permission, you can run the script by preceding it with <code>sh</code>.</p>
+<p>If a script is designed to be run without user input, several options are available for calling it. You can run a script in the background and continue even if you disconnect, by entering a command in the following form:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">nohup /path_to_dir/myscript_here.sh &amp;</span></span></code></pre></div><p>This can be useful for running scripts that take a long time to complete. The <code>at</code> command can be used to execute a script in the future, and <code>cron</code> can be used to schedule scripts to execute on a recurring basis.</p>
+<p>The following examples cover the essential aspects of providing output to view (using <code>echo</code>), looping, conditional logic, and variable assignment.</p>
+<p><strong>print_args.sh.</strong> Arguments are words to the right of the command name that are passed into the script. To access the first parameter, you use the <code>$1</code> variable. The <code>$0</code> variable contains the name of the script itself. The <code>$#</code> variable contains the number of arguments in the script. A handy way to iterate through all of the parameters passed involves the use of a <code>while</code> loop and the shift command. This command is what lets you iterate through all the arguments in the argument list (rather than remaining in an infinite loop).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">while [ $# -ne 0  ]
+</span></span><span class="line"><span class="cl">do
+</span></span><span class="line"><span class="cl">        echo $1
+</span></span><span class="line"><span class="cl">        shift
+</span></span><span class="line"><span class="cl">done</span></span></code></pre></div><p>If a script takes a filename as an argument (or prompts a user for a filename) and the file will be read later in the script, it is advisable to check whether it is accessible and readable. For example, a recovery script that involves the selection of a backed-up control file might prompt the user to make a selection that will be used later in the script to restore the file.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">if [ ! -r $1 ]; then # not exists and is readable
+</span></span><span class="line"><span class="cl">                        echo &#34;File $1 does not exist or is not readable.&#34;
+</span></span><span class="line"><span class="cl">                exit;
+</span></span><span class="line"><span class="cl">fi</span></span></code></pre></div><p>The sequence of characters</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">if [ ! -r $1 ];</span></span></code></pre></div><p>is what actually performs the test. If the contents between the brackets evaluate to true, the commands that appear between if and fi will be executed. The actual test appears between the brackets. The exclamation point serves to negate the test you are doing. The <code>-r</code> option checks to see if the file is readable. What is being tested in this particular case is the first argument being passed to the script. By using a different test ( <code>-d</code> ), you can check to find out if a given entry is a directory (see is_a_directory.sh).</p>
+<p><strong>do_continue.sh.</strong> This example is a simple representative sequence of commands that can be used to read user input for various purposes. Before running a process that can result in data loss or other undesirable results under certain conditions that are not determinable from within the script, it is advisable to include a prompt asking if the user actually wants the script to execute the next command or commands. The following example asks if the user wants to continue, reads a variable named <code>doContinue</code> from the command line, and evaluates what the user entered. If the user enters anything other than “y,” that person is informed that the script is “quitting” and it exits without executing the remainder of the script following the end of the if block ( <code>fi</code>).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">doContinue=n
+</span></span><span class="line"><span class="cl">echo -n &#34;Do you really want to continue? (y/n) &#34; 
+</span></span><span class="line"><span class="cl">read doContinue
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">if [ &#34;$doContinue&#34; != &#34;y&#34; ]; then
+</span></span><span class="line"><span class="cl">      echo &#34;Quitting...&#34;
+</span></span><span class="line"><span class="cl">      exit
+</span></span><span class="line"><span class="cl">fi</span></span></code></pre></div><p>It is imperative that only users with the correct permissions and environment run a given script. A useful check in a script tests the user who is attempting to run the script. If you enclose a command within back-quote ( <code>‘</code>) characters, the results of the command can be returned to the script. The following example retrieves the currently logged-on user, by using <code>whoami</code>, and displays the date, by using the date command later in the script.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">       
+</span></span><span class="line"><span class="cl">echo &#34;You are logged in as ‘whoami‘&#34;;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">if [ ‘whoami‘ != &#34;oracle&#34; ]; then
+</span></span><span class="line"><span class="cl">  echo &#34;Must be logged on as oracle to run this script.&#34;
+</span></span><span class="line"><span class="cl">  exit
+</span></span><span class="line"><span class="cl">fi
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">echo &#34;Running script at ‘date‘&#34;</span></span></code></pre></div><p>Scripts written to interact with Oracle Database sometimes require the entry of sensitive information such as a database password. The <code>stty --echo</code> command turns off the screen echo, so that the information entered for the subsequent read command will not appear on the screen. After the sensitive information has been read and stored in a variable ( <code>pw</code> in the example below), the display can be turned back on with <code>stty echo</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">       
+</span></span><span class="line"><span class="cl">stty -echo    
+</span></span><span class="line"><span class="cl">        echo -n &#34;Enter the database system password:  &#34;
+</span></span><span class="line"><span class="cl">        read pw
+</span></span><span class="line"><span class="cl">stty echo</span></span></code></pre></div><p>Oracle Scripts</p>
+<p>Some files reside in a fixed location for a given Oracle install. You can determine the Oracle inventory by viewing the /etc/oraInst.loc file. The /etc/oratab file identifies databases (and other Oracle programs) installed on the server.</p>
+<p><strong>get_inv_location.sh.</strong> This script is a bit less intuitive than the previous examples. By breaking down the script into its component commands, you will get a better understanding of what is being accomplished.</p>
+<p>To determine inventory location, you are going to pipe the results of the <code>cat</code> command (which displays the contents of the file) to <code>grep</code> (a utility that prints lines that match a given pattern). You are searching for lines that contain the literal <code>inventory_loc</code> .</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">cat /etc/oraInst.loc | grep inventory_loc</span></span></code></pre></div><p>If there is more than one inventory location due to multiple installs, you want to exclude lines commented out with a <code>#</code> . The <code>--v</code> option excludes lines that contain the given pattern.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">       
+</span></span><span class="line"><span class="cl">cat /etc/oraInst.loc |grep -v &#34;#&#34;|grep inventory_loc</span></span></code></pre></div><p>The result of this command will look something like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">inventory_loc=/u01/oraInventory</span></span></code></pre></div><p>You can redirect standard out to a file, using the &gt; redirection. If the file does not exist, it is created. If it does exist, it is overwritten.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">       
+</span></span><span class="line"><span class="cl">cat /etc/oraInst.loc|grep -v &#34;#&#34;|grep inventory_loc &gt; tmp</span></span></code></pre></div><p>Once you have the record that indicates the inventory location, you want to remove the portion of the record prior to the equal sign. This time you pipe the results of the cat command to awk (a pattern-scanning and processing language often used to split up variable-length fields), which essentially tokenizes the string. The <code>--F</code> option directs awk to use the equal sign as the delimiter. You then print the second token of this string ( <code>$2</code> ), which is everything to the right of the equal sign. The result is our inventory location <code>(/</code>u01/oraInventory).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">cat tmp | awk -F= &#39;{print $2}&#39;</span></span></code></pre></div><p>There is no particular reason to allow the temporary file (tmp) to remain, so it can be removed.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">rm tmp</span></span></code></pre></div><p><strong>list_oracle_homes.sh.</strong> If you would like to determine the ORACLE_HOME for a given database, you have several options. You can log on as the database user and <code>echo</code> the $ORACLE_HOME variable. You can also search through the /etc/oratab file and select the name associated with a given instance. Database entries in this file are of the form</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">$ORACLE_SID:$ORACLE_HOME:&lt;N|Y&gt;:</span></span></code></pre></div><p>The following one-liner prints out the ORACLE_HOME of an entry with an ORACLE_SID of TESTDB:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">cat /etc/oratab | awk -F: &#39;{if ($1==&#34;TESTDB&#34;) print $2 }&#39;</span></span></code></pre></div><p>However, what if you have a requirement that an operation needs to be performed on each ORACLE_HOME listed in the /etc/orainst file? You can iterate through such a list by utilizing the following code snippet.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dblist=‘cat /etc/oratab | grep -v &#34;#&#34; | awk -F: &#39;{print $2 }&#39;‘
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">for ohome in $dblist ; do
+</span></span><span class="line"><span class="cl">  echo $ohome
+</span></span><span class="line"><span class="cl">done</span></span></code></pre></div><p>The <code>dblist</code> variable is being used as an array. All ORACLE_HOME paths are held by this variable. A <code>for</code> loop is used to iterate through this list, and each entry is assigned to the variable <code>ohome</code> and then echoed to standard out.</p>
+<p><strong>search_log.sh.</strong> A variety of logs are generated by Oracle products, and you might be interested in monitoring them. The database alert log contains messages that are critical to database operations. Log files are also generated when products are installed or deinstalled and when patches are applied. The following script iterates over a file passed to it as an argument. If any lines are found that contain ORA-, an e-mail message is sent to a designated recipient.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">cat $1 | grep ORA- &gt; alert.err
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">if [ ‘cat alert.err|wc -l‘ -gt 0 ]
+</span></span><span class="line"><span class="cl">then
+</span></span><span class="line"><span class="cl">        mail -s &#34;$0 $1 Errors&#34; administrator@yourcompany.com &lt; alert.err
+</span></span><span class="line"><span class="cl">fi</span></span></code></pre></div><p>The specific test being performed is a count of the number of words that exist in the file alert.err, which is written when you redirect to alert.err. If the word count ( <code>wc</code>) is greater than ( <code>-gt</code>) zero, the contents of the if block will execute. In this case, you are using <code>mail</code> ( <code>send mail</code> might also be used) to send a message. The title of the message contains the script being executed ( <code>$0</code>), the name of the log being searched ( <code>$1</code>), and the lines that matched our initial search ( <code>ORA-</code>) as the body of the message.</p>
+<p>Environmental variables such as ORACLE_HOME, ORACLE_BASE, and ORACLE_SID can be used to locate resources that are not in a fixed location in the Linux environment. If you are administering an Oracle E-Business Suite 11i application instance, you have numerous other environmental variables that can be used to locate resources. These include APPL_TOP, TWO_TASK, CONTEXT_NAME, and CONTEXT_FILE, to name a few. To see a complete list in your environment, execute the following command and examine the resulting file (myenv.txt):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">env &gt; myenv.txt</span></span></code></pre></div><p>Various combinations of these environmental variables can be used as the location of a file being searched. For example, an alert log location might be designated as</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">$ORACLE_BASE/admin/$ORACLE_SID/bdump/alert_$ORACLE_SID.log</span></span></code></pre></div><p>Based on the principles introduced in this script, a larger one can be written and scheduled to execute at periodic intervals that will search the contents of the alert log (or another file of interest) and send an e-mail if any errors exist. Then the contents of the log can be moved to another file, so that only the most recent error messages will be sent via e-mail.</p>
+<p><strong>Oracle Recovery Manager Scripts.</strong> Oracle Recovery Manager (RMAN) is a utility that can be used to administer database backup and recovery. This greatly simplifies administration on multiple platforms, because all backup scripts can be written to be run by RMAN, reducing the amount of platform-specific code. RMAN can be called by the underlying operating system and passed a script. For example, a cold (cold.sh) backup might consist of the following script:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl"><span class="c1">#!/bin/bash</span>
+</span></span><span class="line"><span class="cl">rman target / <span class="s">&lt;&lt;EOF
+</span></span></span><span class="line"><span class="cl"><span class="s">shutdown immediate;
+</span></span></span><span class="line"><span class="cl"><span class="s">startup mount;
+</span></span></span><span class="line"><span class="cl"><span class="s">backup spfile;
+</span></span></span><span class="line"><span class="cl"><span class="s">backup database;
+</span></span></span><span class="line"><span class="cl"><span class="s">alter database open;
+</span></span></span><span class="line"><span class="cl"><span class="s">delete noprompt obsolete;
+</span></span></span><span class="line"><span class="cl"><span class="s">quit;
+</span></span></span><span class="line"><span class="cl"><span class="s">EOF</span></span></span></code></pre></div><p>Line 1 indicates that you are using the bash shell. Line 2 invokes Oracle Recovery Manager and specifies the OS user login to the target database (specified in the environmental variable $ORACLE_SID). The <code>&lt;&lt;EOF</code> following this indicates that the subsequent commands will be passed into RMAN to be processed. The EOF on the last line indicates that you have reached the end of the series of commands to be passed into RMAN. RMAN is then used to shut down the database, start up and mount the database, and proceed to back up the server parameter file and the contents of the database. The database is then opened. Any backups that are older than those specified in the retention policy are then deleted. See the RMAN documentation to construct a backup that is relevant for your situation.</p>
+<p>Nightly backups are commonly scheduled and run automatically. The script above could be called and the contents of standard out sent to an e-mail address with the following command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sh cold.sh | mail -s&#34;Backup ‘date‘&#34; administrator@yourcompany.com</span></span></code></pre></div><p>Other Oracle utilities can be run from within shell scripts as well. The <code>tnsping</code> utility can be used to see if a given Oracle connection identifier can contact the listener. You might run this utility to check for connection problems:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">tnsping ptch04 |grep TNS-</span></span></code></pre></div><p>Database exports and imports (traditional and data pump) are also good candidates for the scripting of repeating processes.</p>
+<p><strong>Database Installation.</strong> Many of the steps involved in the setup of a database can be automated. Before you install Oracle 10g on Linux, you need to run various tests to verify the minimum required version of packages and the settings of kernel parameters. You can query the version of a package by using the <code>rpm</code> command with the <code>--q</code> option.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">rpm -q compat-libstdc++</span></span></code></pre></div><p>You can determine various aspects of the system by looking at the /proc “virtual” or “pseudo” file system. It contains not real files but, rather, runtime system information that can be viewed as if it resided in files. For instance, /proc/meminfo contains memory information for the system, and grep <code>MemTotal /proc/meminfo</code> displays the total memory of the system. By using <code>awk</code> as you did earlier, you could isolate the amount of memory in kilobytes, by using:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">grep MemTotal /proc/meminfo | awk &#39;{print $2}&#39;</span></span></code></pre></div><p>Such a command could be used in the context of a script that would do comparisons and respond accordingly (even updating the system itself). The sample scripts 10gchecks_kernel.sh and 10gchecks.sh simply display current and recommended versions and settings based on the Oracle documentation.</p>
+<p><strong>Database Monitoring.</strong> The <code>ps</code> command can be used to report process status and to check to see if a database, listener, script, or any other process of interest is running. If you want to list all the databases that are currently running on a server, you can run the following command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">echo &#34;‘ps -ef | grep smon|grep -v grep|awk &#39;{print $8}&#39;| awk -F \&#34;_\&#34; 
+</span></span><span class="line"><span class="cl">&#39;{print$3}&#39;‘&#34;</span></span></code></pre></div><p>Although this is functional, it is a bit difficult to understand at first glance. The first command, <code>ps</code> (using the <code>-ef</code> options for a full listing of all processes), finds all of the processes running on the server. The next, <code>grep</code>, searches for SMON (the Oracle System Monitor background process), which indicates that the database is running. You want to remove entries that refer to the <code>grep</code> command itself, which is being run. You then use <code>awk</code> to locate the eighth column in the listing, which contains the system monitor process name in the form ora_smon_&lt;oracle_sid&gt;. The last instance of awk then uses the underscore character as the delimiter to search for and print the database name that owns the SMON process. The underscore character needs to appear in quotes, and the backslash is used before each of the quotes to escape those quotes (because the entire string appears within a set of double quotes).</p>
+<p><strong>exec_sql.sh.</strong> As mentioned earlier, it is possible to query the database from a shell script provided the user has access to sqlplus. The following example returns a (space-delimited) list of machines that are currently maintaining sessions in the database:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl"><span class="c1">#!/bin/bash</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">output</span><span class="o">=</span>‘sqlplus -s <span class="s2">&#34;/ as sysdba&#34;</span> <span class="s">&lt;&lt;EOF
+</span></span></span><span class="line"><span class="cl"><span class="s">       set heading off feedback off verify off
+</span></span></span><span class="line"><span class="cl"><span class="s">       select distinct machine from v\\$session;
+</span></span></span><span class="line"><span class="cl"><span class="s">       exit
+</span></span></span><span class="line"><span class="cl"><span class="s">EOF</span>
+</span></span><span class="line"><span class="cl">‘
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="nv">$output</span></span></span></code></pre></div><p>This script is similar to the previous RMAN script in that you are inputting commands into another program. A local OS authenticated connection is made to the database as sysdba. To prevent extraneous messages from being returned, this script turns off the heading, feedback, and verify options of SQL*Plus. The query is executed and SQL*Plus is exited.</p>
+<p>Note the double-backslash before the dollar sign in the view name. These are required escape sequences within the string: The first slash escapes the second slash, which escapes the dollar sign. Again, not pretty, but functional.</p>
+<p>As mentioned previously, if you are going to be writing something that requires extensive database access, shell scripting is not the best option. It might be better to rewrite the script in PL/SQL, Perl (which uses syntax similar to that used in shell scripting), Python, Java, or another language of your choice.</p>
+<p>Conclusion</p>
+<p>Shell scripting can be an effective tool for quickly automating repetitive and error-prone administration tasks. The examples in this article provide an introduction to the possibilities available but are far from comprehensive. Every system has distinct quirks and foibles and a unique configuration. An administrator will develop unique solutions to meet the needs of the particular system.</p>
+<hr>
+<p><strong>Casimir Saternos</strong> is an Oracle Certified DBA, IBM Certified Enterprise Developer, and Sun Certified Java Programmer based in Allentown, Pa.</p>
+<p><a href="http://www.oracle.com/technetwork/articles/linux/saternos-scripting-088882.html">http://www.oracle.com/technetwork/articles/linux/saternos-scripting-088882.html</a></p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/manuales/servidor_systemimager/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Proyecto Servidor de Backups</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/manuales/filtrador_de_logs/" class="flex align-center">
+        <span>Filtrador de LOGS</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#an-introduction-to-linux-shell-scripting-for-dbas">An Introduction to Linux Shell Scripting for DBAs</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

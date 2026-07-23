@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Enlaces útiles on Wiki de Sergio Cayuqueo</title>
+    <link>http://localhost:1313/enlaces/</link>
+    <description>Recent content in Enlaces útiles on Wiki de Sergio Cayuqueo</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Thu, 23 Jul 2026 18:22:08 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/enlaces/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>TCPDUMP</title>
+      <link>http://localhost:1313/enlaces/tcpdump/</link>
+      <pubDate>Mon, 24 Jan 2011 11:29:22 -0300</pubDate>
+      <guid>http://localhost:1313/enlaces/tcpdump/</guid>
+      <description>&lt;p&gt;Permite al usuario capturar y mostrar a tiempo real los &lt;a href=&#34;http://es.wikipedia.org/wiki/Paquete_de_datos&#34;&gt;paquetes&lt;/a&gt; transmitidos y recibidos en la red a la cual el ordenador está conectado. Está escrito por Van Jacobson, Craig Leres, y Steven McCanne que trabajaban en ese momento en el Grupo de Investigación de Red del Laboratorio Lawrence Berkeley. Más tarde el programa fue ampliado por Andrew Tridgell.&lt;/p&gt;&#xA;&lt;p&gt;tcpdump funciona en la mayoría de los sistemas operativos UNIX: Linux, Solaris, BSD, Mac OS X, HP-UX y AIX entre otros. En esos sistemas, tcpdump hace uso de la librería libpcap para capturar los paquetes que circulan por la red.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

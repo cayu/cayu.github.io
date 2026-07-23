@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Conectividad on Wiki de Sergio Cayuqueo</title>
+    <link>http://localhost:1313/redes/conectividad/</link>
+    <description>Recent content in Conectividad on Wiki de Sergio Cayuqueo</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Wed, 22 Jul 2026 23:28:56 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/redes/conectividad/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fibra óptica</title>
+      <link>http://localhost:1313/redes/conectividad/fibra_optica/</link>
+      <pubDate>Mon, 18 Sep 2017 15:53:18 -0300</pubDate>
+      <guid>http://localhost:1313/redes/conectividad/fibra_optica/</guid>
+      <description>&lt;h2 id=&#34;conectores&#34;&gt;Conectores&lt;a class=&#34;anchor&#34; href=&#34;#conectores&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;SC&lt;/strong&gt; (Subscriber Connector) : EIA/TIA, FOCIS-3, IEC-61754-4.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;LC&lt;/strong&gt; (Lucent Connector): FOCIS-10, EIA/TIA-604-10, IEC-61754-20.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;FC&lt;/strong&gt; (Fixed Connector): FOCIS-4, EIA/TIA-604-04, IEC 61754-13.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;ST&lt;/strong&gt; (Straight Tip): FOCIS-2, EIA/TIA-604-2.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/redes/conectividad/fibra_optica/fibra_optica_conectores.png&#34; alt=&#34;fibra_optica_conectores.png&#34; /&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,4254 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Programando plugins# Desarrollar plugins de chequeos para Nagios es extremadamente flexible, ya que no dependemos del lenguaje de programación debido a que Nagios toma la salida resultante de su ejecución.
+Deberemos conocer bien lo que queremos chequear y conocer los indicadores que nos mostraran si deberemos expresarlos como un OK, un WARNING o un CRITICAL.
+Luego deberemos reflejar esos estados en su código de retorno o Exit status, dependiendo del código del mismo Nagios entenderá que debe mostrar.
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/manuales/nagios/capacitacion/desarrollo_de_plugins_de_nagios/">
+  <meta property="og:site_name" content="Wiki de Sergio Cayuqueo">
+  <meta property="og:title" content="Desarrollo de plugins de Nagios">
+  <meta property="og:description" content="Programando plugins# Desarrollar plugins de chequeos para Nagios es extremadamente flexible, ya que no dependemos del lenguaje de programación debido a que Nagios toma la salida resultante de su ejecución.
+Deberemos conocer bien lo que queremos chequear y conocer los indicadores que nos mostraran si deberemos expresarlos como un OK, un WARNING o un CRITICAL.
+Luego deberemos reflejar esos estados en su código de retorno o Exit status, dependiendo del código del mismo Nagios entenderá que debe mostrar.">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="website">
+
+
+  <meta itemprop="name" content="Desarrollo de plugins de Nagios">
+  <meta itemprop="description" content="Programando plugins# Desarrollar plugins de chequeos para Nagios es extremadamente flexible, ya que no dependemos del lenguaje de programación debido a que Nagios toma la salida resultante de su ejecución.
+Deberemos conocer bien lo que queremos chequear y conocer los indicadores que nos mostraran si deberemos expresarlos como un OK, un WARNING o un CRITICAL.
+Luego deberemos reflejar esos estados en su código de retorno o Exit status, dependiendo del código del mismo Nagios entenderá que debe mostrar.">
+  <meta itemprop="datePublished" content="2016-07-27T12:12:42-03:00">
+  <meta itemprop="dateModified" content="2026-07-22T23:28:56-03:00">
+  <meta itemprop="wordCount" content="1535">
+
+<title>Desarrollo de plugins de Nagios • Wiki de Sergio Cayuqueo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/manuales/nagios/capacitacion/desarrollo_de_plugins_de_nagios/">
+<link rel="stylesheet" href="/book.min.b67edd162318c5083c6df0a88fb33841277a463a19631410445e4034ec6e651c.css" integrity="sha256-tn7dFiMYxQg8bfCoj7M4QSd6RjoZYxQQRF5ANOxuZRw=" crossorigin="anonymous">
+
+
+  <script defer type="module" src="/es.search.min.0d8ef5a46e9d73ded2792bc4dc404ee89897a364056761a43c441c32a9c30525.js" integrity="sha256-DY71pG6dc97SeSvE3EBO6JiXo2QFZ2GkPEQcMqnDBSU=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/manuales/nagios/capacitacion/desarrollo_de_plugins_de_nagios/index.xml" title="Desarrollo de plugins de Nagios" />
+
+  
+</head>
+<body dir="ltr" class="book-kind-section book-type-manuales">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Wiki de Sergio Cayuqueo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Buscar"
+    aria-label="Buscar"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Notas</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Hardware</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/" class="">
+      VMWare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/instalar_vmware_tools/" class="">
+      Instalar VMware Tools</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/agregar_cpu_en_caliente_en_vmware/" class="">
+      Agregar CPU en caliente en VMWare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/datetime/" class="">
+      Parametros para Vmware por cambio de hora de servidores</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/idrac/" class="">
+      iDrac Dell</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/strace/" class="">
+      Strace</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/nginx/" class="">
+      Nginx</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/" class="">
+      Squid</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/hearbeat/" class="">
+      LVS - Hearbeat - Ldirectord - Balanceo de carga y alta disponibilidad</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/rhcs/" class="">
+      Squid &#43; Red Hat Cluster Suite</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bind/" class="">
+      Configuración de Servidor DNS Bind</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/" class="">
+      Linux</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Networking</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/networking/wan_optimization/" class="">
+      WAN Optimization</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/actualizar_suse_linux/" class="">
+      Actualizar SuSE Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/cambiar_planificador_de_disco/" class="">
+      Cambiar planificador de acceso a disco</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/medicion_de_velocidad_de_cambio_en_filesystems_en_un_sistema_linux_fisico_o_virtual/" class="">
+      Medición de velocidad de cambio en filesystems en un sistema Linux (físico o virtual)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/midiendo_el_rendimiento_del_sistema_con_iostat/" class="">
+      Midiendo el rendimiento del sistema con IOSTAT</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/sistema_de_archivos_proc/" class="">
+      Sistema de archivos /proc</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/lvm/" class="">
+      Logical Volume Management 2 (LVM2)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/manejo_de_memoria_en_linux/" class="">
+      Manejo de memoria en Linux</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/manejo_de_memoria_en_linux/hugepages/" class="">
+      Hugepages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/ver_el_dmesg_en_formato_humano/" class="">
+      Ver el dmesg en formato humano</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/midiendo_el_rendimiento_del_sistema_con_sar/" class="">
+      Midiendo el rendimiento del sistema con SAR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/cron/" class="">
+      CRON</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/sed/" class="">
+      SED - Stream EDitor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/configuracion_vpn/" class="">
+      Configuración de acceso VPN desde Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openssh/" class="">
+      OpenSSH</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/compartir_archivos_por_nfs/" class="">
+      Como compartir filesystems por NFS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/" class="">
+      Microsoft</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/windows/" class="">
+      Sistema Operativo Windows</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/windows/scripts_varios_de_powershell/" class="">
+      Scripts varios de PowerShell</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/network_policy_server_nps/" class="">
+      Network Policy Server (NPS)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/apache/" class="">
+      Tips de Apache</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/analisis_forense/" class="">
+      Análisis forense</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/qlikview/" class="">
+      QlikView</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/owncloud/" class="">
+      OwnCloud</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/iptables/" class="">
+      TIPs varios de IPTables</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/celulares/" class="">
+      Teléfonos celulares</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openldap/" class="">
+      Implementacion de un servidor OpenLDAP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/arduino/" class="">
+      Arduino</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/kickstart/" class="">
+      Kickstart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/raspberry_pi/" class="">
+      Raspberry Pi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/postfix/" class="">
+      Postfix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openssl/" class="">
+      OpenSSL</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/" class="">
+      Programación</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Python</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Webscraping</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/webscraping/beautifulsoup/" class="">
+      Beautiful Soup</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/sistema_de_archivos/" class="">
+      Operaciones sobre el sistema de archivos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/django/" class="">
+      Django</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/introduccion_a_awk/" class="">
+      Uso básico de AWK</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/the_linux_cdrom_interface/" class="">
+      The Linux CDROM interface</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/reproductor_de_cd/" class="">
+      Reproductor De Cd</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/console_ioctls_under_linux/" class="">
+      Console IOCTLs Under Linux</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/tools_of_the_trade_--_iostat_vmstat_and_netstat/" class="">
+      Tools of the Trade -- Iostat, Vmstat, and Netstat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/solaris_performance_monitoring/" class="">
+      Solaris Performance Monitoring &amp; Tuning - iostat , vmstat &amp; netstat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/" class="">
+      Bases De Datos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/mysql/" class="">
+      Task MySQL</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/oracle/" class="">
+      Oracle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/mssql/" class="">
+      Microsoft SQL Server</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/postgresql/" class="">
+      PostgreSQL</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/valgrind/" class="">
+      Valgrind</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/kamailio/" class="">
+      Kamailio</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/syslog_centralizado/" class="">
+      Sistema de LOG centralizado</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/inicio_rapido_de_csync2/" class="">
+      Csync para centralizar la configuracion de servicios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/xen_multi_bridge/" class="">
+      Utilizar dos o mas placas de red con Xen</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/sysinfo_dokuwiki/" class="">
+      Dump some hardware info in DokuWiki format</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/ubuntu_domu_en_red_hat/" class="">
+      Xen Red Hat Dom0 y Ubuntu DomU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/enomalism/" class="">
+      Configuraciones a mano</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Fotografia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/fotografia/conceptos/" class="">
+      Sobre el 18-55</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Legales</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Legislacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Nacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/nacion/decreto_155_89/" class="">
+      Decreto 155 89</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/nacion/ley_23302/" class="">
+      LEY 23.302</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/caba/" class="">
+      Legislación Indígena Ciudad Autónoma de Buenos Aires</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/jurisprudencia/" class="">
+      Jurisprudencia</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/" class="">
+      Seguridad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Criptografia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/truecrypt/" class="">
+      Privacidad datos utilizando TrueCrypt</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/veracrypt/" class="">
+      Privacidad datos utilizando VeraCrypt</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/gnupg/" class="">
+      The GNU Privacy Guard</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Gestion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/gestion/itil/" class="">
+      ITIL - Information Technology Infrastructure Library</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      How To</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/how_to/prevent_a_fork_bomb_by_limiting_user_process/" class="">
+      How to: Prevent a fork bomb by limiting user process</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Programacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Redes</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/nodejs/" class="">
+      NodeJS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/python/" class="">
+      Scripts simples en python</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/python/scapy/" class="">
+      Scapy</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/scanner_de_puertos_simple/" class="">
+      Scanner De Puertos Simple</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/shellcode/" class="">
+      Shellcode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/" class="">
+      Seguridad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Certificaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/" class="">
+      Profesional certificado en seguridad ofensiva (OSCP)</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/preparacion_personal/" class="">
+      Preparación personal para rendir la certificación OSCP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/oscp_prep_class/" class="">
+      OSCP Prep class</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/oscp-survival-guide/" class="">
+      OSCP-Survival-Guide</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Exploits</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/exploits/mempodipper/" class="">
+      mempodipper</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/exploits/dirty_cow/" class="">
+      Dirty COW</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/why_i_would_never_buy_a_dell_powerconnect_2724/" class="">
+      Why I would never buy a Dell PowerConnect 2724</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/understanding_bash_fork_bomb/" class="">
+      Understanding Bash fork() bomb ~ :(){ :|:&amp; };:</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/pequena_guia_de_seguridad_informatica/" class="">
+      Pequeña guía de seguridad informática</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/auditd/" class="">
+      Auditoría en Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/process_accounting_psacct/" class="">
+      Process Accounting (PSACCT)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/" class="">
+      Enlaces útiles</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/" class="">
+      Utilidades de Red</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/ngrep/" class="">
+      Network Grep - ngrep</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/msndump/" class="">
+      MSN Dump</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/tcpdump/" class="">
+      TCPDUMP</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/" class="">
+      Aprendiendo SAP</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/sap_hana/" class="">
+      SAP HANA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/desarrollo_y_programacion_en_abap/" class="">
+      Desarrollo y programación en ABAP</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/" class="">
+      Redes y comunicaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Conectividad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/conectividad/fibra_optica/" class="">
+      Fibra óptica</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Firewalls</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/fortinet/" class="">
+      Fortinet</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/fortinet/fortiap/" class="">
+      FortiGate como controlador Wireless</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/pfsense/" class="">
+      pfSense</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Notas</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/notas/nc/" class="">
+      Netcat</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Telefonia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Asterisk</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/" class="">
+      Conectividad con Asterisk</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/spa400/" class="">
+      SPA400</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/tdm400p/" class="">
+      Instalar Placa TDM400P</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Cisco</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/call_manager/" class="">
+      Cisco Call Manager</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/routers/" class="">
+      Routers Cisco</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/telefonos/" class="">
+      Teléfonos CISCO</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Videoconferencia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/videoconferencia/openmcu-ru/" class="">
+      OpenMCU-ru</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/flows/" class="">
+      Network Flow</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/flows/ntop/" class="">
+      Ntop</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/rancid/" class="">
+      Rancid (Really Awesome New Cisco confIg Differ)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/conceptos/" class="">
+      Conceptos de redes informáticas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/" class="">
+      Switches</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Cisco</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/2960c/" class="">
+      CISCO - 2960-C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/2960x/" class="">
+      CISCO - 2960-X</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/sf300/" class="">
+      CISCO - SF300</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/extreme_networks/" class="">
+      Extreme Networks</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/" class="">
+      Hewlett Packard</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/aruba/" class="">
+      Switches Aruba</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/" class="">
+      3COM</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Voice</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/voice/vlan/" class="">
+      VLAN de voz</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/debug_y_analisis_de_equipos_hp_3com/" class="">
+      Debug y análisis de equipos HP/3com</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cumulus_networks/" class="">
+      Cumulus Networks</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/gestion/" class="">
+      Gestión</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/gestion/taiga/" class="">
+      Taiga</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/leyes/" class="">
+      Leyes, Decretos y Ordenanzas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/" class="">
+      Charlas y Eventos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/pueblos_originarios_y_la_industria_del_software/" class="">
+      Pueblos Originarios y la industria del Software</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/uso_de_la_consola_linux/" class="">
+      Taller de uso de Consola Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/lanux_agosto_2010/" class="">
+      Servidores VPS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/" class="">
+      Manuales de proyectos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Tivoli Tsm</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/manual_de_manejo_de_backups_con_tivoli/" class="">
+      Manual de manejo de respaldos con Tivoli</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/tsm_sql_tips/" class="">
+      Mandatos de prueba de validación de la actualización de la base de datos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/tsm_sql_hints/" class="">
+      TSM SQL Hints</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/sql_for_tivoli_storage_manager/" class="">
+      SQL for Tivoli Storage Manager</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/emc_data_domain/" class="">
+      EMC Data Domain</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/" class="">
+      Monitoria y análisis de Red con Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/" class="">
+      Monitoreo de Red con Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Productos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/oracle/" class="">
+      Oracle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/argentina_-_arba_-_codigo_de_operacion_de_traslado_cot/" class="">
+      Argentina - ARBA - Código de Operación de Traslado (COT)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/asterisk/" class="">
+      Asterisk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/riverbed/" class="">
+      Riverbed</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/argentina_-_afip_-_factura_electronica/" class="">
+      Argentina AFIP Factura Electrónica</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/sap/" class="">
+      SAP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/ibm_tivoli_tsm/" class="">
+      Tivoli Storage Manager - TSM</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/brasil_-_nota_fiscal_electronica_nfe/" class="">
+      Brasil - Nota Fiscal Electrónica NFe</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/brasil_-_nota_fiscal_electronica_nfe/referencias_utiles_de_nfe/" class="">
+      Referencias útiles de NFE</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/microstrategy/" class="">
+      MicroStrategy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/qlikview/" class="">
+      QlikView</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/servidor_web/" class="">
+      Configuración del servidor Web</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/pnp4nagios/" class="">
+      PNP4Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/tipos_de_notificaciones/" class="">
+      Tipos de notificaciones</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_referencias_generales/" class="">
+      Referencias generales</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_referencias_generales/sistema_de_inventario/" class="">
+      Sistema de inventario</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagios_network_analyzer/" class="">
+      Nagios Network Analyzer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/" class="">
+      Correlación de eventos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/rsyslog/" class="">
+      Reliable system and kernel logging daemon</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/eventdb/" class="">
+      EventDB</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/syslog_ng/" class="">
+      Syslog-NG</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/implementacion_tecnica/" class="">
+      Implementación Técnica de Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/implementacion_tecnica/implementacion_tecnica_version_ubuntu_server_20.04/" class="">
+      Implementación Técnica de Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/capacitacion_en_monitoreo_de_red/" class="">
+      Capacitación en monitoreo de Red</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Certificaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/capacitacion_en_monitoreo_de_red/certificaciones/sox_-_sarbanes-oxley/" class="">
+      SOX</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/desarrollo_de_plugins_de_nagios/" class="active">
+      Desarrollo de plugins de Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/desarrollo_de_plugins_de_nagios/problemas_comunes/" class="">
+      Problemas comunes de los plugins de Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/snmp/" class="">
+      SNMP (Simple Network Management Protocol)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagios_event_radio_dispatcher_nerd/" class="">
+      Nagios Event Radio Dispatcher (NERD)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/mk_livestatus/" class="">
+      MK Livestatus</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/ndo2utils/" class="">
+      NDO2Utils</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagvis/" class="">
+      Nagvis</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagvis/diseno_de_tablero_de_control/" class="">
+      Diseño de tablero de control</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/graficos_en_ajax/" class="">
+      Gráficos en AJAX</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_tips_y_recomendaciones/" class="">
+      TIPS y recomendaciones</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_otras_soluciones_basadas_en_nagios/" class="">
+      Anexo - Otras soluciones basadas en Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_comandos_externos/" class="">
+      Comandos externos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/plugins_usuales_de_nagios/" class="">
+      Plugins usuales de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/icmp/" class="">
+      ICMP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_codigo_fuente_de_nagios/" class="">
+      Análisis del código fuente de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_configuracion_desde_version_3_a_4/" class="">
+      Incompatibilidades de configuración v3 a v4</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/codigo_fuente/" class="">
+      Análisis del código fuente de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/thruk/" class="">
+      Thruk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/portugues/" class="">
+      Monitoração de rede e análise com Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/italiano/" class="">
+      Implementazione di un sistema di rete, monitor con Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_freeradius/" class="">
+      Servidor FreeRadius</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_systemimager/" class="">
+      Proyecto Servidor de Backups</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/an_introduction_to_linux_shell_scripting_for_dbas/" class="">
+      An Introduction to Linux Shell Scripting for DBAs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/filtrador_de_logs/" class="">
+      Filtrador de LOGS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/drbd/" class="">
+      DRBD (Distributed Replicated Block Device)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/" class="">
+      Lotus Notes</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/problemas_winmail.dat_outlook/" class="">
+      Problemas Winmail.dat Outlook</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/listar_ultimo_mes_de_login_de_usuarios/" class="">
+      Listar último mes de login de usuarios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/reemplazar_diseno_base_de_datos/" class="">
+      Reemplazar Diseño Base de Datos</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_squid/" class="">
+      Squid Proxy Server</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/red_restringida/" class="">
+      Red restringida</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/novell_audit/" class="">
+      Novell Identity Audit</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_dhcp/" class="">
+      Servicio DHCP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/ils/" class="">
+      ILS (Internet Locator Server)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Desarrollo de plugins de Nagios</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#programando-plugins">Programando plugins</a>
+          <ul>
+            <li><a href="#ejemplo-de-consulta-de-un-puerto-tcp-con-perl-por-medio-de-iosocketinet">Ejemplo de consulta de un puerto TCP con Perl por medio de IO::Socket::INET</a></li>
+          </ul>
+        </li>
+        <li><a href="#ejemplo-de-plugins-snmp">Ejemplo de plugins SNMP</a>
+          <ul>
+            <li></li>
+            <li><a href="#ejemplo-de-consulta-snmp-con-perl-por-medio-de-netsnmp">Ejemplo de consulta SNMP con Perl por medio de Net::SNMP</a></li>
+          </ul>
+        </li>
+        <li><a href="#ejemplos-de-scripts-generales">Ejemplos de scripts generales</a>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h3 id="programando-plugins">Programando plugins<a class="anchor" href="#programando-plugins">#</a></h3>
+<p>Desarrollar plugins de chequeos para Nagios es extremadamente flexible, ya que no dependemos del lenguaje de programación debido a que Nagios toma la salida resultante de su ejecución.</p>
+<p>Deberemos conocer bien lo que queremos chequear y conocer los indicadores que nos mostraran si deberemos expresarlos como un OK, un WARNING o un CRITICAL.</p>
+<p>Luego deberemos reflejar esos estados en su código de retorno o Exit status, dependiendo del código del mismo Nagios entenderá que debe mostrar.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Exit status</th>
+          <th>Estado de Servicio</th>
+          <th>Estado de Host</th>
+          <th>Descripcion</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>0</td>
+          <td>OK</td>
+          <td>UP</td>
+          <td>El plugin es capaz de verificar el servicio y que parece estar funcionando correctamente</td>
+      </tr>
+      <tr>
+          <td>1</td>
+          <td>WARNING</td>
+          <td>UP/DOWN/UNREACHABLE</td>
+          <td>El plugin es capaz de verificar el servicio, pero que parecía estar por encima de un umbral de “advertencia” o parece no estar funcionando correctamente</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>CRITICAL</td>
+          <td>DOWN/UNREACHABLE</td>
+          <td>El plugin detecta que o bien el servicio no funciona o que está por encima de un umbral “crítico”</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>UNKNOWN</td>
+          <td>DOWN/UNREACHABLE</td>
+          <td>Argumentos de línea de comandos no válida o fallas internas del plugin (por ejemplo error en un socket o dns) que le impiden realizar las operaciones especificadas</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Añadir nuestro plugin</strong></p>
+<p>Para añadir nuestro plugin a Nagios</p>
+<ul>
+<li>Deberemos copiar nuestro ejecutable (ya sea script o binario) al directorio <em>/usr/local/nagios/libexec</em> con permisos de ejecución.</li>
+<li>Crearle una entrada dentro del archivo de configuración de Comandos.</li>
+<li>Crear un Servicio y asignarle ese comando para que se encargue de dicho chequeo.</li>
+</ul>
+<p><strong>Notas sobre el desarrollo de plugins</strong></p>
+<ul>
+<li>No ejecutar comandos del sistema, sin especificar su ruta de acceso completa.
+<ul>
+<li>Utilice spopen () si deben ser ejecutados comando externos en su plugin en C.</li>
+<li>Ver los principales ejemplos de plugin para ver cómo se hace esto.</li>
+</ul>
+</li>
+<li>No haga archivos temporales a menos que sea absolutamente necesario.
+<ul>
+<li>Si se necesitan archivos temporales, asegúrese de que el plugin y elimine el archivo temporal, cuando finalice.</li>
+</ul>
+</li>
+<li>No se deje engañar por enlaces simbólicos
+<ul>
+<li>Si el plug-in abre todos los archivos, tomar medidas para asegurarse de que no están siguiendo un enlace simbólico a otro lugar en el sistema.</li>
+</ul>
+</li>
+<li>Validar todas las entradas</li>
+<li>Usar rutinas en utils.c utils.pm o escribir más según sea necesario</li>
+</ul>
+<p><strong>Referencias sobre el desarrollo de plugins</strong></p>
+<p><a href="http://nagios.sourceforge.net/docs/3_0/pluginapi.html">http://nagios.sourceforge.net/docs/3_0/pluginapi.html</a></p>
+<p><a href="http://nagiosplug.sourceforge.net/developer-guidelines.html">http://nagiosplug.sourceforge.net/developer-guidelines.html</a></p>
+<h4 id="ejemplo-de-consulta-de-un-puerto-tcp-con-perl-por-medio-de-iosocketinet">Ejemplo de consulta de un puerto TCP con Perl por medio de IO::Socket::INET<a class="anchor" href="#ejemplo-de-consulta-de-un-puerto-tcp-con-perl-por-medio-de-iosocketinet">#</a></h4>
+<p><strong>check_port.pl $HOSTADDRESS$ $ARG1$</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">new(
+</span></span><span class="line"><span class="cl">         PeerAddr =&gt; $IP,
+</span></span><span class="line"><span class="cl">         PeerPort =&gt; $PORT,
+</span></span><span class="line"><span class="cl">         Proto =&gt; &#39;tcp&#39;,
+</span></span><span class="line"><span class="cl">         );
+</span></span><span class="line"><span class="cl">         $sock or $STATUS = &#34;2&#34;;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">if ( $STATUS eq 0 ) {
+</span></span><span class="line"><span class="cl">   print &#34;El puerto $ARGV[1] esta OK&#34;;
+</span></span><span class="line"><span class="cl">   exit 0;
+</span></span><span class="line"><span class="cl">} else {
+</span></span><span class="line"><span class="cl">   print &#34;No puedo abrir el puerto $ARGV[1] WARNING&#34;;
+</span></span><span class="line"><span class="cl">   exit 2;
+</span></span><span class="line"><span class="cl">   die;
+</span></span><span class="line"><span class="cl">} </span></span></code></pre></div><h3 id="ejemplo-de-plugins-snmp">Ejemplo de plugins SNMP<a class="anchor" href="#ejemplo-de-plugins-snmp">#</a></h3>
+<h5 id="plugin-consultando-snmp">Plugin consultando SNMP<a class="anchor" href="#plugin-consultando-snmp">#</a></h5>
+<p>Dado el caso que queramos obtener información interna de determinado Host y necesitemos que este disponible para consultarla por SNMP, podemos incluir dicha informacion. Para ellos deberemos incluir diferentes directivas de configuracion en el archivo <em>snmpd.conf</em>, y haremos uso de la tabla externa del objeto UCD. La <em>Tabla externa UCD</em> es una tabla extensible de comandos de la cual obtendremos su código de resultado de ejecución y su salida.</p>
+<p><strong>/etc/snmp/snmpd.conf</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">syslocation Unknown (configure /etc/snmp/snmpd.local.conf)
+</span></span><span class="line"><span class="cl">syscontact Root &lt;root@localhost&gt; (configure /etc/snmp/snmpd.local.conf)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">exec comando1 /bin/comando1
+</span></span><span class="line"><span class="cl">exec comando2 /bin/comando2
+</span></span><span class="line"><span class="cl">exec comando3 /bin/comando3
+</span></span><span class="line"><span class="cl">exec comando3 /bin/comando4
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">rouser consultorsnmp auth
+</span></span><span class="line"><span class="cl">#createUser consultorsnmp MD5 consultorsnmp123</span></span></code></pre></div><p>Luego podemos ver los resultados obtenidos realizando una consulta SNMP a <em>UCD-SNMP-MIB::extTable</em> o <em>.1.3.6.1.4.1.2021.8</em>, obteniendo resultados similares a :</p>
+<p><strong>snmpwalk -v 3 -l authNoPriv -a MD5 -u consultorsnmp -A consultorsnmp123 127.0.0.1 UCD-SNMP-MIB::extTable</strong>*</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">UCD-SNMP-MIB::extIndex.1 = INTEGER: 1
+</span></span><span class="line"><span class="cl">UCD-SNMP-MIB::extIndex.2 = INTEGER: 2
+</span></span><span class="line"><span class="cl">UCD-SNMP-MIB::extIndex.3 = INTEGER: 3
+</span></span><span class="line"><span class="cl">UCD-SNMP-MIB::extIndex.4 = INTEGER: 4
+</span></span><span class="line"><span class="cl">UCD-SNMP-MIB::extNames.1 = STRING: comando1
+</span></span><span class="line"><span class="cl">UCD-SNMP-MIB::extNames.2 = STRING: comando2
+</span></span><span class="line"><span class="cl">UCD-SNMP-MIB::extNames.3 = STRING: comando3
+</span></span><span class="line"><span class="cl">UCD-SNMP-MIB::extNames.4 = STRING: comando4
+</span></span><span class="line"><span class="cl">UCD-SNMP-MIB::extCommand.1 = STRING: /bin/comando1
+</span></span><span class="line"><span class="cl">UCD-SNMP-MIB::extCommand.2 = STRING: /bin/comando2
+</span></span><span class="line"><span class="cl">UCD-SNMP-MIB::extCommand.3 = STRING: /bin/comando3
+</span></span><span class="line"><span class="cl">UCD-SNMP-MIB::extCommand.4 = STRING: /bin/comando4
+</span></span><span class="line"><span class="cl">UCD-SNMP-MIB::extResult.1 = INTEGER: 0
+</span></span><span class="line"><span class="cl">UCD-SNMP-MIB::extResult.2 = INTEGER: 0
+</span></span><span class="line"><span class="cl">UCD-SNMP-MIB::extResult.3 = INTEGER: 0
+</span></span><span class="line"><span class="cl">UCD-SNMP-MIB::extResult.4 = INTEGER: 0
+</span></span><span class="line"><span class="cl">UCD-SNMP-MIB::extOutput.1 = STRING: salida-comando
+</span></span><span class="line"><span class="cl">UCD-SNMP-MIB::extOutput.2 = STRING: salida-comando
+</span></span><span class="line"><span class="cl">UCD-SNMP-MIB::extOutput.3 = STRING: salida-comando
+</span></span><span class="line"><span class="cl">UCD-SNMP-MIB::extOutput.4 = STRING: salida-comando
+</span></span><span class="line"><span class="cl">UCD-SNMP-MIB::extErrFix.1 = INTEGER: 0
+</span></span><span class="line"><span class="cl">UCD-SNMP-MIB::extErrFix.2 = INTEGER: 0
+</span></span><span class="line"><span class="cl">UCD-SNMP-MIB::extErrFix.3 = INTEGER: 0
+</span></span><span class="line"><span class="cl">UCD-SNMP-MIB::extErrFix.4 = INTEGER: 0
+</span></span><span class="line"><span class="cl">UCD-SNMP-MIB::extErrFixCmd.1 = STRING:
+</span></span><span class="line"><span class="cl">UCD-SNMP-MIB::extErrFixCmd.2 = STRING:
+</span></span><span class="line"><span class="cl">UCD-SNMP-MIB::extErrFixCmd.3 = STRING:
+</span></span><span class="line"><span class="cl">UCD-SNMP-MIB::extErrFixCmd.4 = STRING:</span></span></code></pre></div><p>Ramas SNMP :</p>
+<ul>
+<li>UCD-SNMP-MIB::extNames
+<ul>
+<li>En esta rama obtendremos el nombre que le hemos asignado a dicho comando</li>
+</ul>
+</li>
+<li>UCD-SNMP-MIB::extCommand
+<ul>
+<li>Esta rama nos devolvera la ruta completa al ejecutable del comando</li>
+</ul>
+</li>
+<li>UCD-SNMP-MIB::extResult
+<ul>
+<li>Nos devolvera el resultado de la ejecucion del comando fue exitosa o no, devolviendonos su <em>exit status</em></li>
+</ul>
+</li>
+<li>UCD-SNMP-MIB::extOutput
+<ul>
+<li>Aqui obtendremos la salida del comando con el string o expresion que necesitemos conocer</li>
+</ul>
+</li>
+</ul>
+<p><strong>Referencias sobre consultas SNMP a la tabla UCD</strong></p>
+<p><a href="http://net-snmp.sourceforge.net/docs/mibs/ucdavis.html">http://net-snmp.sourceforge.net/docs/mibs/ucdavis.html</a></p>
+<h4 id="ejemplo-de-consulta-snmp-con-perl-por-medio-de-netsnmp">Ejemplo de consulta SNMP con Perl por medio de Net::SNMP<a class="anchor" href="#ejemplo-de-consulta-snmp-con-perl-por-medio-de-netsnmp">#</a></h4>
+<p>Ejemplo simple de como consultar una variable SNMPv1.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">session</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-</span><span class="n">hostname</span>  <span class="o">=&gt;</span> <span class="n">shift</span> <span class="o">||</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-</span><span class="n">community</span> <span class="o">=&gt;</span> <span class="n">shift</span> <span class="o">||</span> <span class="s1">&#39;public&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">defined</span> <span class="o">$</span><span class="n">session</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">printf</span> <span class="s2">&#34;ERROR: </span><span class="si">%s</span><span class="s2">.</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">,</span> <span class="o">$</span><span class="n">error</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">exit</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">my</span> <span class="o">$</span><span class="n">result</span> <span class="o">=</span> <span class="o">$</span><span class="n">session</span><span class="o">-&gt;</span><span class="n">get_request</span><span class="p">(</span><span class="o">-</span><span class="n">varbindlist</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="o">$</span><span class="n">OID_sysUpTime</span> <span class="p">],);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">defined</span> <span class="o">$</span><span class="n">result</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">printf</span> <span class="s2">&#34;ERROR: </span><span class="si">%s</span><span class="s2">.</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">,</span> <span class="o">$</span><span class="n">session</span><span class="o">-&gt;</span><span class="n">error</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">$</span><span class="n">session</span><span class="o">-&gt;</span><span class="n">close</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">exit</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">printf</span> <span class="s2">&#34;The sysUpTime for host &#39;</span><span class="si">%s</span><span class="s2">&#39; is </span><span class="si">%s</span><span class="s2">.</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="o">$</span><span class="n">session</span><span class="o">-&gt;</span><span class="n">hostname</span><span class="p">(),</span> <span class="o">$</span><span class="n">result</span><span class="o">-&gt;</span><span class="p">{</span><span class="o">$</span><span class="n">OID_sysUpTime</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">$</span><span class="n">session</span><span class="o">-&gt;</span><span class="n">close</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">exit</span> <span class="mi">0</span><span class="p">;</span></span></span></code></pre></div><p>Ejemplo simple de como consultar una variable SNMPv3, igualmente se pueden consultar mas de una variable por sesion. En este caso estamos consultado la variable extOutput.1 para ver la salida del primer comando.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">session</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="o">-</span><span class="n">username</span>       <span class="o">=&gt;</span>  <span class="o">$</span><span class="n">snmpv3_username</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="o">-</span><span class="n">authpassword</span>   <span class="o">=&gt;</span>  <span class="o">$</span><span class="n">snmpv3_password</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="o">-</span><span class="n">authprotocol</span>   <span class="o">=&gt;</span>  <span class="o">$</span><span class="n">snmpv3_authprotocol</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="o">-</span><span class="n">hostname</span>       <span class="o">=&gt;</span>  <span class="o">$</span><span class="n">hostname</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="o">-</span><span class="n">version</span>        <span class="o">=&gt;</span>  <span class="o">$</span><span class="n">version</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="o">-</span><span class="n">timeout</span>        <span class="o">=&gt;</span>  <span class="o">$</span><span class="n">timeout</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="o">$</span><span class="n">s</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span> <span class="s2">&#34;CRITICAL - El agente no responde, SNMP v3 ($e)</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">$</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">get_request</span><span class="p">(</span><span class="o">$</span><span class="n">oid</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">foreach</span> <span class="p">(</span><span class="o">$</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">var_bind_names</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="o">$</span><span class="n">oid_consulta</span>   <span class="o">=</span> <span class="o">$</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">var_bind_list</span><span class="p">()</span><span class="o">-&gt;</span><span class="p">{</span><span class="o">$</span><span class="n">_</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">$</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">close</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span> <span class="o">$</span><span class="n">oid_consulta</span><span class="p">;</span></span></span></code></pre></div><h5 id="plugin-ejecutando-comando-por-snmp">Plugin ejecutando comando por SNMP<a class="anchor" href="#plugin-ejecutando-comando-por-snmp">#</a></h5>
+<p>snmpd.conf</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">exec</span> <span class="o">.</span><span class="mf">1.3</span><span class="o">.</span><span class="mf">6.1</span><span class="o">.</span><span class="mf">4.1</span><span class="o">.</span><span class="mf">2021.555</span><span class="o">.</span><span class="mi">1</span> <span class="n">cat</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">cat</span> <span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">export_full</span><span class="o">/</span><span class="n">export_full</span><span class="o">.</span><span class="n">exit_status</span>
+</span></span><span class="line"><span class="cl"><span class="n">exec</span> <span class="o">.</span><span class="mf">1.3</span><span class="o">.</span><span class="mf">6.1</span><span class="o">.</span><span class="mf">4.1</span><span class="o">.</span><span class="mf">2021.555</span><span class="o">.</span><span class="mi">2</span> <span class="n">cat</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">cat</span> <span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">export_dos</span><span class="o">/</span><span class="n">export_dos</span><span class="o">.</span><span class="n">exit_status</span>
+</span></span><span class="line"><span class="cl"><span class="n">exec</span> <span class="o">.</span><span class="mf">1.3</span><span class="o">.</span><span class="mf">6.1</span><span class="o">.</span><span class="mf">4.1</span><span class="o">.</span><span class="mf">2021.555</span><span class="o">.</span><span class="mi">3</span> <span class="n">cat</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">cat</span> <span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">export_full_DB</span><span class="o">/</span><span class="n">export_full_DB</span><span class="o">.</span><span class="n">exit_status</span>
+</span></span><span class="line"><span class="cl"><span class="n">exec</span> <span class="o">.</span><span class="mf">1.3</span><span class="o">.</span><span class="mf">6.1</span><span class="o">.</span><span class="mf">4.1</span><span class="o">.</span><span class="mf">2021.555</span><span class="o">.</span><span class="mi">4</span> <span class="n">cat</span> <span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">cat</span> <span class="o">/</span><span class="n">backup</span><span class="o">/</span><span class="n">export_tres</span><span class="o">/</span><span class="n">exportTRES</span><span class="o">.</span><span class="n">exit_status</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-perl" data-lang="perl"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/perl</span>
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nn">Net::SNMP</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$oid</span> <span class="o">=</span> <span class="nv">$ARGV</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$snmpv3_username</span> <span class="o">=</span> <span class="s">&#34;nagios&#34;</span><span class="p">;</span>    <span class="c1"># SNMPv3 username</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$snmpv3_password</span> <span class="o">=</span> <span class="s">&#34;claveNagios&#34;</span><span class="p">;</span> <span class="c1"># SNMPv3 password</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$snmpv3_authprotocol</span> <span class="o">=</span> <span class="s">&#34;md5&#34;</span><span class="p">;</span>          <span class="c1"># SNMPv3 hash algorithm (md5 / sha)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$snmpv3_privpassword</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="p">;</span>             <span class="c1"># SNMPv3 hash algorithm (md5 / sha)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$snmpv3_privprotocol</span> <span class="o">=</span> <span class="s">&#34;des&#34;</span><span class="p">;</span>          <span class="c1"># SNMPv3 encryption protocol (des / aes / aes128)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$version</span> <span class="o">=</span> <span class="s">&#34;3&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$timeout</span> <span class="o">=</span> <span class="s">&#34;2&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$hostname</span> <span class="o">=</span> <span class="nv">$ARGV</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Crear la sesion SNMP</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nv">$s</span><span class="p">,</span> <span class="nv">$e</span><span class="p">)</span> <span class="o">=</span> <span class="nn">Net::SNMP</span><span class="o">-&gt;</span><span class="n">session</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="o">-</span><span class="n">username</span>       <span class="o">=&gt;</span>  <span class="nv">$snmpv3_username</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="o">-</span><span class="n">authpassword</span>   <span class="o">=&gt;</span>  <span class="nv">$snmpv3_password</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="o">-</span><span class="n">authprotocol</span>   <span class="o">=&gt;</span>  <span class="nv">$snmpv3_authprotocol</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="o">-</span><span class="n">hostname</span>       <span class="o">=&gt;</span>  <span class="nv">$hostname</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="o">-</span><span class="n">version</span>        <span class="o">=&gt;</span>  <span class="nv">$version</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="o">-</span><span class="n">timeout</span>        <span class="o">=&gt;</span>  <span class="nv">$timeout</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nv">$s</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">print</span> <span class="s">&#34;CRITICAL - El agente no responde, SNMP v3 ($e)\n&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$s</span><span class="o">-&gt;</span><span class="n">get_request</span><span class="p">(</span><span class="nv">$oid</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$s</span><span class="o">-&gt;</span><span class="n">var_bind_names</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$oid_consulta</span>   <span class="o">=</span> <span class="nv">$s</span><span class="o">-&gt;</span><span class="n">var_bind_list</span><span class="p">()</span><span class="o">-&gt;</span><span class="p">{</span><span class="nv">$_</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$s</span><span class="o">-&gt;</span><span class="nb">close</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="nv">$oid_consulta</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">print</span> <span class="s">&#34;OK - El exit status es &#34;</span><span class="o">.</span><span class="nv">$oid_consulta</span><span class="o">.</span><span class="s">&#34;\n&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">print</span> <span class="s">&#34;CRITICAL - El exit status es &#34;</span><span class="o">.</span><span class="nv">$oid_consulta</span><span class="o">.</span><span class="s">&#34;\n&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div><p>Configuración de comando en Nagios</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">define service {
+</span></span><span class="line"><span class="cl">	host_name                      	srvblabla
+</span></span><span class="line"><span class="cl">	service_description            	Control de exit status de backup
+</span></span><span class="line"><span class="cl">	use                            	linux-service
+</span></span><span class="line"><span class="cl">	check_command                  	check_snmp_cat_file_exit_status!.1.3.6.1.4.1.2021.555.1.101.1
+</span></span><span class="line"><span class="cl">	check_interval                 	240
+</span></span><span class="line"><span class="cl">	notification_interval          	300
+</span></span><span class="line"><span class="cl">}</span></span></code></pre></div><h3 id="ejemplos-de-scripts-generales">Ejemplos de scripts generales<a class="anchor" href="#ejemplos-de-scripts-generales">#</a></h3>
+<h5 id="check_heartbeat">check_heartbeat<a class="anchor" href="#check_heartbeat">#</a></h5>
+<p>Script simple para chequear el estado de HeartBeat y sus nodos, muy útil por cierto</p>
+<p>&lt;file bash check_heartbeat&gt; #!/bin/bash # Author: Emmanuel Bretelle # Date: 12/03/2010 # Description: Retrieve Linux HA cluster status using cl_status # Based on <a href="http://www.randombugs.com/linux/howto-monitor-linux-heartbeat-snmp.html">http://www.randombugs.com/linux/howto-monitor-linux-heartbeat-snmp.html</a> # # Autor: Stanila Constantin Adrian # Date: 20/03/2009 # Description: Check the number of active heartbeats # <a href="http://www.randombugs.com">http://www.randombugs.com</a></p>
+<p># Get program path REVISION=1.3 PROGNAME=`/bin/basename $0` PROGPATH=`echo $0 | /bin/sed -e ‘s,[\/][^\/][^\/]*$,,’`</p>
+<p>NODE_NAME=`uname -n` CL_ST=‘/usr/bin/cl_status’</p>
+<p>#nagios error codes #. $PROGPATH/utils.sh OK=0 WARNING=1 CRITICAL=2 UNKNOWN=3</p>
+<p>usage () {</p>
+<pre><code>  echo &quot;\
+</code></pre>
+<p>Nagios plugin to heartbeat.</p>
+<p>Usage:</p>
+<pre><code>$PROGNAME 
+$PROGNAME [--help | -h]
+$PROGNAME [--version | -v]
+</code></pre>
+<p>Options:</p>
+<pre><code>--help -l Print this help information
+--version -v  Print version of plugin
+</code></pre>
+<p>” }</p>
+<p>help () {</p>
+<pre><code>  print_revision $PROGNAME $REVISION
+  echo; usage; echo; support
+</code></pre>
+<p>}</p>
+<p>while test -n “$1” do</p>
+<pre><code>case &quot;$1&quot; in
+  --help | -h)
+    help
+    exit $STATE_OK;;
+  --version | -v)
+    print_revision $PROGNAME $REVISION
+    exit $STATE_OK;;
+</code></pre>
+<p># -H) # shift # HOST=$1;; # -C) # shift # COMMUNITY=$1;;</p>
+<pre><code>  *)
+    echo &quot;Heartbeat UNKNOWN: Wrong command usage&quot;; exit $UNKNOWN;;
+esac
+shift
+</code></pre>
+<p>done</p>
+<p>$CL_ST hbstatus &gt; /dev/null res=$? if [ $res -ne 0 ] then</p>
+<pre><code>echo &quot;Heartbeat CRITICAL: Heartbeat is not running on this node&quot;
+exit $CRITICAL
+</code></pre>
+<p>fi</p>
+<p>declare -i I=0 declare -i A=0 NODES=`$CL_ST listnodes`</p>
+<p>for node in $NODES do</p>
+<pre><code>status=`$CL_ST nodestatus $node`
+let I=$I+1
+if [ $status == &quot;active&quot; ]
+then
+  let A=$A+1
+fi
+</code></pre>
+<p>done</p>
+<p>if [ $A -eq 0 ] then</p>
+<pre><code>echo &quot;Heartbeat CRITICAL: $A/$I&quot;
+exit $CRITICAL
+</code></pre>
+<p>elif [ $A -ne $I ] then</p>
+<pre><code>echo &quot;Heartbeat WARNING: $A/$I&quot;
+exit $WARNING
+</code></pre>
+<p>else</p>
+<pre><code>echo &quot;Heartbeat OK: $A/$I&quot;
+exit $OK
+</code></pre>
+<p>fi &lt;/code&gt;</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">define command {
+</span></span><span class="line"><span class="cl"> command_name    check_ha_by_ssh
+</span></span><span class="line"><span class="cl"> command_line    $USER1$/check_by_ssh -l root -H $HOSTADDRESS$ -C &#34;/usr/local/sbin/check_heartbeat.sh&#34;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">&lt;/file&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">== check_systemimager ==
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Script para chequear que nuestras imágenes estén actualizadas a la fecha
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;file php check_systemimager&gt;
+</span></span><span class="line"><span class="cl">#!/usr/bin/php -q
+</span></span><span class="line"><span class="cl"># Sergio Cayuqueo &lt;cayu@cayu.com.ar&gt;
+</span></span><span class="line"><span class="cl"># http://cayu.com.ar
+</span></span><span class="line"><span class="cl">&lt;?php
+</span></span><span class="line"><span class="cl">$lista_imagenes = shell_exec(&#34;si_lsimage --verbose|grep Image&#34;);
+</span></span><span class="line"><span class="cl">$lista_imagenes = preg_split(&#34;/[\n]+/&#34;,$lista_imagenes);
+</span></span><span class="line"><span class="cl">$fecha_actual = date(&#39;Y.m.d&#39;);
+</span></span><span class="line"><span class="cl">foreach($lista_imagenes as $imagen) {
+</span></span><span class="line"><span class="cl">    if(strlen($imagen)&gt;0) {
+</span></span><span class="line"><span class="cl">	if(@!$i) {
+</span></span><span class="line"><span class="cl">	    $i=1;
+</span></span><span class="line"><span class="cl">	}
+</span></span><span class="line"><span class="cl">	$imagen = preg_split(&#34;/[\s]+/&#34;,$imagen);
+</span></span><span class="line"><span class="cl">	$imagenes[$i][&#39;nombre&#39;] = $imagen[2];
+</span></span><span class="line"><span class="cl">	$imagenes[$i][&#39;actualizada&#39;] = $imagen[4];
+</span></span><span class="line"><span class="cl">	$imagenes[$i][&#39;ip&#39;] = $imagen[8];
+</span></span><span class="line"><span class="cl">	if($imagen[4] == $fecha_actual) {
+</span></span><span class="line"><span class="cl">	    $imagenes[$i][&#39;estado&#39;] = &#34;ok&#34; ;
+</span></span><span class="line"><span class="cl">	} else {
+</span></span><span class="line"><span class="cl">	    $imagenes[$i][&#39;estado&#39;] = &#34;critical&#34; ;
+</span></span><span class="line"><span class="cl">            $critical=1;
+</span></span><span class="line"><span class="cl">	}
+</span></span><span class="line"><span class="cl">	$i++;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">if(@$critical) {
+</span></span><span class="line"><span class="cl">    $head = &#34;CRITICAL - Hubo un desfasaje en una o mas imagenes\n&#34;;
+</span></span><span class="line"><span class="cl">    $exit = 2;
+</span></span><span class="line"><span class="cl">} else {
+</span></span><span class="line"><span class="cl">    $head = &#34;OK - Todas las imagenes actualizadas a la fecha\n&#34;;
+</span></span><span class="line"><span class="cl">    $exit = 0;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">print $head;
+</span></span><span class="line"><span class="cl">foreach($imagenes as $imagen) {
+</span></span><span class="line"><span class="cl">    if(strlen($imagen[&#39;nombre&#39;])&lt;9) {
+</span></span><span class="line"><span class="cl">	$tab = &#34;\t\t&#34;;
+</span></span><span class="line"><span class="cl">    } else {
+</span></span><span class="line"><span class="cl">	$tab = &#34;\t&#34;;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">    if($imagen[&#39;estado&#39;] == &#34;ok&#34;) {
+</span></span><span class="line"><span class="cl">	print &#34;OK - &#34;.$imagen[&#39;nombre&#39;].&#34; &#34;.$tab.$imagen[&#39;ip&#39;].&#34;\n&#34;;
+</span></span><span class="line"><span class="cl">    } else {
+</span></span><span class="line"><span class="cl">        print &#34;CRITICAL - &#34;.$imagen[&#39;nombre&#39;].&#34;   &#34;.$tab.$imagen[&#39;ip&#39;].&#34; \t actualizado a : &#34;.$imagen[&#39;actualizada&#39;].&#34;\n&#34;;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">exit($exit);
+</span></span><span class="line"><span class="cl">?&gt;
+</span></span><span class="line"><span class="cl">&lt;/file&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;code&gt;
+</span></span><span class="line"><span class="cl">define command {
+</span></span><span class="line"><span class="cl"> command_name    check_si_by_ssh
+</span></span><span class="line"><span class="cl"> command_line    $USER1$/check_by_ssh -l root -H $HOSTADDRESS$ -C &#34;/usr/local/sbin/check_systemimager.php&#34;
+</span></span><span class="line"><span class="cl">}</span></span></code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/manuales/nagios/capacitacion/capacitacion_en_monitoreo_de_red/certificaciones/sox_-_sarbanes-oxley/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>SOX</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/manuales/nagios/capacitacion/desarrollo_de_plugins_de_nagios/problemas_comunes/" class="flex align-center">
+        <span>Problemas comunes de los plugins de Nagios</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#programando-plugins">Programando plugins</a>
+          <ul>
+            <li><a href="#ejemplo-de-consulta-de-un-puerto-tcp-con-perl-por-medio-de-iosocketinet">Ejemplo de consulta de un puerto TCP con Perl por medio de IO::Socket::INET</a></li>
+          </ul>
+        </li>
+        <li><a href="#ejemplo-de-plugins-snmp">Ejemplo de plugins SNMP</a>
+          <ul>
+            <li></li>
+            <li><a href="#ejemplo-de-consulta-snmp-con-perl-por-medio-de-netsnmp">Ejemplo de consulta SNMP con Perl por medio de Net::SNMP</a></li>
+          </ul>
+        </li>
+        <li><a href="#ejemplos-de-scripts-generales">Ejemplos de scripts generales</a>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

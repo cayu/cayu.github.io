@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Seguridad on Wiki de Sergio Cayuqueo</title>
+    <link>http://localhost:1313/seguridad/enlaces/</link>
+    <description>Recent content in Seguridad on Wiki de Sergio Cayuqueo</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Wed, 22 Jul 2026 23:28:56 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/seguridad/enlaces/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why I would never buy a Dell PowerConnect 2724</title>
+      <link>http://localhost:1313/seguridad/enlaces/why_i_would_never_buy_a_dell_powerconnect_2724/</link>
+      <pubDate>Fri, 06 Jan 2017 12:01:51 -0300</pubDate>
+      <guid>http://localhost:1313/seguridad/enlaces/why_i_would_never_buy_a_dell_powerconnect_2724/</guid>
+      <description>&lt;h3 id=&#34;thu-17-mar-2011&#34;&gt;Thu, 17 Mar 2011&lt;a class=&#34;anchor&#34; href=&#34;#thu-17-mar-2011&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xA;&lt;p&gt;&lt;strong&gt;Why I would never buy a Dell PowerConnect 2724&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;At work, we acquired the above mentioned 24Port switch from Dell. It supports a so called managed mode (needs to be enabled by poking into a hole on the switch with a paperclip).&lt;/p&gt;&#xA;&lt;p&gt;Enabling that sets the switch IP to 192.168.2.1/24 – with no way to change that. So far so annoying. Ok, I can configure an alias on my Ethernet to connect to that.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Understanding Bash fork() bomb ~ :(){ :|:&amp; };:</title>
+      <link>http://localhost:1313/seguridad/enlaces/understanding_bash_fork_bomb/</link>
+      <pubDate>Tue, 03 Jun 2014 11:05:13 -0300</pubDate>
+      <guid>http://localhost:1313/seguridad/enlaces/understanding_bash_fork_bomb/</guid>
+      <description>&lt;h2 id=&#34;understanding-bash-fork-bomb----&#34;&gt;Understanding Bash fork() bomb ~ :(){ :|:&amp;amp; };:&lt;a class=&#34;anchor&#34; href=&#34;#understanding-bash-fork-bomb----&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Q.&lt;/strong&gt; Can you explain following bash code or bash fork() bomb? :(){ :|:&amp;amp; };:&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;A.&lt;/strong&gt; This is a bash function. It gets called recursively (recursive function). This is most horrible code for any Unix / Linux box. It is often used by sys admin to test user processes limitations (Linux process limits can be configured via /etc/security/limits.conf and PAM).&lt;/p&gt;&#xA;&lt;p&gt;Once a successful fork bomb has been activated in a system it may not be possible to resume normal operation without rebooting, as the only solution to a fork bomb is to destroy all instances of it. [Warning examples may crash your computer] WARNING! These examples may crash your computer if executed. Understanding :(){ :|:&amp;amp; };: fork() bomb code&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Programación on Wiki de Sergio Cayuqueo</title>
+    <link>http://localhost:1313/notas/programacion/</link>
+    <description>Recent content in Programación on Wiki de Sergio Cayuqueo</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Thu, 23 Jul 2026 18:03:24 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/notas/programacion/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Uso básico de AWK</title>
+      <link>http://localhost:1313/notas/programacion/introduccion_a_awk/</link>
+      <pubDate>Wed, 06 Nov 2013 15:19:12 -0300</pubDate>
+      <guid>http://localhost:1313/notas/programacion/introduccion_a_awk/</guid>
+      <description>&lt;h2 id=&#34;qué-es-awk&#34;&gt;Qué es awk&lt;a class=&#34;anchor&#34; href=&#34;#qu%c3%a9-es-awk&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;AWK es una herramienta de procesamiento de patrones en líneas de texto. Su utilización estándar es la de filtrar archivos o salida de comandos, tratando las líneas para, por ejemplo, mostrar una determinada información sobre las mismas.&lt;/p&gt;&#xA;&lt;p&gt;Por ejemplo:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Mostrar sólo los nombres y los tamaños de los ficheros:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  # ls -l | awk &amp;#39;{ print $8 &amp;#34;:&amp;#34; $5 }&amp;#39;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Mostrar sólo los nombres y tamaños de ficheros .txt:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  # ls -l | awk &amp;#39;$8 ~ /\.txt/ { print $8 &amp;#34;:&amp;#34; $5 }&amp;#39;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  Imprimir las líneas que tengan más de 4 campos/columnas:&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  # awk &amp;#39;NF &amp;gt; 4 {print}&amp;#39; fichero&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;formato-de-uso&#34;&gt;Formato de uso&lt;a class=&#34;anchor&#34; href=&#34;#formato-de-uso&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;El uso básico de AWK es:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>The Linux CDROM interface</title>
+      <link>http://localhost:1313/notas/programacion/the_linux_cdrom_interface/</link>
+      <pubDate>Fri, 10 Jun 2011 09:41:56 -0300</pubDate>
+      <guid>http://localhost:1313/notas/programacion/the_linux_cdrom_interface/</guid>
+      <description>&lt;h2 id=&#34;paul-dwerryhouse&#34;&gt;Paul Dwerryhouse, &lt;a href=&#34;mailto:paul@dwerryhouse.com.au&#34;&gt;paul@dwerryhouse.com.au&lt;/a&gt;&lt;a class=&#34;anchor&#34; href=&#34;#paul-dwerryhouse&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;$Revision: 1.0 $ $Date: 2004/03/13 12:57:42 $&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;This document details the CDROM programming interface that Linux provides. It was originally published in 1997, and has now been updated to deal with interface changes in Linux since that time. The latest version of this document can be found at: &lt;a href=&#34;http://leapster.org/linux/cdrom/&#34;&gt;http://leapster.org/linux/cdrom/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;1-introduction&#34;&gt;1. Introduction&lt;a class=&#34;anchor&#34; href=&#34;#1-introduction&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;We’ve all seen the plethora of CD playing programs, such as kscd and workman, that let you program and play any number of different tracks from CD’s, but it’s often hard to come across information about how to actually play, stop and eject CD’s from your own programs. This document intends to give the reader a brief introduction to Linux’s CDROM interface. It expects that you have a working knowledge of the C programming language.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Reproductor De Cd</title>
+      <link>http://localhost:1313/notas/programacion/reproductor_de_cd/</link>
+      <pubDate>Fri, 10 Jun 2011 09:37:10 -0300</pubDate>
+      <guid>http://localhost:1313/notas/programacion/reproductor_de_cd/</guid>
+      <description>&lt;p&gt;[ Funny Code?? ] by Zomba &lt;a href=&#34;mailto:zombaq@ciudad.com.ar&#34;&gt;zombaq@ciudad.com.ar&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Disclaimer (o atajada): Este txt no tienen nada de elite, nada que ver con el hack, y no pretende iluminar a nadie. Solo se me ocurrio escribir esto, y como soy amigo del editor (line0 MAZITAAAA) me lo publico. Este txt fue sacado de mi cabeza y de algunas pruebas que hice, igualmente, al final del txt, hay algunas referencias para los que quieran leer mas del tema… ya que, al principio iba a centrarse este txt en ioctl pero termino siendo una fea guia de como armar un CD player.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Console IOCTLs Under Linux</title>
+      <link>http://localhost:1313/notas/programacion/console_ioctls_under_linux/</link>
+      <pubDate>Fri, 10 Jun 2011 09:24:36 -0300</pubDate>
+      <guid>http://localhost:1313/notas/programacion/console_ioctls_under_linux/</guid>
+      <description>&lt;p&gt;Console IOCTLs can be very useful and powerful. These are the IOCTls that involve the console. They are the user interface to manipulation of the console. I am going to go over these console IOCTLs and give you examples of them. You can make some pretty powerful programs, whether they be general utilities or security programs, with these (such as Auto Console Switching and Console Access Protection). The structure of this article will be the name of the IOCTL, and then example source code to uses of the IOCTL. Now, I must warn you that the console IOCTLs are being replaced by POSIX functions. These IOCTLs are undocumented Linux internals and can be added or dropped without warning. I did not include all the console IOCTLs, but I included the ones that I though would be important or useful. The switch statement for each of these IOCTLs is in linux/drivers/char/vt.c. Other interesting code to look at would be (all in linux/drivers/char) conmakehash.c, console.c, consolemap.c, keyboard.c, tty_io.c, vc_screen.c, vga.c. Other interesting files (also in linux/drivers/char) are console_struct.h, consolemap.h, kbd_kern.h, vt_kern.h, and uni_hash.tbl. We are going to be using the IOCTLs defined in /usr/include/linux/kd.h, and /usr/include/linux/vt.h.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

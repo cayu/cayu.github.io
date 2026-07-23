@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hardware on Wiki de Sergio Cayuqueo</title>
+    <link>http://localhost:1313/notas/hardware/</link>
+    <description>Recent content in Hardware on Wiki de Sergio Cayuqueo</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Wed, 22 Jul 2026 23:28:56 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/notas/hardware/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>iDrac Dell</title>
+      <link>http://localhost:1313/notas/hardware/idrac/</link>
+      <pubDate>Mon, 17 Feb 2014 17:26:54 -0300</pubDate>
+      <guid>http://localhost:1313/notas/hardware/idrac/</guid>
+      <description>&lt;h3 id=&#34;idrac-dell&#34;&gt;iDrac Dell&lt;a class=&#34;anchor&#34; href=&#34;#idrac-dell&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xA;&lt;p&gt;IPMI es un estándar que encontramos en el hardware de muchos servidores, se trata de un chipset que permite obtener información del estado de diferentes componentes hardware, temperaturas, voltajes, etc. Este estándar lo conforman empresas como HP, Dell e Intel.&lt;/p&gt;&#xA;&lt;p&gt;Ejemplo de como activarlo desde el SSH de iDrac 6&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;racadm config -g cfgIpmiLan -o cfgIpmiLanEnable 1&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;racadm config -g cfgIpmiLan -o cfgIpmiLanPrivilegeLimit &amp;lt;nivel&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;donde &amp;lt;nivel&amp;gt; es uno de los siguientes valores:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

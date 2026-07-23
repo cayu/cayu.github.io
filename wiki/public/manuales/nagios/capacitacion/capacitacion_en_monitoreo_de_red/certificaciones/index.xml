@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Certificaciones on Wiki de Sergio Cayuqueo</title>
+    <link>http://localhost:1313/manuales/nagios/capacitacion/capacitacion_en_monitoreo_de_red/certificaciones/</link>
+    <description>Recent content in Certificaciones on Wiki de Sergio Cayuqueo</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Wed, 22 Jul 2026 23:28:56 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/manuales/nagios/capacitacion/capacitacion_en_monitoreo_de_red/certificaciones/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SOX</title>
+      <link>http://localhost:1313/manuales/nagios/capacitacion/capacitacion_en_monitoreo_de_red/certificaciones/sox_-_sarbanes-oxley/</link>
+      <pubDate>Wed, 04 Sep 2019 10:59:55 -0300</pubDate>
+      <guid>http://localhost:1313/manuales/nagios/capacitacion/capacitacion_en_monitoreo_de_red/certificaciones/sox_-_sarbanes-oxley/</guid>
+      <description>&lt;p&gt;La Ley Sarbanes-Oxley, cuyo título oficial en inglés es Sarbanes-Oxley Act of 2002, Pub. L. No. 107-204, 116 Stat. 745, es una ley de Estados Unidos también conocida como la Ley de Reforma de la Contabilidad Pública de Empresas y de Protección al Inversionista, aunque también es llamada SOx, SarbOx o SOA.​&lt;/p&gt;&#xA;&lt;p&gt;La Ley Sarbanes Oxley se promulgó en Estados Unidos con el propósito de monitorizar a las empresas que cotizan en bolsa de valores, evitando que la valorización de las acciones de las mismas sean alteradas de manera dudosa, mientras que su valor es menor. Su finalidad es evitar fraudes y riesgo de bancarrota, protegiendo al inversionista.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

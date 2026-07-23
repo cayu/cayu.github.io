@@ -1,0 +1,4128 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Tools of the Trade – Iostat, Vmstat, and Netstat# Original: Unix Review - January 2006 Hemant Sharma
+The performance of a system is dependent on the I/O, memory, CPU, and network. In most Unix environments, iostat, vmstat, and netstat are the commonly available tools for system reporting. These tools provide live data about the system’s memory, disks, and network and enable us to work out the possible problem source. In this article, I will revisit these tools and explain how to use them to maximize your understanding of system activities.
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/notas/tools_of_the_trade_--_iostat_vmstat_and_netstat/">
+  <meta property="og:site_name" content="Wiki de Sergio Cayuqueo">
+  <meta property="og:title" content="Tools of the Trade -- Iostat, Vmstat, and Netstat">
+  <meta property="og:description" content="Tools of the Trade – Iostat, Vmstat, and Netstat# Original: Unix Review - January 2006 Hemant Sharma
+The performance of a system is dependent on the I/O, memory, CPU, and network. In most Unix environments, iostat, vmstat, and netstat are the commonly available tools for system reporting. These tools provide live data about the system’s memory, disks, and network and enable us to work out the possible problem source. In this article, I will revisit these tools and explain how to use them to maximize your understanding of system activities.">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="notas">
+    <meta property="article:published_time" content="2013-12-12T18:33:10-03:00">
+    <meta property="article:modified_time" content="2026-07-22T23:28:56-03:00">
+
+
+  <meta itemprop="name" content="Tools of the Trade -- Iostat, Vmstat, and Netstat">
+  <meta itemprop="description" content="Tools of the Trade – Iostat, Vmstat, and Netstat# Original: Unix Review - January 2006 Hemant Sharma
+The performance of a system is dependent on the I/O, memory, CPU, and network. In most Unix environments, iostat, vmstat, and netstat are the commonly available tools for system reporting. These tools provide live data about the system’s memory, disks, and network and enable us to work out the possible problem source. In this article, I will revisit these tools and explain how to use them to maximize your understanding of system activities.">
+  <meta itemprop="datePublished" content="2013-12-12T18:33:10-03:00">
+  <meta itemprop="dateModified" content="2026-07-22T23:28:56-03:00">
+  <meta itemprop="wordCount" content="3232">
+
+<title>Tools of the Trade -- Iostat, Vmstat, and Netstat • Wiki de Sergio Cayuqueo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/notas/tools_of_the_trade_--_iostat_vmstat_and_netstat/">
+<link rel="stylesheet" href="/book.min.b67edd162318c5083c6df0a88fb33841277a463a19631410445e4034ec6e651c.css" integrity="sha256-tn7dFiMYxQg8bfCoj7M4QSd6RjoZYxQQRF5ANOxuZRw=" crossorigin="anonymous">
+
+
+  <script defer type="module" src="/es.search.min.0d8ef5a46e9d73ded2792bc4dc404ee89897a364056761a43c441c32a9c30525.js" integrity="sha256-DY71pG6dc97SeSvE3EBO6JiXo2QFZ2GkPEQcMqnDBSU=" crossorigin="anonymous"></script>
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-notas">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Wiki de Sergio Cayuqueo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Buscar"
+    aria-label="Buscar"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Notas</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Hardware</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/" class="">
+      VMWare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/instalar_vmware_tools/" class="">
+      Instalar VMware Tools</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/agregar_cpu_en_caliente_en_vmware/" class="">
+      Agregar CPU en caliente en VMWare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/datetime/" class="">
+      Parametros para Vmware por cambio de hora de servidores</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/idrac/" class="">
+      iDrac Dell</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/strace/" class="">
+      Strace</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/nginx/" class="">
+      Nginx</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/" class="">
+      Squid</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/hearbeat/" class="">
+      LVS - Hearbeat - Ldirectord - Balanceo de carga y alta disponibilidad</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/rhcs/" class="">
+      Squid &#43; Red Hat Cluster Suite</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bind/" class="">
+      Configuración de Servidor DNS Bind</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/" class="">
+      Linux</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Networking</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/networking/wan_optimization/" class="">
+      WAN Optimization</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/actualizar_suse_linux/" class="">
+      Actualizar SuSE Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/cambiar_planificador_de_disco/" class="">
+      Cambiar planificador de acceso a disco</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/medicion_de_velocidad_de_cambio_en_filesystems_en_un_sistema_linux_fisico_o_virtual/" class="">
+      Medición de velocidad de cambio en filesystems en un sistema Linux (físico o virtual)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/midiendo_el_rendimiento_del_sistema_con_iostat/" class="">
+      Midiendo el rendimiento del sistema con IOSTAT</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/sistema_de_archivos_proc/" class="">
+      Sistema de archivos /proc</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/lvm/" class="">
+      Logical Volume Management 2 (LVM2)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/manejo_de_memoria_en_linux/" class="">
+      Manejo de memoria en Linux</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/manejo_de_memoria_en_linux/hugepages/" class="">
+      Hugepages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/ver_el_dmesg_en_formato_humano/" class="">
+      Ver el dmesg en formato humano</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/midiendo_el_rendimiento_del_sistema_con_sar/" class="">
+      Midiendo el rendimiento del sistema con SAR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/cron/" class="">
+      CRON</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/sed/" class="">
+      SED - Stream EDitor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/configuracion_vpn/" class="">
+      Configuración de acceso VPN desde Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openssh/" class="">
+      OpenSSH</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/compartir_archivos_por_nfs/" class="">
+      Como compartir filesystems por NFS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/" class="">
+      Microsoft</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/windows/" class="">
+      Sistema Operativo Windows</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/windows/scripts_varios_de_powershell/" class="">
+      Scripts varios de PowerShell</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/network_policy_server_nps/" class="">
+      Network Policy Server (NPS)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/apache/" class="">
+      Tips de Apache</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/analisis_forense/" class="">
+      Análisis forense</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/qlikview/" class="">
+      QlikView</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/owncloud/" class="">
+      OwnCloud</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/iptables/" class="">
+      TIPs varios de IPTables</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/celulares/" class="">
+      Teléfonos celulares</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openldap/" class="">
+      Implementacion de un servidor OpenLDAP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/arduino/" class="">
+      Arduino</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/kickstart/" class="">
+      Kickstart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/raspberry_pi/" class="">
+      Raspberry Pi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/postfix/" class="">
+      Postfix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openssl/" class="">
+      OpenSSL</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/" class="">
+      Programación</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Python</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Webscraping</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/webscraping/beautifulsoup/" class="">
+      Beautiful Soup</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/sistema_de_archivos/" class="">
+      Operaciones sobre el sistema de archivos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/django/" class="">
+      Django</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/introduccion_a_awk/" class="">
+      Uso básico de AWK</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/the_linux_cdrom_interface/" class="">
+      The Linux CDROM interface</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/reproductor_de_cd/" class="">
+      Reproductor De Cd</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/console_ioctls_under_linux/" class="">
+      Console IOCTLs Under Linux</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/tools_of_the_trade_--_iostat_vmstat_and_netstat/" class="active">
+      Tools of the Trade -- Iostat, Vmstat, and Netstat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/solaris_performance_monitoring/" class="">
+      Solaris Performance Monitoring &amp; Tuning - iostat , vmstat &amp; netstat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/" class="">
+      Bases De Datos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/mysql/" class="">
+      Task MySQL</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/oracle/" class="">
+      Oracle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/mssql/" class="">
+      Microsoft SQL Server</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/postgresql/" class="">
+      PostgreSQL</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/valgrind/" class="">
+      Valgrind</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/kamailio/" class="">
+      Kamailio</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/syslog_centralizado/" class="">
+      Sistema de LOG centralizado</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/inicio_rapido_de_csync2/" class="">
+      Csync para centralizar la configuracion de servicios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/xen_multi_bridge/" class="">
+      Utilizar dos o mas placas de red con Xen</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/sysinfo_dokuwiki/" class="">
+      Dump some hardware info in DokuWiki format</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/ubuntu_domu_en_red_hat/" class="">
+      Xen Red Hat Dom0 y Ubuntu DomU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/enomalism/" class="">
+      Configuraciones a mano</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Fotografia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/fotografia/conceptos/" class="">
+      Sobre el 18-55</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Legales</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Legislacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Nacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/nacion/decreto_155_89/" class="">
+      Decreto 155 89</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/nacion/ley_23302/" class="">
+      LEY 23.302</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/caba/" class="">
+      Legislación Indígena Ciudad Autónoma de Buenos Aires</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/jurisprudencia/" class="">
+      Jurisprudencia</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/" class="">
+      Seguridad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Criptografia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/truecrypt/" class="">
+      Privacidad datos utilizando TrueCrypt</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/veracrypt/" class="">
+      Privacidad datos utilizando VeraCrypt</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/gnupg/" class="">
+      The GNU Privacy Guard</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Gestion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/gestion/itil/" class="">
+      ITIL - Information Technology Infrastructure Library</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      How To</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/how_to/prevent_a_fork_bomb_by_limiting_user_process/" class="">
+      How to: Prevent a fork bomb by limiting user process</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Programacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Redes</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/nodejs/" class="">
+      NodeJS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/python/" class="">
+      Scripts simples en python</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/python/scapy/" class="">
+      Scapy</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/scanner_de_puertos_simple/" class="">
+      Scanner De Puertos Simple</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/shellcode/" class="">
+      Shellcode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/" class="">
+      Seguridad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Certificaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/" class="">
+      Profesional certificado en seguridad ofensiva (OSCP)</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/preparacion_personal/" class="">
+      Preparación personal para rendir la certificación OSCP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/oscp_prep_class/" class="">
+      OSCP Prep class</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/oscp-survival-guide/" class="">
+      OSCP-Survival-Guide</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Exploits</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/exploits/mempodipper/" class="">
+      mempodipper</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/exploits/dirty_cow/" class="">
+      Dirty COW</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/why_i_would_never_buy_a_dell_powerconnect_2724/" class="">
+      Why I would never buy a Dell PowerConnect 2724</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/understanding_bash_fork_bomb/" class="">
+      Understanding Bash fork() bomb ~ :(){ :|:&amp; };:</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/pequena_guia_de_seguridad_informatica/" class="">
+      Pequeña guía de seguridad informática</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/auditd/" class="">
+      Auditoría en Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/process_accounting_psacct/" class="">
+      Process Accounting (PSACCT)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/" class="">
+      Enlaces útiles</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/" class="">
+      Utilidades de Red</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/ngrep/" class="">
+      Network Grep - ngrep</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/msndump/" class="">
+      MSN Dump</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/tcpdump/" class="">
+      TCPDUMP</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/" class="">
+      Aprendiendo SAP</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/sap_hana/" class="">
+      SAP HANA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/desarrollo_y_programacion_en_abap/" class="">
+      Desarrollo y programación en ABAP</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/" class="">
+      Redes y comunicaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Conectividad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/conectividad/fibra_optica/" class="">
+      Fibra óptica</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Firewalls</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/fortinet/" class="">
+      Fortinet</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/fortinet/fortiap/" class="">
+      FortiGate como controlador Wireless</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/pfsense/" class="">
+      pfSense</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Notas</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/notas/nc/" class="">
+      Netcat</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Telefonia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Asterisk</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/" class="">
+      Conectividad con Asterisk</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/spa400/" class="">
+      SPA400</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/tdm400p/" class="">
+      Instalar Placa TDM400P</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Cisco</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/call_manager/" class="">
+      Cisco Call Manager</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/routers/" class="">
+      Routers Cisco</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/telefonos/" class="">
+      Teléfonos CISCO</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Videoconferencia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/videoconferencia/openmcu-ru/" class="">
+      OpenMCU-ru</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/flows/" class="">
+      Network Flow</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/flows/ntop/" class="">
+      Ntop</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/rancid/" class="">
+      Rancid (Really Awesome New Cisco confIg Differ)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/conceptos/" class="">
+      Conceptos de redes informáticas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/" class="">
+      Switches</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Cisco</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/2960c/" class="">
+      CISCO - 2960-C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/2960x/" class="">
+      CISCO - 2960-X</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/sf300/" class="">
+      CISCO - SF300</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/extreme_networks/" class="">
+      Extreme Networks</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/" class="">
+      Hewlett Packard</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/aruba/" class="">
+      Switches Aruba</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/" class="">
+      3COM</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Voice</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/voice/vlan/" class="">
+      VLAN de voz</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/debug_y_analisis_de_equipos_hp_3com/" class="">
+      Debug y análisis de equipos HP/3com</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cumulus_networks/" class="">
+      Cumulus Networks</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/gestion/" class="">
+      Gestión</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/gestion/taiga/" class="">
+      Taiga</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/leyes/" class="">
+      Leyes, Decretos y Ordenanzas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/" class="">
+      Charlas y Eventos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/pueblos_originarios_y_la_industria_del_software/" class="">
+      Pueblos Originarios y la industria del Software</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/uso_de_la_consola_linux/" class="">
+      Taller de uso de Consola Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/lanux_agosto_2010/" class="">
+      Servidores VPS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/" class="">
+      Manuales de proyectos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Tivoli Tsm</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/manual_de_manejo_de_backups_con_tivoli/" class="">
+      Manual de manejo de respaldos con Tivoli</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/tsm_sql_tips/" class="">
+      Mandatos de prueba de validación de la actualización de la base de datos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/tsm_sql_hints/" class="">
+      TSM SQL Hints</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/sql_for_tivoli_storage_manager/" class="">
+      SQL for Tivoli Storage Manager</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/emc_data_domain/" class="">
+      EMC Data Domain</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/" class="">
+      Monitoria y análisis de Red con Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/" class="">
+      Monitoreo de Red con Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Productos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/oracle/" class="">
+      Oracle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/argentina_-_arba_-_codigo_de_operacion_de_traslado_cot/" class="">
+      Argentina - ARBA - Código de Operación de Traslado (COT)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/asterisk/" class="">
+      Asterisk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/riverbed/" class="">
+      Riverbed</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/argentina_-_afip_-_factura_electronica/" class="">
+      Argentina AFIP Factura Electrónica</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/sap/" class="">
+      SAP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/ibm_tivoli_tsm/" class="">
+      Tivoli Storage Manager - TSM</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/brasil_-_nota_fiscal_electronica_nfe/" class="">
+      Brasil - Nota Fiscal Electrónica NFe</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/brasil_-_nota_fiscal_electronica_nfe/referencias_utiles_de_nfe/" class="">
+      Referencias útiles de NFE</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/microstrategy/" class="">
+      MicroStrategy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/qlikview/" class="">
+      QlikView</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/servidor_web/" class="">
+      Configuración del servidor Web</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/pnp4nagios/" class="">
+      PNP4Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/tipos_de_notificaciones/" class="">
+      Tipos de notificaciones</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_referencias_generales/" class="">
+      Referencias generales</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_referencias_generales/sistema_de_inventario/" class="">
+      Sistema de inventario</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagios_network_analyzer/" class="">
+      Nagios Network Analyzer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/" class="">
+      Correlación de eventos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/rsyslog/" class="">
+      Reliable system and kernel logging daemon</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/eventdb/" class="">
+      EventDB</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/syslog_ng/" class="">
+      Syslog-NG</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/implementacion_tecnica/" class="">
+      Implementación Técnica de Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/implementacion_tecnica/implementacion_tecnica_version_ubuntu_server_20.04/" class="">
+      Implementación Técnica de Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/capacitacion_en_monitoreo_de_red/" class="">
+      Capacitación en monitoreo de Red</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Certificaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/capacitacion_en_monitoreo_de_red/certificaciones/sox_-_sarbanes-oxley/" class="">
+      SOX</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/desarrollo_de_plugins_de_nagios/" class="">
+      Desarrollo de plugins de Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/desarrollo_de_plugins_de_nagios/problemas_comunes/" class="">
+      Problemas comunes de los plugins de Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/snmp/" class="">
+      SNMP (Simple Network Management Protocol)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagios_event_radio_dispatcher_nerd/" class="">
+      Nagios Event Radio Dispatcher (NERD)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/mk_livestatus/" class="">
+      MK Livestatus</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/ndo2utils/" class="">
+      NDO2Utils</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagvis/" class="">
+      Nagvis</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagvis/diseno_de_tablero_de_control/" class="">
+      Diseño de tablero de control</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/graficos_en_ajax/" class="">
+      Gráficos en AJAX</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_tips_y_recomendaciones/" class="">
+      TIPS y recomendaciones</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_otras_soluciones_basadas_en_nagios/" class="">
+      Anexo - Otras soluciones basadas en Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_comandos_externos/" class="">
+      Comandos externos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/plugins_usuales_de_nagios/" class="">
+      Plugins usuales de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/icmp/" class="">
+      ICMP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_codigo_fuente_de_nagios/" class="">
+      Análisis del código fuente de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_configuracion_desde_version_3_a_4/" class="">
+      Incompatibilidades de configuración v3 a v4</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/codigo_fuente/" class="">
+      Análisis del código fuente de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/thruk/" class="">
+      Thruk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/portugues/" class="">
+      Monitoração de rede e análise com Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/italiano/" class="">
+      Implementazione di un sistema di rete, monitor con Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_freeradius/" class="">
+      Servidor FreeRadius</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_systemimager/" class="">
+      Proyecto Servidor de Backups</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/an_introduction_to_linux_shell_scripting_for_dbas/" class="">
+      An Introduction to Linux Shell Scripting for DBAs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/filtrador_de_logs/" class="">
+      Filtrador de LOGS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/drbd/" class="">
+      DRBD (Distributed Replicated Block Device)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/" class="">
+      Lotus Notes</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/problemas_winmail.dat_outlook/" class="">
+      Problemas Winmail.dat Outlook</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/listar_ultimo_mes_de_login_de_usuarios/" class="">
+      Listar último mes de login de usuarios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/reemplazar_diseno_base_de_datos/" class="">
+      Reemplazar Diseño Base de Datos</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_squid/" class="">
+      Squid Proxy Server</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/red_restringida/" class="">
+      Red restringida</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/novell_audit/" class="">
+      Novell Identity Audit</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_dhcp/" class="">
+      Servicio DHCP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/ils/" class="">
+      ILS (Internet Locator Server)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Tools of the Trade -- Iostat, Vmstat, and Netstat</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#iostat">Iostat</a>
+      <ul>
+        <li><a href="#syntax">Syntax</a></li>
+        <li><a href="#example">Example</a></li>
+        <li><a href="#results-and-solutions">Results and Solutions</a>
+          <ul>
+            <li><a href="#solaris">Solaris</a></li>
+            <li><a href="#aix">AIX</a></li>
+            <li><a href="#actions-for-disk-performance-issues">Actions for Disk Performance Issues</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#vmstat">Vmstat</a>
+      <ul>
+        <li><a href="#syntax-1">Syntax</a></li>
+        <li><a href="#solaris-example">Solaris Example</a></li>
+        <li><a href="#aix-example">AIX Example</a></li>
+        <li><a href="#problem-identification">Problem Identification</a></li>
+        <li><a href="#results-and-solutions-1">Results and Solutions</a></li>
+        <li><a href="#memory-issues">Memory Issues</a></li>
+        <li><a href="#results">Results</a></li>
+      </ul>
+    </li>
+    <li><a href="#netstat">Netstat</a>
+      <ul>
+        <li><a href="#syntax-2">Syntax</a></li>
+        <li><a href="#network-routing-and-connectivity">Network Routing and Connectivity</a></li>
+        <li><a href="#network-response">Network Response</a></li>
+        <li><a href="#results-and-resolutions">Results and Resolutions</a></li>
+        <li><a href="#network-socket-and-tcp-connection-state">Network Socket and TCP Connection State</a>
+          <ul>
+            <li><a href="#example-1">Example</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="tools-of-the-trade--iostat-vmstat-and-netstat">Tools of the Trade – Iostat, Vmstat, and Netstat<a class="anchor" href="#tools-of-the-trade--iostat-vmstat-and-netstat">#</a></h1>
+<p><sub>Original: <a href="http://www.unixreview.com/documents/s=9953/sam0511g/">Unix Review - January 2006</a> Hemant Sharma</sub></p>
+<p>The performance of a system is dependent on the I/O, memory, CPU, and network. In most Unix environments, iostat, vmstat, and netstat are the commonly available tools for system reporting. These tools provide live data about the system’s memory, disks, and network and enable us to work out the possible problem source. In this article, I will revisit these tools and explain how to use them to maximize your understanding of system activities.</p>
+<h2 id="iostat">Iostat<a class="anchor" href="#iostat">#</a></h2>
+<p>Iostat stands for input output statistics and it provides data about the input output devices such as disk, terminals, serial devices, and CPU, but we will use it here for disk-related data only.</p>
+<h3 id="syntax">Syntax<a class="anchor" href="#syntax">#</a></h3>
+<p>The basic syntax is:</p>
+<pre><code>iostat &lt;options&gt; interval count
+</code></pre>
+<p>option – This may differ among operating system. Refer to the man iostat on your system for supported options.</p>
+<p>interval – Time period in seconds between two samples. iostat 5 will give data at each 5 seconds interval.</p>
+<p>count – Number of times the data is needed. iostat 5 4 will give data at 5 seconds interval 4 times. If no count is specified, the samples continue indefinitely and must be terminated by pressing ^c. Commonly, the command is run without count, and samples are observed to get a feel of system state.</p>
+<p>The very first iostat command gives a snapshot of activity since the last reboot. Subsequent statistics are for the given interval and correspond to the real-time data. Because the system state changes very quickly, the first line of output can be safely ignored as it doesn’t give the useful information about current system state.</p>
+<p>These commands use system resources and, as such, the time interval should be used with care to avoid the impact on the results. Too little interval (fewer than 5 seconds) may add command overhead to the output results and may not reflect the correct system state.</p>
+<h3 id="example">Example<a class="anchor" href="#example">#</a></h3>
+<p>A typical iostat command on a Solaris system would give the following output:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">example% iostat -xtc 5 2
+</span></span><span class="line"><span class="cl">                   extended disk statistics      tty      cpu
+</span></span><span class="line"><span class="cl">disk r/s  w/s Kr/s Kw/s wait actv svc_t  %w  %b  tin tout us sy wt id
+</span></span><span class="line"><span class="cl">d0   6.2 0.0 21.5  0.0 0.0  0.1  24.1   0   15   0   84   4  94  2 0
+</span></span><span class="line"><span class="cl">d1   1.8 0.0 14.3  0.0 0.0  0.1  41.6   0    7</span></span></code></pre></div><p>wait – Average number of transactions waiting for service (queue length).</p>
+<p>actv – Average number of transactions actively being serviced (removed from the queue but not yet completed).</p>
+<p>svc _t – Average service time.</p>
+<p>%w – Percent of time there are transactions waiting for service.</p>
+<p>%b – Percent of time the disk is busy (transactions).</p>
+<p>The columns r/s, w/s, kr/s, and kw/s denote read and write per seconds in bytes and KB, respectively. Similarly, in AIX, it would give the following output:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># iostat 5 2
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">tty:    tin     tout     cpu:   % user    % sys     % idle    % iowait
+</span></span><span class="line"><span class="cl">        0.0      0.0             23.1      9.0       65.9       2.0
+</span></span><span class="line"><span class="cl">     
+</span></span><span class="line"><span class="cl">Disks:      % tm_act   Kbps     tps    Kb_read   Kb_wrtn
+</span></span><span class="line"><span class="cl">hdisk0         2.4     6.4      1.6          0        32
+</span></span><span class="line"><span class="cl">cd0            0.0     0.0      0.0          0         0</span></span></code></pre></div><p>% tm_act – Percentage of time that the physical disk was active.</p>
+<p>Kbps – Amount of data transferred to the drive in KB per second.</p>
+<p>tps – A transfer is an I/O request through the device driver level to the physical disk.</p>
+<p>Kb_read, Kb_wrtn – Reports the total data (in KB) read/written from the physical volume during the measured interval.</p>
+<h3 id="results-and-solutions">Results and Solutions<a class="anchor" href="#results-and-solutions">#</a></h3>
+<h4 id="solaris">Solaris<a class="anchor" href="#solaris">#</a></h4>
+<p>Important columns to observe are svc_t, wait %w and %b – the higher the service time, the lower the performance. Together service time and %busy time gives an idea of whether a system is facing a disk I/O problem. If a disk is showing a constant disk busy state greater than 65% and service time greater than 50ms, then it is suffering from a performance bottleneck.</p>
+<h4 id="aix">AIX<a class="anchor" href="#aix">#</a></h4>
+<p>If the tps and the corresponding %tm_act are higher than expected, but the transfer rate is low and the busy rate is high, then the disk may have problems with the file system or the partition.</p>
+<h4 id="actions-for-disk-performance-issues">Actions for Disk Performance Issues<a class="anchor" href="#actions-for-disk-performance-issues">#</a></h4>
+<p>1. Balance the load from one disk to multiple disks using striping and adding more disks.</p>
+<p>2. Distribute the swap on multiple disks. This may be relevant where swamping happens frequently.</p>
+<p>3. Related data (such as data files and index files) should be present in the same partition.</p>
+<p>4. The system should have sufficient memory so that unnecessary swapping does not occur, and system resources are free for application processing.</p>
+<p>5. Tune the application to use disk I/O more efficiently by modifying the disk queries and using available cache facilities of application servers.</p>
+<p>6. If disks have databases on them, tune the SQL queries to read tables efficiently and avoid full table scans. Regularly analyze tables to fix any errors.</p>
+<p>7. If the disk is suffering from 100% utilization, spread the file system onto two or more disks using disk volume management software.</p>
+<p>8. Move the file system to another, faster disk/controller or replace the existing disk/controller with a faster one.</p>
+<h2 id="vmstat">Vmstat<a class="anchor" href="#vmstat">#</a></h2>
+<p>Vmstat reports virtual memory statistics of processes, virtual memory, disk, trap, and CPU activity. Vmstat is useful to correlate memory, processes, and CPU utilization of a system. On multi-processor systems, vmstat averages the number of CPUs into the output.</p>
+<h3 id="syntax-1">Syntax<a class="anchor" href="#syntax-1">#</a></h3>
+<p>The basic syntax for vmstat is to use the command followed by the option and time interval:</p>
+<pre><code># vmstat &lt;options&gt; interval count
+</code></pre>
+<p>options – Options are used to get information about specific activity. A complete set of options can be seen by referring to man vmstat on your system.</p>
+<p>interval – This is the time period in seconds between two samples. Too small an interval (&lt; 5 sec) may add command overhead to the output results, and the results may not reflect the true system state.</p>
+<p>count – This is the number of times the data is needed. The first line of vmstat gives the average of data since the time of system reboot and can be ignored. Without the count option, the command produces continuous samples until terminated by ^c. As a common practice, the samples are observed for some time without count argument to get a feel of system state.</p>
+<p>Without interval or count options, vmstat displays a one-line summary of the virtual memory activity since the system was booted.</p>
+<h3 id="solaris-example">Solaris Example<a class="anchor" href="#solaris-example">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">example# vmstat 5
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">procs  memory          page             disk      faults        cpu
+</span></span><span class="line"><span class="cl">r b w swap  free re mf pi p fr de sr s0 s1 s2 s3  in  sy  cs us sy id
+</span></span><span class="line"><span class="cl">0 0 0 11456 4120 1  41 19 1  3  0  2  0  4  0  0  48 112 130  4 14 82
+</span></span><span class="line"><span class="cl">0 0 1 10132 4280 0   4 44 0  0  0  0  0 23  0  0 211 230 144  3 35 62
+</span></span><span class="line"><span class="cl">0 0 1 10132 4616 0   0 20 0  0  0  0  0 19  0  0 150 172 146  3 33 64</span></span></code></pre></div><p>The relevant fields of vmstat’s display are:</p>
+<p>procs</p>
+<pre><code>    r     in run queue
+    b     blocked for resources I/O, paging etc.
+    w     swapped
+</code></pre>
+<p>page (per second)</p>
+<pre><code>    re    page reclaims  
+    mf    minor faults  
+    pi    kilobytes paged in
+    po    kilobytes paged out
+    fr    kilobytes freed
+    de    anticipated short-term memory shortfall (Kbytes)
+    sr    pages scanned by clock algorithm
+</code></pre>
+<p>cpu – Percentage usage of CPU time. On multiprocessors, this is an average across all processors.</p>
+<h3 id="aix-example">AIX Example<a class="anchor" href="#aix-example">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">% vmstat 5 3
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">kthr     memory             page              faults        cpu
+</span></span><span class="line"><span class="cl">----- ----------- ------------------------ ------------ ------------
+</span></span><span class="line"><span class="cl">r  b   avm   fre     re  pi  po  fr  sr  cy  in  sy    cs  us sy  id wa
+</span></span><span class="line"><span class="cl">2  1 504038 3489832  0   0   0   0    0   0 2760 8705 1730  4  3 92  0
+</span></span><span class="line"><span class="cl">1  0 503080 3490975  0   0   0   0    0   0 5676 8619 4277  0 15 85  0
+</span></span><span class="line"><span class="cl">0  0 503073 3490982  0   0   0   0    0   0 1937 2707 232   0  0 99  0</span></span></code></pre></div><p>* 1 page = 4096 bytes</p>
+<p>r – Kernel threads placed on the run queue.</p>
+<p>b – Kernel threads blocked.</p>
+<p>avm – Active virtual memory pages.</p>
+<p>fre – Free memory pages.</p>
+<p>re – Pager input/output list.</p>
+<p>wa – % CPU time waiting on I/O.</p>
+<p>To diagnose CPU-related issues, we need to look at the processes in the run queue under the “proc” and “cpu” columns (procs r).</p>
+<p>For Solaris:</p>
+<p>procs cpu r b w us sy id 0 0 0 4 14 82 0 0 1 3 35 62 0 0 1 3 33 64</p>
+<p>The output column denotes the following:</p>
+<p>r – Average number of runnable kernel threads over the sampling interval. Runnable refers to threads that are ready but waiting to run.</p>
+<p>b – Average number of kernel threads awaiting resource and input/output over the sampling interval.</p>
+<p>w – Idle and swapped processes.</p>
+<p>us – The percent of CPU time spent in user mode. When in user mode, a process executes in its application code and does not require kernel resources.</p>
+<p>sy – Percentage of time the CPU spends executing a process in system mode, making system calls for accessing the kernel.</p>
+<p>id – Percentage of time the CPU is idle, that is, there are no threads available for execution or the run queue is empty. Vmstat does not take into account iowait when calculating CPU idle time, whereas top and mpstat do. So, whenever there is a high iowait, vmstat and top will show different results.</p>
+<p>wa – Percentage of time the CPU is idle with pending local disk and NFS-mounted disks operations.</p>
+<h3 id="problem-identification">Problem Identification<a class="anchor" href="#problem-identification">#</a></h3>
+<p>Problems can be identified by observing the following points:</p>
+<p>r – This value should be lower than 5 for non-SMP systems. For SMP systems, this value should be lower than 5 x (Ntotal - Nbind), where Ntotal is the total number of processors and Nbind is the number of processors that have been bound to processes.</p>
+<p>b – This value should be near zero. If the run-queue value increases, the wait-queue also increases. If threads are awakened simultaneously during a 1-second interval, the run-queue could be high but still show low CPU utilization if the threads go right back to sleep. If processes are suspended due to memory, the blocked column (b) in the vmstat report indicates the increase in the number of threads rather than the run queue.</p>
+<p>wa – A “wa” value of more than 25 percent indicates that the impacted disks are heavily loaded.</p>
+<h3 id="results-and-solutions-1">Results and Solutions<a class="anchor" href="#results-and-solutions-1">#</a></h3>
+<p>1. If the number of processes in the run queue column “r” under procs is consistently greater than the number of CPUs on the system, it will slow down the system because there are more processes than available CPUs.</p>
+<p>2. If this number is more than four times the number of available CPUs in the system, then the system is facing a shortage of CPU resources.</p>
+<p>3. If the idle time (cpu id) is consistently 0 and the system time (cpu sy) is double the user time (cpu us), the system is facing a shortage of CPU resources.</p>
+<p>Resolution of these types of issues involves:</p>
+<p>1. Identifying and tuning heavy CPU-using processes.</p>
+<p>2. Tuning of application procedures to make efficient use of CPU.</p>
+<p>3. Upgrading to more powerful CPU or adding more/faster cpu to system.</p>
+<p>4. The CPU bottleneck may also result from memory, so if the scan rate is high, adding memory can relieve CPU bottlenecks.</p>
+<p>5. Adjusting process priorities so that lower-priority processes do not consume all the CPU resources.</p>
+<p>6. Control processor utilization to keep the CPU-intensive processes limited to certain processors.</p>
+<p>7. Adjust time slices so that the CPU provides a good response time. Time slices can be adjusted using kernel parameters.</p>
+<h3 id="memory-issues">Memory Issues<a class="anchor" href="#memory-issues">#</a></h3>
+<p>Memory-related information can be obtained from the following vmstat columns:</p>
+<p>pi – The number of pages paged in from virtual memory that reside on disk.</p>
+<p>po – The number of pages paged out to paging space. When a process terminates normally, any paging space allocated to that process is freed.</p>
+<p>fr – Number of pages that were freed per second. If I/O is not necessary, minimal system resources are required to free a page.</p>
+<p>sr – Scan rate is the number of pages examined per second by the page-replacement algorithm. On systems with multiple processes using many different pages, the scan rate might greatly exceed the free rate.</p>
+<p>de – In Solaris, the “de” column represents the anticipated short-term memory shortfall in Kbytes, which is used by the page scanner to free enough pages to satisfy requests.</p>
+<h3 id="results">Results<a class="anchor" href="#results">#</a></h3>
+<p>1. Memory is over-committed when the ratio of fr to sr (fr:sr) is high.</p>
+<p>2. An fr:sr ratio of 1:4 means that for every page freed, four pages had to be examined. We can’t determine memory constraint based on this ratio because it is workload/application dependent.</p>
+<p>3. Memory bottlenecks are determined by the scan rate (sr). The scan rate is the number of pages scanned by the clock algorithm per second. If the scan rate (sr) is continuously more than 200 pages per second, then there is a memory shortage.</p>
+<p>4. If the “de” column is non-zero, then the system is anticipating a memory shortfall, and free memory will be reclaimed in expectation of its use. For overall memory availability, “de” gives a good indication of whether the system is experiencing memory shortfall.</p>
+<p>5. If there are I/Os queued for the swap device, application paging is occurring. If there is heavy I/O to the swap device, memory upgrade may be needed.</p>
+<p>6. A zombie process is not swapped out, so it continues to run in the memory and occupies the memory.</p>
+<p>Resolution of these types of issues involves:</p>
+<p>1. Gather more information about the processes using the highest amount of memory and investigate to reduce the memory consumption by the thread.</p>
+<p>2. Tune the Java memory allocation for Java server instances and stop the unnecessary instances.</p>
+<p>3. Tune the applications and servers to make efficient use of memory and cache.</p>
+<p>4. Increase system memory.</p>
+<p>5. Tune the paging process by implementing priority paging in pre-Solaris 8 versions by adding line “set priority paging=1” in /etc/system. Remove this line if upgrading from Solaris 7 to 8 and retaining old /etc/system file.</p>
+<p>6. Remove zombie processes from the system.</p>
+<h2 id="netstat">Netstat<a class="anchor" href="#netstat">#</a></h2>
+<p>Netstat displays the contents of various network-related data structures depending on the options selected. Options are dependent on the operating system, so check man netstat on your system for all supported options.</p>
+<h3 id="syntax-2">Syntax<a class="anchor" href="#syntax-2">#</a></h3>
+<pre><code>#netstat  &lt;option/s&gt;
+</code></pre>
+<p>Multiple options can be given at one time from the following list:</p>
+<p>-a – Displays the state of all sockets.</p>
+<p>-r – Shows the system routing tables.</p>
+<p>-i – Gives statistics on a per-interface basis.</p>
+<p>-v – Verbose mode.</p>
+<p>-n – Show network addresses as numbers, IP addresses. By default, netstat tries to resolve IP addresses into name for display. This option applies to the -a, -i, -r, and -v options. Because the network is being debugged, it is possible that netstat may not be able to reach naming services and it may hang looking for names. It is always a good idea to use the -n option.</p>
+<p>interval – Number for continuous display of static tics.</p>
+<p>The different options for netstat provide data about different network aspects, such as network connectivity, network response, and network socket status.</p>
+<h3 id="network-routing-and-connectivity">Network Routing and Connectivity<a class="anchor" href="#network-routing-and-connectivity">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$netstat -rn
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Routing Table: IPv4
+</span></span><span class="line"><span class="cl">  Destination           Gateway           Flags  Ref   Use   Interface
+</span></span><span class="line"><span class="cl">-------------------- -------------------- ----- ----- ------ ---------
+</span></span><span class="line"><span class="cl">192.168.1.0         192.168.1.11           U        1   1444      le0
+</span></span><span class="line"><span class="cl">224.0.0.0           192.168.1.11           U        1   0         le0
+</span></span><span class="line"><span class="cl">default             192.168.1.1            UG       1   68276
+</span></span><span class="line"><span class="cl">127.0.0.1           127.0.0.1              UH       1   10497     lo0</span></span></code></pre></div><p>This shows the output on a Solaris machine whose IP address is 192.168.1.11 with a default router at 192.168.1.1. This command is mostly useful in troubleshooting network connectivity issues. When the outside network is not accessible, check the following:</p>
+<p>1. Make sure the default router IP address is correct.</p>
+<p>2. Make sure you can ping the router from your machine.</p>
+<p>3. If router address is incorrect, it can be changed with route add command. See man route for more information.</p>
+<p>4. If the router address is correct but still you can’t ping it, there may be some network cable hub/switch problem and you will need to eliminate the faulty component.</p>
+<h3 id="network-response">Network Response<a class="anchor" href="#network-response">#</a></h3>
+<p>The -i option to netstat gives the packet transmission and collision data about network interfaces:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ netstat -i
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Name  Mtu Net/Dest  Address    Ipkts  Ierrs  Opkts  Oerrs  Collis Queue
+</span></span><span class="line"><span class="cl">lo0  8232 loopback localhost   77814  0      77814    0         0   0
+</span></span><span class="line"><span class="cl">hme0 1500 server1  server1  10658566  3    4832511    0    279257   0</span></span></code></pre></div><p>Values to note in the above example are:</p>
+<ul>
+<li>Collisions (Collis)</li>
+<li>Output packets (Opkts)</li>
+<li>Input errors (Ierrs)</li>
+<li>Input packets (Ipkts)</li>
+</ul>
+<p>The value in the collision column depends on the type of network. A network using the switches for connectivity will not have collisions as compared to hub-based network.</p>
+<h3 id="results-and-resolutions">Results and Resolutions<a class="anchor" href="#results-and-resolutions">#</a></h3>
+<p>The values in the netstat -i output can be used to make an intelligent guess about network problem areas, as follows:</p>
+<p>1. (Collis+Ierrs+Oerrs)/(Ipkts+Opkts) &gt; 2% – This may indicate a network hardware issue.</p>
+<p>2. (Collis/Opkts) &gt; 10% – Indicates that the interface is overloaded and network load must be redistributed.</p>
+<p>3. (Ierrs/Ipkts) &gt; 25% – Indicates packets dropped by the host as a result of an overloaded network or host.</p>
+<p>4. If there are more than 120 collisions/second, the network is overloaded.</p>
+<p>5. If the sum of input and output packets is higher than about 600 for a 10-Mbs interface or 6000 for a 100-Mbs interface, the network segment is too busy and needs a redistribution of load.</p>
+<p>6. A high number of errors in the “Ierrs” and “Oerrs” columns indicates a transmitting/receiving problem. The most common reason may be that your source and destination have different network settings, like full-duplex and half-duplex.</p>
+<h3 id="network-socket-and-tcp-connection-state">Network Socket and TCP Connection State<a class="anchor" href="#network-socket-and-tcp-connection-state">#</a></h3>
+<p>netstat -a gives important information about network socket and TCP state. Network states returned by netstat -a are as follows:</p>
+<p>CLOSED – Closed; the socket is not being used.</p>
+<p>LISTEN – Listening for incoming connections.</p>
+<p>SYN_SENT – Actively trying to establish connection.</p>
+<p>SYN_RECEIVED – Initial synchronization of the connection underway.</p>
+<p>ESTABLISHED – Connection has been established.</p>
+<p>CLOSE_WAIT – Remote shutdown; waiting for the socket to close.</p>
+<p>FIN_WAIT_1 – Socket closed; shutting down connection.</p>
+<p>CLOSING – Closed, then remote shutdown; awaiting acknowledgement.</p>
+<p>LAST_ACK – Remote shutdown, then closed; awaiting acknowledgement.</p>
+<p>FIN_WAIT_2 – Socket closed; waiting for shutdown from remote.</p>
+<p>TIME_WAIT – Wait after close for remote shutdown retransmission.</p>
+<h4 id="example-1">Example<a class="anchor" href="#example-1">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">#netstat -a
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Local Address Remote Address Swind    Send-Q Rwind  Recv-Q State
+</span></span><span class="line"><span class="cl">*.*           *.*            0        0      24576  0     IDLE
+</span></span><span class="line"><span class="cl">*.22          *.*            0        0      24576  0     LISTEN
+</span></span><span class="line"><span class="cl">*.32775       *.*            0        0      24576  0     LISTEN
+</span></span><span class="line"><span class="cl">*.32776       *.*            0        0      24576  0     LISTEN
+</span></span><span class="line"><span class="cl">*.*           *.*            0        0      24576  0     IDLE
+</span></span><span class="line"><span class="cl">192.168.1.184.22 192.168.1.186.56806 38912 0 24616  0     ESTABLISHED
+</span></span><span class="line"><span class="cl">192.168.1.184.22 192.168.1.183.58672 18048 0 24616  0     ESTABLISHED</span></span></code></pre></div><p>If you see lots of connections in FIN_WAIT state, TCP/IP parameters need to be tuned because the connections are not being closed and are accumulating. After some time, the system may run out of resources. TCP parameters can be tuned to define a timeout so that connections can be released and used by new connections.</p>
+<h2 id="conclusion">Conclusion<a class="anchor" href="#conclusion">#</a></h2>
+<p>This article provided knowledge about the tools of trade in Unix, and I hope it will help you troubleshoot some of your system performance issues.</p>
+<p>Hemant Sharma has more than 10 years of experience in Unix systems administration and application management. He runs his own Web site (<a href="http://www.adminschoice.com">http://www.adminschoice.com</a>) for sys admins and writes articles on Unix systems administration. He can be contacted at: <a href="mailto:hemantsharma@adminschoice.com">hemantsharma@adminschoice.com</a>.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/notas/programacion/console_ioctls_under_linux/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Console IOCTLs Under Linux</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/notas/solaris_performance_monitoring/" class="flex align-center">
+        <span>Solaris Performance Monitoring &amp; Tuning - iostat , vmstat &amp; netstat</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#iostat">Iostat</a>
+      <ul>
+        <li><a href="#syntax">Syntax</a></li>
+        <li><a href="#example">Example</a></li>
+        <li><a href="#results-and-solutions">Results and Solutions</a>
+          <ul>
+            <li><a href="#solaris">Solaris</a></li>
+            <li><a href="#aix">AIX</a></li>
+            <li><a href="#actions-for-disk-performance-issues">Actions for Disk Performance Issues</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#vmstat">Vmstat</a>
+      <ul>
+        <li><a href="#syntax-1">Syntax</a></li>
+        <li><a href="#solaris-example">Solaris Example</a></li>
+        <li><a href="#aix-example">AIX Example</a></li>
+        <li><a href="#problem-identification">Problem Identification</a></li>
+        <li><a href="#results-and-solutions-1">Results and Solutions</a></li>
+        <li><a href="#memory-issues">Memory Issues</a></li>
+        <li><a href="#results">Results</a></li>
+      </ul>
+    </li>
+    <li><a href="#netstat">Netstat</a>
+      <ul>
+        <li><a href="#syntax-2">Syntax</a></li>
+        <li><a href="#network-routing-and-connectivity">Network Routing and Connectivity</a></li>
+        <li><a href="#network-response">Network Response</a></li>
+        <li><a href="#results-and-resolutions">Results and Resolutions</a></li>
+        <li><a href="#network-socket-and-tcp-connection-state">Network Socket and TCP Connection State</a>
+          <ul>
+            <li><a href="#example-1">Example</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

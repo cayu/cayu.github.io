@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cisco on Wiki de Sergio Cayuqueo</title>
+    <link>http://localhost:1313/redes/telefonia/cisco/</link>
+    <description>Recent content in Cisco on Wiki de Sergio Cayuqueo</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Thu, 23 Jul 2026 18:03:24 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/redes/telefonia/cisco/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cisco Call Manager</title>
+      <link>http://localhost:1313/redes/telefonia/cisco/call_manager/</link>
+      <pubDate>Wed, 20 Nov 2019 12:21:16 -0300</pubDate>
+      <guid>http://localhost:1313/redes/telefonia/cisco/call_manager/</guid>
+      <description>&lt;h2 id=&#34;administración&#34;&gt;Administración&lt;a class=&#34;anchor&#34; href=&#34;#administraci%c3%b3n&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;teléfonos&#34;&gt;Teléfonos&lt;a class=&#34;anchor&#34; href=&#34;#tel%c3%a9fonos&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xA;&lt;h4 id=&#34;habilitar-ssh&#34;&gt;Habilitar SSH&lt;a class=&#34;anchor&#34; href=&#34;#habilitar-ssh&#34;&gt;#&lt;/a&gt;&lt;/h4&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://community.cisco.com/t5/collaboration-voice-and-video/how-to-collect-syslog-and-debug-info-from-9971-9951-8961-model/ta-p/3122096&#34;&gt;https://community.cisco.com/t5/collaboration-voice-and-video/how-to-collect-syslog-and-debug-info-from-9971-9951-8961-model/ta-p/3122096&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;internos&#34;&gt;Internos&lt;a class=&#34;anchor&#34; href=&#34;#internos&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xA;&lt;h4 id=&#34;tiempo-de-espera-antes-de-perder-la-llamada&#34;&gt;Tiempo de espera antes de perder la llamada&lt;a class=&#34;anchor&#34; href=&#34;#tiempo-de-espera-antes-de-perder-la-llamada&#34;&gt;#&lt;/a&gt;&lt;/h4&gt;&#xA;&lt;p&gt;Para modificar el tiempo de espera, desde la configuración del interno, deberemos modificar la casilla &lt;strong&gt;No Answer Ring Duration&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;extras&#34;&gt;Extras&lt;a class=&#34;anchor&#34; href=&#34;#extras&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;libreta-de-direcciones-por-ldap&#34;&gt;Libreta de direcciones por LDAP&lt;a class=&#34;anchor&#34; href=&#34;#libreta-de-direcciones-por-ldap&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xA;&lt;h4 id=&#34;problemas-comunes&#34;&gt;Problemas comunes&lt;a class=&#34;anchor&#34; href=&#34;#problemas-comunes&#34;&gt;#&lt;/a&gt;&lt;/h4&gt;&#xA;&lt;p&gt;Si tenemos usuarios en estado &lt;em&gt;Inactive LDAP Synchronized User&lt;/em&gt; y necesitamos pasarlos a estado &lt;em&gt;Active LDAP Synchronized User&lt;/em&gt;. Deberemos ejecutar lo siguiente :&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;code sql&amp;gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;run sql update enduser set status=1 where status = &amp;#34;2&amp;#34;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;extraer-datos-por-sql&#34;&gt;Extraer datos por SQL&lt;a class=&#34;anchor&#34; href=&#34;#extraer-datos-por-sql&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Listas Nombre de telefono, Descripcion, DN&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Routers Cisco</title>
+      <link>http://localhost:1313/redes/telefonia/cisco/routers/</link>
+      <pubDate>Thu, 28 Sep 2017 15:46:54 -0300</pubDate>
+      <guid>http://localhost:1313/redes/telefonia/cisco/routers/</guid>
+      <description>&lt;h2 id=&#34;administración&#34;&gt;Administración&lt;a class=&#34;anchor&#34; href=&#34;#administraci%c3%b3n&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;configurar-snmp&#34;&gt;Configurar SNMP&lt;a class=&#34;anchor&#34; href=&#34;#configurar-snmp&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# enable&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# configure terminal&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Enter configuration commands, one per line.  End with CNTL/Z.&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# snmp-server contact Sergio Cayuqueo&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# snmp-server location Ubicacion Fisica&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# snmp-server community NombreComunidad RO&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# copy running-config startup-config&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Teléfonos CISCO</title>
+      <link>http://localhost:1313/redes/telefonia/cisco/telefonos/</link>
+      <pubDate>Tue, 21 Jun 2016 12:40:05 -0300</pubDate>
+      <guid>http://localhost:1313/redes/telefonia/cisco/telefonos/</guid>
+      <description>&lt;h2 id=&#34;7911g&#34;&gt;7911G&lt;a class=&#34;anchor&#34; href=&#34;#7911g&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;To perform a factory reset of a 7911G phone, follow these steps:&lt;/p&gt;&#xA;&lt;p&gt;Procedure&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Step 1 Unplug the power cable from the phone and then plug it back in.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;The phone begins its power up cycle.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Step 2 While the phone is powering up, and before the Applications Menu button flashes on and off, press and hold #.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Continue to hold # until the message LED on the handset flashes on and off in sequence in red.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Step 3 Release # and press 123456789*0#.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;You can press a key twice in a row, but if you press the keys out of sequence, the factory reset will not take place.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

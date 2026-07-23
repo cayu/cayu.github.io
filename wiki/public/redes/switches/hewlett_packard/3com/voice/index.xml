@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Voice on Wiki de Sergio Cayuqueo</title>
+    <link>http://localhost:1313/redes/switches/hewlett_packard/3com/voice/</link>
+    <description>Recent content in Voice on Wiki de Sergio Cayuqueo</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Wed, 22 Jul 2026 23:28:56 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/redes/switches/hewlett_packard/3com/voice/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>VLAN de voz</title>
+      <link>http://localhost:1313/redes/switches/hewlett_packard/3com/voice/vlan/</link>
+      <pubDate>Wed, 17 Aug 2016 12:15:40 -0300</pubDate>
+      <guid>http://localhost:1313/redes/switches/hewlett_packard/3com/voice/vlan/</guid>
+      <description>&lt;p&gt;Mediante la familia de direcciones MAC, podemos asignarle una VLAN a los equipos aunque la boca a la que esté conectada pertenezca a otra VLAN. De esta manera podremos conectar un teléfono IP y otro equipo en la misma boca del switch, y que cada uno siga perteneciendo a la VLAN que corresponda.En este caso se presenta con los telefonos Cisco, que son menos flexibles a la hora de configurarlos.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

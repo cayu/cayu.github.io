@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Implementación Técnica de Nagios on Wiki de Sergio Cayuqueo</title>
+    <link>http://localhost:1313/manuales/nagios/capacitacion/implementacion_tecnica/</link>
+    <description>Recent content in Implementación Técnica de Nagios on Wiki de Sergio Cayuqueo</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Wed, 22 Jul 2026 23:28:56 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/manuales/nagios/capacitacion/implementacion_tecnica/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Implementación Técnica de Nagios</title>
+      <link>http://localhost:1313/manuales/nagios/capacitacion/implementacion_tecnica/implementacion_tecnica_version_ubuntu_server_20.04/</link>
+      <pubDate>Wed, 26 Aug 2020 12:42:43 -0300</pubDate>
+      <guid>http://localhost:1313/manuales/nagios/capacitacion/implementacion_tecnica/implementacion_tecnica_version_ubuntu_server_20.04/</guid>
+      <description>&lt;h2 id=&#34;instalación-de-nagios-en-ubuntu-server-2004&#34;&gt;Instalación de Nagios en Ubuntu Server 20.04&lt;a class=&#34;anchor&#34; href=&#34;#instalaci%c3%b3n-de-nagios-en-ubuntu-server-2004&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;dependencias-para-compilación-y-puesta-en-marcha&#34;&gt;Dependencias para compilación y puesta en marcha&lt;a class=&#34;anchor&#34; href=&#34;#dependencias-para-compilaci%c3%b3n-y-puesta-en-marcha&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xA;&lt;table&gt;&#xA;&lt;thead&gt;&#xA;&lt;tr&gt;&#xA;&lt;th&gt;Sistema Operativo&lt;/th&gt;&#xA;&lt;th&gt;Ubuntu 20.04&lt;/th&gt;&#xA;&lt;/tr&gt;&#xA;&lt;/thead&gt;&#xA;&lt;tbody&gt;&#xA;&lt;tr&gt;&#xA;&lt;td&gt;Compilador&lt;/td&gt;&#xA;&lt;td&gt;GNU GCC&lt;/td&gt;&#xA;&lt;/tr&gt;&#xA;&lt;tr&gt;&#xA;&lt;td&gt;Utilidades de comunicación&lt;br /&gt;&#xA;Notificaciones&lt;/td&gt;&#xA;&lt;td&gt;MTA&lt;br /&gt;&#xA;SMS&lt;/td&gt;&#xA;&lt;/tr&gt;&#xA;&lt;tr&gt;&#xA;&lt;td&gt;Interfaz de usuario&lt;br /&gt;&#xA;(Opcional)&lt;/td&gt;&#xA;&lt;td&gt;Servidor Web&lt;/td&gt;&#xA;&lt;/tr&gt;&#xA;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h2 id=&#34;instalación-de-nagios-orientada-a-la-distribución&#34;&gt;Instalación de Nagios orientada a la distribución&lt;a class=&#34;anchor&#34; href=&#34;#instalaci%c3%b3n-de-nagios-orientada-a-la-distribuci%c3%b3n&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;Es útil pensar en utilizar varios paquetes de plugins disponibles en la distribución para poder facilitar el proceso de actualizaciones, igualmente es recomendable los componentes base de Nagios compilarlos y dejar separados los plugins personalizados para poder dejarlos independientes de las actualizaciones que apliquemos a los paquetes de la distribución.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

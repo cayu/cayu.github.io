@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Microsoft on Wiki de Sergio Cayuqueo</title>
+    <link>http://localhost:1313/notas/microsoft/</link>
+    <description>Recent content in Microsoft on Wiki de Sergio Cayuqueo</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Wed, 22 Jul 2026 23:28:56 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/notas/microsoft/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Network Policy Server (NPS)</title>
+      <link>http://localhost:1313/notas/microsoft/network_policy_server_nps/</link>
+      <pubDate>Fri, 30 Aug 2019 12:05:52 -0300</pubDate>
+      <guid>http://localhost:1313/notas/microsoft/network_policy_server_nps/</guid>
+      <description>&lt;p&gt;Servidor de directivas de redes corre sobre : &lt;em&gt;Windows Server® 2008 and Windows Server® 2008 R2&lt;/em&gt; en adelante.&lt;/p&gt;&#xA;&lt;p&gt;Permite crear y aplicar directivas de acceso a la red en toda la organización con fines de mantenimiento de clientes, autenticación de solicitudes de conexión y autorización de solicitudes de conexión. Además, puede usar NPS como un proxy RADIUS (Servicio de autenticación remota telefónica de usuario) para reenviar solicitudes de conexión a un servidor que ejecute NPS u otros servidores RADIUS que configure en grupos de servidores RADIUS remotos.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

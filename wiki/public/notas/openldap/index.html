@@ -1,0 +1,4507 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="OpenLDAP es una implementación libre y de código abierto del protocolo Lightweight Directory Access Protocol (LDAP) desarrollada por el proyecto OpenLDAP. Está liberada bajo su propia licencia OpenLDAP Public License. LDAP es un protocolo de comunicación independiente de la plataforma. Muchas distribuciones GNU/Linux incluyen el software OpenLDAP para el soporte LDAP. Este software también corre en plataformas BSD, AIX, HP-UX, Mac OS X, Solaris, Microsoft Windows (NT y derivados, incluyendo 2000, XP, Vista), y z/OS.
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/notas/openldap/">
+  <meta property="og:site_name" content="Wiki de Sergio Cayuqueo">
+  <meta property="og:title" content="Implementacion de un servidor OpenLDAP">
+  <meta property="og:description" content="OpenLDAP es una implementación libre y de código abierto del protocolo Lightweight Directory Access Protocol (LDAP) desarrollada por el proyecto OpenLDAP. Está liberada bajo su propia licencia OpenLDAP Public License. LDAP es un protocolo de comunicación independiente de la plataforma. Muchas distribuciones GNU/Linux incluyen el software OpenLDAP para el soporte LDAP. Este software también corre en plataformas BSD, AIX, HP-UX, Mac OS X, Solaris, Microsoft Windows (NT y derivados, incluyendo 2000, XP, Vista), y z/OS.">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="notas">
+    <meta property="article:published_time" content="2015-04-08T16:36:19-03:00">
+    <meta property="article:modified_time" content="2026-07-23T18:03:24-03:00">
+
+
+  <meta itemprop="name" content="Implementacion de un servidor OpenLDAP">
+  <meta itemprop="description" content="OpenLDAP es una implementación libre y de código abierto del protocolo Lightweight Directory Access Protocol (LDAP) desarrollada por el proyecto OpenLDAP. Está liberada bajo su propia licencia OpenLDAP Public License. LDAP es un protocolo de comunicación independiente de la plataforma. Muchas distribuciones GNU/Linux incluyen el software OpenLDAP para el soporte LDAP. Este software también corre en plataformas BSD, AIX, HP-UX, Mac OS X, Solaris, Microsoft Windows (NT y derivados, incluyendo 2000, XP, Vista), y z/OS.">
+  <meta itemprop="datePublished" content="2015-04-08T16:36:19-03:00">
+  <meta itemprop="dateModified" content="2026-07-23T18:03:24-03:00">
+  <meta itemprop="wordCount" content="2868">
+
+<title>Implementacion de un servidor OpenLDAP • Wiki de Sergio Cayuqueo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/notas/openldap/">
+<link rel="stylesheet" href="/book.min.b67edd162318c5083c6df0a88fb33841277a463a19631410445e4034ec6e651c.css" integrity="sha256-tn7dFiMYxQg8bfCoj7M4QSd6RjoZYxQQRF5ANOxuZRw=" crossorigin="anonymous">
+
+
+  <script defer type="module" src="/es.search.min.0d8ef5a46e9d73ded2792bc4dc404ee89897a364056761a43c441c32a9c30525.js" integrity="sha256-DY71pG6dc97SeSvE3EBO6JiXo2QFZ2GkPEQcMqnDBSU=" crossorigin="anonymous"></script>
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-notas">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Wiki de Sergio Cayuqueo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Buscar"
+    aria-label="Buscar"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Notas</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Hardware</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/" class="">
+      VMWare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/instalar_vmware_tools/" class="">
+      Instalar VMware Tools</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/agregar_cpu_en_caliente_en_vmware/" class="">
+      Agregar CPU en caliente en VMWare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/datetime/" class="">
+      Parametros para Vmware por cambio de hora de servidores</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/idrac/" class="">
+      iDrac Dell</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/strace/" class="">
+      Strace</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/nginx/" class="">
+      Nginx</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/" class="">
+      Squid</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/hearbeat/" class="">
+      LVS - Hearbeat - Ldirectord - Balanceo de carga y alta disponibilidad</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/rhcs/" class="">
+      Squid &#43; Red Hat Cluster Suite</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bind/" class="">
+      Configuración de Servidor DNS Bind</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/" class="">
+      Linux</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Networking</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/networking/wan_optimization/" class="">
+      WAN Optimization</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/actualizar_suse_linux/" class="">
+      Actualizar SuSE Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/cambiar_planificador_de_disco/" class="">
+      Cambiar planificador de acceso a disco</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/medicion_de_velocidad_de_cambio_en_filesystems_en_un_sistema_linux_fisico_o_virtual/" class="">
+      Medición de velocidad de cambio en filesystems en un sistema Linux (físico o virtual)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/midiendo_el_rendimiento_del_sistema_con_iostat/" class="">
+      Midiendo el rendimiento del sistema con IOSTAT</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/sistema_de_archivos_proc/" class="">
+      Sistema de archivos /proc</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/lvm/" class="">
+      Logical Volume Management 2 (LVM2)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/manejo_de_memoria_en_linux/" class="">
+      Manejo de memoria en Linux</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/manejo_de_memoria_en_linux/hugepages/" class="">
+      Hugepages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/ver_el_dmesg_en_formato_humano/" class="">
+      Ver el dmesg en formato humano</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/midiendo_el_rendimiento_del_sistema_con_sar/" class="">
+      Midiendo el rendimiento del sistema con SAR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/cron/" class="">
+      CRON</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/sed/" class="">
+      SED - Stream EDitor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/configuracion_vpn/" class="">
+      Configuración de acceso VPN desde Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openssh/" class="">
+      OpenSSH</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/compartir_archivos_por_nfs/" class="">
+      Como compartir filesystems por NFS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/" class="">
+      Microsoft</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/windows/" class="">
+      Sistema Operativo Windows</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/windows/scripts_varios_de_powershell/" class="">
+      Scripts varios de PowerShell</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/network_policy_server_nps/" class="">
+      Network Policy Server (NPS)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/apache/" class="">
+      Tips de Apache</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/analisis_forense/" class="">
+      Análisis forense</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/qlikview/" class="">
+      QlikView</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/owncloud/" class="">
+      OwnCloud</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/iptables/" class="">
+      TIPs varios de IPTables</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/celulares/" class="">
+      Teléfonos celulares</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openldap/" class="active">
+      Implementacion de un servidor OpenLDAP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/arduino/" class="">
+      Arduino</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/kickstart/" class="">
+      Kickstart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/raspberry_pi/" class="">
+      Raspberry Pi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/postfix/" class="">
+      Postfix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openssl/" class="">
+      OpenSSL</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/" class="">
+      Programación</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Python</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Webscraping</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/webscraping/beautifulsoup/" class="">
+      Beautiful Soup</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/sistema_de_archivos/" class="">
+      Operaciones sobre el sistema de archivos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/django/" class="">
+      Django</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/introduccion_a_awk/" class="">
+      Uso básico de AWK</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/the_linux_cdrom_interface/" class="">
+      The Linux CDROM interface</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/reproductor_de_cd/" class="">
+      Reproductor De Cd</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/console_ioctls_under_linux/" class="">
+      Console IOCTLs Under Linux</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/tools_of_the_trade_--_iostat_vmstat_and_netstat/" class="">
+      Tools of the Trade -- Iostat, Vmstat, and Netstat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/solaris_performance_monitoring/" class="">
+      Solaris Performance Monitoring &amp; Tuning - iostat , vmstat &amp; netstat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/" class="">
+      Bases De Datos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/mysql/" class="">
+      Task MySQL</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/oracle/" class="">
+      Oracle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/mssql/" class="">
+      Microsoft SQL Server</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/postgresql/" class="">
+      PostgreSQL</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/valgrind/" class="">
+      Valgrind</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/kamailio/" class="">
+      Kamailio</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/syslog_centralizado/" class="">
+      Sistema de LOG centralizado</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/inicio_rapido_de_csync2/" class="">
+      Csync para centralizar la configuracion de servicios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/xen_multi_bridge/" class="">
+      Utilizar dos o mas placas de red con Xen</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/sysinfo_dokuwiki/" class="">
+      Dump some hardware info in DokuWiki format</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/ubuntu_domu_en_red_hat/" class="">
+      Xen Red Hat Dom0 y Ubuntu DomU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/enomalism/" class="">
+      Configuraciones a mano</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Fotografia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/fotografia/conceptos/" class="">
+      Sobre el 18-55</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Legales</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Legislacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Nacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/nacion/decreto_155_89/" class="">
+      Decreto 155 89</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/nacion/ley_23302/" class="">
+      LEY 23.302</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/caba/" class="">
+      Legislación Indígena Ciudad Autónoma de Buenos Aires</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/jurisprudencia/" class="">
+      Jurisprudencia</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/" class="">
+      Seguridad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Criptografia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/truecrypt/" class="">
+      Privacidad datos utilizando TrueCrypt</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/veracrypt/" class="">
+      Privacidad datos utilizando VeraCrypt</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/gnupg/" class="">
+      The GNU Privacy Guard</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Gestion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/gestion/itil/" class="">
+      ITIL - Information Technology Infrastructure Library</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      How To</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/how_to/prevent_a_fork_bomb_by_limiting_user_process/" class="">
+      How to: Prevent a fork bomb by limiting user process</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Programacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Redes</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/nodejs/" class="">
+      NodeJS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/python/" class="">
+      Scripts simples en python</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/python/scapy/" class="">
+      Scapy</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/scanner_de_puertos_simple/" class="">
+      Scanner De Puertos Simple</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/shellcode/" class="">
+      Shellcode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/" class="">
+      Seguridad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Certificaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/" class="">
+      Profesional certificado en seguridad ofensiva (OSCP)</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/preparacion_personal/" class="">
+      Preparación personal para rendir la certificación OSCP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/oscp_prep_class/" class="">
+      OSCP Prep class</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/oscp-survival-guide/" class="">
+      OSCP-Survival-Guide</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Exploits</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/exploits/mempodipper/" class="">
+      mempodipper</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/exploits/dirty_cow/" class="">
+      Dirty COW</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/why_i_would_never_buy_a_dell_powerconnect_2724/" class="">
+      Why I would never buy a Dell PowerConnect 2724</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/understanding_bash_fork_bomb/" class="">
+      Understanding Bash fork() bomb ~ :(){ :|:&amp; };:</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/pequena_guia_de_seguridad_informatica/" class="">
+      Pequeña guía de seguridad informática</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/auditd/" class="">
+      Auditoría en Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/process_accounting_psacct/" class="">
+      Process Accounting (PSACCT)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/" class="">
+      Enlaces útiles</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/" class="">
+      Utilidades de Red</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/ngrep/" class="">
+      Network Grep - ngrep</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/msndump/" class="">
+      MSN Dump</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/tcpdump/" class="">
+      TCPDUMP</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/" class="">
+      Aprendiendo SAP</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/sap_hana/" class="">
+      SAP HANA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/desarrollo_y_programacion_en_abap/" class="">
+      Desarrollo y programación en ABAP</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/" class="">
+      Redes y comunicaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Conectividad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/conectividad/fibra_optica/" class="">
+      Fibra óptica</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Firewalls</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/fortinet/" class="">
+      Fortinet</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/fortinet/fortiap/" class="">
+      FortiGate como controlador Wireless</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/pfsense/" class="">
+      pfSense</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Notas</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/notas/nc/" class="">
+      Netcat</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Telefonia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Asterisk</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/" class="">
+      Conectividad con Asterisk</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/spa400/" class="">
+      SPA400</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/tdm400p/" class="">
+      Instalar Placa TDM400P</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Cisco</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/call_manager/" class="">
+      Cisco Call Manager</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/routers/" class="">
+      Routers Cisco</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/telefonos/" class="">
+      Teléfonos CISCO</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Videoconferencia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/videoconferencia/openmcu-ru/" class="">
+      OpenMCU-ru</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/flows/" class="">
+      Network Flow</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/flows/ntop/" class="">
+      Ntop</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/rancid/" class="">
+      Rancid (Really Awesome New Cisco confIg Differ)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/conceptos/" class="">
+      Conceptos de redes informáticas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/" class="">
+      Switches</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Cisco</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/2960c/" class="">
+      CISCO - 2960-C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/2960x/" class="">
+      CISCO - 2960-X</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/sf300/" class="">
+      CISCO - SF300</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/extreme_networks/" class="">
+      Extreme Networks</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/" class="">
+      Hewlett Packard</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/aruba/" class="">
+      Switches Aruba</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/" class="">
+      3COM</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Voice</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/voice/vlan/" class="">
+      VLAN de voz</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/debug_y_analisis_de_equipos_hp_3com/" class="">
+      Debug y análisis de equipos HP/3com</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cumulus_networks/" class="">
+      Cumulus Networks</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/gestion/" class="">
+      Gestión</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/gestion/taiga/" class="">
+      Taiga</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/leyes/" class="">
+      Leyes, Decretos y Ordenanzas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/" class="">
+      Charlas y Eventos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/pueblos_originarios_y_la_industria_del_software/" class="">
+      Pueblos Originarios y la industria del Software</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/uso_de_la_consola_linux/" class="">
+      Taller de uso de Consola Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/lanux_agosto_2010/" class="">
+      Servidores VPS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/" class="">
+      Manuales de proyectos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Tivoli Tsm</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/manual_de_manejo_de_backups_con_tivoli/" class="">
+      Manual de manejo de respaldos con Tivoli</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/tsm_sql_tips/" class="">
+      Mandatos de prueba de validación de la actualización de la base de datos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/tsm_sql_hints/" class="">
+      TSM SQL Hints</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/sql_for_tivoli_storage_manager/" class="">
+      SQL for Tivoli Storage Manager</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/emc_data_domain/" class="">
+      EMC Data Domain</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/" class="">
+      Monitoria y análisis de Red con Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/" class="">
+      Monitoreo de Red con Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Productos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/oracle/" class="">
+      Oracle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/argentina_-_arba_-_codigo_de_operacion_de_traslado_cot/" class="">
+      Argentina - ARBA - Código de Operación de Traslado (COT)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/asterisk/" class="">
+      Asterisk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/riverbed/" class="">
+      Riverbed</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/argentina_-_afip_-_factura_electronica/" class="">
+      Argentina AFIP Factura Electrónica</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/sap/" class="">
+      SAP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/ibm_tivoli_tsm/" class="">
+      Tivoli Storage Manager - TSM</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/brasil_-_nota_fiscal_electronica_nfe/" class="">
+      Brasil - Nota Fiscal Electrónica NFe</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/brasil_-_nota_fiscal_electronica_nfe/referencias_utiles_de_nfe/" class="">
+      Referencias útiles de NFE</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/microstrategy/" class="">
+      MicroStrategy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/qlikview/" class="">
+      QlikView</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/servidor_web/" class="">
+      Configuración del servidor Web</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/pnp4nagios/" class="">
+      PNP4Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/tipos_de_notificaciones/" class="">
+      Tipos de notificaciones</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_referencias_generales/" class="">
+      Referencias generales</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_referencias_generales/sistema_de_inventario/" class="">
+      Sistema de inventario</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagios_network_analyzer/" class="">
+      Nagios Network Analyzer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/" class="">
+      Correlación de eventos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/rsyslog/" class="">
+      Reliable system and kernel logging daemon</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/eventdb/" class="">
+      EventDB</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/syslog_ng/" class="">
+      Syslog-NG</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/implementacion_tecnica/" class="">
+      Implementación Técnica de Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/implementacion_tecnica/implementacion_tecnica_version_ubuntu_server_20.04/" class="">
+      Implementación Técnica de Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/capacitacion_en_monitoreo_de_red/" class="">
+      Capacitación en monitoreo de Red</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Certificaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/capacitacion_en_monitoreo_de_red/certificaciones/sox_-_sarbanes-oxley/" class="">
+      SOX</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/desarrollo_de_plugins_de_nagios/" class="">
+      Desarrollo de plugins de Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/desarrollo_de_plugins_de_nagios/problemas_comunes/" class="">
+      Problemas comunes de los plugins de Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/snmp/" class="">
+      SNMP (Simple Network Management Protocol)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagios_event_radio_dispatcher_nerd/" class="">
+      Nagios Event Radio Dispatcher (NERD)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/mk_livestatus/" class="">
+      MK Livestatus</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/ndo2utils/" class="">
+      NDO2Utils</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagvis/" class="">
+      Nagvis</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagvis/diseno_de_tablero_de_control/" class="">
+      Diseño de tablero de control</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/graficos_en_ajax/" class="">
+      Gráficos en AJAX</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_tips_y_recomendaciones/" class="">
+      TIPS y recomendaciones</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_otras_soluciones_basadas_en_nagios/" class="">
+      Anexo - Otras soluciones basadas en Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_comandos_externos/" class="">
+      Comandos externos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/plugins_usuales_de_nagios/" class="">
+      Plugins usuales de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/icmp/" class="">
+      ICMP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_codigo_fuente_de_nagios/" class="">
+      Análisis del código fuente de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_configuracion_desde_version_3_a_4/" class="">
+      Incompatibilidades de configuración v3 a v4</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/codigo_fuente/" class="">
+      Análisis del código fuente de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/thruk/" class="">
+      Thruk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/portugues/" class="">
+      Monitoração de rede e análise com Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/italiano/" class="">
+      Implementazione di un sistema di rete, monitor con Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_freeradius/" class="">
+      Servidor FreeRadius</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_systemimager/" class="">
+      Proyecto Servidor de Backups</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/an_introduction_to_linux_shell_scripting_for_dbas/" class="">
+      An Introduction to Linux Shell Scripting for DBAs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/filtrador_de_logs/" class="">
+      Filtrador de LOGS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/drbd/" class="">
+      DRBD (Distributed Replicated Block Device)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/" class="">
+      Lotus Notes</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/problemas_winmail.dat_outlook/" class="">
+      Problemas Winmail.dat Outlook</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/listar_ultimo_mes_de_login_de_usuarios/" class="">
+      Listar último mes de login de usuarios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/reemplazar_diseno_base_de_datos/" class="">
+      Reemplazar Diseño Base de Datos</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_squid/" class="">
+      Squid Proxy Server</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/red_restringida/" class="">
+      Red restringida</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/novell_audit/" class="">
+      Novell Identity Audit</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_dhcp/" class="">
+      Servicio DHCP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/ils/" class="">
+      ILS (Internet Locator Server)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Implementacion de un servidor OpenLDAP</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#instalación">Instalación</a>
+      <ul>
+        <li><a href="#datos-iniciales">Datos iniciales</a>
+          <ul>
+            <li><a href="#organización">Organización</a></li>
+            <li><a href="#usuario-administrador">Usuario administrador</a></li>
+            <li><a href="#contenedor-de-grupos">Contenedor de Grupos</a></li>
+            <li><a href="#contenedor-de-usuarios">Contenedor de Usuarios</a></li>
+            <li><a href="#agregar-usuarios-a-grupo">Agregar usuarios a grupo</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#replicación">Replicación</a>
+      <ul>
+        <li><a href="#multimaster">Multimaster</a></li>
+        <li><a href="#master--slave">Master / Slave</a></li>
+      </ul>
+    </li>
+    <li><a href="#politicas">Politicas</a></li>
+    <li><a href="#etcopenldapslapdconf">/etc/openldap/slapd.conf</a></li>
+    <li><a href="#registros-a-agregar-en-el-arbol-ldap">Registros a agregar en el arbol LDAP</a>
+      <ul>
+        <li><a href="#chequeos-de-password">Chequeos de password</a></li>
+      </ul>
+    </li>
+    <li><a href="#en-los-clientes">En los clientes</a>
+      <ul>
+        <li><a href="#configuracion-servidor-ldap-con-políticas">Configuracion servidor LDAP con políticas</a></li>
+        <li><a href="#configuracion-servidor-ldap-sin-políticas">Configuracion servidor LDAP sin políticas</a>
+          <ul>
+            <li><a href="#configuracion-pam">Configuracion PAM</a></li>
+            <li><a href="#radius">Radius</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#notas-y-extras">Notas y extras</a>
+      <ul>
+        <li><a href="#autocambio-de-contraseña">Autocambio de contraseña</a></li>
+        <li><a href="#sudo">SUDO</a></li>
+        <li><a href="#referencias">Referencias</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><p>OpenLDAP es una implementación libre y de código abierto del protocolo Lightweight Directory Access Protocol (LDAP) desarrollada por el proyecto OpenLDAP. Está liberada bajo su propia licencia OpenLDAP Public License. LDAP es un protocolo de comunicación independiente de la plataforma. Muchas distribuciones GNU/Linux incluyen el software OpenLDAP para el soporte LDAP. Este software también corre en plataformas BSD, AIX, HP-UX, Mac OS X, Solaris, Microsoft Windows (NT y derivados, incluyendo 2000, XP, Vista), y z/OS.</p>
+<p>El problema de la autenticación en Linux (y en Unix en general) esta dividido en dos partes, la primera es comprobar el usuario y password, y la segunda es obtener la información del usuario para poder completar el login (user ID, home directory, group membership, shell inicial). En la mayoría de las distribuciones de Linux esta problemática esta resuelta por dos componentes:</p>
+<ul>
+<li><strong>PAM:</strong> que realiza la autenticación (comprueba el usuario y password, ademas de verificar la validez de la cuenta de usuario).</li>
+<li><strong>NSS:</strong> que se encarga de obtener la información del usuario mencionada anteriormente.</li>
+</ul>
+<p>Ambos componentes presentan una modularidad que les permite acceder a la información desde cualquier tipo de sistema de base de datos, como puede ser los archivos locales (/etc/passwd y / etc/group) o desde servidores como LDAP, Mysql, Windows.</p>
+<img src="/notas/diagrama_ldap_radius.png" class="align-center" alt="diagrama_ldap_radius.png" />
+<p>En este caso, para mantener centralizada toda la información de autenticación, se utilizo LDAP, el cual fue instalado en los equipos que al momento de la implementación cumplan la función de servidor <strong>Radius</strong>. <strong>LDAP</strong> permite que la información sea accedida desde cualquier lugar a travez de la red, es rápido para realizar búsquedas y tiene una opción de replicación de datos para obtener alta disponibilidad. Radius podía ser utilizado solamente como sistema de autenticación pero no provee la funcionalidad de guardar información de las cuentas de usuario que Linux necesita para efectuar el login. En los servidores que usan esta autenticación se instalo el paquete de Redhat llamado <strong>nss_ldap</strong>, el cual provee los módulos de <strong>PAM</strong> y <strong>NSS</strong> necesarios para integrarse con <strong>LDAP</strong>. Ambos utilizan un archivo de configuración en común (/etc/ldap.conf). En el caso de la replicación y alta disponibilidad, el esquema es del tipo master-slave, donde todas las modificaciones se realizan sobre el master y se propagan al slave (el cual es solo para lectura de datos no para modificación). La alta disponibilidad se logra configurando dos o mas servidores en el archivo de configuración /etc/ldap.conf, resolviendo automáticamente los módulos de <strong>NSS</strong> y <strong>PAM</strong> la conexión con uno u otro equipo. La configuración del servicio <strong>Radius</strong> se modifico para que la <em>autenticación se realizara a travez de</em> <strong>PAM</strong> y <em>no usando los archivos locales</em> como estaba configurada anteriormente. Con esto se logra una integración total entre la autenticación de los router y los servidores Linux.</p>
+<h2 id="instalación">Instalación<a class="anchor" href="#instalaci%c3%b3n">#</a></h2>
+<p>Deberemos bajar los siguientes paquetes</p>
+<p>DB 4 <a href="http://www.oracle.com/database/berkeley-db/index.html">http://www.oracle.com/database/berkeley-db/index.html</a></p>
+<p>OpenLDAP <a href="http://www.openldap.org/">http://www.openldap.org/</a></p>
+<p>Para compilar DB4 solo deberemos ejecutar :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">../dist/configure   --enable-cxx</span></span></code></pre></div><p>En cambio para compilar OpenLDAP deberemos correr :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">CPPFLAGS=&#34;-I/usr/local/BerkeleyDB.4.8/include&#34; LDFLAGS=&#34;-L/usr/local/lib -L/usr/local/BerkeleyDB.4.8/lib&#34; LD_LIBRARY_PATH=&#34;/usr/local/BerkeleyDB.4.8/lib&#34;  ./configure    --enable-crypt       --enable-modules    --enable-overlays     --enable-bdb     --enable-hdb     --enable-ldap      --enable-monitor      --enable-passwd     --enable-relay   --enable-shell    --enable-sock</span></span></code></pre></div><p>Una vez hecho esto tendremos lista nuestra instalación para poder correr.</p>
+<h3 id="datos-iniciales">Datos iniciales<a class="anchor" href="#datos-iniciales">#</a></h3>
+<h4 id="organización">Organización<a class="anchor" href="#organizaci%c3%b3n">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dn: dc=cayu,dc=com,dc=ar
+</span></span><span class="line"><span class="cl">objectClass: top
+</span></span><span class="line"><span class="cl">objectClass: dcObject
+</span></span><span class="line"><span class="cl">objectClass: organization
+</span></span><span class="line"><span class="cl">o: cayu
+</span></span><span class="line"><span class="cl">dc: cayu
+</span></span><span class="line"><span class="cl">structuralObjectClass: organization</span></span></code></pre></div><h4 id="usuario-administrador">Usuario administrador<a class="anchor" href="#usuario-administrador">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dn: cn=admin,dc=cayu,dc=com,dc=ar
+</span></span><span class="line"><span class="cl">objectClass: simpleSecurityObject
+</span></span><span class="line"><span class="cl">objectClass: organizationalRole
+</span></span><span class="line"><span class="cl">cn: admin
+</span></span><span class="line"><span class="cl">description: LDAP administrator
+</span></span><span class="line"><span class="cl">userPassword:: e1NTSEF9U1pIeTBlSG9vdGFlVnJWNVNrc0pDM3k4STNRdEordFU=
+</span></span><span class="line"><span class="cl">structuralObjectClass: organizationalRole</span></span></code></pre></div><h4 id="contenedor-de-grupos">Contenedor de Grupos<a class="anchor" href="#contenedor-de-grupos">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dn: ou=groups,dc=cayu,dc=com,dc=ar
+</span></span><span class="line"><span class="cl">objectclass:organizationalunit
+</span></span><span class="line"><span class="cl">ou: groups
+</span></span><span class="line"><span class="cl">description: Grupos</span></span></code></pre></div><h5 id="grupos">Grupos<a class="anchor" href="#grupos">#</a></h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dn: cn=users-admin,ou=groups,dc=cayu,dc=com,dc=ar
+</span></span><span class="line"><span class="cl">objectClass: posixGroup
+</span></span><span class="line"><span class="cl">cn: users-write
+</span></span><span class="line"><span class="cl">gidNumber: 10001</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dn: cn=users-read,ou=groups,dc=cayu,dc=com,dc=ar
+</span></span><span class="line"><span class="cl">objectClass: posixGroup
+</span></span><span class="line"><span class="cl">cn: users-read
+</span></span><span class="line"><span class="cl">gidNumber: 10002</span></span></code></pre></div><h4 id="contenedor-de-usuarios">Contenedor de Usuarios<a class="anchor" href="#contenedor-de-usuarios">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dn: ou=users,dc=cayu,dc=com,dc=ar
+</span></span><span class="line"><span class="cl">objectclass:organizationalunit
+</span></span><span class="line"><span class="cl">ou: users
+</span></span><span class="line"><span class="cl">description: Usuarios</span></span></code></pre></div><h5 id="usuarios">Usuarios<a class="anchor" href="#usuarios">#</a></h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dn: uid=linux-admin,ou=users,dc=cayu,dc=com,dc=ar
+</span></span><span class="line"><span class="cl">objectClass: top
+</span></span><span class="line"><span class="cl">objectClass: account
+</span></span><span class="line"><span class="cl">objectClass: posixAccount
+</span></span><span class="line"><span class="cl">objectClass: shadowAccount
+</span></span><span class="line"><span class="cl">cn: switch-write
+</span></span><span class="line"><span class="cl">uid: switch-write
+</span></span><span class="line"><span class="cl">uidNumber: 16001
+</span></span><span class="line"><span class="cl">gidNumber: 10001
+</span></span><span class="line"><span class="cl">homeDirectory: /home/linux-admin
+</span></span><span class="line"><span class="cl">loginShell: /bin/bash
+</span></span><span class="line"><span class="cl">gecos: adam
+</span></span><span class="line"><span class="cl">userPassword: {crypt}x
+</span></span><span class="line"><span class="cl">shadowLastChange: 0
+</span></span><span class="line"><span class="cl">shadowMax: 0
+</span></span><span class="line"><span class="cl">shadowWarning: 0</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dn: uid=linux-user,ou=users,dc=cayu,dc=com,dc=ar
+</span></span><span class="line"><span class="cl">objectClass: top
+</span></span><span class="line"><span class="cl">objectClass: account
+</span></span><span class="line"><span class="cl">objectClass: posixAccount
+</span></span><span class="line"><span class="cl">objectClass: shadowAccount
+</span></span><span class="line"><span class="cl">cn: switch-read
+</span></span><span class="line"><span class="cl">uid: switch-read
+</span></span><span class="line"><span class="cl">uidNumber: 16002
+</span></span><span class="line"><span class="cl">gidNumber: 10002
+</span></span><span class="line"><span class="cl">homeDirectory: /home/linux-user
+</span></span><span class="line"><span class="cl">loginShell: /bin/bash
+</span></span><span class="line"><span class="cl">gecos: adam
+</span></span><span class="line"><span class="cl">userPassword: {crypt}x
+</span></span><span class="line"><span class="cl">shadowLastChange: 0
+</span></span><span class="line"><span class="cl">shadowMax: 0
+</span></span><span class="line"><span class="cl">shadowWarning: 0</span></span></code></pre></div><h4 id="agregar-usuarios-a-grupo">Agregar usuarios a grupo<a class="anchor" href="#agregar-usuarios-a-grupo">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dn: cn=users-write,ou=groups,dc=cayu,dc=com,dc=ar
+</span></span><span class="line"><span class="cl">changetype: modify
+</span></span><span class="line"><span class="cl">add: memberUid
+</span></span><span class="line"><span class="cl">memberUid: linux-admin</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dn: cn=users-read,ou=groups,dc=cayu,dc=com,dc=ar
+</span></span><span class="line"><span class="cl">changetype: modify
+</span></span><span class="line"><span class="cl">add: memberUid
+</span></span><span class="line"><span class="cl">memberUid: linux-user</span></span></code></pre></div><h2 id="replicación">Replicación<a class="anchor" href="#replicaci%c3%b3n">#</a></h2>
+<h3 id="multimaster">Multimaster<a class="anchor" href="#multimaster">#</a></h3>
+<p><strong>REQUIERE Openldap 2.4</strong></p>
+<p>La replicación multimaster se puede hacer en 1 o más nodos, la única premisa es que todos deben estar iguales al momento de comenzar esta configuración (misma configuración y misma base).</p>
+<p>Vamos a suponer que tenemos los servidores ldap1 y ldap2.</p>
+<p>En el servidor ldap1 agregar estas línas al final del slapd.conf:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">serverID       1 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">overlay syncprov
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">syncRepl rid=2
+</span></span><span class="line"><span class="cl">        provider=ldap://ldap2.com
+</span></span><span class="line"><span class="cl">        binddn=&#34;cn=admin,ou=users,dc=dominio,dc=com&#34;
+</span></span><span class="line"><span class="cl">        bindmethod=simple
+</span></span><span class="line"><span class="cl">        credentials=contraseña
+</span></span><span class="line"><span class="cl">        searchbase=&#34;dc=dominio,dc=com&#34;
+</span></span><span class="line"><span class="cl">        type=refreshAndPersist
+</span></span><span class="line"><span class="cl">        retry=&#34;5 + 5 +&#34;
+</span></span><span class="line"><span class="cl">        interval=00:00:00:05
+</span></span><span class="line"><span class="cl">        starttls=yes
+</span></span><span class="line"><span class="cl">        tls_reqcert=never
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mirrormode      true
+</span></span><span class="line"><span class="cl">database monitor</span></span></code></pre></div><p>En el servidor ldap2:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">serverID       2 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">overlay syncprov
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">syncRepl rid=1
+</span></span><span class="line"><span class="cl">        provider=ldap://ldap1.com
+</span></span><span class="line"><span class="cl">        binddn=&#34;cn=admin,ou=users,dc=dominio,dc=com&#34;
+</span></span><span class="line"><span class="cl">        bindmethod=simple
+</span></span><span class="line"><span class="cl">        credentials=contraseña
+</span></span><span class="line"><span class="cl">        searchbase=&#34;dc=dominio,dc=com&#34;
+</span></span><span class="line"><span class="cl">        type=refreshAndPersist
+</span></span><span class="line"><span class="cl">        retry=&#34;5 + 5 +&#34;
+</span></span><span class="line"><span class="cl">        interval=00:00:00:05
+</span></span><span class="line"><span class="cl">        starttls=yes
+</span></span><span class="line"><span class="cl">        tls_reqcert=never
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mirrormode      true
+</span></span><span class="line"><span class="cl">database monitor</span></span></code></pre></div><p>La configuración en ambos servidor es similar, solo cambia el ServerID, el rid y el provider, que van invertidos, como se observa en al configuración.</p>
+<p>El usuario especificado en el binddn debe tener acceso completo a la base.</p>
+<h3 id="master--slave">Master / Slave<a class="anchor" href="#master--slave">#</a></h3>
+<p>En el Master</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">moduleload</span> 		<span class="n">syncprov</span>
+</span></span><span class="line"><span class="cl"><span class="n">overlay</span> 		<span class="n">syncprov</span>
+</span></span><span class="line"><span class="cl"><span class="n">syncprov</span><span class="o">-</span><span class="n">checkpoint</span> 	<span class="mi">100</span>	<span class="mi">10</span>
+</span></span><span class="line"><span class="cl"><span class="n">syncprov</span><span class="o">-</span><span class="n">sessionlog</span> 	<span class="mi">100</span></span></span></code></pre></div><p>En el Slave</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">syncrepl rid=123
+</span></span><span class="line"><span class="cl">    provider=ldap://ldap1.com:389
+</span></span><span class="line"><span class="cl">    type=refreshAndPersist
+</span></span><span class="line"><span class="cl">    retry=&#34;60 10 300 +&#34;
+</span></span><span class="line"><span class="cl">    searchbase=&#34;dc=dominio,dc=com&#34;
+</span></span><span class="line"><span class="cl">    schemachecking=off
+</span></span><span class="line"><span class="cl">    bindmethod=simple
+</span></span><span class="line"><span class="cl">    binddn=&#34;cn=admin,ou=users,dc=dominio,dc=com&#34;
+</span></span><span class="line"><span class="cl">    credentials=contraseña</span></span></code></pre></div><h2 id="politicas">Politicas<a class="anchor" href="#politicas">#</a></h2>
+<p>Para poder manejar policies de passwords con LDAP y hacer que estos se bloqueen luego de determinados intentos se debe agregar lo siguiente:</p>
+<p>RFC <a href="http://www.potaroo.net/ietf/old-ids/draft-behera-ldap-password-policy-00.txt">http://www.potaroo.net/ietf/old-ids/draft-behera-ldap-password-policy-00.txt</a> RFC <a href="http://www.mozilla.org/directory/ietf-docs/draft-behera-ldap-password-policy-05.txt">http://www.mozilla.org/directory/ietf-docs/draft-behera-ldap-password-policy-05.txt</a></p>
+<h2 id="etcopenldapslapdconf">/etc/openldap/slapd.conf<a class="anchor" href="#etcopenldapslapdconf">#</a></h2>
+<p>Despues de la definicion de la base de datos se deben agregar las siguientes lineas</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">overlay         ppolicy
+</span></span><span class="line"><span class="cl">ppolicy_default &#34;cn=default,ou=policies,dc=dominio,dc=com&#34;</span></span></code></pre></div><h2 id="registros-a-agregar-en-el-arbol-ldap">Registros a agregar en el arbol LDAP<a class="anchor" href="#registros-a-agregar-en-el-arbol-ldap">#</a></h2>
+<p>Se debe agregar la “ou” <em>Policies</em> para que contenga todas la policies.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dn: ou=policies,dc=dominio,dc=com
+</span></span><span class="line"><span class="cl">ou: policies
+</span></span><span class="line"><span class="cl">objectClass: top
+</span></span><span class="line"><span class="cl">objectClass: organizationalUnit
+</span></span><span class="line"><span class="cl">structuralObjectClass: organizationalUnit</span></span></code></pre></div><p>Ahora se deben agregar las politicas por defecto, en este ejemplo se bloquea el usuario por 120 segundos (2 minutos) luego de tres intentos fallidos.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dn: cn=default,ou=policies,dc=dominio,dc=com
+</span></span><span class="line"><span class="cl">pwdFailureCountInterval: 30
+</span></span><span class="line"><span class="cl">pwdSafeModify: FALSE
+</span></span><span class="line"><span class="cl">pwdGraceAuthNLimit: 5
+</span></span><span class="line"><span class="cl">pwdLockoutDuration: 120
+</span></span><span class="line"><span class="cl">objectClass: pwdPolicy
+</span></span><span class="line"><span class="cl">objectClass: person
+</span></span><span class="line"><span class="cl">objectClass: top
+</span></span><span class="line"><span class="cl">objectClass: pwdPolicyChecker
+</span></span><span class="line"><span class="cl">pwdMaxFailure: 3
+</span></span><span class="line"><span class="cl">pwdAllowUserChange: TRUE
+</span></span><span class="line"><span class="cl">pwdMinLength: 5
+</span></span><span class="line"><span class="cl">cn: default
+</span></span><span class="line"><span class="cl">pwdAttribute: userPassword
+</span></span><span class="line"><span class="cl">pwdMinAge: 5
+</span></span><span class="line"><span class="cl">pwdLockout: TRUE
+</span></span><span class="line"><span class="cl">pwdCheckQuality: 2
+</span></span><span class="line"><span class="cl">pwdInHistory: 5
+</span></span><span class="line"><span class="cl">sn: default policy
+</span></span><span class="line"><span class="cl">pwdMustChange: FALSE
+</span></span><span class="line"><span class="cl">pwdExpireWarning: 600</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># Default Password Policy
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">dn: cn=default,ou=pwdpolicies,dc=zes_example,dc=com
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">objectClass: pwdPolicy
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">cn: default
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># User can change his/her password
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">pwdAllowUserChange: TRUE
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Return warning to bind attempt (seconds) -- 3 days
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">pwdExpireWarning: 259200
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Interval in seconds to reset failure pwd count
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">pwdFailureCountInterval: 100
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Do not allow to bind on expired passwords
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">pwdGraceAuthNLimit:  0
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Reject any password changes in this list
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">pwdInHistory: 3
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Lock out account when user tries more than x attempts using invalid password
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">pwdLockout: TRUE
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Do not allow the system to unlock the account
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">pwdLockoutDuration: 0
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Consecutinve # of failure attempts
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">pwdMaxFailure: 5
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># How long the password lasts before user has to change it (seconds)  -- 90 days
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">pwdMaxAge: 77760000
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Password length
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">pwdMinLength: 6</span></span></code></pre></div><p>Modificado todo esto se reinicia el LDAP.</p>
+<img src="/notas/ppolicy.png" class="align-center" alt="ppolicy.png" />
+<h3 id="chequeos-de-password">Chequeos de password<a class="anchor" href="#chequeos-de-password">#</a></h3>
+<p>Este es un modulo para chequear o establecer dificultades a los passwords.</p>
+<p>Hay que agregar el objectClass ‘pwdPolicyChecker’ con el atributo del modulo LDPA ej ‘check_password.so’ dentro de las politicas.</p>
+<p>Parametros de configuración :</p>
+<ul>
+<li>useCracklib: integer. Usar o no CrackLib</li>
+<li>minPoints: integer. Puntaje minimo, cada punto se asigna por cada clase de caracter en el password.</li>
+<li>minUpper: integer. Cantidad minima de mayusculas</li>
+<li>minLower: integer. Cantidad minima de minusculas</li>
+<li>minDigit: integer. Cantidad minima de digitos</li>
+<li>minPunct: integer. Cantidad minima de signos</li>
+</ul>
+<p>Default : <strong>check_password.conf</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">useCracklib     1
+</span></span><span class="line"><span class="cl">minPoints       3
+</span></span><span class="line"><span class="cl">minUpper        0
+</span></span><span class="line"><span class="cl">minLower        0
+</span></span><span class="line"><span class="cl">minDigit        0
+</span></span><span class="line"><span class="cl">minPunct        0</span></span></code></pre></div><p>Mensaje de error ldappasswd</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">  Result: Constraint violation (19)
+</span></span><span class="line"><span class="cl">  Additional info: Password fails quality checking policy</span></span></code></pre></div><p>Ref.:</p>
+<p><a href="http://ltb-project.org/wiki/documentation/openldap-ppolicy-check-password">http://ltb-project.org/wiki/documentation/openldap-ppolicy-check-password</a></p>
+<p><a href="http://www.symas.com/blog/?page_id=66">http://www.symas.com/blog/?page_id=66</a></p>
+<h2 id="en-los-clientes">En los clientes<a class="anchor" href="#en-los-clientes">#</a></h2>
+<h3 id="configuracion-servidor-ldap-con-políticas">Configuracion servidor LDAP con políticas<a class="anchor" href="#configuracion-servidor-ldap-con-pol%c3%adticas">#</a></h3>
+<p><strong>/etc/pam.d/system-auth</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">auth [success=1 default=ignore] pam_unix.so
+</span></span><span class="line"><span class="cl">auth required pam_ldap.so use_first_pass
+</span></span><span class="line"><span class="cl">auth required pam_permit.so
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">account [success=1 default=ignore] pam_unix.so
+</span></span><span class="line"><span class="cl">account required pam_ldap.so
+</span></span><span class="line"><span class="cl">account required pam_permit.so
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">password requisite pam_cracklib.so try_first_pass retry=3
+</span></span><span class="line"><span class="cl">password sufficient pam_unix.so md5 shadow nullok try_first_pass use_authtok
+</span></span><span class="line"><span class="cl">password required pam_deny.so
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">session optional pam_keyinit.so revoke
+</span></span><span class="line"><span class="cl">session required pam_limits.so
+</span></span><span class="line"><span class="cl">session [success=1 default=ignore] pam_succeed_if.so service in crond quiet use_uid
+</span></span><span class="line"><span class="cl">session required pam_unix.so</span></span></code></pre></div><p><strong>/etc/nsswitch.conf</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">passwd:     files ldap
+</span></span><span class="line"><span class="cl">shadow:     files
+</span></span><span class="line"><span class="cl">group:      files ldap
+</span></span><span class="line"><span class="cl">...</span></span></code></pre></div><p><strong>/etc/openldap/ldap.conf</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">TLS_REQCERT allow
+</span></span><span class="line"><span class="cl">TLSREQCERT never</span></span></code></pre></div><p><em>Igualmente estos datos pueden ir en el archivo siguiente como para tener todo mas junto.</em></p>
+<p><strong>/etc/ldap.conf</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">host ldap-primario ldap-secundario
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">binddn uid=usuario-query,ou=users,dc=dominio,dc=com
+</span></span><span class="line"><span class="cl">bindpw password1234
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">bind_policy soft
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">bindlimit 3
+</span></span><span class="line"><span class="cl">timelimit 10
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">base dc=dominio
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">pam_filter objectclass=posixAccount
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">pam_login_attribute uid
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">nss_base_passwd		ou=users,dc=dominio,dc=com?one
+</span></span><span class="line"><span class="cl">nss_base_group		ou=groups,dc=dominio,dc=com?one
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">ssl yes
+</span></span><span class="line"><span class="cl">pam_password md5
+</span></span><span class="line"><span class="cl">TLS_REQCERT never</span></span></code></pre></div><p>Y si tenemos una aplicacion que utiliza <strong>PAM</strong> para autenticar deberemos configurarla asi (ejemplo FreeRADIUS) :</p>
+<p>**/etc/pam.d/radiusd **</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">auth       include	system-auth
+</span></span><span class="line"><span class="cl">account    required	pam_nologin.so
+</span></span><span class="line"><span class="cl">account    include	system-auth
+</span></span><span class="line"><span class="cl">password   include	system-auth
+</span></span><span class="line"><span class="cl">session    include	system-auth</span></span></code></pre></div><h3 id="configuracion-servidor-ldap-sin-políticas">Configuracion servidor LDAP sin políticas<a class="anchor" href="#configuracion-servidor-ldap-sin-pol%c3%adticas">#</a></h3>
+<h4 id="configuracion-pam">Configuracion PAM<a class="anchor" href="#configuracion-pam">#</a></h4>
+<p><strong>PAM</strong> <strong>P</strong>luggable <strong>A</strong>uthentication <strong>M</strong>odules. PAM es un sistema de autenticación que controla el acceso a diferentes recursos.</p>
+<h5 id="etcnsswitchconf">/etc/nsswitch.conf<a class="anchor" href="#etcnsswitchconf">#</a></h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">== /etc/pam.d/system-auth ==
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;code perl&gt;
+</span></span><span class="line"><span class="cl">auth      required      /lib/security/$ISA/pam_env.so
+</span></span><span class="line"><span class="cl">auth      sufficient    /lib/security/$ISA/pam_ldap.so
+</span></span><span class="line"><span class="cl">auth      sufficient    /lib/security/$ISA/pam_unix.so likeauth nullok use_first_pass
+</span></span><span class="line"><span class="cl">auth      required      /lib/security/$ISA/pam_permit.so
+</span></span><span class="line"><span class="cl">auth      required      /lib/security/$ISA/pam_deny.so
+</span></span><span class="line"><span class="cl">account   sufficient    /lib/security/$ISA/pam_ldap.so 
+</span></span><span class="line"><span class="cl">account   required      /lib/security/$ISA/pam_unix.so
+</span></span><span class="line"><span class="cl">password  required      /lib/security/$ISA/pam_cracklib.so retry=3 type=
+</span></span><span class="line"><span class="cl">password  sufficient    /lib/security/$ISA/pam_ldap.so debug use_first_pass
+</span></span><span class="line"><span class="cl">password  sufficient    /lib/security/$ISA/pam_unix.so nullok use_authtok md5 shadow use_first_pass
+</span></span><span class="line"><span class="cl">password  required      /lib/security/$ISA/pam_deny.so
+</span></span><span class="line"><span class="cl">session   required      /lib/security/$ISA/pam_limits.so
+</span></span><span class="line"><span class="cl">session   required      /lib/security/$ISA/pam_unix.so
+</span></span><span class="line"><span class="cl">session   optional      /lib/security/$ISA/pam_mkhomedir.so</span></span></code></pre></div><h4 id="radius">Radius<a class="anchor" href="#radius">#</a></h4>
+<p><strong>RADIUS</strong> (acrónimo en inglés de <strong>R</strong>emote <strong>A</strong>uthentication <strong>D</strong>ial-In <strong>U</strong>ser <strong>S</strong>erver). Es un protocolo de autenticación y autorización para aplicaciones de acceso a la red o movilidad IP. Utiliza el puerto 1813 UDP para establecer sus conexiones.</p>
+<p><em>Cuando se realiza la conexión con un ISP mediante módem, DSL, cablemódem, Ethernet o Wi-Fi, se envía una información que generalmente es un nombre de usuario y una contraseña. Esta información se transfiere a un dispositivo NAS (Servidor de Acceso a la Red) sobre el protocolo PPP, quien redirige la petición a un servidor RADIUS sobre el protocolo RADIUS. El servidor RADIUS comprueba que la información es correcta utilizando esquemas de autentificación como PAP, CHAP o EAP. Si es aceptado, el servidor autorizará el acceso al sistema del ISP y le asigna los recursos de red como una dirección IP, y otros parámetros como L2TP, etc.</em></p>
+<p>Configuracion de autenticacion, con <strong>PAM</strong> previamente configurado contra LDAP</p>
+<h5 id="etcraddbusers">/etc/raddb/users<a class="anchor" href="#etcraddbusers">#</a></h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">==== NSCD ====
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">El NSS (Name Service Switch) provee una interface para configurar y acceder a diferentes bases de datos de cuentas de usuarios y claves como /etc/passwd, /etc/group, /etc/hosts, LDAP , etc.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">**nsswitch.conf**
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Un sistema configurado por defecto generalmente usa NSS y su archivo de configuración etc/nsswitch.conf para resolver nombres de usuario o grupo, este archivo se compone de llamados a bases de datos como passwd, shadow y group, y de otras fuentes como archivos locales, directorios de datos OpenLDAP, nis (Network Information Service), nisplus (NIS+), bases de datos PostgreSQL o MySQL.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;code&gt;
+</span></span><span class="line"><span class="cl">passwd: files ldap
+</span></span><span class="line"><span class="cl">shadow: files ldap
+</span></span><span class="line"><span class="cl">group: files ldap
+</span></span><span class="line"><span class="cl">hosts: files ldap</span></span></code></pre></div><p>En el mismo orden en que son listadas seran utilizadas al momento de resolver las peticiones.</p>
+<p>NSS es la implementación de una Biblioteca estándar de C que llama a las funciones getpwent o getgrent dependiendo del modulo NSS, exiten modulos LDAP, PostgreSQL, MySQL o MDNS.</p>
+<p>Diagrama de funcionamiento :</p>
+<img src="/notas/nss_ldap.png" class="align-center" alt="nss_ldap.png" />
+<p>Diagrama de funcionamiento con NSCD :</p>
+<img src="/notas/nssldap_nscd.png" class="align-center" alt="nssldap_nscd.png" />
+<p>NSCD es un demonio que gestiona las búsquedas en «passwd», «group» y «host» para los programas en ejecución y guarda los resultados para la siguiente consulta, es para servicios lentos como LDAP, NIS o NIS+.</p>
+<p>Ref.: <a href="http://code.google.com/p/nsscache/wiki/BackgroundOnNameServiceSwitch">http://code.google.com/p/nsscache/wiki/BackgroundOnNameServiceSwitch</a></p>
+<h2 id="notas-y-extras">Notas y extras<a class="anchor" href="#notas-y-extras">#</a></h2>
+<p>Para configurar el HASH por default del servidor, deberemos agregar dentro del archivo slapd.conf</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">password-hash   {crypt}</span></span></code></pre></div><p>o</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">password-hash   {ssha}</span></span></code></pre></div><p><em>Para que las politicas tengan efecto, deberemos utilizar siempre SSHA</em></p>
+<p>Script para chequear vencimientos de passwords avisar antes de tiempo, o bloquear cuando esta vencido. Con modificaciones hechas por mi.</p>
+<p>El original esta aca : <a href="http://ltb-project.org">http://ltb-project.org</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="o">&amp;</span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">nawk</span><span class="w"> </span><span class="o">-</span><span class="n">F</span><span class="o">=</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">				</span><span class="s1">&#39;/^time\(\)/ {gsub(/ /,&#34;&#34;,$2);print $2}&#39;</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="k">else</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="n">now</span><span class="o">=`</span><span class="kt">date</span><span class="w"> </span><span class="o">+</span><span class="s2">&#34;%Y %m %d %H %M %S&#34;</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="kt">date</span><span class="o">=`</span><span class="n">getTimeInSeconds</span><span class="w"> </span><span class="s2">&#34;$now&#34;</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">fi</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">fi</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">echo</span><span class="w"> </span><span class="err">${</span><span class="kt">date</span><span class="err">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="err">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c1">#====================================================================
+</span></span></span><span class="line"><span class="cl"><span class="c1"># Script
+</span></span></span><span class="line"><span class="cl"><span class="c1">#====================================================================
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c1">## Variables initialization
+</span></span></span><span class="line"><span class="cl"><span class="n">tmp_dir</span><span class="o">=</span><span class="s2">&#34;/tmp/$$.checkldap.tmp&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="n">result_file</span><span class="o">=</span><span class="s2">&#34;${tmp_dir}/res.tmp.1&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="n">buffer_file</span><span class="o">=</span><span class="s2">&#34;${tmp_dir}/buf.tmp.1&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="n">ldap_param</span><span class="o">=</span><span class="s2">&#34;-LLL -H ${MY_LDAP_HOSTURI} -x&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="n">nb_users</span><span class="o">=</span><span class="mi">0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="n">nb_expired_users</span><span class="o">=</span><span class="mi">0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="n">nb_warning_users</span><span class="o">=</span><span class="mi">0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c1">## Some tests
+</span></span></span><span class="line"><span class="cl"><span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="err">${</span><span class="n">tmp_dir</span><span class="err">}</span><span class="w"> </span><span class="p">];</span><span class="w"> </span><span class="k">then</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">echo</span><span class="w"> </span><span class="s2">&#34;Error : temporary directory exists (${tmp_dir})&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">exit</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="n">fi</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="n">mkdir</span><span class="w"> </span><span class="err">${</span><span class="n">tmp_dir</span><span class="err">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">${</span><span class="n">MY_LDAP_ROOTDN</span><span class="err">}</span><span class="w"> </span><span class="p">];</span><span class="w"> </span><span class="k">then</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">ldap_param</span><span class="o">=</span><span class="s2">&#34;${ldap_param} -D ${MY_LDAP_ROOTDN} -w ${MY_LDAP_ROOTPW}&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="n">fi</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c1">## Performs global search
+</span></span></span><span class="line"><span class="cl"><span class="err">${</span><span class="n">MY_LDAP_SEARCHBIN</span><span class="err">}</span><span class="w"> </span><span class="err">${</span><span class="n">ldap_param</span><span class="err">}</span><span class="w"> </span><span class="o">-</span><span class="n">s</span><span class="w"> </span><span class="n">one</span><span class="w"> </span><span class="o">-</span><span class="n">b</span><span class="w"> </span><span class="s2">&#34;${MY_LDAP_SEARCHBASE}&#34;</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="s2">&#34;${MY_LDAP_SEARCHFILTER}&#34;</span><span class="w"> </span><span class="s2">&#34;dn&#34;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="err">${</span><span class="n">result_file</span><span class="err">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c1">## Loops on results
+</span></span></span><span class="line"><span class="cl"><span class="k">while</span><span class="w"> </span><span class="k">read</span><span class="w"> </span><span class="n">dnStr</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="n">do</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="c1"># Do not use blank lines
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="o">!</span><span class="w"> </span><span class="s2">&#34;${dnStr}&#34;</span><span class="w"> </span><span class="p">];</span><span class="w"> </span><span class="k">then</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="k">continue</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">fi</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="c1"># Process ldap search
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">dn</span><span class="o">=`</span><span class="n">echo</span><span class="w"> </span><span class="err">${</span><span class="n">dnStr</span><span class="err">}</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">cut</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="mi">2</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="c1"># Increment users counter
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">nb_users</span><span class="o">=`</span><span class="n">expr</span><span class="w"> </span><span class="err">${</span><span class="n">nb_users</span><span class="err">}</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="err">${</span><span class="n">MY_LDAP_SEARCHBIN</span><span class="err">}</span><span class="w"> </span><span class="err">${</span><span class="n">ldap_param</span><span class="err">}</span><span class="w"> </span><span class="o">-</span><span class="n">s</span><span class="w"> </span><span class="n">base</span><span class="w"> </span><span class="o">-</span><span class="n">b</span><span class="w"> </span><span class="s2">&#34;${dn}&#34;</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="err">${</span><span class="n">MY_LDAP_NAME_ATTR</span><span class="err">}</span><span class="w"> </span><span class="err">${</span><span class="n">MY_LDAP_LOGIN_ATTR</span><span class="err">}</span><span class="w"> </span><span class="err">${</span><span class="n">MY_LDAP_MAIL_ATTR</span><span class="err">}</span><span class="w"> </span><span class="n">pwdChangedTime</span><span class="w"> </span><span class="n">pwdPolicySubentry</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="o">&gt;</span><span class="w"> </span><span class="err">${</span><span class="n">buffer_file</span><span class="err">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">login</span><span class="o">=`</span><span class="n">grep</span><span class="w"> </span><span class="o">-</span><span class="n">w</span><span class="w"> </span><span class="s2">&#34;${MY_LDAP_LOGIN_ATTR}:&#34;</span><span class="w"> </span><span class="err">${</span><span class="n">buffer_file</span><span class="err">}</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">cut</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="o">|</span><span class="w"> </span><span class="n">sed</span><span class="w"> </span><span class="s2">&#34;s/^ *//;s/ *$//&#34;</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">name</span><span class="o">=`</span><span class="n">grep</span><span class="w"> </span><span class="o">-</span><span class="n">w</span><span class="w"> </span><span class="s2">&#34;${MY_LDAP_NAME_ATTR}:&#34;</span><span class="w"> </span><span class="err">${</span><span class="n">buffer_file</span><span class="err">}</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">cut</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="mi">2</span><span class="err">\</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="o">|</span><span class="w"> </span><span class="n">sed</span><span class="w"> </span><span class="s2">&#34;s/^ *//;s/ *$//&#34;</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">mail</span><span class="o">=`</span><span class="n">grep</span><span class="w"> </span><span class="o">-</span><span class="n">w</span><span class="w"> </span><span class="s2">&#34;${MY_LDAP_MAIL_ATTR}:&#34;</span><span class="w"> </span><span class="err">${</span><span class="n">buffer_file</span><span class="err">}</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">cut</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="o">|</span><span class="w"> </span><span class="n">sed</span><span class="w"> </span><span class="s2">&#34;s/^ *//;s/ *$//&#34;</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">pwdChangedTime</span><span class="o">=`</span><span class="n">grep</span><span class="w"> </span><span class="o">-</span><span class="n">w</span><span class="w"> </span><span class="s2">&#34;pwdChangedTime:&#34;</span><span class="w"> </span><span class="err">${</span><span class="n">buffer_file</span><span class="err">}</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="o">|</span><span class="w"> </span><span class="n">cut</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">cut</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">0</span><span class="o">-</span><span class="mi">15</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">sed</span><span class="w"> </span><span class="s2">&#34;s/^ *//;s/ *$//&#34;</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">pwdPolicySubentry</span><span class="o">=`</span><span class="n">grep</span><span class="w"> </span><span class="o">-</span><span class="n">w</span><span class="w"> </span><span class="s2">&#34;pwdPolicySubentry:&#34;</span><span class="w"> </span><span class="err">${</span><span class="n">buffer_file</span><span class="err">}</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="o">|</span><span class="w"> </span><span class="n">cut</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">sed</span><span class="w"> </span><span class="s2">&#34;s/^ *//;s/ *$//&#34;</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="c1"># Go to next entry if no pwdChangedTime
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="o">!</span><span class="w"> </span><span class="s2">&#34;${pwdChangedTime}&#34;</span><span class="w"> </span><span class="p">];</span><span class="w"> </span><span class="k">then</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">echo</span><span class="w"> </span><span class="s2">&#34;${MY_LOG_HEADER} No hay fecha de cambio para ${login}&#34;</span><span class="w"> </span><span class="o">&gt;&amp;</span><span class="mi">2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="k">continue</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">fi</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="c1"># Go to next entry if no pwdPolicySubEntry and no default policy
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="o">!</span><span class="w"> </span><span class="s2">&#34;${pwdPolicySubentry}&#34;</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="w"> </span><span class="o">!</span><span class="w"> </span><span class="s2">&#34;${MY_LDAP_DEFAULTPWDPOLICYDN}&#34;</span><span class="w"> </span><span class="p">];</span><span class="w"> </span><span class="k">then</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">echo</span><span class="w"> </span><span class="s2">&#34;${MY_LOG_HEADER} No hay politica de password para ${login}&#34;</span><span class="w"> </span><span class="o">&gt;&amp;</span><span class="mi">2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="k">continue</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">fi</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="c1"># Retrieves user policy pwdMaxAge and pwdExpireWarning attributes
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">ldap_search</span><span class="o">=</span><span class="s2">&#34;${MY_LDAP_SEARCHBIN} ${ldap_param} -s base&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&#34;${pwdPolicySubentry}&#34;</span><span class="w"> </span><span class="p">];</span><span class="w"> </span><span class="k">then</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">ldap_search</span><span class="o">=</span><span class="s2">&#34;${ldap_search} -b ${pwdPolicySubentry}&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">else</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">ldap_search</span><span class="o">=</span><span class="s2">&#34;${ldap_search} -b ${MY_LDAP_DEFAULTPWDPOLICYDN}&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">fi</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">ldap_search</span><span class="o">=</span><span class="s2">&#34;$ldap_search pwdMaxAge pwdExpireWarning&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">pwdMaxAge</span><span class="o">=`</span><span class="err">${</span><span class="n">ldap_search</span><span class="err">}</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">grep</span><span class="w"> </span><span class="o">-</span><span class="n">w</span><span class="w"> </span><span class="s2">&#34;pwdMaxAge:&#34;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">cut</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="o">|</span><span class="w"> </span><span class="n">sed</span><span class="w"> </span><span class="s2">&#34;s/^ *//;s/ *$//&#34;</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">pwdExpireWarning</span><span class="o">=`</span><span class="err">${</span><span class="n">ldap_search</span><span class="err">}</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">grep</span><span class="w"> </span><span class="o">-</span><span class="n">w</span><span class="w"> </span><span class="s2">&#34;pwdExpireWarning:&#34;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">cut</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="err">\</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="o">|</span><span class="w"> </span><span class="n">sed</span><span class="w"> </span><span class="s2">&#34;s/^ *//;s/ *$//&#34;</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="c1"># Replace MAIL_DELAY by pwdExpireWarning if exists
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">MY_MAIL_DELAY</span><span class="o">=</span><span class="err">${</span><span class="n">MY_MAIL_DELAY</span><span class="p">:</span><span class="o">=</span><span class="err">$</span><span class="n">pwdExpireWarning</span><span class="err">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="c1"># Retrieves time difference between today and last change.
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&#34;${pwdChangedTime}&#34;</span><span class="w"> </span><span class="p">];</span><span class="w"> </span><span class="k">then</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">s</span><span class="o">=`</span><span class="n">echo</span><span class="w"> </span><span class="err">${</span><span class="n">pwdChangedTime</span><span class="err">}</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">cut</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">13</span><span class="o">-</span><span class="mi">14</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">m</span><span class="o">=`</span><span class="n">echo</span><span class="w"> </span><span class="err">${</span><span class="n">pwdChangedTime</span><span class="err">}</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">cut</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">11</span><span class="o">-</span><span class="mi">12</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">h</span><span class="o">=`</span><span class="n">echo</span><span class="w"> </span><span class="err">${</span><span class="n">pwdChangedTime</span><span class="err">}</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">cut</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">9</span><span class="o">-</span><span class="mi">10</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">d</span><span class="o">=`</span><span class="n">echo</span><span class="w"> </span><span class="err">${</span><span class="n">pwdChangedTime</span><span class="err">}</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">cut</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">7</span><span class="o">-</span><span class="mi">8</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">M</span><span class="o">=`</span><span class="n">echo</span><span class="w"> </span><span class="err">${</span><span class="n">pwdChangedTime</span><span class="err">}</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">cut</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">5</span><span class="o">-</span><span class="mi">6</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">y</span><span class="o">=`</span><span class="n">echo</span><span class="w"> </span><span class="err">${</span><span class="n">pwdChangedTime</span><span class="err">}</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">cut</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="mi">0</span><span class="o">-</span><span class="mi">4</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">currentTime</span><span class="o">=`</span><span class="n">getTimeInSeconds</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">pwdChangedTime</span><span class="o">=`</span><span class="n">getTimeInSeconds</span><span class="w"> </span><span class="s2">&#34;$y $M $d $h $m $s&#34;</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">diffTime</span><span class="o">=`</span><span class="n">expr</span><span class="w"> </span><span class="err">${</span><span class="n">currentTime</span><span class="err">}</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="err">${</span><span class="n">pwdChangedTime</span><span class="err">}</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">fi</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="c1"># Go to next user if password already expired
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">expireTime</span><span class="o">=`</span><span class="n">expr</span><span class="w"> </span><span class="err">${</span><span class="n">pwdChangedTime</span><span class="err">}</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="err">${</span><span class="n">pwdMaxAge</span><span class="err">}</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">${</span><span class="n">currentTime</span><span class="err">}</span><span class="w"> </span><span class="o">-</span><span class="n">gt</span><span class="w"> </span><span class="err">${</span><span class="n">expireTime</span><span class="err">}</span><span class="w"> </span><span class="p">];</span><span class="w"> </span><span class="k">then</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="c1"># Sending mail...
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="err">${</span><span class="n">MY_MAIL_BIN</span><span class="err">}</span><span class="w"> </span><span class="err">${</span><span class="n">mail</span><span class="err">}</span><span class="w"> </span><span class="err">${</span><span class="n">login</span><span class="err">}</span><span class="w"> </span><span class="s1">&#39;bloqueado&#39;</span><span class="w"> </span><span class="err">\</span><span class="s1">&#39;${EXPIROEN}\&#39;</span><span class="w"> </span><span class="o">&gt;&amp;</span><span class="mi">2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c1">#		echo &#34;${logmsg}&#34; | ${MY_MAIL_BIN} ${mail} ${expireTime} ${login} &#39;bloqueado&#39;  &gt;&amp;2
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&#34;${login}&#34;</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">&#34;ldapadmin&#34;</span><span class="w"> </span><span class="p">];</span><span class="w"> </span><span class="k">then</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		    </span><span class="n">echo</span><span class="w"> </span><span class="s2">&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">		    dn: uid=${login},ou=users,dc=dominio,dc=com
+</span></span></span><span class="line"><span class="cl"><span class="s2">		    changetype: modify
+</span></span></span><span class="line"><span class="cl"><span class="s2">		    add: pwdAccountLockedTime
+</span></span></span><span class="line"><span class="cl"><span class="s2">		    pwdAccountLockedTime: 000001010000Z&#34;</span><span class="o">|</span><span class="w"> </span><span class="n">ldapmodify</span><span class="w"> </span><span class="o">-</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="n">D</span><span class="w"> </span><span class="s2">&#34;uid=ldapadmin,ou=users,dc=dominio,dc=com&#34;</span><span class="w"> </span><span class="o">-</span><span class="n">w</span><span class="w"> </span><span class="p">..</span><span class="n">xtechpae</span><span class="w"> </span><span class="o">-</span><span class="n">v</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		    </span><span class="c1"># Print debug information on STDERR
+</span></span></span><span class="line"><span class="cl"><span class="w">		    </span><span class="n">nb_expired_users</span><span class="o">=`</span><span class="n">expr</span><span class="w"> </span><span class="err">${</span><span class="n">nb_expired_users</span><span class="err">}</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">fi</span><span class="w">		
+</span></span></span><span class="line"><span class="cl"><span class="w">		    </span><span class="n">echo</span><span class="w"> </span><span class="s2">&#34;${MY_LOG_HEADER} Password expirado para ${login} mail enviado a &lt;${mail}&gt;&#34;</span><span class="w"> </span><span class="o">&gt;&amp;</span><span class="mi">2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="k">continue</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">fi</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="c1"># ALL LDAP attributes should be there, else continue to next user
+</span></span></span><span class="line"><span class="cl"><span class="c1">#	if [ &#34;${mail}&#34; -a &#34;${name}&#34; -a &#34;${login}&#34; -a &#34;${diffTime}&#34; -a &#34;${pwdMaxAge}&#34; ]
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&#34;${mail}&#34;</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="w"> </span><span class="s2">&#34;${login}&#34;</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="w"> </span><span class="s2">&#34;${diffTime}&#34;</span><span class="w"> </span><span class="o">-</span><span class="n">a</span><span class="w"> </span><span class="s2">&#34;${pwdMaxAge}&#34;</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">then</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">EXPIRACION</span><span class="o">=`</span><span class="n">expr</span><span class="w"> </span><span class="err">${</span><span class="n">pwdMaxAge</span><span class="err">}</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="err">${</span><span class="n">diffTime</span><span class="err">}</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">EXPIROEN</span><span class="o">=</span><span class="s2">&#34;$(timerLengthString ${EXPIRACION})&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="c1"># Ajusts time with delay
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">diffTime</span><span class="o">=`</span><span class="n">expr</span><span class="w"> </span><span class="err">${</span><span class="n">diffTime</span><span class="err">}</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="err">${</span><span class="n">MY_MAIL_DELAY</span><span class="err">}</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="k">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">${</span><span class="n">diffTime</span><span class="err">}</span><span class="w"> </span><span class="o">-</span><span class="n">gt</span><span class="w"> </span><span class="err">${</span><span class="n">pwdMaxAge</span><span class="err">}</span><span class="w"> </span><span class="p">];</span><span class="w"> </span><span class="k">then</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="n">logmsg</span><span class="o">=</span><span class="s2">&#34;${MY_MAIL_BODY}&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="n">logmsg</span><span class="o">=`</span><span class="n">echo</span><span class="w"> </span><span class="err">${</span><span class="n">logmsg</span><span class="err">}</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">sed</span><span class="w"> </span><span class="s2">&#34;s/%name/${name}/; \
+</span></span></span><span class="line"><span class="cl"><span class="s2">				s/%login/${login}/&#34;</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			    </span><span class="c1"># Sending mail...
+</span></span></span><span class="line"><span class="cl"><span class="w">			    </span><span class="c1">#echo &#34;${logmsg}&#34; | ${MY_MAIL_BIN} ${mail} \&#39;${EXPIROEN}\&#39; ${login} &#39;warning&#39; &gt;&amp;2
+</span></span></span><span class="line"><span class="cl"><span class="w">			    </span><span class="c1">#echo &#34;${logmsg}&#34; | ${MY_MAIL_BIN} \&#39;${mail}\&#39; \&#39;${EXPIROEN}\&#39; \&#39;${login}\&#39; &#39;warning&#39; &gt;&amp;2
+</span></span></span><span class="line"><span class="cl"><span class="w">			    </span><span class="err">${</span><span class="n">MY_MAIL_BIN</span><span class="err">}</span><span class="w"> </span><span class="err">${</span><span class="n">mail</span><span class="err">}</span><span class="w"> </span><span class="err">${</span><span class="n">login</span><span class="err">}</span><span class="w"> </span><span class="s1">&#39;warning&#39;</span><span class="w"> </span><span class="err">\</span><span class="s1">&#39;${EXPIROEN}\&#39;</span><span class="w"> </span><span class="o">&gt;&amp;</span><span class="mi">2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			    </span><span class="c1">#echo ${MY_MAIL_BIN} ${mail} ${login} &#39;warning&#39; \&#39;${EXPIRO}\&#39; &gt;&amp;2
+</span></span></span><span class="line"><span class="cl"><span class="w">			    </span><span class="c1"># Print debug information on STDERR
+</span></span></span><span class="line"><span class="cl"><span class="w">			    </span><span class="c1">#echo &#34;${MY_LOG_HEADER} Mail de advertencia ${login} &lt;${mail}&gt;&#34; &gt;&amp;2
+</span></span></span><span class="line"><span class="cl"><span class="w">			    </span><span class="n">echo</span><span class="w"> </span><span class="s2">&#34;${MY_LOG_HEADER} Password para &#34;</span><span class="err">${</span><span class="n">login</span><span class="err">}</span><span class="s2">&#34; a punto de expirar en&#34;</span><span class="w"> </span><span class="err">${</span><span class="n">EXPIROEN</span><span class="err">}</span><span class="w"> </span><span class="o">&gt;&amp;</span><span class="mi">2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="c1"># Increment warning counter
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="n">nb_warning_users</span><span class="o">=`</span><span class="n">expr</span><span class="w"> </span><span class="err">${</span><span class="n">nb_warning_users</span><span class="err">}</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="o">`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="n">fi</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="n">fi</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="n">done</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="err">${</span><span class="n">result_file</span><span class="err">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c1"># Print statistics on STDOUT
+</span></span></span><span class="line"><span class="cl"><span class="n">echo</span><span class="w"> </span><span class="s2">&#34;${MY_LOG_HEADER} --- Statistics ---&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="n">echo</span><span class="w"> </span><span class="s2">&#34;${MY_LOG_HEADER} Users checked: ${nb_users}&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="n">echo</span><span class="w"> </span><span class="s2">&#34;${MY_LOG_HEADER} Account expired: ${nb_expired_users}&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="n">echo</span><span class="w"> </span><span class="s2">&#34;${MY_LOG_HEADER} Account in warning: ${nb_warning_users}&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c1"># Delete temporary files
+</span></span></span><span class="line"><span class="cl"><span class="n">rm</span><span class="w"> </span><span class="o">-</span><span class="n">rf</span><span class="w"> </span><span class="err">${</span><span class="n">tmp_dir</span><span class="err">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c1"># Exit
+</span></span></span><span class="line"><span class="cl"><span class="k">exit</span><span class="w"> </span><span class="mi">0</span></span></span></code></pre></div><p>Script que envia mails</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> &#34;.$expiracion.&#34;&#34;;
+</span></span><span class="line"><span class="cl">    my $mensaje 	= &#34;&lt;font size=&#39;+1&#39;&gt;&lt;i&gt;&lt;ul&gt;
+</span></span><span class="line"><span class="cl">    &lt;li&gt;Su usuario de autenticaci&amp;oacute;n de Radius vencer&amp;aacute; en &#34;.$expiracion.&#34;.&lt;/li&gt;&lt;br&gt;
+</span></span><span class="line"><span class="cl">    &lt;li&gt;Dirigirse a https://servidor-ldap/cambia_password para cambiarla.&lt;/li&gt;&lt;br&gt;
+</span></span><span class="line"><span class="cl">    &lt;li&gt;Leer atentamente las caracter&amp;iacute;sticas que debe tener el password.&lt;/li&gt;&lt;br&gt;
+</span></span><span class="line"><span class="cl">    &lt;li&gt;Una vez vencida su cuenta solamente podr&amp;aacute; ser cambiada por&lt;/li&gt;
+</span></span><span class="line"><span class="cl">    &lt;ul&gt;&lt;li&gt;Nombre int. 3994&lt;/li&gt;&lt;/ul&gt;
+</span></span><span class="line"><span class="cl">    &lt;ul&gt;&lt;li&gt;Nombre int. 4491&lt;/li&gt;&lt;/ul&gt;
+</span></span><span class="line"><span class="cl">    &lt;/ul&gt;&lt;/i&gt;&lt;/font&gt;&#34;;
+</span></span><span class="line"><span class="cl">    my $msg = MIME::Lite-&gt;new
+</span></span><span class="line"><span class="cl">    (
+</span></span><span class="line"><span class="cl">        Subject =&gt; $asunto,
+</span></span><span class="line"><span class="cl">	From    =&gt; &#39;Administracion LDAP ldapadmin@servidor-ldap&#39;,
+</span></span><span class="line"><span class="cl">	To      =&gt; $email,
+</span></span><span class="line"><span class="cl">	Type    =&gt; &#39;text/html&#39;,
+</span></span><span class="line"><span class="cl">	Data    =&gt; &#34;&lt;H1&gt;&#34;.$asuntohtml.&#34;&lt;/H1&gt;&lt;IMG SRC=&#39;http://servidor-ldap/logo.gif&#39;&gt;&lt;hr&gt;&#34;.$mensaje.&#34;&#34;
+</span></span><span class="line"><span class="cl">    );
+</span></span><span class="line"><span class="cl">    $msg-&gt;send();
+</span></span><span class="line"><span class="cl">    print &#34; $0 : Mail de warning enviado a &lt;&#34;.$email.&#34;&gt;\n&#34;;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">if($tipo_mail eq &#39;bloqueado&#39;) {
+</span></span><span class="line"><span class="cl">    my $asunto 		= &#34;Su cuenta de usuario (&#34;.$usuario.&#34;) para equipos de Telecomunicaciones a sido bloqueada&#34;;
+</span></span><span class="line"><span class="cl">    my $asuntohtml 	= &#34;Su cuenta de usuario ( &#34;.$usuario.&#34; ) para equipos de Telecomunicaciones a sido bloqueada&#34;;
+</span></span><span class="line"><span class="cl">    my $mensaje 	= &#34;&lt;font size=&#39;+1&#39;&gt;&lt;i&gt;&lt;ul&gt;
+</span></span><span class="line"><span class="cl">    &lt;li&gt;Su usuario de autenticaci&amp;oacute;n de Radius vencio.&lt;/li&gt;&lt;br&gt;
+</span></span><span class="line"><span class="cl">    &lt;li&gt;Una vez vencida su cuenta solamente podr&amp;aacute; ser cambiada por&lt;/li&gt;
+</span></span><span class="line"><span class="cl">    &lt;/ul&gt;&lt;/i&gt;&lt;/font&gt;&#34;;
+</span></span><span class="line"><span class="cl">    my $msg = MIME::Lite-&gt;new
+</span></span><span class="line"><span class="cl">    (
+</span></span><span class="line"><span class="cl">        Subject =&gt; $asunto,
+</span></span><span class="line"><span class="cl">	From    =&gt; &#39;Administracion LDAP ldapadmin@servidor-ldap&#39;,
+</span></span><span class="line"><span class="cl">	To      =&gt; $email,
+</span></span><span class="line"><span class="cl">	Type    =&gt; &#39;text/html&#39;,
+</span></span><span class="line"><span class="cl">	Data    =&gt; &#34;&lt;H1&gt;&#34;.$asuntohtml.&#34;&lt;/H1&gt;&lt;IMG SRC=&#39;http://servidor-ldap/logo.gif&#39;&gt;&lt;hr&gt;&#34;.$mensaje.&#34;&#34;
+</span></span><span class="line"><span class="cl">    );
+</span></span><span class="line"><span class="cl">    $msg-&gt;send();
+</span></span><span class="line"><span class="cl">    print &#34; $0 : Mail de bloqueo enviado a &lt;&#34;.$email.&#34;&gt;\n&#34;;
+</span></span><span class="line"><span class="cl">}</span></span></code></pre></div><h3 id="autocambio-de-contraseña">Autocambio de contraseña<a class="anchor" href="#autocambio-de-contrase%c3%b1a">#</a></h3>
+<p>En el caso de que necesitemos obviamente que antes de que se les caduque la contraseña a los usuarios, ellos mismos puedan cambiar su contraseña, podremos utilizar un script via web</p>
+<img src="/notas/autocambio.png" class="align-center" alt="autocambio.png" />
+<p>En este apartado del archivo slapd.conf deberemos tener activado el self write</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">access to *
+</span></span><span class="line"><span class="cl">        by self write</span></span></code></pre></div><p>Aca estan los archivos del script en PHP</p>
+<p><a href="/notas/cambia_password.tgz">cambia_password.tgz</a></p>
+<h3 id="sudo">SUDO<a class="anchor" href="#sudo">#</a></h3>
+<p>La confiuración de SUDO almacenada dentro de LDAP la podemos encontrar en el archivo README.LDAP</p>
+<p>Igualmente SUDO nos tomara la configuación actual para obtener los grupos, de los dato que obtiene del nss, asi que podemos configurar nuestro grupo ldap para ser tomado por el sudoers de esta forma.</p>
+<p>La sintaxis es la misma que para cualquier sudoers</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Cmnd_Alias     PASSWDROOT = /usr/bin/passwd root
+</span></span><span class="line"><span class="cl">Cmnd_Alias     USER_ADD   = /usr/sbin/useradd
+</span></span><span class="line"><span class="cl">Cmnd_Alias     PASSWDUSER = /usr/bin/passwd
+</span></span><span class="line"><span class="cl">Cmnd_Alias     USER_DEL   = /usr/sbin/userdel
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">administrador			ALL=(ALL) ALL
+</span></span><span class="line"><span class="cl">%Administradores	 	ALL = NOPASSWD: PASSWDROOT, USER_ADD, PASSWDUSER, USER_DEL</span></span></code></pre></div><h3 id="referencias">Referencias<a class="anchor" href="#referencias">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>OpenLDAP</th>
+<th><a href="http://www.openldap.org/">http://www.openldap.org/</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Configuraciones de ejemplo</td>
+<td><a href="http://itsecureadmin.com/wiki/index.php/OpenLDAP_Multi-Master_Replication">http://itsecureadmin.com/wiki/index.php/OpenLDAP_Multi-Master_Replication</a><br />
+<a href="http://www.zytrax.com/books/ldap/ch7/#ol-syncrepl-mm">http://www.zytrax.com/books/ldap/ch7/#ol-syncrepl-mm</a></td>
+</tr>
+</tbody>
+</table>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/notas/celulares/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Teléfonos celulares</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/notas/arduino/" class="flex align-center">
+        <span>Arduino</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#instalación">Instalación</a>
+      <ul>
+        <li><a href="#datos-iniciales">Datos iniciales</a>
+          <ul>
+            <li><a href="#organización">Organización</a></li>
+            <li><a href="#usuario-administrador">Usuario administrador</a></li>
+            <li><a href="#contenedor-de-grupos">Contenedor de Grupos</a></li>
+            <li><a href="#contenedor-de-usuarios">Contenedor de Usuarios</a></li>
+            <li><a href="#agregar-usuarios-a-grupo">Agregar usuarios a grupo</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#replicación">Replicación</a>
+      <ul>
+        <li><a href="#multimaster">Multimaster</a></li>
+        <li><a href="#master--slave">Master / Slave</a></li>
+      </ul>
+    </li>
+    <li><a href="#politicas">Politicas</a></li>
+    <li><a href="#etcopenldapslapdconf">/etc/openldap/slapd.conf</a></li>
+    <li><a href="#registros-a-agregar-en-el-arbol-ldap">Registros a agregar en el arbol LDAP</a>
+      <ul>
+        <li><a href="#chequeos-de-password">Chequeos de password</a></li>
+      </ul>
+    </li>
+    <li><a href="#en-los-clientes">En los clientes</a>
+      <ul>
+        <li><a href="#configuracion-servidor-ldap-con-políticas">Configuracion servidor LDAP con políticas</a></li>
+        <li><a href="#configuracion-servidor-ldap-sin-políticas">Configuracion servidor LDAP sin políticas</a>
+          <ul>
+            <li><a href="#configuracion-pam">Configuracion PAM</a></li>
+            <li><a href="#radius">Radius</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#notas-y-extras">Notas y extras</a>
+      <ul>
+        <li><a href="#autocambio-de-contraseña">Autocambio de contraseña</a></li>
+        <li><a href="#sudo">SUDO</a></li>
+        <li><a href="#referencias">Referencias</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

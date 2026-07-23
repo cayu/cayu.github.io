@@ -1,0 +1,26 @@
+# Codeberg Pages. Requiere el repo 'pages' y el secreto CODEBERG_TOKEN.
+when:
+  - event: push
+    branch: main
+
+steps:
+  - name: build
+    image: hugomods/hugo:exts-non-root
+    commands:
+      - hugo --minify --gc --destination ./public
+
+  - name: deploy
+    image: bitnami/git:latest
+    environment:
+      CODEBERG_TOKEN:
+        from_secret: CODEBERG_TOKEN
+    commands:
+      - git config --global user.email "ci@codeberg.org"
+      - git config --global user.name "Woodpecker CI"
+      - git clone --depth 1 --branch pages "https://$CODEBERG_TOKEN@codeberg.org/$CI_REPO_OWNER/pages.git" /tmp/pages
+      - rm -rf /tmp/pages/*
+      - cp -r public/. /tmp/pages/
+      - cd /tmp/pages
+      - git add -A
+      - git diff --cached --quiet || git commit -m "Deploy $CI_COMMIT_SHA"
+      - git push

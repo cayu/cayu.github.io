@@ -1,0 +1,4132 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Conectividad# Agregar ruta estatica# ip route add 192.168.55.0/24 via 192.168.1.254 dev eth1route add -net 192.168.55.0 netmask 255.255.255.0 gw 192.168.1.254 dev eth1Forzar el modo ethernet# Ejemplo, forzar a 100M Full duplex sin autonegociacion a la eth0
+ethtool -s eth0 speed 100 duplex full autoneg offConectarse a redes Wi Fi# Primero bajamos el servicio de Network Manager si es que lo tenemos instalado
+service NetworkMananger stopEjecutamos un scan sobre la interfaz para ver si encontró alguna red
+iwlist wlan0 scanEstablecemos el ESSID y el AP
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/enlaces/utilidades_de_red/">
+  <meta property="og:site_name" content="Wiki de Sergio Cayuqueo">
+  <meta property="og:title" content="Utilidades de Red">
+  <meta property="og:description" content="Conectividad# Agregar ruta estatica# ip route add 192.168.55.0/24 via 192.168.1.254 dev eth1route add -net 192.168.55.0 netmask 255.255.255.0 gw 192.168.1.254 dev eth1Forzar el modo ethernet# Ejemplo, forzar a 100M Full duplex sin autonegociacion a la eth0
+ethtool -s eth0 speed 100 duplex full autoneg offConectarse a redes Wi Fi# Primero bajamos el servicio de Network Manager si es que lo tenemos instalado
+service NetworkMananger stopEjecutamos un scan sobre la interfaz para ver si encontró alguna red
+iwlist wlan0 scanEstablecemos el ESSID y el AP">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="website">
+
+
+  <meta itemprop="name" content="Utilidades de Red">
+  <meta itemprop="description" content="Conectividad# Agregar ruta estatica# ip route add 192.168.55.0/24 via 192.168.1.254 dev eth1route add -net 192.168.55.0 netmask 255.255.255.0 gw 192.168.1.254 dev eth1Forzar el modo ethernet# Ejemplo, forzar a 100M Full duplex sin autonegociacion a la eth0
+ethtool -s eth0 speed 100 duplex full autoneg offConectarse a redes Wi Fi# Primero bajamos el servicio de Network Manager si es que lo tenemos instalado
+service NetworkMananger stopEjecutamos un scan sobre la interfaz para ver si encontró alguna red
+iwlist wlan0 scanEstablecemos el ESSID y el AP">
+  <meta itemprop="datePublished" content="2019-01-22T12:34:58-03:00">
+  <meta itemprop="dateModified" content="2026-07-23T18:03:24-03:00">
+  <meta itemprop="wordCount" content="1898">
+
+<title>Utilidades de Red • Wiki de Sergio Cayuqueo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/enlaces/utilidades_de_red/">
+<link rel="stylesheet" href="/book.min.b67edd162318c5083c6df0a88fb33841277a463a19631410445e4034ec6e651c.css" integrity="sha256-tn7dFiMYxQg8bfCoj7M4QSd6RjoZYxQQRF5ANOxuZRw=" crossorigin="anonymous">
+
+
+  <script defer type="module" src="/es.search.min.0d8ef5a46e9d73ded2792bc4dc404ee89897a364056761a43c441c32a9c30525.js" integrity="sha256-DY71pG6dc97SeSvE3EBO6JiXo2QFZ2GkPEQcMqnDBSU=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/enlaces/utilidades_de_red/index.xml" title="Utilidades de Red" />
+
+  
+</head>
+<body dir="ltr" class="book-kind-section book-type-enlaces">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Wiki de Sergio Cayuqueo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Buscar"
+    aria-label="Buscar"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Notas</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Hardware</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/" class="">
+      VMWare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/instalar_vmware_tools/" class="">
+      Instalar VMware Tools</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/agregar_cpu_en_caliente_en_vmware/" class="">
+      Agregar CPU en caliente en VMWare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/datetime/" class="">
+      Parametros para Vmware por cambio de hora de servidores</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/idrac/" class="">
+      iDrac Dell</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/strace/" class="">
+      Strace</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/nginx/" class="">
+      Nginx</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/" class="">
+      Squid</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/hearbeat/" class="">
+      LVS - Hearbeat - Ldirectord - Balanceo de carga y alta disponibilidad</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/rhcs/" class="">
+      Squid &#43; Red Hat Cluster Suite</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bind/" class="">
+      Configuración de Servidor DNS Bind</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/" class="">
+      Linux</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Networking</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/networking/wan_optimization/" class="">
+      WAN Optimization</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/actualizar_suse_linux/" class="">
+      Actualizar SuSE Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/cambiar_planificador_de_disco/" class="">
+      Cambiar planificador de acceso a disco</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/medicion_de_velocidad_de_cambio_en_filesystems_en_un_sistema_linux_fisico_o_virtual/" class="">
+      Medición de velocidad de cambio en filesystems en un sistema Linux (físico o virtual)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/midiendo_el_rendimiento_del_sistema_con_iostat/" class="">
+      Midiendo el rendimiento del sistema con IOSTAT</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/sistema_de_archivos_proc/" class="">
+      Sistema de archivos /proc</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/lvm/" class="">
+      Logical Volume Management 2 (LVM2)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/manejo_de_memoria_en_linux/" class="">
+      Manejo de memoria en Linux</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/manejo_de_memoria_en_linux/hugepages/" class="">
+      Hugepages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/ver_el_dmesg_en_formato_humano/" class="">
+      Ver el dmesg en formato humano</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/midiendo_el_rendimiento_del_sistema_con_sar/" class="">
+      Midiendo el rendimiento del sistema con SAR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/cron/" class="">
+      CRON</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/sed/" class="">
+      SED - Stream EDitor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/configuracion_vpn/" class="">
+      Configuración de acceso VPN desde Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openssh/" class="">
+      OpenSSH</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/compartir_archivos_por_nfs/" class="">
+      Como compartir filesystems por NFS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/" class="">
+      Microsoft</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/windows/" class="">
+      Sistema Operativo Windows</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/windows/scripts_varios_de_powershell/" class="">
+      Scripts varios de PowerShell</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/network_policy_server_nps/" class="">
+      Network Policy Server (NPS)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/apache/" class="">
+      Tips de Apache</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/analisis_forense/" class="">
+      Análisis forense</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/qlikview/" class="">
+      QlikView</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/owncloud/" class="">
+      OwnCloud</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/iptables/" class="">
+      TIPs varios de IPTables</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/celulares/" class="">
+      Teléfonos celulares</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openldap/" class="">
+      Implementacion de un servidor OpenLDAP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/arduino/" class="">
+      Arduino</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/kickstart/" class="">
+      Kickstart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/raspberry_pi/" class="">
+      Raspberry Pi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/postfix/" class="">
+      Postfix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openssl/" class="">
+      OpenSSL</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/" class="">
+      Programación</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Python</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Webscraping</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/webscraping/beautifulsoup/" class="">
+      Beautiful Soup</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/sistema_de_archivos/" class="">
+      Operaciones sobre el sistema de archivos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/django/" class="">
+      Django</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/introduccion_a_awk/" class="">
+      Uso básico de AWK</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/the_linux_cdrom_interface/" class="">
+      The Linux CDROM interface</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/reproductor_de_cd/" class="">
+      Reproductor De Cd</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/console_ioctls_under_linux/" class="">
+      Console IOCTLs Under Linux</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/tools_of_the_trade_--_iostat_vmstat_and_netstat/" class="">
+      Tools of the Trade -- Iostat, Vmstat, and Netstat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/solaris_performance_monitoring/" class="">
+      Solaris Performance Monitoring &amp; Tuning - iostat , vmstat &amp; netstat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/" class="">
+      Bases De Datos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/mysql/" class="">
+      Task MySQL</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/oracle/" class="">
+      Oracle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/mssql/" class="">
+      Microsoft SQL Server</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/postgresql/" class="">
+      PostgreSQL</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/valgrind/" class="">
+      Valgrind</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/kamailio/" class="">
+      Kamailio</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/syslog_centralizado/" class="">
+      Sistema de LOG centralizado</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/inicio_rapido_de_csync2/" class="">
+      Csync para centralizar la configuracion de servicios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/xen_multi_bridge/" class="">
+      Utilizar dos o mas placas de red con Xen</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/sysinfo_dokuwiki/" class="">
+      Dump some hardware info in DokuWiki format</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/ubuntu_domu_en_red_hat/" class="">
+      Xen Red Hat Dom0 y Ubuntu DomU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/enomalism/" class="">
+      Configuraciones a mano</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Fotografia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/fotografia/conceptos/" class="">
+      Sobre el 18-55</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Legales</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Legislacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Nacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/nacion/decreto_155_89/" class="">
+      Decreto 155 89</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/nacion/ley_23302/" class="">
+      LEY 23.302</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/caba/" class="">
+      Legislación Indígena Ciudad Autónoma de Buenos Aires</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/jurisprudencia/" class="">
+      Jurisprudencia</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/" class="">
+      Seguridad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Criptografia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/truecrypt/" class="">
+      Privacidad datos utilizando TrueCrypt</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/veracrypt/" class="">
+      Privacidad datos utilizando VeraCrypt</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/gnupg/" class="">
+      The GNU Privacy Guard</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Gestion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/gestion/itil/" class="">
+      ITIL - Information Technology Infrastructure Library</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      How To</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/how_to/prevent_a_fork_bomb_by_limiting_user_process/" class="">
+      How to: Prevent a fork bomb by limiting user process</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Programacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Redes</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/nodejs/" class="">
+      NodeJS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/python/" class="">
+      Scripts simples en python</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/python/scapy/" class="">
+      Scapy</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/scanner_de_puertos_simple/" class="">
+      Scanner De Puertos Simple</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/shellcode/" class="">
+      Shellcode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/" class="">
+      Seguridad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Certificaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/" class="">
+      Profesional certificado en seguridad ofensiva (OSCP)</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/preparacion_personal/" class="">
+      Preparación personal para rendir la certificación OSCP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/oscp_prep_class/" class="">
+      OSCP Prep class</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/oscp-survival-guide/" class="">
+      OSCP-Survival-Guide</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Exploits</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/exploits/mempodipper/" class="">
+      mempodipper</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/exploits/dirty_cow/" class="">
+      Dirty COW</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/why_i_would_never_buy_a_dell_powerconnect_2724/" class="">
+      Why I would never buy a Dell PowerConnect 2724</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/understanding_bash_fork_bomb/" class="">
+      Understanding Bash fork() bomb ~ :(){ :|:&amp; };:</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/pequena_guia_de_seguridad_informatica/" class="">
+      Pequeña guía de seguridad informática</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/auditd/" class="">
+      Auditoría en Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/process_accounting_psacct/" class="">
+      Process Accounting (PSACCT)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/" class="">
+      Enlaces útiles</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/" class="active">
+      Utilidades de Red</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/ngrep/" class="">
+      Network Grep - ngrep</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/msndump/" class="">
+      MSN Dump</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/tcpdump/" class="">
+      TCPDUMP</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/" class="">
+      Aprendiendo SAP</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/sap_hana/" class="">
+      SAP HANA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/desarrollo_y_programacion_en_abap/" class="">
+      Desarrollo y programación en ABAP</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/" class="">
+      Redes y comunicaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Conectividad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/conectividad/fibra_optica/" class="">
+      Fibra óptica</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Firewalls</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/fortinet/" class="">
+      Fortinet</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/fortinet/fortiap/" class="">
+      FortiGate como controlador Wireless</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/pfsense/" class="">
+      pfSense</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Notas</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/notas/nc/" class="">
+      Netcat</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Telefonia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Asterisk</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/" class="">
+      Conectividad con Asterisk</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/spa400/" class="">
+      SPA400</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/tdm400p/" class="">
+      Instalar Placa TDM400P</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Cisco</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/call_manager/" class="">
+      Cisco Call Manager</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/routers/" class="">
+      Routers Cisco</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/telefonos/" class="">
+      Teléfonos CISCO</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Videoconferencia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/videoconferencia/openmcu-ru/" class="">
+      OpenMCU-ru</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/flows/" class="">
+      Network Flow</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/flows/ntop/" class="">
+      Ntop</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/rancid/" class="">
+      Rancid (Really Awesome New Cisco confIg Differ)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/conceptos/" class="">
+      Conceptos de redes informáticas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/" class="">
+      Switches</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Cisco</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/2960c/" class="">
+      CISCO - 2960-C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/2960x/" class="">
+      CISCO - 2960-X</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/sf300/" class="">
+      CISCO - SF300</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/extreme_networks/" class="">
+      Extreme Networks</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/" class="">
+      Hewlett Packard</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/aruba/" class="">
+      Switches Aruba</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/" class="">
+      3COM</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Voice</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/voice/vlan/" class="">
+      VLAN de voz</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/debug_y_analisis_de_equipos_hp_3com/" class="">
+      Debug y análisis de equipos HP/3com</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cumulus_networks/" class="">
+      Cumulus Networks</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/gestion/" class="">
+      Gestión</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/gestion/taiga/" class="">
+      Taiga</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/leyes/" class="">
+      Leyes, Decretos y Ordenanzas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/" class="">
+      Charlas y Eventos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/pueblos_originarios_y_la_industria_del_software/" class="">
+      Pueblos Originarios y la industria del Software</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/uso_de_la_consola_linux/" class="">
+      Taller de uso de Consola Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/lanux_agosto_2010/" class="">
+      Servidores VPS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/" class="">
+      Manuales de proyectos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Tivoli Tsm</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/manual_de_manejo_de_backups_con_tivoli/" class="">
+      Manual de manejo de respaldos con Tivoli</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/tsm_sql_tips/" class="">
+      Mandatos de prueba de validación de la actualización de la base de datos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/tsm_sql_hints/" class="">
+      TSM SQL Hints</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/sql_for_tivoli_storage_manager/" class="">
+      SQL for Tivoli Storage Manager</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/emc_data_domain/" class="">
+      EMC Data Domain</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/" class="">
+      Monitoria y análisis de Red con Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/" class="">
+      Monitoreo de Red con Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Productos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/oracle/" class="">
+      Oracle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/argentina_-_arba_-_codigo_de_operacion_de_traslado_cot/" class="">
+      Argentina - ARBA - Código de Operación de Traslado (COT)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/asterisk/" class="">
+      Asterisk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/riverbed/" class="">
+      Riverbed</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/argentina_-_afip_-_factura_electronica/" class="">
+      Argentina AFIP Factura Electrónica</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/sap/" class="">
+      SAP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/ibm_tivoli_tsm/" class="">
+      Tivoli Storage Manager - TSM</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/brasil_-_nota_fiscal_electronica_nfe/" class="">
+      Brasil - Nota Fiscal Electrónica NFe</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/brasil_-_nota_fiscal_electronica_nfe/referencias_utiles_de_nfe/" class="">
+      Referencias útiles de NFE</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/microstrategy/" class="">
+      MicroStrategy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/qlikview/" class="">
+      QlikView</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/servidor_web/" class="">
+      Configuración del servidor Web</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/pnp4nagios/" class="">
+      PNP4Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/tipos_de_notificaciones/" class="">
+      Tipos de notificaciones</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_referencias_generales/" class="">
+      Referencias generales</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_referencias_generales/sistema_de_inventario/" class="">
+      Sistema de inventario</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagios_network_analyzer/" class="">
+      Nagios Network Analyzer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/" class="">
+      Correlación de eventos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/rsyslog/" class="">
+      Reliable system and kernel logging daemon</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/eventdb/" class="">
+      EventDB</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/syslog_ng/" class="">
+      Syslog-NG</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/implementacion_tecnica/" class="">
+      Implementación Técnica de Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/implementacion_tecnica/implementacion_tecnica_version_ubuntu_server_20.04/" class="">
+      Implementación Técnica de Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/capacitacion_en_monitoreo_de_red/" class="">
+      Capacitación en monitoreo de Red</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Certificaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/capacitacion_en_monitoreo_de_red/certificaciones/sox_-_sarbanes-oxley/" class="">
+      SOX</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/desarrollo_de_plugins_de_nagios/" class="">
+      Desarrollo de plugins de Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/desarrollo_de_plugins_de_nagios/problemas_comunes/" class="">
+      Problemas comunes de los plugins de Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/snmp/" class="">
+      SNMP (Simple Network Management Protocol)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagios_event_radio_dispatcher_nerd/" class="">
+      Nagios Event Radio Dispatcher (NERD)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/mk_livestatus/" class="">
+      MK Livestatus</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/ndo2utils/" class="">
+      NDO2Utils</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagvis/" class="">
+      Nagvis</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagvis/diseno_de_tablero_de_control/" class="">
+      Diseño de tablero de control</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/graficos_en_ajax/" class="">
+      Gráficos en AJAX</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_tips_y_recomendaciones/" class="">
+      TIPS y recomendaciones</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_otras_soluciones_basadas_en_nagios/" class="">
+      Anexo - Otras soluciones basadas en Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_comandos_externos/" class="">
+      Comandos externos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/plugins_usuales_de_nagios/" class="">
+      Plugins usuales de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/icmp/" class="">
+      ICMP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_codigo_fuente_de_nagios/" class="">
+      Análisis del código fuente de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_configuracion_desde_version_3_a_4/" class="">
+      Incompatibilidades de configuración v3 a v4</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/codigo_fuente/" class="">
+      Análisis del código fuente de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/thruk/" class="">
+      Thruk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/portugues/" class="">
+      Monitoração de rede e análise com Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/italiano/" class="">
+      Implementazione di un sistema di rete, monitor con Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_freeradius/" class="">
+      Servidor FreeRadius</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_systemimager/" class="">
+      Proyecto Servidor de Backups</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/an_introduction_to_linux_shell_scripting_for_dbas/" class="">
+      An Introduction to Linux Shell Scripting for DBAs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/filtrador_de_logs/" class="">
+      Filtrador de LOGS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/drbd/" class="">
+      DRBD (Distributed Replicated Block Device)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/" class="">
+      Lotus Notes</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/problemas_winmail.dat_outlook/" class="">
+      Problemas Winmail.dat Outlook</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/listar_ultimo_mes_de_login_de_usuarios/" class="">
+      Listar último mes de login de usuarios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/reemplazar_diseno_base_de_datos/" class="">
+      Reemplazar Diseño Base de Datos</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_squid/" class="">
+      Squid Proxy Server</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/red_restringida/" class="">
+      Red restringida</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/novell_audit/" class="">
+      Novell Identity Audit</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_dhcp/" class="">
+      Servicio DHCP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/ils/" class="">
+      ILS (Internet Locator Server)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Utilidades de Red</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#conectividad">Conectividad</a>
+      <ul>
+        <li><a href="#agregar-ruta-estatica">Agregar ruta estatica</a></li>
+        <li><a href="#forzar-el-modo-ethernet">Forzar el modo ethernet</a></li>
+        <li><a href="#conectarse-a-redes-wi-fi">Conectarse a redes Wi Fi</a></li>
+        <li><a href="#script-para-parsear-el-iwlist-scan">Script para parsear el iwlist scan</a></li>
+      </ul>
+    </li>
+    <li><a href="#firewall">Firewall</a>
+      <ul>
+        <li><a href="#iptstate">IPTState</a></li>
+      </ul>
+    </li>
+    <li><a href="#sniffers-y-mediciones">Sniffers y mediciones</a>
+      <ul>
+        <li><a href="#tcptrack">Tcptrack</a></li>
+        <li><a href="#bmon">Bmon</a></li>
+        <li><a href="#sqstat">Sqstat</a></li>
+        <li><a href="#hydra">Hydra</a></li>
+        <li><a href="#python-proxy">Python Proxy</a></li>
+        <li><a href="#parser-y-formateador-de-salida-nmap">Parser y formateador de salida NMap</a></li>
+        <li><a href="#hping3">hping3</a>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 id="conectividad">Conectividad<a class="anchor" href="#conectividad">#</a></h2>
+<h3 id="agregar-ruta-estatica">Agregar ruta estatica<a class="anchor" href="#agregar-ruta-estatica">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ip route add 192.168.55.0/24 via 192.168.1.254 dev eth1</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">route add -net 192.168.55.0 netmask 255.255.255.0 gw 192.168.1.254 dev eth1</span></span></code></pre></div><h3 id="forzar-el-modo-ethernet">Forzar el modo ethernet<a class="anchor" href="#forzar-el-modo-ethernet">#</a></h3>
+<p>Ejemplo, forzar a 100M Full duplex sin autonegociacion a la eth0</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">ethtool</span> <span class="o">-</span><span class="n">s</span> <span class="n">eth0</span> <span class="n">speed</span> <span class="mi">100</span> <span class="n">duplex</span> <span class="n">full</span> <span class="n">autoneg</span> <span class="n">off</span></span></span></code></pre></div><h3 id="conectarse-a-redes-wi-fi">Conectarse a redes Wi Fi<a class="anchor" href="#conectarse-a-redes-wi-fi">#</a></h3>
+<p>Primero bajamos el servicio de Network Manager si es que lo tenemos instalado</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">service NetworkMananger stop</span></span></code></pre></div><p>Ejecutamos un scan sobre la interfaz para ver si encontró alguna red</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">iwlist wlan0 scan</span></span></code></pre></div><p>Establecemos el ESSID y el AP</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">iwconfig wlan0 essid Wireless
+</span></span><span class="line"><span class="cl">iwconfig wlan0 ap 00:A0:C5:77:FC:7E</span></span></code></pre></div><p>Si tiene clave</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">iwconfig wlan0 key PASSWORD</span></span></code></pre></div><p>Ejecutamos iwconfig para ver si tomo todo y despues a tomar ip</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dhclient wlan0</span></span></code></pre></div><h3 id="script-para-parsear-el-iwlist-scan">Script para parsear el iwlist scan<a class="anchor" href="#script-para-parsear-el-iwlist-scan">#</a></h3>
+<p>Salida de ejemplo</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Name    Address             Quality   Channel   Encryption
+</span></span><span class="line"><span class="cl">wifi_1  01:23:45:67:89:AB   100 %     11        WPA v.1     
+</span></span><span class="line"><span class="cl">wifi_2  01:23:45:67:89:AC    76 %     11        WEP         
+</span></span><span class="line"><span class="cl">wifi_3  01:23:45:67:89:AD    51 %     11        Open        
+</span></span><span class="line"><span class="cl">wifi_4  01:23:45:67:89:AE    50 %     11        WPA v.1     
+</span></span><span class="line"><span class="cl">wifi_5  01:23:45:67:89:AF    43 %     4         Open        
+</span></span><span class="line"><span class="cl">wifi_6  01:23:45:67:89:AG    43 %     4         WPA v.1</span></span></code></pre></div><p>Script : iwlist wlan0 scan | iwlistparse.py</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">Sacado</span> <span class="n">de</span> <span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">bbs</span><span class="o">.</span><span class="n">archlinux</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">viewtopic</span><span class="o">.</span><span class="n">php</span><span class="err">?</span><span class="n">id</span><span class="o">=</span><span class="mi">88967</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">=====</span> <span class="n">Analisis</span> <span class="n">de</span> <span class="n">volcados</span> <span class="n">tcpdump</span> <span class="o">=====</span>
+</span></span><span class="line"><span class="cl"><span class="o">====</span> <span class="n">Tcpdstat</span> <span class="o">====</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Written</span> <span class="n">by</span> <span class="n">Kenjiro</span> <span class="n">Cho</span><span class="p">,</span> <span class="p">[[</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">sonycsl</span><span class="o">.</span><span class="n">co</span><span class="o">.</span><span class="n">jp</span><span class="o">/~</span><span class="n">kjc</span><span class="o">/</span><span class="n">papers</span><span class="o">/</span><span class="n">freenix2000</span><span class="o">/</span><span class="n">node14</span><span class="o">.</span><span class="n">html</span><span class="o">|</span><span class="n">tcpdstat</span><span class="p">]]</span> <span class="n">is</span> <span class="n">a</span> <span class="n">powerful</span> <span class="k">tool</span> <span class="n">that</span> <span class="n">performs</span> <span class="n">an</span> <span class="ow">in</span><span class="o">-</span><span class="n">depth</span> <span class="n">protocol</span> <span class="n">breakdown</span> <span class="n">by</span> <span class="n">bytes</span> <span class="ow">and</span> <span class="n">packets</span><span class="o">.</span> <span class="n">It</span> <span class="n">further</span> <span class="n">displays</span> <span class="n">average</span> <span class="ow">and</span> <span class="n">maximum</span> <span class="n">transfer</span> <span class="n">rates</span><span class="p">,</span> <span class="ne">IP</span> <span class="n">flow</span> <span class="n">information</span><span class="p">,</span> <span class="ow">and</span> <span class="n">packet</span> <span class="n">size</span> <span class="n">distribution</span><span class="o">.</span> <span class="n">Dave</span> <span class="n">Dittrich</span> <span class="n">applied</span> <span class="p">[[</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">staff</span><span class="o">.</span><span class="n">washington</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">dittrich</span><span class="o">/</span><span class="n">talks</span><span class="o">/</span><span class="n">core02</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">tools</span><span class="o">.</span><span class="n">html</span><span class="o">|</span><span class="n">several</span> <span class="n">tweaks</span><span class="p">]]</span> <span class="n">the</span> <span class="k">tool</span> <span class="n">to</span> <span class="n">support</span> <span class="n">a</span> <span class="n">broader</span> <span class="nb">range</span> <span class="n">of</span> <span class="n">protocols</span> <span class="ow">and</span> <span class="n">services</span><span class="p">,</span> <span class="ow">and</span> <span class="n">to</span> <span class="n">report</span> <span class="n">more</span> <span class="n">details</span> <span class="n">about</span> <span class="n">flow</span> <span class="n">rates</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Here</span> <span class="n">is</span> <span class="n">an</span> <span class="n">example</span> <span class="n">output</span> <span class="p">(</span><span class="n">of</span> <span class="n">Dave</span><span class="s1">&#39;s enhanced version): </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="n">DumpFile</span><span class="p">:</span>  <span class="n">trace</span><span class="o">.</span><span class="n">pcap</span>
+</span></span><span class="line"><span class="cl"><span class="n">FileSize</span><span class="p">:</span> <span class="mf">98876.89</span><span class="n">MB</span>
+</span></span><span class="line"><span class="cl"><span class="n">Id</span><span class="p">:</span> <span class="mi">200703011241</span>
+</span></span><span class="line"><span class="cl"><span class="n">StartTime</span><span class="p">:</span> <span class="p">(</span><span class="n">anonymized</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">EndTime</span><span class="p">:</span>   <span class="p">(</span><span class="n">anonymized</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">TotalTime</span><span class="p">:</span> <span class="mf">7216.13</span> <span class="n">seconds</span>
+</span></span><span class="line"><span class="cl"><span class="n">TotalCapSize</span><span class="p">:</span> <span class="mf">96826.91</span><span class="n">MB</span>  <span class="n">CapLen</span><span class="p">:</span> <span class="mi">1514</span> <span class="n">bytes</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># of packets: 134347439 (96826.91MB)</span>
+</span></span><span class="line"><span class="cl"><span class="n">AvgRate</span><span class="p">:</span> <span class="mf">113.10</span><span class="n">Mbps</span>  <span class="n">stddev</span><span class="p">:</span><span class="mf">47.96</span><span class="n">M</span>   <span class="n">PeakRate</span><span class="p">:</span> <span class="mf">260.92</span><span class="n">Mbps</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">### IP flow (unique src/dst pair) Information ###</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># of flows: 1612801  (avg. 83.30 pkts/flow)</span>
+</span></span><span class="line"><span class="cl"><span class="n">Top</span> <span class="mi">10</span> <span class="n">big</span> <span class="n">flow</span> <span class="n">size</span> <span class="p">(</span><span class="n">bytes</span><span class="o">/</span><span class="n">total</span> <span class="ow">in</span> <span class="o">%</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl"> <span class="mf">33.6</span><span class="o">%</span>  <span class="mf">3.2</span><span class="o">%</span>  <span class="mf">2.2</span><span class="o">%</span>  <span class="mf">1.5</span><span class="o">%</span>  <span class="mf">1.4</span><span class="o">%</span>  <span class="mf">1.0</span><span class="o">%</span>  <span class="mf">1.0</span><span class="o">%</span>  <span class="mf">0.9</span><span class="o">%</span>  <span class="mf">0.8</span><span class="o">%</span>  <span class="mf">0.8</span><span class="o">%</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">### IP address Information ###</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># of IPv4 addresses: 480065</span>
+</span></span><span class="line"><span class="cl"><span class="n">Top</span> <span class="mi">10</span> <span class="n">bandwidth</span> <span class="n">usage</span> <span class="p">(</span><span class="n">bytes</span><span class="o">/</span><span class="n">total</span> <span class="ow">in</span> <span class="o">%</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl"> <span class="mf">34.4</span><span class="o">%</span> <span class="mf">34.4</span><span class="o">%</span>  <span class="mf">3.3</span><span class="o">%</span>  <span class="mf">3.3</span><span class="o">%</span>  <span class="mf">3.0</span><span class="o">%</span>  <span class="mf">2.7</span><span class="o">%</span>  <span class="mf">2.3</span><span class="o">%</span>  <span class="mf">1.8</span><span class="o">%</span>  <span class="mf">1.5</span><span class="o">%</span>  <span class="mf">1.5</span><span class="o">%</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">### Packet Size Distribution (including MAC headers) ###</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span> <span class="o">&lt;&lt;&lt;</span>
+</span></span><span class="line"><span class="cl"> <span class="p">[</span>   <span class="mi">32</span><span class="o">-</span>   <span class="mi">63</span><span class="p">]:</span>   <span class="mi">20839652</span>
+</span></span><span class="line"><span class="cl"> <span class="p">[</span>   <span class="mi">64</span><span class="o">-</span>  <span class="mi">127</span><span class="p">]:</span>   <span class="mi">38798140</span>
+</span></span><span class="line"><span class="cl"> <span class="p">[</span>  <span class="mi">128</span><span class="o">-</span>  <span class="mi">255</span><span class="p">]:</span>    <span class="mi">3947049</span>
+</span></span><span class="line"><span class="cl"> <span class="p">[</span>  <span class="mi">256</span><span class="o">-</span>  <span class="mi">511</span><span class="p">]:</span>    <span class="mi">3746280</span>
+</span></span><span class="line"><span class="cl"> <span class="p">[</span>  <span class="mi">512</span><span class="o">-</span> <span class="mi">1023</span><span class="p">]:</span>    <span class="mi">5675556</span>
+</span></span><span class="line"><span class="cl"> <span class="p">[</span> <span class="mi">1024</span><span class="o">-</span> <span class="mi">2047</span><span class="p">]:</span>   <span class="mi">61340762</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">### Protocol Breakdown ###</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span> <span class="o">&lt;&lt;&lt;</span>
+</span></span><span class="line"><span class="cl">     <span class="n">protocol</span>           <span class="n">packets</span>                 <span class="n">bytes</span>           <span class="n">bytes</span><span class="o">/</span><span class="n">pkt</span>
+</span></span><span class="line"><span class="cl"><span class="o">------------------------------------------------------------------------</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="n">total</span>        <span class="mi">134347439</span> <span class="p">(</span><span class="mf">100.00</span><span class="o">%</span><span class="p">)</span>     <span class="mi">101530372750</span> <span class="p">(</span><span class="mf">100.00</span><span class="o">%</span><span class="p">)</span>    <span class="mf">755.73</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">ip</span>           <span class="mi">134347439</span> <span class="p">(</span><span class="mf">100.00</span><span class="o">%</span><span class="p">)</span>     <span class="mi">101530372750</span> <span class="p">(</span><span class="mf">100.00</span><span class="o">%</span><span class="p">)</span>    <span class="mf">755.73</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">2</span><span class="p">]</span>  <span class="n">tcp</span>         <span class="mi">118172509</span> <span class="p">(</span> <span class="mf">87.96</span><span class="o">%</span><span class="p">)</span>      <span class="mi">97361936181</span> <span class="p">(</span> <span class="mf">95.89</span><span class="o">%</span><span class="p">)</span>    <span class="mf">823.90</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">ftpdata</span>        <span class="mi">18640</span> <span class="p">(</span>  <span class="mf">0.01</span><span class="o">%</span><span class="p">)</span>         <span class="mi">16529412</span> <span class="p">(</span>  <span class="mf">0.02</span><span class="o">%</span><span class="p">)</span>    <span class="mf">886.77</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">ftp</span>            <span class="mi">72372</span> <span class="p">(</span>  <span class="mf">0.05</span><span class="o">%</span><span class="p">)</span>          <span class="mi">4697330</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>     <span class="mf">64.91</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">ssh</span>         <span class="mi">13849679</span> <span class="p">(</span> <span class="mf">10.31</span><span class="o">%</span><span class="p">)</span>      <span class="mi">11113777353</span> <span class="p">(</span> <span class="mf">10.95</span><span class="o">%</span><span class="p">)</span>    <span class="mf">802.46</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">telnet</span>          <span class="mi">9007</span> <span class="p">(</span>  <span class="mf">0.01</span><span class="o">%</span><span class="p">)</span>          <span class="mi">1526445</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>    <span class="mf">169.47</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">smtp</span>         <span class="mi">2133471</span> <span class="p">(</span>  <span class="mf">1.59</span><span class="o">%</span><span class="p">)</span>       <span class="mi">1447293494</span> <span class="p">(</span>  <span class="mf">1.43</span><span class="o">%</span><span class="p">)</span>    <span class="mf">678.38</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">name</span>              <span class="mi">23</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>             <span class="mi">1426</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>     <span class="mf">62.00</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">dns</span>            <span class="mi">35071</span> <span class="p">(</span>  <span class="mf">0.03</span><span class="o">%</span><span class="p">)</span>          <span class="mi">7071657</span> <span class="p">(</span>  <span class="mf">0.01</span><span class="o">%</span><span class="p">)</span>    <span class="mf">201.64</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">http</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>     <span class="mi">25043480</span> <span class="p">(</span> <span class="mf">18.64</span><span class="o">%</span><span class="p">)</span>      <span class="mi">30677552254</span> <span class="p">(</span> <span class="mf">30.22</span><span class="o">%</span><span class="p">)</span>   <span class="mf">1224.97</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">http</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>     <span class="mi">16165378</span> <span class="p">(</span> <span class="mf">12.03</span><span class="o">%</span><span class="p">)</span>       <span class="mi">2182851897</span> <span class="p">(</span>  <span class="mf">2.15</span><span class="o">%</span><span class="p">)</span>    <span class="mf">135.03</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">kerb5</span>            <span class="mi">370</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>            <span class="mi">30610</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>     <span class="mf">82.73</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">pop3</span>           <span class="mi">82382</span> <span class="p">(</span>  <span class="mf">0.06</span><span class="o">%</span><span class="p">)</span>         <span class="mi">26718043</span> <span class="p">(</span>  <span class="mf">0.03</span><span class="o">%</span><span class="p">)</span>    <span class="mf">324.32</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">sunrpc</span>            <span class="mi">30</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>             <span class="mi">3002</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>    <span class="mf">100.07</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">ident</span>           <span class="mi">5107</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>           <span class="mi">322074</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>     <span class="mf">63.07</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">nntp</span>            <span class="mi">1262</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>           <span class="mi">292679</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>    <span class="mf">231.92</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">epmap</span>         <span class="mi">209144</span> <span class="p">(</span>  <span class="mf">0.16</span><span class="o">%</span><span class="p">)</span>         <span class="mi">12909976</span> <span class="p">(</span>  <span class="mf">0.01</span><span class="o">%</span><span class="p">)</span>     <span class="mf">61.73</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">netb</span><span class="o">-</span><span class="n">se</span>       <span class="mi">404237</span> <span class="p">(</span>  <span class="mf">0.30</span><span class="o">%</span><span class="p">)</span>         <span class="mi">47178014</span> <span class="p">(</span>  <span class="mf">0.05</span><span class="o">%</span><span class="p">)</span>    <span class="mf">116.71</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">imap</span>          <span class="mi">125983</span> <span class="p">(</span>  <span class="mf">0.09</span><span class="o">%</span><span class="p">)</span>        <span class="mi">100889454</span> <span class="p">(</span>  <span class="mf">0.10</span><span class="o">%</span><span class="p">)</span>    <span class="mf">800.82</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">bgp</span>              <span class="mi">482</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>            <span class="mi">43139</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>     <span class="mf">89.50</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">ldap</span>            <span class="mi">7131</span> <span class="p">(</span>  <span class="mf">0.01</span><span class="o">%</span><span class="p">)</span>          <span class="mi">1434769</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>    <span class="mf">201.20</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">https</span>        <span class="mi">2941177</span> <span class="p">(</span>  <span class="mf">2.19</span><span class="o">%</span><span class="p">)</span>       <span class="mi">1802114169</span> <span class="p">(</span>  <span class="mf">1.77</span><span class="o">%</span><span class="p">)</span>    <span class="mf">612.72</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">ms</span><span class="o">-</span><span class="n">ds</span>         <span class="mi">245214</span> <span class="p">(</span>  <span class="mf">0.18</span><span class="o">%</span><span class="p">)</span>         <span class="mi">24263111</span> <span class="p">(</span>  <span class="mf">0.02</span><span class="o">%</span><span class="p">)</span>     <span class="mf">98.95</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">rtsp</span>         <span class="mi">1023246</span> <span class="p">(</span>  <span class="mf">0.76</span><span class="o">%</span><span class="p">)</span>        <span class="mi">691696863</span> <span class="p">(</span>  <span class="mf">0.68</span><span class="o">%</span><span class="p">)</span>    <span class="mf">675.98</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">ldaps</span>           <span class="mi">2828</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>           <span class="mi">209272</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>     <span class="mf">74.00</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">socks</span>           <span class="mi">7883</span> <span class="p">(</span>  <span class="mf">0.01</span><span class="o">%</span><span class="p">)</span>          <span class="mi">1340672</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>    <span class="mf">170.07</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">kasaa</span>          <span class="mi">13348</span> <span class="p">(</span>  <span class="mf">0.01</span><span class="o">%</span><span class="p">)</span>          <span class="mi">1124944</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>     <span class="mf">84.28</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">mssql</span><span class="o">-</span><span class="n">s</span>       <span class="mi">309786</span> <span class="p">(</span>  <span class="mf">0.23</span><span class="o">%</span><span class="p">)</span>         <span class="mi">20411848</span> <span class="p">(</span>  <span class="mf">0.02</span><span class="o">%</span><span class="p">)</span>     <span class="mf">65.89</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">squid</span>          <span class="mi">51381</span> <span class="p">(</span>  <span class="mf">0.04</span><span class="o">%</span><span class="p">)</span>         <span class="mi">14079861</span> <span class="p">(</span>  <span class="mf">0.01</span><span class="o">%</span><span class="p">)</span>    <span class="mf">274.03</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">ms</span><span class="o">-</span><span class="n">gc</span>           <span class="mi">1865</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>           <span class="mi">493682</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>    <span class="mf">264.71</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">ms</span><span class="o">-</span><span class="n">gcs</span>          <span class="mi">2034</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>           <span class="mi">481178</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>    <span class="mf">236.57</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">hotline</span>            <span class="mi">6</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>              <span class="mi">682</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>    <span class="mf">113.67</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">realaud</span>        <span class="mi">19784</span> <span class="p">(</span>  <span class="mf">0.01</span><span class="o">%</span><span class="p">)</span>         <span class="mi">13197979</span> <span class="p">(</span>  <span class="mf">0.01</span><span class="o">%</span><span class="p">)</span>    <span class="mf">667.10</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">icecast</span>       <span class="mi">390203</span> <span class="p">(</span>  <span class="mf">0.29</span><span class="o">%</span><span class="p">)</span>        <span class="mi">291651836</span> <span class="p">(</span>  <span class="mf">0.29</span><span class="o">%</span><span class="p">)</span>    <span class="mf">747.44</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">gnu6346</span>         <span class="mi">6324</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>          <span class="mi">1048473</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>    <span class="mf">165.79</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">gnu6348</span>          <span class="mi">342</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>            <span class="mi">26047</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>     <span class="mf">76.16</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">gnu6349</span>           <span class="mi">14</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>             <span class="mi">2767</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>    <span class="mf">197.64</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">gnu6350</span>            <span class="mi">4</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>              <span class="mi">732</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>    <span class="mf">183.00</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">irc6666</span>            <span class="mi">7</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>              <span class="mi">434</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>     <span class="mf">62.00</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">irc6667</span>         <span class="mi">1379</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>           <span class="mi">196155</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>    <span class="mf">142.24</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">irc6668</span>            <span class="mi">2</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>              <span class="mi">124</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>     <span class="mf">62.00</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">irc6669</span>            <span class="mi">9</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>              <span class="mi">666</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>     <span class="mf">74.00</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">napster</span>           <span class="mi">21</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>             <span class="mi">1344</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>     <span class="mf">64.00</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">irc7000</span>            <span class="mi">7</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>              <span class="mi">824</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>    <span class="mf">117.71</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">http</span><span class="o">-</span><span class="n">a</span>        <span class="mi">129807</span> <span class="p">(</span>  <span class="mf">0.10</span><span class="o">%</span><span class="p">)</span>         <span class="mi">71136838</span> <span class="p">(</span>  <span class="mf">0.07</span><span class="o">%</span><span class="p">)</span>    <span class="mf">548.02</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">other</span>       <span class="mi">54862568</span> <span class="p">(</span> <span class="mf">40.84</span><span class="o">%</span><span class="p">)</span>      <span class="mi">48787331392</span> <span class="p">(</span> <span class="mf">48.05</span><span class="o">%</span><span class="p">)</span>    <span class="mf">889.26</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">2</span><span class="p">]</span>  <span class="n">udp</span>          <span class="mi">13069221</span> <span class="p">(</span>  <span class="mf">9.73</span><span class="o">%</span><span class="p">)</span>       <span class="mi">3895596348</span> <span class="p">(</span>  <span class="mf">3.84</span><span class="o">%</span><span class="p">)</span>    <span class="mf">298.07</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">name</span>              <span class="mi">18</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>             <span class="mi">1989</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>    <span class="mf">110.50</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">dns</span>          <span class="mi">1799081</span> <span class="p">(</span>  <span class="mf">1.34</span><span class="o">%</span><span class="p">)</span>        <span class="mi">264263480</span> <span class="p">(</span>  <span class="mf">0.26</span><span class="o">%</span><span class="p">)</span>    <span class="mf">146.89</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">kerb5</span>            <span class="mi">100</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>            <span class="mi">25812</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>    <span class="mf">258.12</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">sunrpc</span>           <span class="mi">581</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>            <span class="mi">57157</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>     <span class="mf">98.38</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">ntp</span>            <span class="mi">50387</span> <span class="p">(</span>  <span class="mf">0.04</span><span class="o">%</span><span class="p">)</span>          <span class="mi">4534933</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>     <span class="mf">90.00</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">epmap</span>             <span class="mi">17</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>             <span class="mi">1824</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>    <span class="mf">107.29</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">netb</span><span class="o">-</span><span class="n">ns</span>       <span class="mi">148619</span> <span class="p">(</span>  <span class="mf">0.11</span><span class="o">%</span><span class="p">)</span>         <span class="mi">14736588</span> <span class="p">(</span>  <span class="mf">0.01</span><span class="o">%</span><span class="p">)</span>     <span class="mf">99.16</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">netb</span><span class="o">-</span><span class="n">se</span>         <span class="mi">1272</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>           <span class="mi">328673</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>    <span class="mf">258.39</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">ms</span><span class="o">-</span><span class="n">ds</span>              <span class="mi">8</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>              <span class="mi">883</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>    <span class="mf">110.38</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">kazaa</span>             <span class="mi">29</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>             <span class="mi">3546</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>    <span class="mf">122.28</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">mssql</span><span class="o">-</span><span class="n">s</span>           <span class="mi">44</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>             <span class="mi">3832</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>     <span class="mf">87.09</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">mcast</span>        <span class="mi">7216682</span> <span class="p">(</span>  <span class="mf">5.37</span><span class="o">%</span><span class="p">)</span>       <span class="mi">1943012688</span> <span class="p">(</span>  <span class="mf">1.91</span><span class="o">%</span><span class="p">)</span>    <span class="mf">269.24</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">realaud</span>       <span class="mi">459195</span> <span class="p">(</span>  <span class="mf">0.34</span><span class="o">%</span><span class="p">)</span>        <span class="mi">273532235</span> <span class="p">(</span>  <span class="mf">0.27</span><span class="o">%</span><span class="p">)</span>    <span class="mf">595.68</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">halflif</span>           <span class="mi">81</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>             <span class="mi">5890</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>     <span class="mf">72.72</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">starcra</span>           <span class="mi">45</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>             <span class="mi">6367</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>    <span class="mf">141.49</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">everque</span>            <span class="mi">9</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>             <span class="mi">1351</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>    <span class="mf">150.11</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">unreal</span>          <span class="mi">1066</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>            <span class="mi">93951</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>     <span class="mf">88.13</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">quake</span>             <span class="mi">20</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>             <span class="mi">1860</span> <span class="p">(</span>  <span class="mf">0.00</span><span class="o">%</span><span class="p">)</span>     <span class="mf">93.00</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="n">other</span>        <span class="mi">3384119</span> <span class="p">(</span>  <span class="mf">2.52</span><span class="o">%</span><span class="p">)</span>       <span class="mi">1394472416</span> <span class="p">(</span>  <span class="mf">1.37</span><span class="o">%</span><span class="p">)</span>    <span class="mf">412.06</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">2</span><span class="p">]</span>  <span class="n">icmp</span>          <span class="mi">3105709</span> <span class="p">(</span>  <span class="mf">2.31</span><span class="o">%</span><span class="p">)</span>        <span class="mi">272840221</span> <span class="p">(</span>  <span class="mf">0.27</span><span class="o">%</span><span class="p">)</span>     <span class="mf">87.85</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="mi">2</span><span class="p">]</span>  <span class="n">frag</span>            <span class="mi">30903</span> <span class="p">(</span>  <span class="mf">0.02</span><span class="o">%</span><span class="p">)</span>         <span class="mi">25672129</span> <span class="p">(</span>  <span class="mf">0.03</span><span class="o">%</span><span class="p">)</span>    <span class="mf">830.73</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;&gt;</span></span></span></code></pre></div><p><a href="/enlaces/tcpdstat-uw.tar">tcpdstat-uw.tar</a></p>
+<p>Ref.:<a href="http://matthias.vallentin.net/2007/01/examining-and-dissecting-tcpdumplibpcap.html">http://matthias.vallentin.net/2007/01/examining-and-dissecting-tcpdumplibpcap.html</a></p>
+<h2 id="firewall">Firewall<a class="anchor" href="#firewall">#</a></h2>
+<h3 id="iptstate">IPTState<a class="anchor" href="#iptstate">#</a></h3>
+<p>IPTState is a top-like interface to your netfilter connection-tracking table. Using iptstate you interactively watch where traffic crossing your netfilter/iptables firewall is going, sort by various criteria, limit the view by various criteria</p>
+<p><a href="http://www.phildev.net/iptstate/index.shtml">http://www.phildev.net/iptstate/index.shtml</a></p>
+<h2 id="sniffers-y-mediciones">Sniffers y mediciones<a class="anchor" href="#sniffers-y-mediciones">#</a></h2>
+<p><a href="http://es.wikipedia.org/wiki/Tipos_de_Sniffer">http://es.wikipedia.org/wiki/Tipos_de_Sniffer</a></p>
+<h3 id="tcptrack">Tcptrack<a class="anchor" href="#tcptrack">#</a></h3>
+<p>tcptrack is a sniffer which displays information about TCP connections it sees on a network interface. It passively watches for connections on the network interface, keeps track of their state and displays a list of connections in a manner similar to the unix ‘top’ command. It displays source and destination addresses and ports, connection state, idle time, and bandwidth usage. The following screenshot explains a lot:</p>
+<img src="/enlaces/tcptrack.png" class="align-center" alt="tcptrack.png" />
+<p>La sintaxis es similar a la de tcpdump</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># tcptrack -i eth0 port 80
+</span></span><span class="line"><span class="cl"># tcptrack -i eth0 host 192.168.2.110 and port 8080
+</span></span><span class="line"><span class="cl">#tcptrack  -i eth0 src or dst 74.125.47.138 or src or dst 74.125.47.139 or src or dst 74.125.47.101 or src or dst 74.125.47.138 or src or dst 208.117.252.210 or src or dst 74.125.47.102 or src or dst s2.youtube.com or src or dst youtube.com or src or dst 208.117.252.210 or src or dst 208.117.252.22 or src or dst 208.117.252.167 or src or dst 208.117.252.22 or src or dst www.youtube.com or src or dst 208.117.252.228 or src or dst 208.117.252.23 or src or dst 74.125.47.101  or src or dst 208.117.252.159 or src or dst 74.125.47.102 or src or dst 208.117.252.18</span></span></code></pre></div><p><a href="http://www.rhythm.cx/~steve/devel/tcptrack/">http://www.rhythm.cx/~steve/devel/tcptrack/</a></p>
+<h3 id="bmon">Bmon<a class="anchor" href="#bmon">#</a></h3>
+<p><strong>bmon</strong> is a portable bandwidth monitor with multiple input methods and output modes. A set of architecture specific input modules provide the core with the listof interfaces and their counters. The core stores this counters and provides rate estimation including a history over the last 60 seconds, minutes, hours and days to the output modules which output them according to the configuration.</p>
+<img src="/enlaces/bmon.png" class="align-center" alt="bmon.png" />
+<img src="/enlaces/bmon2.png" class="align-center" alt="bmon2.png" />
+<p>Para instalarlo</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">apt-get install bmon</span></span></code></pre></div><p>Ref.: <a href="http://freshmeat.net/projects/bmon/">http://freshmeat.net/projects/bmon/</a></p>
+<h3 id="sqstat">Sqstat<a class="anchor" href="#sqstat">#</a></h3>
+<p>SqStat is a script which allows to look through active squid users connections. It use cachemgr protocol to get information from squid proxy server</p>
+<img src="/enlaces/sqstat.png" class="align-center" alt="sqstat.png" />
+<p><a href="/enlaces/sqstat-1.20.tar.gz">sqstat-1.20.tar.gz</a></p>
+<p><a href="http://samm.kiev.ua/sqstat/">http://samm.kiev.ua/sqstat/</a></p>
+<h3 id="hydra">Hydra<a class="anchor" href="#hydra">#</a></h3>
+<p>A very fast network logon cracker which support many different services</p>
+<p>Currently this tool supports: TELNET, FTP, HTTP, HTTPS, HTTP-PROXY, SMB, SMBNT, MS-SQL, MYSQL, REXEC, RSH, RLOGIN, CVS, SNMP, SMTP-AUTH, SOCKS5, VNC, POP3, IMAP, NNTP, PCNFS, ICQ, SAP/R3, LDAP2, LDAP3, Postgres, Teamspeak, Cisco auth, Cisco enable, AFP, Subversion/SVN, Firebird, LDAP2, Cisco AAA (incorporated in telnet module).</p>
+<p>For HTTP, POP3, IMAP and SMTP, several login mechanisms like plain and MD5 digest are supported.</p>
+<p><a href="http://freeworld.thc.org/thc-hydra/">http://freeworld.thc.org/thc-hydra/</a></p>
+<h3 id="python-proxy">Python Proxy<a class="anchor" href="#python-proxy">#</a></h3>
+<p>Mini Proxy en Python</p>
+<p><a href="http://code.google.com/p/python-proxy/">http://code.google.com/p/python-proxy/</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sergio@sergio-thinkcentre-a70z:~$ python PythonProxy.py 
+</span></span><span class="line"><span class="cl">Serving on 0.0.0.0:8080.
+</span></span><span class="line"><span class="cl">GET http://backports.debian.org/debian-backports/dists/lenny-backports/Release.gpg HTTP/1.1
+</span></span><span class="line"><span class="cl">GET http://ftp.de.debian.org/debian/dists/stable/Release.gpg HTTP/1.1
+</span></span><span class="line"><span class="cl">GET http://security.debian.org/dists/lenny/updates/Release.gpg HTTP/1.1</span></span></code></pre></div><h3 id="parser-y-formateador-de-salida-nmap">Parser y formateador de salida NMap<a class="anchor" href="#parser-y-formateador-de-salida-nmap">#</a></h3>
+<p>Algo muy útil a la hora de hacer reporte de servidores en base a un archivo de lista de servidores, ej nmap-report.pl servidores.txt, imprimiendo la salida por pantalla en formato dokuwiki.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> install Nmap::Scanner\n&#34;;
+</span></span><span class="line"><span class="cl">    exit ();
+</span></span><span class="line"><span class="cl"> }
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">use POSIX qw(strftime);
+</span></span><span class="line"><span class="cl">my $scanner = new Nmap::Scanner;
+</span></span><span class="line"><span class="cl">$scanner-&gt;guess_os();
+</span></span><span class="line"><span class="cl">$scanner-&gt;register_scan_complete_event(\&amp;scan_complete);
+</span></span><span class="line"><span class="cl">$scanner-&gt;register_scan_started_event(\&amp;scan_started);
+</span></span><span class="line"><span class="cl">$scanner-&gt;register_port_found_event(\&amp;port_found);
+</span></span><span class="line"><span class="cl">my $lista = $ARGV[0];
+</span></span><span class="line"><span class="cl">my $opciones_scan = &#34;-sS -A -vv -p0-65535 -sV -O -iL $lista&#34;;
+</span></span><span class="line"><span class="cl">print &#34;Options Nmap: $opciones_scan\n&#34;;
+</span></span><span class="line"><span class="cl">print &#34;^^Puerto^Estado^Servicio^Informacion^^\n&#34;;
+</span></span><span class="line"><span class="cl">$scanner-&gt;scan($opciones_scan);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sub scan_started {
+</span></span><span class="line"><span class="cl">        my $self     = shift;
+</span></span><span class="line"><span class="cl">        my $host     = shift;
+</span></span><span class="line"><span class="cl">        $hostname = $host-&gt;hostname();
+</span></span><span class="line"><span class="cl">        $addresses = join(&#39;,&#39;, map {$_-&gt;addr()} $host-&gt;addresses());
+</span></span><span class="line"><span class="cl">        my $status = $host-&gt;status();
+</span></span><span class="line"><span class="cl">#        print &#34;$hostname ($addresses)\n&#34;;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sub port_found {
+</span></span><span class="line"><span class="cl">        my $self     = shift;
+</span></span><span class="line"><span class="cl">        my $host     = shift;
+</span></span><span class="line"><span class="cl">        my $port     = shift;
+</span></span><span class="line"><span class="cl">        no warnings;
+</span></span><span class="line"><span class="cl">        my $name = $host-&gt;hostname();
+</span></span><span class="line"><span class="cl">        my $puerto = $port-&gt;state();
+</span></span><span class="line"><span class="cl">        if ($puerto eq &#34;open&#34;){$pestado=&#34;abierto&#34;;}
+</span></span><span class="line"><span class="cl">        elsif($puerto eq &#34;closed&#34;){     $pestado=&#34;cerrado&#34;;}
+</span></span><span class="line"><span class="cl">        my $proto= $port-&gt;protocol();
+</span></span><span class="line"><span class="cl">        if ($proto eq &#34;tcp&#34;){$protoc=&#34;tcp&#34;;}
+</span></span><span class="line"><span class="cl">        elsif($proto eq &#34;udp&#34;){$protoc=&#34;udp&#34;;}
+</span></span><span class="line"><span class="cl">        my $salida_puerto = join(&#39;&#39;,&#34;|&#34;,$port-&gt;portid(),&#34;/&#34;,$protoc,&#34;|&#34;,$pestado,&#34;|&#34;,$port-&gt;service()-&gt;name(),&#34;|&#34;,$port-&gt;service()-&gt;product(),&#34; &#34;,$port-&gt;service()-&gt;version(),&#34; &#34;,$port-&gt;service()-&gt;extrainfo(),&#34;|&#34;);
+</span></span><span class="line"><span class="cl">        print &#34;$salida_puerto\n&#34;;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sub scan_complete {
+</span></span><span class="line"><span class="cl">    my $self = shift;
+</span></span><span class="line"><span class="cl">    my $host = shift;
+</span></span><span class="line"><span class="cl">    no warnings;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   for my $match ($host-&gt;os()-&gt;osmatches()) {
+</span></span><span class="line"><span class="cl">        print &#34;\n\n\nHost determinado aproximadamente: &#34; . $match-&gt;name(),&#34;\n\n&#34;;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    for my $c ($host-&gt;os()-&gt;osclasses()) {
+</span></span><span class="line"><span class="cl">#        print &#34;-- &#34; . $c-&gt;vendor() . &#34;\n&#34;;
+</span></span><span class="line"><span class="cl">        print &#34;- OS generation: &#34; . $c-&gt;osgen() . &#34;\n\n&#34;;
+</span></span><span class="line"><span class="cl">        print &#34;- OS family:     &#34; . $c-&gt;osfamily() . &#34;\n\n&#34;;
+</span></span><span class="line"><span class="cl">        print &#34;- OS Type:       &#34; . $c-&gt;type() . &#34;\n\n&#34;;
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}</span></span></code></pre></div><h3 id="hping3">hping3<a class="anchor" href="#hping3">#</a></h3>
+<p><strong>hping3</strong> is a free packet generator and analyzer for the TCP/IP protocol. Hping is one of the de-facto tools for security auditing and testing of firewalls and networks, and was used to exploit the Idle Scan scanning technique now implemented in the Nmap port scanner. The new version of hping, hping3, is scriptable using the Tcl language and implements an engine for string based, human readable description of TCP/IP packets, so that the programmer can write scripts related to low level TCP/IP packet manipulation and analysis in a very short time.</p>
+<p>Like most tools used in computer security, hping3 is useful to security experts.</p>
+<p>hping3 should be used to… *Traceroute/ping/probe hosts behind a firewall that blocks attempts using the standard utilities. *Perform the idle scan (now implemented in nmap with an easy user interface). *Test firewalling rules. *Test IDSes. *Perform DDOS attack *Exploit known vulnerabilties of TCP/IP stacks. *Networking research. *Learn TCP/IP (hping was used in networking courses). *Write real applications related to TCP/IP testing and security. *Automated firewalling tests. *Proof of concept exploits. *Networking and security research when there is the need to emulate complex TCP/IP behaviour. *Prototype IDS systems.</p>
+<h5 id="few-commands">Few commands<a class="anchor" href="#few-commands">#</a></h5>
+<p>Finding Hping3</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">hping3 –h</span></span></code></pre></div><p>hping3 Default</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">hping3 -S 192.168.1.105 -p 80</span></span></code></pre></div><p>Fragment Packets with hping3</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">hping3 -f 192.168.1.105 -p 80</span></span></code></pre></div><p>Sending Data with hping3</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">hping3 -f 192.168.1.105 -p 80 -d 10 -E malware</span></span></code></pre></div><p>Traceroute with hping3</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">hping3 -z -t 1 -S google.com -p 80</span></span></code></pre></div><p>Predicting Sequence Numbers with hping3</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">hping3 -Q -S google.com -p 80</span></span></code></pre></div><p>hping3 for Uptime</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">hping3 --tcp-timestamp -S google.com -p 80</span></span></code></pre></div><p>Ref.: @cyberhawksecurity</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/enlaces/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Enlaces útiles</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/enlaces/utilidades_de_red/ngrep/" class="flex align-center">
+        <span>Network Grep - ngrep</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#conectividad">Conectividad</a>
+      <ul>
+        <li><a href="#agregar-ruta-estatica">Agregar ruta estatica</a></li>
+        <li><a href="#forzar-el-modo-ethernet">Forzar el modo ethernet</a></li>
+        <li><a href="#conectarse-a-redes-wi-fi">Conectarse a redes Wi Fi</a></li>
+        <li><a href="#script-para-parsear-el-iwlist-scan">Script para parsear el iwlist scan</a></li>
+      </ul>
+    </li>
+    <li><a href="#firewall">Firewall</a>
+      <ul>
+        <li><a href="#iptstate">IPTState</a></li>
+      </ul>
+    </li>
+    <li><a href="#sniffers-y-mediciones">Sniffers y mediciones</a>
+      <ul>
+        <li><a href="#tcptrack">Tcptrack</a></li>
+        <li><a href="#bmon">Bmon</a></li>
+        <li><a href="#sqstat">Sqstat</a></li>
+        <li><a href="#hydra">Hydra</a></li>
+        <li><a href="#python-proxy">Python Proxy</a></li>
+        <li><a href="#parser-y-formateador-de-salida-nmap">Parser y formateador de salida NMap</a></li>
+        <li><a href="#hping3">hping3</a>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

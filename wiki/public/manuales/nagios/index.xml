@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Monitoria y análisis de Red con Nagios on Wiki de Sergio Cayuqueo</title>
+    <link>http://localhost:1313/manuales/nagios/</link>
+    <description>Recent content in Monitoria y análisis de Red con Nagios on Wiki de Sergio Cayuqueo</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Thu, 23 Jul 2026 18:03:24 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/manuales/nagios/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Análisis del código fuente de Nagios</title>
+      <link>http://localhost:1313/manuales/nagios/codigo_fuente/</link>
+      <pubDate>Mon, 26 Aug 2019 13:50:44 -0300</pubDate>
+      <guid>http://localhost:1313/manuales/nagios/codigo_fuente/</guid>
+      <description>&lt;h2 id=&#34;plugins&#34;&gt;Plugins&lt;a class=&#34;anchor&#34; href=&#34;#plugins&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;La interfaz de plugins de Nagios es simple, pero también significa que Nagios no se preocupa por la longitud de salida del plugin. Si es superior a la longitud del búfer interno, no es informado y a menudo nadie se da cuenta. El contenido simplemente se corta o trunca.&lt;/p&gt;&#xA;&lt;p&gt;Para los datos de rendimiento/performance : Si el buffer no es lo suficientemente grande, los datos de rendimiento pueden verse afectados.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Thruk</title>
+      <link>http://localhost:1313/manuales/nagios/thruk/</link>
+      <pubDate>Thu, 22 Oct 2015 11:46:15 -0300</pubDate>
+      <guid>http://localhost:1313/manuales/nagios/thruk/</guid>
+      <description>&lt;h2 id=&#34;introducción&#34;&gt;Introducción&lt;a class=&#34;anchor&#34; href=&#34;#introducci%c3%b3n&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Thruk Monitoring&lt;/strong&gt; - Es una interfaz web de monitoreo para Nagios, Icinga, Shinken y Naemon. Utiliza como backend MK Livestatus. Está diseñado para ser un reemplazo &amp;lsquo;completo&amp;rsquo; y cubre casi el 100% de los elementos originales. Además añade mejoras adicionales para grandes instalaciones y una mayor facilidad de uso.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Características principales / Ventajas&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Múltiples backends&lt;/li&gt;&#xA;&lt;li&gt;Más rápido, sin necesidad de analizar status.dat para cada petición&lt;/li&gt;&#xA;&lt;li&gt;Menos uso de la CPU&lt;/li&gt;&#xA;&lt;li&gt;Mostrar los datos en vivo, no hay retraso entre el núcleo y la interfaz gráfica de usuario&lt;/li&gt;&#xA;&lt;li&gt;Independiente del núcleo de monitoreo, se puede instalar en un host remoto&lt;/li&gt;&#xA;&lt;li&gt;Clusterizable, se pueden agrupar hosts&lt;/li&gt;&#xA;&lt;li&gt;Cambiar el filtro status.cgi línea&lt;/li&gt;&#xA;&lt;li&gt;Búsqueda extendida archivo de registro&lt;/li&gt;&#xA;&lt;li&gt;Mejor registro, utiliza Log4perl&lt;/li&gt;&#xA;&lt;li&gt;Código HTML válido&lt;/li&gt;&#xA;&lt;li&gt;No hay marcos HTML&lt;/li&gt;&#xA;&lt;li&gt;Fácil de ampliar con plugins&lt;/li&gt;&#xA;&lt;li&gt;100% Perl (usando catalizador marco)&lt;/li&gt;&#xA;&lt;li&gt;Paginación&lt;/li&gt;&#xA;&lt;li&gt;Múltiples temas incluidos&lt;/li&gt;&#xA;&lt;li&gt;Exportación a Excel para el estado y los archivos de registro&lt;/li&gt;&#xA;&lt;li&gt;Menú lateral ajustable&lt;/li&gt;&#xA;&lt;li&gt;CLI plugins para testeo&lt;/li&gt;&#xA;&lt;li&gt;Guardar búsquedas en marcadores personales&lt;/li&gt;&#xA;&lt;li&gt;Herramienta de configuración incluido&lt;/li&gt;&#xA;&lt;li&gt;Interfaz móvil incluido&lt;/li&gt;&#xA;&lt;li&gt;SLA informes/reportes en formato PDF&lt;/li&gt;&#xA;&lt;li&gt;Tiempos de parada Recurrente&lt;/li&gt;&#xA;&lt;li&gt;Dashboard completo&lt;/li&gt;&#xA;&lt;li&gt;Business Process Addon&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;como-trabaja&#34;&gt;Como trabaja&lt;a class=&#34;anchor&#34; href=&#34;#como-trabaja&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Thruk está escrito en Perl usando el &lt;a href=&#34;http://www.catalystframework.org/&#34;&gt;Framework Catalyst&lt;/a&gt;. Como Backend se conecta por medio del módulo Perl &lt;a href=&#34;http://search.cpan.org/dist/Monitoring-Livestatus&#34;&gt;Monitoring::Livestatus&lt;/a&gt;. Thruk se ejecuta como un proceso fastcgi. La Disponibilidad se calcula con el módulo &lt;a href=&#34;http://search.cpan.org/dist/Monitoring-Availability&#34;&gt;Monitoring::Availability&lt;/a&gt;. La autenticación es proporcionada por el servidor web Apache (ejemplo mod_auth_basic, mod_auth_ldap, mod_auth_mysql, …​).&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Monitoração de rede e análise com Nagios</title>
+      <link>http://localhost:1313/manuales/nagios/portugues/</link>
+      <pubDate>Tue, 13 Jan 2015 14:46:00 -0300</pubDate>
+      <guid>http://localhost:1313/manuales/nagios/portugues/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://localhost:1313/manuales/nagios/&#34;&gt;Version del documento original en español&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/manuales/nagios/portugues/brasil_map_color.jpg&#34; class=&#34;align-left&#34; data-query=&#34;?200&#34; width=&#34;200&#34; /&gt; &lt;img src=&#34;http://localhost:1313/manuales/nagios/portugues/portugal_map_color.jpg&#34; class=&#34;align-right&#34; data-query=&#34;?200&#34; width=&#34;200&#34; alt=&#34;portugal_map_color.jpg&#34; /&gt;&lt;/p&gt;&#xA;&lt;img src=&#34;http://localhost:1313/manuales/nagios/nagios_logo.png&#34; class=&#34;align-center&#34; data-query=&#34;?&#34; alt=&#34;nagios_logo.png&#34; /&gt;&#xA;&lt;p&gt;As redes de computadores das organizações tornam-se cada vez mais complexo e exigente operação está se tornando mais exigente. Redes, cada vez mais, as aplicações e as organizações de serviços de apoio estratégico. Portanto, a análise e monitoramento de rede tornou-se uma natureza cada vez mais importante e pró-ativa de trabalho para evitar problemas. Monitoramento com o termo que significa um sistema que monitora constantemente a rede de computadores para detectar sistemas lentos ou com defeito e notifica o administrador de rede em caso de falha via e-mail, SMS ou outros meios.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Implementazione di un sistema di rete, monitor con Nagios</title>
+      <link>http://localhost:1313/manuales/nagios/italiano/</link>
+      <pubDate>Mon, 27 Oct 2014 16:50:41 -0300</pubDate>
+      <guid>http://localhost:1313/manuales/nagios/italiano/</guid>
+      <description>&lt;img src=&#34;http://localhost:1313/varios/bandera-italia.jpg&#34; class=&#34;align-right&#34; alt=&#34;bandera-italia.jpg&#34; /&gt;&#xA;&lt;p&gt;Nagios è un sistema di gestione dell’infrastruttura IT che consente agli amministratori delle aziende identificare i problemi de réte&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

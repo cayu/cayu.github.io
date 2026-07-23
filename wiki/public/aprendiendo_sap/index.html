@@ -1,0 +1,5317 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="En este apartado voy a ir poniendo mi aprendizaje personal con SAP.
+¿Que es SAP?# SAP son las siglas de Systems, Applications, Products in Data Processing. Es un sistema informático basado en módulos integrados, que abarca prácticamente todos los aspectos de la administración empresarial y que se adapta a todas las necesidades de una empresa. Está creado para abarcar todos los sectores del negocio. El lenguaje de programación que usa SAP es el ABAP y es muy parecido al SQL.
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/aprendiendo_sap/">
+  <meta property="og:site_name" content="Wiki de Sergio Cayuqueo">
+  <meta property="og:title" content="Aprendiendo SAP">
+  <meta property="og:description" content="En este apartado voy a ir poniendo mi aprendizaje personal con SAP.
+¿Que es SAP?# SAP son las siglas de Systems, Applications, Products in Data Processing. Es un sistema informático basado en módulos integrados, que abarca prácticamente todos los aspectos de la administración empresarial y que se adapta a todas las necesidades de una empresa. Está creado para abarcar todos los sectores del negocio. El lenguaje de programación que usa SAP es el ABAP y es muy parecido al SQL.">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="website">
+
+
+  <meta itemprop="name" content="Aprendiendo SAP">
+  <meta itemprop="description" content="En este apartado voy a ir poniendo mi aprendizaje personal con SAP.
+¿Que es SAP?# SAP son las siglas de Systems, Applications, Products in Data Processing. Es un sistema informático basado en módulos integrados, que abarca prácticamente todos los aspectos de la administración empresarial y que se adapta a todas las necesidades de una empresa. Está creado para abarcar todos los sectores del negocio. El lenguaje de programación que usa SAP es el ABAP y es muy parecido al SQL.">
+  <meta itemprop="datePublished" content="2018-08-09T15:43:33-03:00">
+  <meta itemprop="dateModified" content="2026-07-23T18:22:08-03:00">
+  <meta itemprop="wordCount" content="5961">
+
+<title>Aprendiendo SAP • Wiki de Sergio Cayuqueo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/aprendiendo_sap/">
+<link rel="stylesheet" href="/book.min.b67edd162318c5083c6df0a88fb33841277a463a19631410445e4034ec6e651c.css" integrity="sha256-tn7dFiMYxQg8bfCoj7M4QSd6RjoZYxQQRF5ANOxuZRw=" crossorigin="anonymous">
+
+
+  <script defer type="module" src="/es.search.min.0d8ef5a46e9d73ded2792bc4dc404ee89897a364056761a43c441c32a9c30525.js" integrity="sha256-DY71pG6dc97SeSvE3EBO6JiXo2QFZ2GkPEQcMqnDBSU=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/aprendiendo_sap/index.xml" title="Aprendiendo SAP" />
+
+  
+</head>
+<body dir="ltr" class="book-kind-section book-type-aprendiendo_sap">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Wiki de Sergio Cayuqueo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Buscar"
+    aria-label="Buscar"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Notas</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Hardware</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/" class="">
+      VMWare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/instalar_vmware_tools/" class="">
+      Instalar VMware Tools</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/agregar_cpu_en_caliente_en_vmware/" class="">
+      Agregar CPU en caliente en VMWare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/datetime/" class="">
+      Parametros para Vmware por cambio de hora de servidores</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/idrac/" class="">
+      iDrac Dell</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/strace/" class="">
+      Strace</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/nginx/" class="">
+      Nginx</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/" class="">
+      Squid</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/hearbeat/" class="">
+      LVS - Hearbeat - Ldirectord - Balanceo de carga y alta disponibilidad</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/rhcs/" class="">
+      Squid &#43; Red Hat Cluster Suite</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bind/" class="">
+      Configuración de Servidor DNS Bind</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/" class="">
+      Linux</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Networking</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/networking/wan_optimization/" class="">
+      WAN Optimization</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/actualizar_suse_linux/" class="">
+      Actualizar SuSE Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/cambiar_planificador_de_disco/" class="">
+      Cambiar planificador de acceso a disco</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/medicion_de_velocidad_de_cambio_en_filesystems_en_un_sistema_linux_fisico_o_virtual/" class="">
+      Medición de velocidad de cambio en filesystems en un sistema Linux (físico o virtual)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/midiendo_el_rendimiento_del_sistema_con_iostat/" class="">
+      Midiendo el rendimiento del sistema con IOSTAT</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/sistema_de_archivos_proc/" class="">
+      Sistema de archivos /proc</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/lvm/" class="">
+      Logical Volume Management 2 (LVM2)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/manejo_de_memoria_en_linux/" class="">
+      Manejo de memoria en Linux</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/manejo_de_memoria_en_linux/hugepages/" class="">
+      Hugepages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/ver_el_dmesg_en_formato_humano/" class="">
+      Ver el dmesg en formato humano</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/midiendo_el_rendimiento_del_sistema_con_sar/" class="">
+      Midiendo el rendimiento del sistema con SAR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/cron/" class="">
+      CRON</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/sed/" class="">
+      SED - Stream EDitor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/configuracion_vpn/" class="">
+      Configuración de acceso VPN desde Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openssh/" class="">
+      OpenSSH</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/compartir_archivos_por_nfs/" class="">
+      Como compartir filesystems por NFS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/" class="">
+      Microsoft</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/windows/" class="">
+      Sistema Operativo Windows</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/windows/scripts_varios_de_powershell/" class="">
+      Scripts varios de PowerShell</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/network_policy_server_nps/" class="">
+      Network Policy Server (NPS)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/apache/" class="">
+      Tips de Apache</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/analisis_forense/" class="">
+      Análisis forense</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/qlikview/" class="">
+      QlikView</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/owncloud/" class="">
+      OwnCloud</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/iptables/" class="">
+      TIPs varios de IPTables</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/celulares/" class="">
+      Teléfonos celulares</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openldap/" class="">
+      Implementacion de un servidor OpenLDAP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/arduino/" class="">
+      Arduino</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/kickstart/" class="">
+      Kickstart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/raspberry_pi/" class="">
+      Raspberry Pi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/postfix/" class="">
+      Postfix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openssl/" class="">
+      OpenSSL</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/" class="">
+      Programación</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Python</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Webscraping</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/webscraping/beautifulsoup/" class="">
+      Beautiful Soup</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/sistema_de_archivos/" class="">
+      Operaciones sobre el sistema de archivos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/django/" class="">
+      Django</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/introduccion_a_awk/" class="">
+      Uso básico de AWK</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/the_linux_cdrom_interface/" class="">
+      The Linux CDROM interface</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/reproductor_de_cd/" class="">
+      Reproductor De Cd</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/console_ioctls_under_linux/" class="">
+      Console IOCTLs Under Linux</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/tools_of_the_trade_--_iostat_vmstat_and_netstat/" class="">
+      Tools of the Trade -- Iostat, Vmstat, and Netstat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/solaris_performance_monitoring/" class="">
+      Solaris Performance Monitoring &amp; Tuning - iostat , vmstat &amp; netstat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/" class="">
+      Bases De Datos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/mysql/" class="">
+      Task MySQL</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/oracle/" class="">
+      Oracle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/mssql/" class="">
+      Microsoft SQL Server</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/postgresql/" class="">
+      PostgreSQL</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/valgrind/" class="">
+      Valgrind</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/kamailio/" class="">
+      Kamailio</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/syslog_centralizado/" class="">
+      Sistema de LOG centralizado</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/inicio_rapido_de_csync2/" class="">
+      Csync para centralizar la configuracion de servicios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/xen_multi_bridge/" class="">
+      Utilizar dos o mas placas de red con Xen</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/sysinfo_dokuwiki/" class="">
+      Dump some hardware info in DokuWiki format</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/ubuntu_domu_en_red_hat/" class="">
+      Xen Red Hat Dom0 y Ubuntu DomU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/enomalism/" class="">
+      Configuraciones a mano</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Fotografia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/fotografia/conceptos/" class="">
+      Sobre el 18-55</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Legales</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Legislacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Nacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/nacion/decreto_155_89/" class="">
+      Decreto 155 89</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/nacion/ley_23302/" class="">
+      LEY 23.302</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/caba/" class="">
+      Legislación Indígena Ciudad Autónoma de Buenos Aires</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/jurisprudencia/" class="">
+      Jurisprudencia</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/" class="">
+      Seguridad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Criptografia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/truecrypt/" class="">
+      Privacidad datos utilizando TrueCrypt</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/veracrypt/" class="">
+      Privacidad datos utilizando VeraCrypt</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/gnupg/" class="">
+      The GNU Privacy Guard</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Gestion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/gestion/itil/" class="">
+      ITIL - Information Technology Infrastructure Library</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      How To</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/how_to/prevent_a_fork_bomb_by_limiting_user_process/" class="">
+      How to: Prevent a fork bomb by limiting user process</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Programacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Redes</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/nodejs/" class="">
+      NodeJS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/python/" class="">
+      Scripts simples en python</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/python/scapy/" class="">
+      Scapy</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/scanner_de_puertos_simple/" class="">
+      Scanner De Puertos Simple</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/shellcode/" class="">
+      Shellcode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/" class="">
+      Seguridad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Certificaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/" class="">
+      Profesional certificado en seguridad ofensiva (OSCP)</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/preparacion_personal/" class="">
+      Preparación personal para rendir la certificación OSCP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/oscp_prep_class/" class="">
+      OSCP Prep class</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/oscp-survival-guide/" class="">
+      OSCP-Survival-Guide</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Exploits</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/exploits/mempodipper/" class="">
+      mempodipper</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/exploits/dirty_cow/" class="">
+      Dirty COW</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/why_i_would_never_buy_a_dell_powerconnect_2724/" class="">
+      Why I would never buy a Dell PowerConnect 2724</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/understanding_bash_fork_bomb/" class="">
+      Understanding Bash fork() bomb ~ :(){ :|:&amp; };:</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/pequena_guia_de_seguridad_informatica/" class="">
+      Pequeña guía de seguridad informática</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/auditd/" class="">
+      Auditoría en Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/process_accounting_psacct/" class="">
+      Process Accounting (PSACCT)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/" class="">
+      Enlaces útiles</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/" class="">
+      Utilidades de Red</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/ngrep/" class="">
+      Network Grep - ngrep</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/msndump/" class="">
+      MSN Dump</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/tcpdump/" class="">
+      TCPDUMP</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/" class="active">
+      Aprendiendo SAP</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/sap_hana/" class="">
+      SAP HANA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/desarrollo_y_programacion_en_abap/" class="">
+      Desarrollo y programación en ABAP</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/" class="">
+      Redes y comunicaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Conectividad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/conectividad/fibra_optica/" class="">
+      Fibra óptica</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Firewalls</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/fortinet/" class="">
+      Fortinet</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/fortinet/fortiap/" class="">
+      FortiGate como controlador Wireless</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/pfsense/" class="">
+      pfSense</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Notas</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/notas/nc/" class="">
+      Netcat</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Telefonia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Asterisk</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/" class="">
+      Conectividad con Asterisk</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/spa400/" class="">
+      SPA400</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/tdm400p/" class="">
+      Instalar Placa TDM400P</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Cisco</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/call_manager/" class="">
+      Cisco Call Manager</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/routers/" class="">
+      Routers Cisco</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/telefonos/" class="">
+      Teléfonos CISCO</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Videoconferencia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/videoconferencia/openmcu-ru/" class="">
+      OpenMCU-ru</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/flows/" class="">
+      Network Flow</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/flows/ntop/" class="">
+      Ntop</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/rancid/" class="">
+      Rancid (Really Awesome New Cisco confIg Differ)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/conceptos/" class="">
+      Conceptos de redes informáticas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/" class="">
+      Switches</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Cisco</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/2960c/" class="">
+      CISCO - 2960-C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/2960x/" class="">
+      CISCO - 2960-X</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/sf300/" class="">
+      CISCO - SF300</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/extreme_networks/" class="">
+      Extreme Networks</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/" class="">
+      Hewlett Packard</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/aruba/" class="">
+      Switches Aruba</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/" class="">
+      3COM</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Voice</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/voice/vlan/" class="">
+      VLAN de voz</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/debug_y_analisis_de_equipos_hp_3com/" class="">
+      Debug y análisis de equipos HP/3com</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cumulus_networks/" class="">
+      Cumulus Networks</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/gestion/" class="">
+      Gestión</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/gestion/taiga/" class="">
+      Taiga</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/leyes/" class="">
+      Leyes, Decretos y Ordenanzas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/" class="">
+      Charlas y Eventos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/pueblos_originarios_y_la_industria_del_software/" class="">
+      Pueblos Originarios y la industria del Software</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/uso_de_la_consola_linux/" class="">
+      Taller de uso de Consola Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/lanux_agosto_2010/" class="">
+      Servidores VPS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/" class="">
+      Manuales de proyectos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Tivoli Tsm</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/manual_de_manejo_de_backups_con_tivoli/" class="">
+      Manual de manejo de respaldos con Tivoli</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/tsm_sql_tips/" class="">
+      Mandatos de prueba de validación de la actualización de la base de datos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/tsm_sql_hints/" class="">
+      TSM SQL Hints</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/sql_for_tivoli_storage_manager/" class="">
+      SQL for Tivoli Storage Manager</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/emc_data_domain/" class="">
+      EMC Data Domain</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/" class="">
+      Monitoria y análisis de Red con Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/" class="">
+      Monitoreo de Red con Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Productos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/oracle/" class="">
+      Oracle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/argentina_-_arba_-_codigo_de_operacion_de_traslado_cot/" class="">
+      Argentina - ARBA - Código de Operación de Traslado (COT)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/asterisk/" class="">
+      Asterisk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/riverbed/" class="">
+      Riverbed</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/argentina_-_afip_-_factura_electronica/" class="">
+      Argentina AFIP Factura Electrónica</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/sap/" class="">
+      SAP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/ibm_tivoli_tsm/" class="">
+      Tivoli Storage Manager - TSM</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/brasil_-_nota_fiscal_electronica_nfe/" class="">
+      Brasil - Nota Fiscal Electrónica NFe</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/brasil_-_nota_fiscal_electronica_nfe/referencias_utiles_de_nfe/" class="">
+      Referencias útiles de NFE</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/microstrategy/" class="">
+      MicroStrategy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/qlikview/" class="">
+      QlikView</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/servidor_web/" class="">
+      Configuración del servidor Web</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/pnp4nagios/" class="">
+      PNP4Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/tipos_de_notificaciones/" class="">
+      Tipos de notificaciones</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_referencias_generales/" class="">
+      Referencias generales</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_referencias_generales/sistema_de_inventario/" class="">
+      Sistema de inventario</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagios_network_analyzer/" class="">
+      Nagios Network Analyzer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/" class="">
+      Correlación de eventos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/rsyslog/" class="">
+      Reliable system and kernel logging daemon</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/eventdb/" class="">
+      EventDB</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/syslog_ng/" class="">
+      Syslog-NG</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/implementacion_tecnica/" class="">
+      Implementación Técnica de Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/implementacion_tecnica/implementacion_tecnica_version_ubuntu_server_20.04/" class="">
+      Implementación Técnica de Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/capacitacion_en_monitoreo_de_red/" class="">
+      Capacitación en monitoreo de Red</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Certificaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/capacitacion_en_monitoreo_de_red/certificaciones/sox_-_sarbanes-oxley/" class="">
+      SOX</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/desarrollo_de_plugins_de_nagios/" class="">
+      Desarrollo de plugins de Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/desarrollo_de_plugins_de_nagios/problemas_comunes/" class="">
+      Problemas comunes de los plugins de Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/snmp/" class="">
+      SNMP (Simple Network Management Protocol)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagios_event_radio_dispatcher_nerd/" class="">
+      Nagios Event Radio Dispatcher (NERD)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/mk_livestatus/" class="">
+      MK Livestatus</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/ndo2utils/" class="">
+      NDO2Utils</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagvis/" class="">
+      Nagvis</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagvis/diseno_de_tablero_de_control/" class="">
+      Diseño de tablero de control</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/graficos_en_ajax/" class="">
+      Gráficos en AJAX</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_tips_y_recomendaciones/" class="">
+      TIPS y recomendaciones</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_otras_soluciones_basadas_en_nagios/" class="">
+      Anexo - Otras soluciones basadas en Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_comandos_externos/" class="">
+      Comandos externos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/plugins_usuales_de_nagios/" class="">
+      Plugins usuales de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/icmp/" class="">
+      ICMP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_codigo_fuente_de_nagios/" class="">
+      Análisis del código fuente de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_configuracion_desde_version_3_a_4/" class="">
+      Incompatibilidades de configuración v3 a v4</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/codigo_fuente/" class="">
+      Análisis del código fuente de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/thruk/" class="">
+      Thruk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/portugues/" class="">
+      Monitoração de rede e análise com Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/italiano/" class="">
+      Implementazione di un sistema di rete, monitor con Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_freeradius/" class="">
+      Servidor FreeRadius</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_systemimager/" class="">
+      Proyecto Servidor de Backups</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/an_introduction_to_linux_shell_scripting_for_dbas/" class="">
+      An Introduction to Linux Shell Scripting for DBAs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/filtrador_de_logs/" class="">
+      Filtrador de LOGS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/drbd/" class="">
+      DRBD (Distributed Replicated Block Device)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/" class="">
+      Lotus Notes</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/problemas_winmail.dat_outlook/" class="">
+      Problemas Winmail.dat Outlook</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/listar_ultimo_mes_de_login_de_usuarios/" class="">
+      Listar último mes de login de usuarios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/reemplazar_diseno_base_de_datos/" class="">
+      Reemplazar Diseño Base de Datos</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_squid/" class="">
+      Squid Proxy Server</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/red_restringida/" class="">
+      Red restringida</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/novell_audit/" class="">
+      Novell Identity Audit</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_dhcp/" class="">
+      Servicio DHCP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/ils/" class="">
+      ILS (Internet Locator Server)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Aprendiendo SAP</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#que-es-sap">¿Que es SAP?</a></li>
+    <li><a href="#qué-son-los-módulos-sap">¿Qué son los módulos SAP?</a>
+      <ul>
+        <li><a href="#erp">ERP</a></li>
+      </ul>
+    </li>
+    <li><a href="#sap-landscape">SAP Landscape</a></li>
+    <li><a href="#implementando-sap">Implementando SAP</a></li>
+    <li><a href="#administrando-sap---basis">Administrando SAP - Basis</a>
+      <ul>
+        <li><a href="#optimización-del-sistema-sap">Optimización del sistema SAP</a>
+          <ul>
+            <li><a href="#gnulinux">GNU/Linux</a></li>
+            <li><a href="#acerca-de-suse-linux-y-sap">Acerca de SuSE LiNUX y SAP</a></li>
+          </ul>
+        </li>
+        <li><a href="#monitoreo-del-sistema-sap">Monitoreo del sistema SAP</a>
+          <ul>
+            <li><a href="#capas-de-análisis">Capas de análisis</a></li>
+            <li><a href="#checklist-diario">Checklist Diario</a></li>
+            <li><a href="#computing-center-management-system---ccms">Computing Center Management System - CCMS</a></li>
+            <li><a href="#nagios-sap-ccms">Nagios SAP CCMS</a></li>
+          </ul>
+        </li>
+        <li><a href="#permitir-uso-del-usuario-sap">Permitir uso del usuario SAP*</a></li>
+        <li><a href="#ordenes-de-transporte">Ordenes de Transporte</a>
+          <ul>
+            <li><a href="#importar-una-orden-de-transporte-desde-un-sistema-externo">Importar una Orden de Transporte desde un sistema externo</a></li>
+            <li><a href="#se10---transport-organizer">SE10 - Transport Organizer</a></li>
+          </ul>
+        </li>
+        <li><a href="#componentes-del-sistema-sap">Componentes del sistema SAP</a>
+          <ul>
+            <li><a href="#sap-gateway">SAP Gateway</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#base-de-datos-hana">Base de datos HANA</a></li>
+    <li><a href="#base-de-datos-oracle">Base de datos Oracle</a>
+      <ul>
+        <li><a href="#manejo-de-backup-y-restores">Manejo de Backup y Restores</a>
+          <ul>
+            <li><a href="#backup-de-datos">Backup de datos</a></li>
+            <li><a href="#restore-de-datos">Restore de datos</a></li>
+          </ul>
+        </li>
+        <li><a href="#chequeando-consistecia">Chequeando consistecia</a></li>
+        <li><a href="#estadisticas">Estadisticas</a></li>
+        <li><a href="#administrando-oracle">Administrando Oracle</a>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#administrando-sap---funcional">Administrando SAP - Funcional</a>
+      <ul>
+        <li><a href="#apertura-y-cierre-de-mandante">Apertura y cierre de mandante</a></li>
+        <li><a href="#administración-de-jobs">Administración de JOBS</a>
+          <ul>
+            <li><a href="#creación-de-jobs-de-fondo">Creación de JOBS de Fondo</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#utilizando-sap">Utilizando SAP</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#como-conectar-el-sapgui-desde-linux">Como conectar el SAPgui desde Linux</a></li>
+            <li><a href="#script-para-obtener-datos-del-sistema">Script para obtener datos del sistema</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#actualización-de-servidor-sap">Actualización de servidor SAP</a>
+      <ul>
+        <li><a href="#actualización-del-kernel-de-sap">Actualización del Kernel de SAP</a>
+          <ul>
+            <li><a href="#instrucciones-para-actualizar-el-kernel-de-sap-en-windows">Instrucciones para actualizar el Kernel de SAP en Windows</a></li>
+            <li><a href="#instrucciones-para-actualizar-el-kernel-de-sap-en-linux">Instrucciones para actualizar el Kernel de SAP en Linux</a></li>
+            <li><a href="#post-actualización">Post Actualización</a></li>
+          </ul>
+        </li>
+        <li><a href="#administración-del-motor-de-java-de-portal">Administración del motor de Java de PORTAL</a>
+          <ul>
+            <li><a href="#panel-de-administración-de-procesos">Panel de administración de procesos</a></li>
+            <li><a href="#aplicar-un-deploy">Aplicar un deploy</a></li>
+            <li><a href="#reset-de-contraseña-sdm">Reset de contraseña SDM</a></li>
+          </ul>
+        </li>
+        <li><a href="#actualización-del-sistema-operativo-de-sap">Actualización del Sistema Operativo de SAP</a>
+          <ul>
+            <li><a href="#notas-sap">Notas SAP</a></li>
+          </ul>
+        </li>
+        <li><a href="#export--import-de-tablas-de-sap">Export / Import de Tablas de SAP</a></li>
+      </ul>
+    </li>
+    <li><a href="#renombrar-un-sistema-sap">Renombrar un sistema SAP</a>
+      <ul>
+        <li><a href="#relevamiento">Relevamiento</a></li>
+        <li><a href="#modificaciones">Modificaciones</a>
+          <ul>
+            <li><a href="#identificador-de-base-de-datos-oracle">Identificador de Base de Datos Oracle</a></li>
+            <li><a href="#conectividad-interna">Conectividad interna</a></li>
+            <li><a href="#perfiles-de-usuarios-de-sistema">Perfiles de usuarios de sistema</a></li>
+            <li><a href="#iniciando-sap">Iniciando SAP</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#clonación-de-un-sistema-sap">Clonación de un sistema SAP</a></li>
+    <li><a href="#problemas-comunes">Problemas comunes</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#analizando-problemas-de-ejecución-poco-descriptivos">Analizando problemas de ejecución poco descriptivos</a></li>
+            <li><a href="#unknown-webmethod-waitforservicestarted">Unknown webmethod: WaitforServiceStarted</a></li>
+            <li><a href="#note-1069225---no-hw-id-received-by-mssg-server">Note 1069225 - NO HW ID RECEIVED BY MSSG SERVER</a></li>
+            <li><a href="#registrar-programa-rfc">Registrar programa RFC</a></li>
+            <li><a href="#convertir-un-certificado-pfx-a-pse">Convertir un certificado PFX a PSE</a></li>
+            <li><a href="#webdynpro---503-service-unavailable">WebDynPro - 503 Service Unavailable</a></li>
+            <li><a href="#acceso-a-un-webservice-https-con-un-certificado-autofirmado">Acceso a un Webservice HTTPS con un certificado autofirmado</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#agregando-funcionalidades-y-oscuridades">Agregando funcionalidades y oscuridades</a>
+      <ul>
+        <li><a href="#oscuridad--librerias-extra-para-sap">Oscuridad : Librerias extra para SAP</a>
+          <ul>
+            <li><a href="#sap-note-1644499---database-connectivity-from-linux-to-sql-server">SAP Note 1644499 - Database connectivity from Linux to SQL Server</a></li>
+            <li><a href="#nota">Nota</a></li>
+            <li><a href="#convert-saplogonini-file-to-connections-file-for-sapgui-java">Convert saplogon.ini file to connections file for SAPGUI Java</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#referencias-1">Referencias</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><p>En este apartado voy a ir poniendo mi aprendizaje personal con SAP.</p>
+<h2 id="que-es-sap">¿Que es SAP?<a class="anchor" href="#que-es-sap">#</a></h2>
+<p><strong>SAP</strong> son las siglas de <em>Systems, Applications, Products in Data Processing</em>. Es un sistema informático basado en módulos integrados, que abarca prácticamente todos los aspectos de la administración empresarial y que se adapta a todas las necesidades de una empresa. Está creado para abarcar todos los sectores del negocio. El lenguaje de programación que usa SAP es el ABAP y es muy parecido al SQL.</p>
+<h2 id="qué-son-los-módulos-sap">¿Qué son los módulos SAP?<a class="anchor" href="#qu%c3%a9-son-los-m%c3%b3dulos-sap">#</a></h2>
+<p>El sistema SAP está compuesto de una serie de áreas funcionales o módulos, que responden de forma completa, y en tiempo real, a los procesos operativos de las compañías. Aunque pueden ser agrupados en tres grandes áreas (financiera, logística y de recursos humanos), funcionan de un modo integrado, dado que existe una conexión natural entre los diferentes procesos.</p>
+<p>En el área financiera, el módulo FI proporciona una visión completa de las funciones contables y financieras, e incluye un amplio sistema de información y de generación de reportes para facilitar la toma de decisiones. El módulo CO (Controlling) se utiliza para representar la estructura de costos y los factores que tienen influencia, lo que genéricamente se conoce como contabilidad interna de las compañías. Otros módulos son IM (Gestión de inversiones) y TR (Tesorería).</p>
+<p>En el área logística, el módulo LO brinda las herramientas e informes necesarios para analizar y gestionar el estado de la logística de la compañía y realizar previsiones en la cadena de suministros. El módulo MM (Gestión de materiales) comprende todas las actividades con la adquisición y control de los inventarios, en tanto PM (Mantenimiento) se encarga de los sistemas de control de plantas y PP (Planificación y de la producción) engloba las diferentes tareas y metodologías utilizadas en el proceso mismo de la producción, SD (Ventas y distribución) es el módulo comercial.</p>
+<p>El módulo de Recursos Humanos (HR) incluye todos los procesos necesarios para controlar y gestionar de una manera eficaz las necesidades de recursos humanos de las empresas: desde la gestión de candidatos hasta la elaboración del desarrollo del personal, así como el control de tiempos. Sus componentes abarcan el soporte total para la administración de salarios y nóminas, modelos de turnos, planificación de trabajo, gestión de viajes, entre otros.</p>
+<p>El módulo de Gestión de Relaciones con los Clientes nos sirve para administrar todos nuestros contactos con nuestros clientes mediante un registro de cualquier actividad que hubiéremos entablado con el mismo. Si el cliente nos llamó para consultarnos, esto queda registrado en la base de datos, si llamamos nosotros al cliente para ofrecerle un producto esto queda registrado, si a raíz de ese llamado el cliente realizó una compra esto también queda registrado.</p>
+<ul>
+<li>SAP ERP (Enterprise Resource Planning)</li>
+<li>SAP CRM (Customer Relationship Management)</li>
+<li>SAP SRM (Supplier Relationship Management)</li>
+<li>SAP PLM (Product Lifecycle Management)</li>
+<li>SAP SCM (Supply Chain Management)</li>
+</ul>
+<p>Además de los módulos estrictamente funcionales existe una arquitectura técnica -denominada SAP Netweaver- con sus correspondientes módulos técnicos que se enumeran a continuación:</p>
+<ul>
+<li>People Integration
+<ul>
+<li>SAP MI (Mobile Infrastructure)</li>
+<li>SAP EP (Enterprise Portal)</li>
+<li>SAP KM (Knowledge Management)</li>
+</ul>
+</li>
+<li>Information Integration
+<ul>
+<li>SAP BI (Business Intelligence)</li>
+<li>SAP MDM (Master Data Management)</li>
+</ul>
+</li>
+<li>Process Integration
+<ul>
+<li>SAP XI (Exchange Infrastructure)</li>
+<li>SAP BPM (Business Process Management)</li>
+</ul>
+</li>
+<li>Application platform
+<ul>
+<li>ABAP Stack</li>
+<li>Java Stack</li>
+</ul>
+</li>
+<li>Composite Application Framework</li>
+<li>Lifecycle Management</li>
+<li>Integración con MS .net</li>
+<li>Integración con IBM Websphere</li>
+</ul>
+<h3 id="erp">ERP<a class="anchor" href="#erp">#</a></h3>
+<p>El sistema ERP está compuesto de una serie de módulos funcionales que responden de forma completa a los procesos operativos de las empresas.</p>
+<ul>
+<li>FI (Gestión de Finanzas - Contabilidad Financiera)</li>
+<li>CO (Control de Gestión - Contabilidad Análitica)</li>
+<li>PS (Gestión de proyectos)</li>
+<li>MM (Gestión de Materiales - Compras e Inventario)</li>
+<li>RE (Gestión de bienes Inmuebles)</li>
+<li>AA (Gestión de Activos fijos - Submódulo de FI)</li>
+<li>SL (Gestión de Promociones)</li>
+<li>IM (Gestión de Inversiones)</li>
+<li>SD (Gestión de ventas y distribución)</li>
+<li>QM (Gestión de calidad)</li>
+<li>PP (Gestión de producción)</li>
+<li>PM (Mantenimiento de Plantas industriales)</li>
+<li>HR (Gestión de RR.HH.)</li>
+</ul>
+<p><strong>CA-Cross Application (Aplicación Cruzada, aplicable a todos los módulos de SAP)</strong></p>
+<ul>
+<li>CA-BPT Business Process Technology (Tecnología de Procesos de Negocios)</li>
+<li>CA-DM Document Management (Administración de documentos)</li>
+<li>CA-CL Classification (Clasificación)</li>
+<li>CA-CAD Integration (Integración)</li>
+</ul>
+<p><strong>FI-Financial Accounting (Contabilidad financiera)</strong></p>
+<p>La contabilidad financiera sigue unos requerimientos legales, ya que es la que se presenta a personas externas a la empresa.</p>
+<ul>
+<li>FI-GL General Ledger (Libro mayor)</li>
+<li>FI-AR Accounts Receivable (Cuentas a cobrar)</li>
+<li>FI-AP Accounts Payable (Cuentas a pagar)</li>
+<li>FI-SL Special Purpose Ledger (Libros mayores especiales)</li>
+<li>FI-AA Asset Accounting (Activos Fijos)</li>
+<li>FI-FM Funds Management (Gestión de fondos/liquidez)</li>
+<li>FI-TM Travel Management (Gastos de viaje)</li>
+</ul>
+<p><strong>CO-Controlling (Contabilidad Analítica)</strong></p>
+<p>El Controlling ayuda en la gestión de la empresa. Es por tanto de uso interno.</p>
+<ul>
+<li>CO-CCA Cost Center Accounting (Control por Centros de coste)</li>
+<li>CO-PCA Profit Center Accounting (Control por Centros de beneficio)</li>
+<li>CO-OM Overhead Cost Controlling (Control de Gastos Generales)</li>
+<li>CO-PC Product Cost Controlling (Control de Coste de Producción)–&gt; Integración con PP y SD</li>
+<li>CO-ABC Activity-Based Costing (Análisis de Costes basado en Actividades)</li>
+<li>CO-PA Profitability Analysis (Análisis de Rentabilidad)–&gt; Integración con PP y SD</li>
+<li>CO-PRO Project Control (Control de Proyectos) –&gt; Integración con PS</li>
+</ul>
+<p><strong>IM-Capital Investment Management (Gestión de Inversión y su Capitalización)</strong></p>
+<p>Permite el control y seguimiento de proyectos de inversión. Gestiona la planificación, presupuesto, contabilizaciones reales y capitalización de la inversión.</p>
+<ul>
+<li>IM-FA Tangible Fixed Assets (Activos Fijos Tangibles)</li>
+<li>IM-FI Financial Investments (Inversiones Financieras)</li>
+</ul>
+<p><strong>EC-Enterprise Controlling (Control de Empresa)</strong></p>
+<ul>
+<li>EC-EIS Executive Information System (Sistema de Información a la Alta Dirección)</li>
+<li>EC-BP Business Planning (Planificación Empresarial)</li>
+<li>EC-CS Consolidation System (Consolidación de la Empresa)</li>
+<li>EC-PCA Profit Center Accounting (Contabilidad Centros de Beneficio)</li>
+</ul>
+<p><strong>TR-Treasury. (Tesorería)</strong></p>
+<ul>
+<li>TR-TM Treasury Management (Administración de Tesoreria)</li>
+<li>TR-FM Funds Management (Administración de los Fondos)</li>
+<li>TR-CM Cash Management (Administración de Efectivo)</li>
+</ul>
+<p><strong>PS-Project System (Sistema de Proyectos)</strong></p>
+<ul>
+<li>PS-BD Basic Data (Datos Básicos)</li>
+<li>PS-OS Operational Structures (Estructuras operacionales)</li>
+<li>PS-PLN Project Planning (Planificación de proyectos)</li>
+<li>PS-APP Approval (Aprobación)</li>
+<li>PS-EXE Project Execution / Integration (Ejecución / Integración de Proyectos)</li>
+<li>PS-IS Information System (Sistema de información)</li>
+</ul>
+<p><strong>LO-Logistics General. Logística General</strong></p>
+<ul>
+<li>LO-LIS Logistic Information System (Sistema de información logística)</li>
+<li>LO-MD Master Data (Datos maestros)</li>
+<li>LO-PR Forecast (Previsiones)</li>
+<li>LO-VC Variant Configuration (Variante de configuración)</li>
+<li>LO-ECH Engineering Change Management (Administración de cambios de ingeniería)</li>
+</ul>
+<p><strong>HR-Human Resources (Recursos Humanos)</strong></p>
+<ul>
+<li>HR-PD Personal Planning and Development (Planificación y Desarrollo de Personal)</li>
+<li>PD-OM Organizational Management (Administración Organizativa)</li>
+<li>PD-SCM Seminar and Convention Management (Administración de Seminarios y Convenciones)</li>
+<li>PD-PD Personnel Development (Desarrollo de Personal)</li>
+<li>PD-WFP Workforce Planning (Planificación de Personal)</li>
+<li>PD-RPL Room Reservations Planning (Planificación de Reservas de Salas)</li>
+</ul>
+<p><strong>HR-PA Personnel Administration (Administración de Personal)</strong></p>
+<ul>
+<li>PA-EMP Employee Management (Administración de Personal)</li>
+<li>PA-BEN Benefits (Beneficios)</li>
+<li>PA-COM Compensation Administration (Administración de Compensaciones)</li>
+<li>PA-APP Applicant Management (Administración de candidatos)</li>
+<li>PA-TIM Time Management (Administración de Tiempos)</li>
+<li>PA-INW Incentive Wages (Incentivos Salariales)</li>
+<li>PA-TRV Travel Expenses (Gastos de Viaje)</li>
+<li>PA-PAY Payroll (Nómina)</li>
+</ul>
+<h2 id="sap-landscape">SAP Landscape<a class="anchor" href="#sap-landscape">#</a></h2>
+<p>Ambientes que componen un sistema SAP</p>
+<ul>
+<li><strong>Desarrollo</strong> donde acceden los consultores y desarrolladores. Este ambiente no posee información del trabajo diario de la organización.</li>
+<li><strong>Calidad</strong> al que acceden los consultores de producto, consultores funcionales, y usuarios para probar el correcto funcionamiento del programa o funcionalidad configurada en el ambiente de desarrollo pero sin alterar los datos del día a día de la organización, con datos de prueba no críticos.</li>
+<li><strong>Producción</strong> donde los consultores y desarrolladores no acceden, salvo en casos particulares y solo como visualización, y es en donde la organización posee sus datos operativos y al que acceden todos los usuarios finales del sistema.</li>
+</ul>
+<img src="/aprendiendo_sap/sap-landscape.jpg" class="align-center" alt="sap-landscape.jpg" />
+<h2 id="implementando-sap">Implementando SAP<a class="anchor" href="#implementando-sap">#</a></h2>
+<h2 id="administrando-sap---basis">Administrando SAP - Basis<a class="anchor" href="#administrando-sap---basis">#</a></h2>
+<p>Cuando hablamos de SAP Basis, nos referimos a la capa de base de las aplicaciones SAP, el consultor Basis se encarga de instalar la plataforma SAP y los módulos requeridos.</p>
+<h3 id="optimización-del-sistema-sap">Optimización del sistema SAP<a class="anchor" href="#optimizaci%c3%b3n-del-sistema-sap">#</a></h3>
+<h4 id="gnulinux">GNU/Linux<a class="anchor" href="#gnulinux">#</a></h4>
+<p>Podemos ver la nota referida a configuración de páginas grandes memoria : <a href="/notas/linux/manejo_de_memoria_en_linux/hugepages/">Hugepages</a>. Si utilizamos VMware, posiblemente necesitemos tambien <a href="/notas/linux/cambiar_planificador_de_disco/">cambiar el planificador de disco de la máquina virtual</a>.</p>
+<h4 id="acerca-de-suse-linux-y-sap">Acerca de SuSE LiNUX y SAP<a class="anchor" href="#acerca-de-suse-linux-y-sap">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>1999</th>
+<th>First Linux certified for SAP software</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2006</td>
+<td>First operating system certified for SAP Adaptive Computing Controller (ACC)<br />
+Selected operating system for use with SAP BWA<br />
+SAP’s Linux/UNIX software development platform</td>
+</tr>
+<tr>
+<td>2007</td>
+<td>First virtualization (Xen) validated for SAP<br />
+First joint seamless and integrated Linux support through SAP Solution Manager</td>
+</tr>
+<tr>
+<td>2008</td>
+<td>Co-development of SUSE Installation Wizard for faster deployment of SAP and SUSE software<br />
+Selected operating system for use with SAP Business ByDesign<br />
+SAP Pinnacle Award 2008 Winner</td>
+</tr>
+<tr>
+<td>2009</td>
+<td>Selected operating system for use with SAP HANA<br />
+SAP Pinnacle Award 2009 Finalist</td>
+</tr>
+<tr>
+<td>2010</td>
+<td>Four validated high availability best practices for SAP environment<br />
+First Linux supported on Amazon Web Services</td>
+</tr>
+<tr>
+<td>2011</td>
+<td>Availability of SUSE Linux Enterprise Server for SAP Applications, the most optimized operating system for SAP workload with built-in high availability, faster deployment, page cache management, enterprise support services</td>
+</tr>
+<tr>
+<td>2012</td>
+<td>Distribution of ClamSAP (anti-virus connector to ClamAV) with SUSE Linux Enterprise Server for SAP Applications<br />
+First Linux distributor to certify High Availability solution for integration with SAP NetWeaver</td>
+</tr>
+<tr>
+<td>2013</td>
+<td>SUSE ads new channel program for SAP Business One HANA</td>
+</tr>
+</tbody>
+</table>
+<p>In summary, SUSE Linux Enterprise is:</p>
+<ul>
+<li>The leading platform for SAP solutions on Linux</li>
+<li>Selected by thousands of SAP customers</li>
+<li>The only Enterprise Linux optimized for SAP solutions</li>
+<li>SAP’s development platform for UNIX and Linux</li>
+<li>The recommended and supported OS for SAP HANA</li>
+</ul>
+<h5 id="novedades-de-suse-sp2-para-sap">Novedades de SuSE SP2 para SAP<a class="anchor" href="#novedades-de-suse-sp2-para-sap">#</a></h5>
+<ul>
+<li>3.0 Linux kernel: SP2 includes scheduler and memory management optimizations, support for transparent huge pages and per-CPU network load balancing. These features improve the performance of compute and I/O intensive workloads. SP2 supports the latest Intel* Xeon and AMD* Opteron processors, and exploits new hardware RAS features like CPU and memory offlining.</li>
+<li>Linux Containers: SP2 includes support for Linux Containers - highly efficient and low overhead OS virtualization. Also designed to work well with Xen*,KVM, ESX and Hyper-V*, SP2 offers the most extensive virtualization capabilities of any enterprise Linux distribution.</li>
+</ul>
+<h5 id="referencias">Referencias<a class="anchor" href="#referencias">#</a></h5>
+<table>
+<thead>
+<tr>
+<th>Notas KB SuSE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Virtual SLES11SP1 shows bad IO performance when accessing raw disks<br />
+<a href="https://www.suse.com/support/kb/doc.php?id=7009616">https://www.suse.com/support/kb/doc.php?id=7009616</a></td>
+</tr>
+<tr>
+<td>Low Disk Space Conditions on SUSE<br />
+<a href="https://www.suse.com/support/kb/doc.php?id=7002723">https://www.suse.com/support/kb/doc.php?id=7002723</a></td>
+</tr>
+<tr>
+<td>CIFS mount does not return the proper file system rights<br />
+<a href="https://www.suse.com/support/kb/doc.php?id=7010756">https://www.suse.com/support/kb/doc.php?id=7010756</a></td>
+</tr>
+<tr>
+<td>Notas KB VMware</td>
+</tr>
+<tr>
+<td>Configurar discos para utilizar adaptadores VMware Paravirtual SCSI (PVSCSI) (2033061)<br />
+<a href="http://kb.vmware.com/selfservice/microsites/search.do?cmd=displayKC&amp;externalId=2033061">http://kb.vmware.com/selfservice/microsites/search.do?cmd=displayKC&amp;externalId=2033061</a></td>
+</tr>
+<tr>
+<td>Setting the number of cores per CPU in a virtual machine (1010184)<br />
+<a href="http://kb.vmware.com/selfservice/microsites/search.do?cmd=displayKC&amp;externalId=1010184">http://kb.vmware.com/selfservice/microsites/search.do?cmd=displayKC&amp;externalId=1010184</a></td>
+</tr>
+<tr>
+<td>Notas SAP</td>
+</tr>
+<tr>
+<td>1672954 - Oracle 11g: Usage of hugepages on Linux</td>
+</tr>
+<tr>
+<td>1122388 - Linux: VMware vSphere configuration guidelines</td>
+</tr>
+<tr>
+<td>Notas Oracle</td>
+</tr>
+<tr>
+<td><a href="http://docs.oracle.com/cd/E37670_01/E37355/html/ol_config_hugepages.html">http://docs.oracle.com/cd/E37670_01/E37355/html/ol_config_hugepages.html</a></td>
+</tr>
+<tr>
+<td><a href="https://metalink.oracle.com/metalink/plsqlf?p=130:14:2414882707157355558">https://metalink.oracle.com/metalink/plsqlf?p=130:14:2414882707157355558</a>::::p14_database_id,p14_docid,p14_show_header,p14_show_help,p14_black_frame,p14_font:NOT,401749.1,1,0,1,helvetica</td>
+</tr>
+</tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th>Notas técnicas no oficiales</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><a href="http://scn.sap.com/community/oracle/blog/2013/06/17/oracle-myths-and-common-misconceptions-about-transparent-huge-pages-for-oracle-databases-on-linux-uncovered">http://scn.sap.com/community/oracle/blog/2013/06/17/oracle-myths-and-common-misconceptions-about-transparent-huge-pages-for-oracle-databases-on-linux-uncovered</a></td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="monitoreo-del-sistema-sap">Monitoreo del sistema SAP<a class="anchor" href="#monitoreo-del-sistema-sap">#</a></h3>
+<h4 id="capas-de-análisis">Capas de análisis<a class="anchor" href="#capas-de-an%c3%a1lisis">#</a></h4>
+<p>Aspectos generales a tener en cuenta a la hora de implementar un monitoreo integral de un sistema SAP</p>
+<h5 id="hardware">Hardware<a class="anchor" href="#hardware">#</a></h5>
+<ul>
+<li>Estado general físico del Hardware
+<ul>
+<li>Temperatura, FAN, chassis</li>
+</ul>
+</li>
+</ul>
+<h5 id="sistema-operativo">Sistema Operativo<a class="anchor" href="#sistema-operativo">#</a></h5>
+<ul>
+<li>Carga de procesamiento</li>
+<li>Estado de almacenamiento</li>
+<li>Servicios</li>
+<li>Procesos</li>
+<li>Logs de sistema</li>
+</ul>
+<h5 id="base-de-datos">Base de datos<a class="anchor" href="#base-de-datos">#</a></h5>
+<ul>
+<li>Conexiones</li>
+<li>Espacio asignado</li>
+<li>Estado de Backup y respaldos</li>
+<li>Archivos de logs</li>
+</ul>
+<h5 id="sap---basis">SAP - Basis<a class="anchor" href="#sap---basis">#</a></h5>
+<ul>
+<li>Central Instace
+<ul>
+<li>Application servers</li>
+</ul>
+</li>
+<li>Procesos de diálogo</li>
+<li>Usuarios</li>
+<li>JOBs</li>
+<li>Dumps</li>
+<li>R3Syslog</li>
+<li>Message Server</li>
+<li>Spool</li>
+</ul>
+<h5 id="sap---aplicaciones">SAP - Aplicaciones<a class="anchor" href="#sap---aplicaciones">#</a></h5>
+<ul>
+<li>Login</li>
+<li>Sistema de transportes</li>
+<li>Performance
+<ul>
+<li>Tiempo de respuesta</li>
+<li>Carga CPU / Memoria</li>
+</ul>
+</li>
+<li>Message Server</li>
+</ul>
+<h4 id="checklist-diario">Checklist Diario<a class="anchor" href="#checklist-diario">#</a></h4>
+<h5 id="transacciones-generales">Transacciones generales<a class="anchor" href="#transacciones-generales">#</a></h5>
+<ul>
+<li>SM50 (Process Overview)</li>
+<li>SM66 (Global process overview)</li>
+<li>SM51 (Application servers status)</li>
+<li>SM12 (Lock entry list)</li>
+<li>ST22 (ABAP Dumps)</li>
+<li>SM21 (System log)</li>
+<li>SM13 (Update Requests overview)</li>
+<li>ST02 (Tune summary)</li>
+<li>ST06 (System Load Analisys)</li>
+<li>ST11 (Display Trace Files)</li>
+<li>DB12 (Backup logs)</li>
+<li>DB13 (DBA Planning calender)</li>
+<li>DB14 (DBA operations log)</li>
+<li>SM37 (Job status overview)</li>
+<li>ST04 (Database alert logs and performance)</li>
+<li>SP01 (Check Spool status)</li>
+<li>DBO1 (Check for Database locks)</li>
+<li>SM58 (Asynchronous RFC Error Log)</li>
+</ul>
+<h5 id="abap-stack-checks">ABAP Stack Checks<a class="anchor" href="#abap-stack-checks">#</a></h5>
+<ol>
+<li>Check process overview(SM50)</li>
+<li>Check overall system process overview(SM66)</li>
+<li>Check application servers status(SM51)</li>
+<li>Check for any pending locks (SM12)</li>
+<li>Check for Dumps in the system(ST22)</li>
+<li>Check System log for any errors(SM21)</li>
+<li>Check for any hanged updates or update status(SM13)</li>
+<li>Check for excessive swapping (ST02)</li>
+<li>Check for critical job status like backup,updatestats,checkdb etc(DB13)</li>
+<li>Check for longrunning/failed jobs status(SM37)</li>
+<li>Check database alertlogs and performance(ST04)</li>
+<li>Check spool job status (SP01)</li>
+<li>Check cache status (sxi_cache) for PI System</li>
+<li>Check SLD functionality(SLDCHECK)</li>
+<li>Check SXI_MONITOR for PI system</li>
+<li>Check for Database locks(DB01)</li>
+</ol>
+<h5 id="java-stack-checks">Java Stack Checks<a class="anchor" href="#java-stack-checks">#</a></h5>
+<ol>
+<li>Check java portal accessibility using link</li>
+<li>Check server0 log for java system for critical errors</li>
+<li>Check accessibility of management console</li>
+<li>Check server node status</li>
+<li>Check default trace for critical java errors</li>
+<li>Check java reports for memoryconsumption/swapping Os level checks</li>
+<li>Check filesystems usage (shouldb be &lt;80%)</li>
+<li>Check for swap space using topas etc</li>
+<li>Check for work directory log files at oslevel for errors</li>
+</ol>
+<h4 id="computing-center-management-system---ccms">Computing Center Management System - CCMS<a class="anchor" href="#computing-center-management-system---ccms">#</a></h4>
+<p>Algunas cosas que podemos monitorear con el <strong>CCMS</strong> de <strong>SAP</strong> :</p>
+<ul>
+<li>Dialog Metrics
+<ul>
+<li>Current Dialog Logged On Users</li>
+<li>Database Request Time</li>
+<li>Dialog Steps Per Minute</li>
+<li>Dialog User Response Time</li>
+<li>Load And Generate Time</li>
+<li>Queue Time</li>
+</ul>
+</li>
+<li>SAP Memory Usage
+<ul>
+<li>Extended Memory Utilization</li>
+<li>Heap Memory Utilization</li>
+<li>Page Memory Utilization</li>
+<li>Roll Memory Utilization</li>
+</ul>
+</li>
+<li>Work Processes
+<ul>
+<li>Batch Work Processes</li>
+<li>Dialog Work Processes</li>
+<li>Total Work Processes</li>
+</ul>
+</li>
+<li>Spool</li>
+</ul>
+<h4 id="nagios-sap-ccms">Nagios SAP CCMS<a class="anchor" href="#nagios-sap-ccms">#</a></h4>
+<p>Para poder ver algunas cosas de monitoreo de SAP desde Nagios por medio de CCMS podemos referirnos a los <a href="/manuales/nagios/#tip-s-varios">tips de Nagios</a>.</p>
+<h3 id="permitir-uso-del-usuario-sap">Permitir uso del usuario SAP*<a class="anchor" href="#permitir-uso-del-usuario-sap">#</a></h3>
+<p>Uso permitido del usuario SAP* para tareas de configuración: en todas las instalaciones Sap existe un usuario SAP* (mientras no este creado como tal a propósito), que tiene la contraseña por defecto PASS y todas las autorizaciones disponibles (SAP_ALL). Esto es un agujero de seguridad grave que Sap soluciono con el parámetro login/no_automatic_user_sapstar. Por defecto, el parámetro vale 1 e impide utilizar este usuario. Para poder activarlo, habrá que poner el valor 0. Lo lógico es activarlo para tareas de configuración, y una vez terminado el proceso, volver a desactivarlo. Este usuario es HARDCODED.</p>
+<h3 id="ordenes-de-transporte">Ordenes de Transporte<a class="anchor" href="#ordenes-de-transporte">#</a></h3>
+<p>Las Órdenes de Transporte se utilizan para implementar modificaciones del ambiente de desarrollo DEV a los sistemas de calidad QAS y productivos PRD. También podemos implementar modificaciones externas generadas en otros landscapes de sistemas SAP.</p>
+<p>Para acceder al sistema de transportes de SAP, deberemos entrar al sistema SAP que necesitamos y ejecutar la transacción <strong>STMS</strong>.</p>
+<h4 id="importar-una-orden-de-transporte-desde-un-sistema-externo">Importar una Orden de Transporte desde un sistema externo<a class="anchor" href="#importar-una-orden-de-transporte-desde-un-sistema-externo">#</a></h4>
+<p>Se puede dar el caso de que nos envíen ordenes de transporte de un desarrollo externo para importarlas en nuestro sistema de desarrollo DEV.</p>
+<p>La convención standard de SAP para estos archivos es R&lt;6 digitos&gt;.&lt;sistema fuente&gt; y K&lt;6 digitos&gt;.&lt;sistema fuente&gt; (El sistema fuente es el nombre del sistema del cual proviene el transporte)</p>
+<ul>
+<li><strong>K</strong> Type Transport = Cofile – Normalmente 1 – 3 KB</li>
+<li><strong>R</strong> Type Transport = Datafile – Normalmente mas grande que el Colfile</li>
+</ul>
+<p>K902506.SAP es un Cofile – no contiene muchos datos, son los atributos del archivo data. Clases de objeto, comandos o tipo de información.</p>
+<p>R902506.SAP es el Datafile – Contiene los datos del Transporte – Son los cambios que van a ser aplicados al sistema.</p>
+<p>Deberemos ingresar al sistema de desarrollo en el cual queremos importar los archivos dentro del directorio /usr/sap/tran o D:\usr\sap\trans (según el sistema operativo)</p>
+<ul>
+<li>Deberemos copiar el archivo Cofile K
+<ul>
+<li>/usr/sap/trans/cofiles/</li>
+<li>D:\usr\sap\trans\cofile</li>
+</ul>
+</li>
+<li>Deberemos copiar el archivo Data R
+<ul>
+<li>/usr/sap/trans/data/</li>
+<li>D:\usr\sap\trans\data</li>
+</ul>
+</li>
+</ul>
+<p>Dentro del la transacción STMS deberemos ingresar a la opción (dependiendo del idioma)</p>
+<ul>
+<li>Extras –&gt; Other requests
+<ul>
+<li>Detalles –&gt; Otros</li>
+</ul>
+</li>
+</ul>
+<p>Agregar el transporte ej SAPK902506 Donde DEV es la extension del archivo y el resto es el nombre del archivo.</p>
+<h4 id="se10---transport-organizer">SE10 - Transport Organizer<a class="anchor" href="#se10---transport-organizer">#</a></h4>
+<p>Mediante estra transacción podemos transportar una orden de un ambiente a otro y ver su histórico</p>
+<h3 id="componentes-del-sistema-sap">Componentes del sistema SAP<a class="anchor" href="#componentes-del-sistema-sap">#</a></h3>
+<h4 id="sap-gateway">SAP Gateway<a class="anchor" href="#sap-gateway">#</a></h4>
+<p><strong>SAP NetWeaver Gateway</strong> es una tecnología que proporciona una forma sencilla de conectar dispositivos, entornos y plataformas de software de SAP en base a los estándares del mercado. Permite el desarrollo de soluciones en cualquier interfaz de usuario llevando el entorno SAP a otros entornos como los sociales y de de colaboración, dispositivos móviles y tabletas y aplicaciones de Internet. Ofrece conectividad a aplicaciones SAP utilizando cualquier lenguaje de programación o modelo, sin necesidad de conocimientos de SAP mediante el aprovechamiento de los servicios REST y protocolos OData / ATOM.</p>
+<h5 id="notas-principales-que-afectan-el-servicio">Notas principales que afectan el servicio<a class="anchor" href="#notas-principales-que-afectan-el-servicio">#</a></h5>
+<p>Nota de seguridad de conexiones</p>
+<ul>
+<li>1444282</li>
+<li>Subnotas que están afectadas por la aplicación de la nota anterior :
+<ul>
+<li>74141</li>
+<li>384971</li>
+</ul>
+</li>
+</ul>
+<h2 id="base-de-datos-hana">Base de datos HANA<a class="anchor" href="#base-de-datos-hana">#</a></h2>
+<p>Apartado : <a href="/aprendiendo_sap/sap_hana/">SAP HANA</a></p>
+<h2 id="base-de-datos-oracle">Base de datos Oracle<a class="anchor" href="#base-de-datos-oracle">#</a></h2>
+<ul>
+<li><a href="/notas/bases_de_datos/oracle/">Apartado de notas de Oracle</a></li>
+</ul>
+<h3 id="manejo-de-backup-y-restores">Manejo de Backup y Restores<a class="anchor" href="#manejo-de-backup-y-restores">#</a></h3>
+<p>Hay un apartado acerca de la configuración de backups online de SAP en el <a href="/manuales/tivoli_tsm/manual_de_manejo_de_backups_con_tivoli/#configuracion-de-nodo-tdp-para-backup-online-de-sap">manual de administración de backups con Tivoli TSM</a>, donde se indica la configuración necesaria a implementar.</p>
+<h4 id="backup-de-datos">Backup de datos<a class="anchor" href="#backup-de-datos">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">brbackup -u / -c force -t online -m all -p initSID.sap -a -c force -p initSID.sap -sd</span></span></code></pre></div><h4 id="restore-de-datos">Restore de datos<a class="anchor" href="#restore-de-datos">#</a></h4>
+<p>Examples of BRRESTORE Runs Locate the document in its SAP Library structure</p>
+<ul>
+<li>brrestore -b last -m all
+<ul>
+<li>Restore all tablespaces without the control file and online redo log files from the last successful backup.</li>
+</ul>
+</li>
+</ul>
+<!-- -->
+<ul>
+<li>brrestore -b bcnmhluz.aft -m full
+<ul>
+<li>Restore all the files from backup bcnmhluz.aft, including the control file and the online redo log files. Restore the mirror copies of the control file and the online redo log files.</li>
+</ul>
+</li>
+</ul>
+<!-- -->
+<ul>
+<li>brrestore -m /usr/sap/C11/SYS/profile
+<ul>
+<li>Restore the SAP profiles.</li>
+</ul>
+</li>
+</ul>
+<!-- -->
+<ul>
+<li>brrestore -m /oracle/C11/sapdata1=/oracle/C11/sapdata5
+<ul>
+<li>Restore all the database data files that were originally stored in the subdirectories of /oracle/C11/sapdata1 in directory /oracle/C11/sapdata5.</li>
+</ul>
+</li>
+</ul>
+<!-- -->
+<ul>
+<li>brrestore -b last -m 1-10,01-04,0
+<ul>
+<li>Restore all the database data files with Oracle file IDs from 1 through 10, the four online redo log files, and the control file starting from the last successful backup. Restore the mirror copies of the control file and the online redo log files.</li>
+</ul>
+</li>
+</ul>
+<!-- -->
+<ul>
+<li>brrestore -m 0
+<ul>
+<li>Restore the control file. Restore the mirror copies of the control file.</li>
+</ul>
+</li>
+</ul>
+<!-- -->
+<ul>
+<li>brrestore -b last -m /oracle/C11/sapdata2/ddicd_5/ddicd.data5
+<ul>
+<li>Restore a database data file starting from the last successful backup.</li>
+</ul>
+</li>
+</ul>
+<!-- -->
+<ul>
+<li>brrestore -a 200-220
+<ul>
+<li>Restore the archived redo log files with the log sequence numbers from 200 through 220 into the archiving directory.</li>
+</ul>
+</li>
+</ul>
+<!-- -->
+<ul>
+<li>brrestore -a 40-70=/oracle/C11/sapbackup 71-90=/oracle/C11/sapreorg
+<ul>
+<li>Restore the archived redo log files with the log sequence numbers from 40 through 70 in directory sapbackup and those with the log sequence numbers from 71 through 90 in directory /oracle/C11/sapreorg.</li>
+</ul>
+</li>
+</ul>
+<!-- -->
+<ul>
+<li>brrestore -a 40-69,70-100=/oracle/C11/sapbackup
+<ul>
+<li>Restore the archived redo log files with the log sequence numbers from 40 through 69 in the archiving directory, and those with the log sequence numbers from 70 through 100 in directory sapbackup.</li>
+</ul>
+</li>
+</ul>
+<!-- -->
+<ul>
+<li>brrestore -n det_log
+<ul>
+<li>Restore a detail log to the local working directory.</li>
+</ul>
+</li>
+</ul>
+<h3 id="chequeando-consistecia">Chequeando consistecia<a class="anchor" href="#chequeando-consistecia">#</a></h3>
+<ul>
+<li>brconnect -u / -c -f check</li>
+</ul>
+<h3 id="estadisticas">Estadisticas<a class="anchor" href="#estadisticas">#</a></h3>
+<ul>
+<li>brconnect -u / -c -f stats -t system_stats</li>
+<li>brconnect -u / -c -f stats -t oradict_stats</li>
+</ul>
+<p>Update the Oracle database statistics with BRCONNECT as follows:</p>
+<ul>
+<li>brconnect -u / -c -f stats -t all -f collect -p 4</li>
+</ul>
+<h3 id="administrando-oracle">Administrando Oracle<a class="anchor" href="#administrando-oracle">#</a></h3>
+<h5 id="archivos-de-logs">Archivos de LOGS<a class="anchor" href="#archivos-de-logs">#</a></h5>
+<p>Hay un script <a href="/manuales/filtrador_de_logs/">script filtrador de Logs</a> para parsear los resultados del alert.log de Oracle y enviarlos por email.</p>
+<p><strong>alert.log</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ORACLE_BASE/admin/$ORACLE_SID/bdump/alert_$ORACLE_SID.log</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ORACLE_BASE/admin/$ORACLE_SID/background/alert_$ORACLE_SID.log</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ORACLE_BASE/saptrace/background/alert_$ORACLE_SID.log</span></span></code></pre></div><p><strong>listener.log</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ORACLE_BASE/network/log/listener.log</span></span></code></pre></div><h5 id="modificación-de-parámetros-oracle">Modificación de parámetros Oracle<a class="anchor" href="#modificaci%c3%b3n-de-par%c3%a1metros-oracle">#</a></h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;code sql&gt;
+</span></span><span class="line"><span class="cl">SQL&gt; SHOW parameters log_archive_max_processes;
+</span></span><span class="line"><span class="cl">log_archive_max_processes integer 4
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">SQL&gt; ALTER system SET log_archive_max_processes=1;
+</span></span><span class="line"><span class="cl">System altered.
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl">SQL&gt; ALTER system SET log_archive_max_processes=4;
+</span></span><span class="line"><span class="cl">System altered.</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> show parameter db_writer_processes
+</span></span><span class="line"><span class="cl">NAME                                 TYPE        VALUE
+</span></span><span class="line"><span class="cl">------------------------------------ ----------- -------
+</span></span><span class="line"><span class="cl">db_writer_processes                  integer     1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SQL&gt; alter system set db_writer_processes=2 scope=spfile sid=&#39;*&#39;;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">System altered.</span></span></code></pre></div><p>si nos da un error como este :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> ALTER system SET db_writer_processes=2 scope=spfile sid=&#39;*&#39;;
+</span></span><span class="line"><span class="cl">ALTER system SET db_writer_processes=2 scope=spfile sid=&#39;*&#39;
+</span></span><span class="line"><span class="cl">*
+</span></span><span class="line"><span class="cl">ERROR at line 1:
+</span></span><span class="line"><span class="cl">ORA-32001: write to SPFILE requested but no SPFILE specified at startup</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> show parameter spfile 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">NAME				     TYPE	 VALUE
+</span></span><span class="line"><span class="cl">------------------------------------ ----------- ------------------------------
+</span></span><span class="line"><span class="cl">spfile				     string
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SQL&gt; create spfile from pfile;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">File created.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SQL&gt; 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SQL&gt; shutdown immediate
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SQL&gt; startup
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SQL&gt; show parameter spfile 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">NAME				     TYPE	 VALUE
+</span></span><span class="line"><span class="cl">------------------------------------ ----------- ------------------------------
+</span></span><span class="line"><span class="cl">spfile				     string	 /oracle/SID/102_64/dbs/spfileSID.ora
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SQL&gt; ALTER system SET db_writer_processes=2 scope=spfile sid=&#39;*&#39;;</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> show parameter block_size;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">NAME				     TYPE	 VALUE
+</span></span><span class="line"><span class="cl">------------------------------------ ----------- ------------------------------
+</span></span><span class="line"><span class="cl">db_block_size			     integer	 8192
+</span></span><span class="line"><span class="cl">SQL&gt; </span></span></code></pre></div><h5 id="indices-de-la-base-oracle-de-sap-exportados-en-csv">Indices de la base Oracle de SAP exportados en CSV<a class="anchor" href="#indices-de-la-base-oracle-de-sap-exportados-en-csv">#</a></h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">set</span><span class="w"> </span><span class="n">serveroutput</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="k">size</span><span class="w"> </span><span class="n">unlimited</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="k">declare</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="n">texto</span><span class="w">            </span><span class="n">varchar2</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="n">indice_anterior</span><span class="w">  </span><span class="n">varchar2</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;XXXXXXXXXX&#39;</span><span class="p">;</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="k">begin</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="n">DBMS_OUTPUT</span><span class="p">.</span><span class="n">ENABLE</span><span class="w"> </span><span class="p">(</span><span class="n">buffer_size</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">NULL</span><span class="p">);</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">table_name</span><span class="p">,</span><span class="n">index_name</span><span class="p">,</span><span class="k">column_name</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">dba_ind_columns</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">index_owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;SAPSR3&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">index_name</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">             </span><span class="k">not</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;%~0&#39;</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="k">table_name</span><span class="p">,</span><span class="n">index_name</span><span class="p">,</span><span class="n">column_position</span><span class="p">)</span><span class="w"> </span><span class="n">loop</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="n">c1</span><span class="p">.</span><span class="n">index_name</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="n">indice_anterior</span><span class="w"> </span><span class="k">then</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="n">indice_anterior</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;XXXXXXXXXX&#39;</span><span class="w"> </span><span class="k">then</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="n">indice_anterior</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">c1</span><span class="p">.</span><span class="n">index_name</span><span class="p">;</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="n">texto</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">c1</span><span class="p">.</span><span class="k">table_name</span><span class="o">||</span><span class="s1">&#39;;&#39;</span><span class="o">||</span><span class="n">c1</span><span class="p">.</span><span class="n">index_name</span><span class="o">||</span><span class="s1">&#39;;&#39;</span><span class="o">||</span><span class="n">c1</span><span class="p">.</span><span class="k">column_name</span><span class="o">||</span><span class="s1">&#39;;&#39;</span><span class="p">;</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="k">else</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="n">dbms_output</span><span class="p">.</span><span class="n">put_line</span><span class="p">(</span><span class="n">texto</span><span class="p">);</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="n">texto</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">c1</span><span class="p">.</span><span class="k">table_name</span><span class="o">||</span><span class="s1">&#39;;&#39;</span><span class="o">||</span><span class="n">c1</span><span class="p">.</span><span class="n">index_name</span><span class="o">||</span><span class="s1">&#39;;&#39;</span><span class="o">||</span><span class="n">c1</span><span class="p">.</span><span class="k">column_name</span><span class="o">||</span><span class="s1">&#39;;&#39;</span><span class="p">;</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="n">indice_anterior</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">c1</span><span class="p">.</span><span class="n">index_name</span><span class="p">;</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">else</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="n">texto</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="n">texto</span><span class="o">||</span><span class="n">c1</span><span class="p">.</span><span class="k">column_name</span><span class="o">||</span><span class="s1">&#39;;&#39;</span><span class="p">;</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">   </span><span class="k">end</span><span class="w"> </span><span class="n">loop</span><span class="p">;</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w"> </span><span class="n">dbms_output</span><span class="p">.</span><span class="n">put_line</span><span class="p">(</span><span class="n">texto</span><span class="p">);</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="k">end</span><span class="p">;</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="o">/</span><span class="w"> </span></span></span></code></pre></div><h5 id="status-de-las-cuentas-de-usuario">Status de las cuentas de usuario<a class="anchor" href="#status-de-las-cuentas-de-usuario">#</a></h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">== Desbloquear/Bloquear cuenta de usuario ==
+</span></span><span class="line"><span class="cl">&lt;code sql&gt;
+</span></span><span class="line"><span class="cl">alter user SAPSR3 account lock;</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;code sql&gt;
+</span></span><span class="line"><span class="cl">select count(*) from SAPSR3.SNAP  where ROWNUM &lt;= 5;</span></span></code></pre></div><h2 id="administrando-sap---funcional">Administrando SAP - Funcional<a class="anchor" href="#administrando-sap---funcional">#</a></h2>
+<p>El área funcional de SAP es la que se encarga de parametrizar el sistema SAP instalado de acuerdo a lo que se requiera. Igualmente vamos a separar en otro apartado lo que se refiere a [desarrollo y programación en ABAP](/aprendiendo_sap/desarrollo y programación en ABAP)</p>
+<h3 id="apertura-y-cierre-de-mandante">Apertura y cierre de mandante<a class="anchor" href="#apertura-y-cierre-de-mandante">#</a></h3>
+<h3 id="administración-de-jobs">Administración de JOBS<a class="anchor" href="#administraci%c3%b3n-de-jobs">#</a></h3>
+<p><strong>TBTCO</strong> Tabla de resumen del estado de jobs</p>
+<p><strong>TBTCP</strong> Resumen step de un job de fondo</p>
+<h4 id="creación-de-jobs-de-fondo">Creación de JOBS de Fondo<a class="anchor" href="#creaci%c3%b3n-de-jobs-de-fondo">#</a></h4>
+<p>Un JOB o proceso de fondo en SAP se compone de estas propiedades principales :</p>
+<ul>
+<li>Nombre</li>
+<li>Usuario de ejecución</li>
+<li>Programa</li>
+<li>Variante de ejecución</li>
+<li>Fecha y hora</li>
+<li>Valores de periodicidad</li>
+</ul>
+<p>Para comenzar a la creación de nuestro proceso de fondo, deremos utilizar la <strong>Trx. SM36</strong>.</p>
+<h2 id="utilizando-sap">Utilizando SAP<a class="anchor" href="#utilizando-sap">#</a></h2>
+<h4 id="como-conectar-el-sapgui-desde-linux">Como conectar el SAPgui desde Linux<a class="anchor" href="#como-conectar-el-sapgui-desde-linux">#</a></h4>
+<ul>
+<li>Requerimientos del sistema
+<ul>
+<li>Linux</li>
+<li>Hardware: CPU: Intel PentiumIII with 800 MHz</li>
+<li>RAM: 256MB</li>
+<li>Software:</li>
+<li>OS: SuSE Linux 9.3 - 10.1, Red Hat Enterprise Linux 3 and 4</li>
+<li>JVM: Sun Java Runtime Evironment 1.4.2 (32-bit) or 5.0 (32-bit) including Java Plugin</li>
+</ul>
+</li>
+</ul>
+<!-- -->
+<ul>
+<li>Descargar SAPGUI de:
+<ul>
+<li><a href="ftp://ftp.sap.com/pub/sapgui/java/">ftp://ftp.sap.com/pub/sapgui/java/</a> (anonymous login)</li>
+<li><a href="https://websmp201.sap-ag.de/sapgui-java">https://websmp201.sap-ag.de/sapgui-java</a> (OSS user and pass)</li>
+</ul>
+</li>
+</ul>
+<!-- -->
+<ul>
+<li>En el directorio /java desde el ftp seleccionar:
+<ul>
+<li>PlatinGUI-Linux-700.jar 37926 KB 11/07/06 13:58:00 (a la versión mas nueva disponible)</li>
+<li>En el directorio de descarga ejecutar</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">java -jar PlatinGUI-Linux-700.jar</span></span></code></pre></div><ul>
+<li>Ejecutando SAPgui
+<ul>
+<li>Guilogon:</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">~/SAPClients/SAPGUI7.00/bin$ ./guilogon
+</span></span><span class="line"><span class="cl">To create servers, touch at new and go to &#34;advanced&#34;.</span></span></code></pre></div><ul>
+<li>“expert configuration”</li>
+</ul>
+<p>Ejemplo:</p>
+<p>Para el servidor 10.1.1.6 con el system number 01:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">conn=/H/10.1.1.6/S/3201</span></span></code></pre></div><p>Command line</p>
+<p>Para el servidor 10.1.1.6 conel system number 01:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">~/SAPClients/SAPGUI7.00/bin$ ./sapgui /H/10.1.1.6/S/3201</span></span></code></pre></div><h5 id="saplogonini-en-windows">saplogon.ini en Windows<a class="anchor" href="#saplogonini-en-windows">#</a></h5>
+<p>El archivo se guarda en <strong>C:\Users\USUARIO\AppData\Roaming\SAP\Common</strong></p>
+<h5 id="saplogonini-en-linux">saplogon.ini en Linux<a class="anchor" href="#saplogonini-en-linux">#</a></h5>
+<p><strong>/home/usuario/.SAPGUI/connections</strong></p>
+<p>Ejemplo sin logon balance</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SID:conn=/M/190.1.1.19/S/3600/G/Empresa&amp;expert=true</span></span></code></pre></div><p>Ejemplo con logon balance</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SID [Empresa]:conn=/M/190.1.1.19/S/3600/G/Empresa&amp;expert=true</span></span></code></pre></div><h4 id="script-para-obtener-datos-del-sistema">Script para obtener datos del sistema<a class="anchor" href="#script-para-obtener-datos-del-sistema">#</a></h4>
+<p>SAP Note 618104 - “sapsysinfo” - Compiling system information on Linux</p>
+<h2 id="actualización-de-servidor-sap">Actualización de servidor SAP<a class="anchor" href="#actualizaci%c3%b3n-de-servidor-sap">#</a></h2>
+<h3 id="actualización-del-kernel-de-sap">Actualización del Kernel de SAP<a class="anchor" href="#actualizaci%c3%b3n-del-kernel-de-sap">#</a></h3>
+<p>Para realizar esta tarea sea el sistema operativo que fuere, debemos tener todo el sistema SAP R3 bajo y en lo posible para evitar complicaciones la base de datos también.</p>
+<h4 id="instrucciones-para-actualizar-el-kernel-de-sap-en-windows">Instrucciones para actualizar el Kernel de SAP en Windows<a class="anchor" href="#instrucciones-para-actualizar-el-kernel-de-sap-en-windows">#</a></h4>
+<h4 id="instrucciones-para-actualizar-el-kernel-de-sap-en-linux">Instrucciones para actualizar el Kernel de SAP en Linux<a class="anchor" href="#instrucciones-para-actualizar-el-kernel-de-sap-en-linux">#</a></h4>
+<p>Ejemplo del Kernel de SAP 701 al Kernel de SAP 720_REL</p>
+<p>Primero deberemor limpiar el directorio exe donde estan los binarios principales de SAP</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">rm -rf /sapmnt/&lt;SID&gt;/exe
+</span></span><span class="line"><span class="cl">cd /sapmnt/&lt;SID&gt;/exe</span></span></code></pre></div><p>Luego dentro de ese directorio deberemos descomprimir los paquetes SAR de SAP</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SAPCAR -xvf SAPEXEDB_100-10011223.SAR 
+</span></span><span class="line"><span class="cl">SAPCAR -xvf SAPEXE_100-10011224.SAR 
+</span></span><span class="line"><span class="cl">SAPCAR -xvf DBATL720O10_33-10007263.SAR</span></span></code></pre></div><p>Luego de eso deberemos ejecutar la orden <a href="http://help.sap.com/saphelp_nw04/helpdata/en/4f/37783021fc11d288cd0000e83539c3/content.htm">sapcpe</a> para que SAP tome las configuraciones del Kernel nuevo :</p>
+<p>Asignamos permisos de sap</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">chown -R &lt;SID&gt;adm:sapsys /sapmnt/&lt;SID&gt;/exe</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sapcpe pf=/usr/sap/&lt;SID&gt;/SYS/profile/&lt;SID&gt;_DVEBMGS00_&lt;hostname&gt;
+</span></span><span class="line"><span class="cl">sapcpe pf=/usr/sap/&lt;SID&gt;/SYS/profile/START_DVEBMGS00_&lt;hostname&gt;</span></span></code></pre></div><p>Y luego como usuario <strong>root</strong> ejecutamos el script <a href="http://help.sap.com/saphelp_nw2004s/helpdata/en/43/3753c4b87b6025e10000000a422035/content.htm">saproot.sh</a> :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">cd /sapmnt/&lt;SID&gt;/exe
+</span></span><span class="line"><span class="cl">./oraroot.sh &lt;SID&gt;
+</span></span><span class="line"><span class="cl">./saproot.sh &lt;SID&gt;</span></span></code></pre></div><h4 id="post-actualización">Post Actualización<a class="anchor" href="#post-actualizaci%c3%b3n">#</a></h4>
+<p>Para verificar errores o ver mas info de debug deberemos ejecutar :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">R3trans -d
+</span></span><span class="line"><span class="cl">disp+work -V</span></span></code></pre></div><p>Luego de la actualización del Kernel recordemos que las transacciones en SAP tardaran bastante en ejecutar ya que deberan ser compiladas para una primera ejecución.</p>
+<h3 id="administración-del-motor-de-java-de-portal">Administración del motor de Java de PORTAL<a class="anchor" href="#administraci%c3%b3n-del-motor-de-java-de-portal">#</a></h3>
+<h4 id="panel-de-administración-de-procesos">Panel de administración de procesos<a class="anchor" href="#panel-de-administraci%c3%b3n-de-procesos">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">/usr/sap/&lt;SID&gt;/&lt;INSTANCIA&gt;/j2ee/os_libs/# jcmon pf=/usr/sap/&lt;SID&gt;/SYS/profile/&lt;SID&gt;_&lt;INSTANCIA&gt;_&lt;hostname&gt;</span></span></code></pre></div><h4 id="aplicar-un-deploy">Aplicar un deploy<a class="anchor" href="#aplicar-un-deploy">#</a></h4>
+<p>Dentro de /usr/sap/&lt;SID&gt;/&lt;INSTANCIA&gt;/SDM/program/inBox, colocar los archivos (usualmente *.ear). Luego ejecutar /usr/sap/&lt;SID&gt;/&lt;INSTANCIA&gt;/SDM/program/RemoteGui.sh.</p>
+<p>Seleccionar : Deployment-&gt;Carpeta SCAs/SDAs for Deployment-&gt;(botón derecho)-&gt;Add SCA/SDA(Server Side File Browser)-&gt;Elegir paquete-&gt;Proceder Next-&gt;Start deploy-&gt;Confirm</p>
+<h4 id="reset-de-contraseña-sdm">Reset de contraseña SDM<a class="anchor" href="#reset-de-contrase%c3%b1a-sdm">#</a></h4>
+<p>Si perdemos la contraseña la podemos resetear de la siguiente forma</p>
+<p>Debemos bajar el servicio SDM y ejecutar</p>
+<p>/usr/sap/&lt;SID&gt;/&lt;INSTANCIA&gt;/SDM/program/inBox/sdm.sh changepassword “sdmhome=/usr/sap/&lt;SID&gt;/&lt;INSTANCIA&gt;/SDM/program” “newpassword=Password123”</p>
+<h3 id="actualización-del-sistema-operativo-de-sap">Actualización del Sistema Operativo de SAP<a class="anchor" href="#actualizaci%c3%b3n-del-sistema-operativo-de-sap">#</a></h3>
+<p>En nuestro caso, si por ejemplo usamos SuSE Linux como Sistema Operativo para la implementación de SAP, <a href="/notas/linux/actualizar_suse_linux/">podemos seguir este simple procedimiento para su actualización</a>.</p>
+<h4 id="notas-sap">Notas SAP<a class="anchor" href="#notas-sap">#</a></h4>
+<ul>
+<li><strong>171356</strong> - SAP Software on Linux: General information</li>
+<li><strong>1984787</strong> - SUSE LINUX Enterprise Server 12: Installation notes</li>
+</ul>
+<h3 id="export--import-de-tablas-de-sap">Export / Import de Tablas de SAP<a class="anchor" href="#export--import-de-tablas-de-sap">#</a></h3>
+<p>Ejemplo Destinos RFC</p>
+<p>R3trans -w exp_rfc.log rfc_export</p>
+<p><strong>rfc_export</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Export
+</span></span><span class="line"><span class="cl">File=rfc_dump
+</span></span><span class="line"><span class="cl">Select * from rfcattrib
+</span></span><span class="line"><span class="cl">Select * from rfcdes
+</span></span><span class="line"><span class="cl">Select * from rfcdoc</span></span></code></pre></div><p>R3trans -w imp_rfc.log rfc_import</p>
+<p><strong>rfc_import</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">import
+</span></span><span class="line"><span class="cl">file = &#39;rfc_dump&#39;
+</span></span><span class="line"><span class="cl">client = 200</span></span></code></pre></div><h2 id="renombrar-un-sistema-sap">Renombrar un sistema SAP<a class="anchor" href="#renombrar-un-sistema-sap">#</a></h2>
+<p>En algunas ocasiones, debemos modificar un sistema SAP, ya sea por una separación o modificación del negocio que lo utiliza etc.</p>
+<h3 id="relevamiento">Relevamiento<a class="anchor" href="#relevamiento">#</a></h3>
+<p>Antes de migrar el sistema, deberemos verificar</p>
+<ul>
+<li>Conexiones RFC</li>
+<li>Conexiones a base de datos remotas
+<ul>
+<li>DBCO</li>
+<li>/sapmnt/&lt;SID&gt;/profile/oracle/tnsnames.ora</li>
+</ul>
+</li>
+</ul>
+<h3 id="modificaciones">Modificaciones<a class="anchor" href="#modificaciones">#</a></h3>
+<h4 id="identificador-de-base-de-datos-oracle">Identificador de Base de Datos Oracle<a class="anchor" href="#identificador-de-base-de-datos-oracle">#</a></h4>
+<p>Algunas formas de recuperación requieren que la base de datos se inicie y acceda como montada. Para poner la base de datos en modo de montaje, deberemos inicia de la siguiente manera :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SQL&gt; startup mount</span></span></code></pre></div><p>Si ya se ha iniciado la instancia de la base de datos con la opción de inicio nomount, se puede cambiar el nomount para montar la base utilizando el comando alter database :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SQL&gt; alter database mount;</span></span></code></pre></div><p>DBNEWID es una utilidad de la base de datos para poder cambiar el identificador interno de dicha base de datos (DBID) y el nombre de base de datos (DBNAME) para una base de datos operativa.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># nid target=/ setname=yes dbname=&lt;NEWDBID&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">DBNEWID: Release 12.1.0.2.0 - Production on Tue May 29 14:50:57 2018
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Copyright (c) 1982, 2014, Oracle and/or its affiliates.  All rights reserved.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Connected to database &lt;OLDDBID&gt; (DBID=497546318)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Connected to server version 12.1.0
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Control Files in database:
+</span></span><span class="line"><span class="cl">    /oracle/&lt;OLDDBID&gt;/origlogA/cntrl/cntrl&lt;OLDDBID&gt;.dbf
+</span></span><span class="line"><span class="cl">    /oracle/&lt;OLDDBID&gt;/origlogB/cntrl/cntrl&lt;OLDDBID&gt;.dbf
+</span></span><span class="line"><span class="cl">    /oracle/&lt;OLDDBID&gt;/sapdata1/cntrl/cntrl&lt;OLDDBID&gt;.dbf
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Change database name of database &lt;OLBDBID&gt; to &lt;NEWDBID&gt;? (Y/[N]) =&gt; Y
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Proceeding with operation
+</span></span><span class="line"><span class="cl">Changing database name from &lt;OLDDBID&gt; to &lt;NEWDBID&gt;
+</span></span><span class="line"><span class="cl">    Control File /oracle/&lt;OLDDBID&gt;/origlogA/cntrl/cntrl&lt;OLDDBID&gt;.dbf - modified
+</span></span><span class="line"><span class="cl">    Control File /oracle/&lt;OLDDBID&gt;/origlogB/cntrl/cntrl&lt;OLDDBID&gt;.dbf - modified
+</span></span><span class="line"><span class="cl">    Control File /oracle/&lt;OLDDBID&gt;/sapdata1/cntrl/cntrl&lt;OLDDBID&gt;.dbf - modified
+</span></span><span class="line"><span class="cl">    Datafile /oracle/&lt;OLDDBID&gt;/sapdata1/system_1/system.data - wrote new name
+</span></span><span class="line"><span class="cl">    Datafile /oracle/&lt;OLDDBID&gt;/sapdata7/undo_1/undo.data - wrote new name
+</span></span><span class="line"><span class="cl">    Datafile /oracle/&lt;OLDDBID&gt;/sapdata1/sysaux_1/sysaux.data - wrote new name
+</span></span><span class="line"><span class="cl">...</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># orapwd file=$ORACLE_HOME/dbs/orapw&lt;SID&gt; password=&lt;PASSWORD&gt;</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> STARTUP NOMOUNT
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">SQL&gt; CREATE SPFILE=&#39;/oracle/&lt;NEWSID&gt;/12102/dbs/spfile&lt;NEWSID&gt;.ora&#39; FROM 	PFILE=&#39;/oracle/&lt;NEWSID&gt;/12102/dbs/init&lt;NEWSID&gt;.ora&#39;;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">File created.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SQL&gt; ALTER SYSTEM SET DB_NAME=&lt;NEWSID&gt; SCOPE=spfile;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">System altered.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SQL&gt; startup open
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SQL&gt; alter database rename global_name to &lt;NEWSID&gt;.WORLD;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SQL&gt; update global_name set global_name = &#39;&lt;NEWSID&gt;&#39;;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SQL&gt; commit ;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SQL&gt; STARTUP NOMOUNT
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SQL&gt; ALTER SYSTEM SET DB_NAME=&lt;NEWSID&gt; SCOPE=spfile;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">System altered.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SQL&gt; alter system set instance_name=&lt;NEWSID&gt; scope=spfile;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SQL&gt; startup
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SQL&gt; create pfile from spfile;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">File created.</span></span></code></pre></div><h5 id="iniciando-la-base-de-datos">Iniciando la Base de Datos<a class="anchor" href="#iniciando-la-base-de-datos">#</a></h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">SQL&gt; startup
+</span></span><span class="line"><span class="cl">ORA-32004: obsolete or deprecated parameter(s) specified for RDBMS instance
+</span></span><span class="line"><span class="cl">ORACLE instance started.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Total System Global Area 6.8719E+10 bytes
+</span></span><span class="line"><span class="cl">Fixed Size		    5304248 bytes
+</span></span><span class="line"><span class="cl">Variable Size		 2.8857E+10 bytes
+</span></span><span class="line"><span class="cl">Database Buffers	 3.9728E+10 bytes
+</span></span><span class="line"><span class="cl">Redo Buffers		  128913408 bytes
+</span></span><span class="line"><span class="cl">ORA-00205: error in identifying control file, check alert log for more info</span></span></code></pre></div><p>alert_&lt;NEWSID&gt;.log</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ALTER DATABASE MOUNT
+</span></span><span class="line"><span class="cl">Tue May 29 15:27:57 2018
+</span></span><span class="line"><span class="cl">ORA-00210: cannot open the specified control file
+</span></span><span class="line"><span class="cl">ORA-00202: control file: &#39;/oracle/&lt;NEWSID&gt;/sapdata1/cntrl/cntrl&lt;NEWSID&gt;.dbf&#39;
+</span></span><span class="line"><span class="cl">ORA-27037: unable to obtain file status
+</span></span><span class="line"><span class="cl">Linux-x86_64 Error: 2: No such file or directory
+</span></span><span class="line"><span class="cl">Additional information: 3
+</span></span><span class="line"><span class="cl">ORA-00210: cannot open the specified control file
+</span></span><span class="line"><span class="cl">ORA-00202: control file: &#39;/oracle/&lt;NEWSID&gt;/origlogB/cntrl/cntrl&lt;NEWSID&gt;.dbf&#39;
+</span></span><span class="line"><span class="cl">ORA-27037: unable to obtain file status
+</span></span><span class="line"><span class="cl">Linux-x86_64 Error: 2: No such file or directory
+</span></span><span class="line"><span class="cl">Additional information: 3
+</span></span><span class="line"><span class="cl">ORA-00210: cannot open the specified control file
+</span></span><span class="line"><span class="cl">ORA-00202: control file: &#39;/oracle/&lt;NEWSID&gt;/origlogA/cntrl/cntrl&lt;NEWSID&gt;.dbf&#39;
+</span></span><span class="line"><span class="cl">ORA-27037: unable to obtain file status
+</span></span><span class="line"><span class="cl">Linux-x86_64 Error: 2: No such file or directory
+</span></span><span class="line"><span class="cl">Additional information: 3</span></span></code></pre></div><p>Renombramos los control file de cntrl&lt;OLDSID&gt;.dbf hacia cntrl&lt;NEWSID&gt;.dbf y luego iniciamos la base de datos</p>
+<h4 id="conectividad-interna">Conectividad interna<a class="anchor" href="#conectividad-interna">#</a></h4>
+<p>Deberemos modificar el nombre del host de nuestro servidor, para que se adapte al <strong>SID</strong> que necesitamos y también deberemos ajustar su resolución local en el archivo <em>/etc/hosts</em>.</p>
+<p>También deberemos agregar el servicio en el archivos <em>/etc/services</em></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sapms&lt;SID&gt;	3600/tcp	# SAP System Message Server Port</span></span></code></pre></div><h4 id="perfiles-de-usuarios-de-sistema">Perfiles de usuarios de sistema<a class="anchor" href="#perfiles-de-usuarios-de-sistema">#</a></h4>
+<p>En el HOME del usuario administrador de SAP y del HOME del usuario administrador de la base de datos (en nuestro caso Oracle), usualmente dicho usuario tiene la siguiente nomenclatura :</p>
+<ul>
+<li>Administrador SAP : &lt;SID&gt;adm</li>
+<li>Administrador Oracle : ora&lt;SID&gt;</li>
+</ul>
+<p>Estos archivos suelen encontrarse con el mismo nombre en los directorios HOME de dichos usuarios</p>
+<p>Archivos con variables de entorno de la shell del usuario :</p>
+<ul>
+<li><strong>.cshrc</strong></li>
+</ul>
+<p>Archivos con variables de entorno para la ejecución de la base de datos :</p>
+<ul>
+<li><strong>.dbenv.csh</strong></li>
+<li><strong>.dbenv.sh</strong></li>
+<li><strong>.dbenv_&lt;HOSTNAME&gt;.csh</strong></li>
+<li><strong>.dbenv_&lt;HOSTNAME&gt;.sh</strong></li>
+</ul>
+<p>Archivos con variables de entorno del motor JAVA de SAP :</p>
+<ul>
+<li><strong>.j2eeenv.csh</strong></li>
+<li><strong>.j2eeenv.sh</strong></li>
+<li><strong>.j2eeenv_&lt;HOSTNAME&gt;.csh</strong></li>
+<li><strong>.j2eeenv_&lt;HOSTNAME&gt;.sh</strong></li>
+</ul>
+<p>Archivos con variables de entorno para la ejecución de SAP :</p>
+<ul>
+<li><strong>.sapenv.csh</strong></li>
+<li><strong>.sapenv.sh</strong></li>
+<li><strong>.sapenv_&lt;HOSTNAME&gt;.csh</strong></li>
+<li><strong>.sapenv_&lt;HOSTNAME&gt;.sh</strong></li>
+<li><strong>.sapsrc.csh</strong></li>
+<li><strong>.sapsrc.sh</strong></li>
+<li><strong>.sapsrc_&lt;HOSTNAME&gt;.csh</strong></li>
+<li><strong>.sapsrc_&lt;HOSTNAME&gt;.sh</strong></li>
+</ul>
+<p>Perfiles de SAP : /sapmnt/&lt;SID&gt;/profile</p>
+<ul>
+<li>&lt;SID&gt;_DVEBMGS00_&lt;HOSTNAME&gt;</li>
+<li>DEFAULT.PFL</li>
+<li>START_DVEBMGS00_&lt;HOSTNAME&gt;</li>
+</ul>
+<p>Perfiles de Oracle para SAP : /sapmnt/&lt;SID&gt;/profile/oracle</p>
+<ul>
+<li>sqlnet.ora</li>
+<li>tnsnames.ora</li>
+</ul>
+<p>Configuración del Listener :</p>
+<ul>
+<li>/oracle/&lt;SID&gt;/12102/network/admin</li>
+</ul>
+<p>Variables de configuración de Oracle para SAP :</p>
+<ul>
+<li>/oracle/&lt;SID&gt;/12102/dbs</li>
+</ul>
+<p>Podemos hacer un cambio brusco y rápido de los valores de configuración del viejo &lt;SID&gt; hacia el nuevo &lt;SID&gt; :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># sed -i -e &#39;s/&lt;SIDVIEJO&gt;/&lt;SIDNUEVO&gt;/g&#39; *
+</span></span><span class="line"><span class="cl"># sed -i -e &#39;s/&lt;sidviejo&gt;/&lt;sidnuevo&gt;/g&#39; *</span></span></code></pre></div><h4 id="iniciando-sap">Iniciando SAP<a class="anchor" href="#iniciando-sap">#</a></h4>
+<p>Posteriormente a modificar la configuración de los prefiles de Oracle, iniciamos el Listener</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># lsnrctl start
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">LSNRCTL for Linux: Version 12.1.0.2.0 - Production on 29-MAY-2018 15:31:47
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Copyright (c) 1991, 2014, Oracle.  All rights reserved.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Starting /oracle/&lt;NEWSID&gt;/12102/bin/tnslsnr: please wait...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">TNSLSNR for Linux: Version 12.1.0.2.0 - Production
+</span></span><span class="line"><span class="cl">System parameter file is /oracle/&lt;NEWSID&gt;/12102/network/admin/listener.ora
+</span></span><span class="line"><span class="cl">Log messages written to /oracle/&lt;NEWSID&gt;/saptrace/diag/tnslsnr/&lt;NEWHOSTNAME&gt;/listener/alert/log.xml
+</span></span><span class="line"><span class="cl">Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=&lt;NEWSID&gt;.WORLD)))
+</span></span><span class="line"><span class="cl">Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=&lt;NEWSID&gt;)))
+</span></span><span class="line"><span class="cl">Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=&lt;NEWFQDN&gt;)(PORT=1527)))
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Connecting to (ADDRESS=(PROTOCOL=IPC)(KEY=&lt;NEWSID&gt;.WORLD))
+</span></span><span class="line"><span class="cl">STATUS of the LISTENER
+</span></span><span class="line"><span class="cl">------------------------
+</span></span><span class="line"><span class="cl">Alias                     LISTENER
+</span></span><span class="line"><span class="cl">Version                   TNSLSNR for Linux: Version 12.1.0.2.0 - Production
+</span></span><span class="line"><span class="cl">Start Date                29-MAY-2018 15:31:50
+</span></span><span class="line"><span class="cl">Uptime                    0 days 0 hr. 0 min. 0 sec
+</span></span><span class="line"><span class="cl">Trace Level               off
+</span></span><span class="line"><span class="cl">Security                  ON: Local OS Authentication
+</span></span><span class="line"><span class="cl">SNMP                      OFF
+</span></span><span class="line"><span class="cl">Listener Parameter File   /oracle/&lt;NEWSID&gt;/12102/network/admin/listener.ora
+</span></span><span class="line"><span class="cl">Listener Log File         /oracle/&lt;NEWSID&gt;/saptrace/diag/tnslsnr/&lt;NEWHOSTNAME&gt;/listener/alert/log.xml
+</span></span><span class="line"><span class="cl">Listening Endpoints Summary...
+</span></span><span class="line"><span class="cl">  (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=&lt;NEWSID&gt;.WORLD)))
+</span></span><span class="line"><span class="cl">  (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=&lt;NEWSID&gt;)))
+</span></span><span class="line"><span class="cl">  (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=&lt;NEWFQDN&gt;)(PORT=1527)))
+</span></span><span class="line"><span class="cl">Services Summary...
+</span></span><span class="line"><span class="cl">Service &#34;&lt;NEWSID&gt;&#34; has 1 instance(s).
+</span></span><span class="line"><span class="cl">  Instance &#34;&lt;NEWSID&gt;&#34;, status UNKNOWN, has 1 handler(s) for this service...
+</span></span><span class="line"><span class="cl">The command completed successfully</span></span></code></pre></div><p>Revisar /usr/sap y mover el directorio de &lt;OLDSID&gt; hacia &lt;NEWSID&gt;</p>
+<p>Modificar los enlaces hacia los ejecutables de SAP en el directorio /usr/sap/&lt;NEWSID&gt;/DVEBMGS00/work</p>
+<ul>
+<li>co.sap&lt;OLDSID&gt;_DVEBMGS00 -&gt; /usr/sap/&lt;OLDSID&gt;/DVEBMGS00/exe/rslgcoll</li>
+<li>dw.sap&lt;OLDSID&gt;_DVEBMGS00 -&gt; /usr/sap/&lt;OLDSID&gt;/DVEBMGS00/exe/disp+work</li>
+<li>ig.sap&lt;OLDSID&gt;_DVEBMGS00 -&gt; /usr/sap/&lt;OLDSID&gt;/DVEBMGS00/exe/igswd_mt</li>
+<li>ms.sap&lt;OLDSID&gt;_DVEBMGS00 -&gt; /usr/sap/&lt;OLDSID&gt;/DVEBMGS00/exe/msg_server</li>
+<li>se.sap&lt;OLDSID&gt;_DVEBMGS00 -&gt; /usr/sap/&lt;OLDSID&gt;/DVEBMGS00/exe/rslgsend</li>
+</ul>
+<p>De la siguiente forma :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ln -s /usr/sap/&lt;NEWSID&gt;/DVEBMGS00/exe/rslgcoll 		co.sap&lt;NEWSID&gt;_DVEBMGS00 
+</span></span><span class="line"><span class="cl">ln -s /usr/sap/&lt;NEWSID&gt;/DVEBMGS00/exe/disp+work 	dw.sap&lt;NEWSID&gt;_DVEBMGS00
+</span></span><span class="line"><span class="cl">ln -s /usr/sap/&lt;NEWSID&gt;/DVEBMGS00/exe/igswd_mt 		ig.sap&lt;NEWSID&gt;_DVEBMGS00
+</span></span><span class="line"><span class="cl">ln -s /usr/sap/&lt;NEWSID&gt;/DVEBMGS00/exe/msg_server 	ms.sap&lt;NEWSID&gt;_DVEBMGS00
+</span></span><span class="line"><span class="cl">ln -s /usr/sap/&lt;NEWSID&gt;/DVEBMGS00/exe/rslgsend 		se.sap&lt;NEWSID&gt;_DVEBMGS00</span></span></code></pre></div><p>Modificar los enlaces global y profile /usr/sap/&lt;NEWSID&gt;/SYS :</p>
+<ul>
+<li>global -&gt; /sapmnt/&lt;OLDSID&gt;/global</li>
+<li>profile -&gt; /sapmnt/&lt;OLDSID&gt;/profile</li>
+</ul>
+<p>Como :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ln -s /sapmnt/&lt;NEWSID&gt;/global
+</span></span><span class="line"><span class="cl">ln -s /sapmnt/&lt;NEWSID&gt;/profile</span></span></code></pre></div><p>Modificar los enlaces /usr/sap/&lt;NEWSID&gt;/SYS/exe :</p>
+<ul>
+<li>dbg -&gt; /sapmnt/&lt;OLDSID&gt;/exe</li>
+<li>nuc -&gt; /sapmnt/&lt;OLDSID&gt;/exe/nuc</li>
+<li>run -&gt; /usr/sap/&lt;OLDSID&gt;/SYS/exe/dbg</li>
+<li>uc -&gt; /sapmnt/&lt;OLDSID&gt;/exe/uc</li>
+</ul>
+<p>Como :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ln -s /sapmnt/&lt;NEWSID&gt;/exe dbg
+</span></span><span class="line"><span class="cl">ln -s /sapmnt/&lt;NEWSID&gt;/exe/nuc
+</span></span><span class="line"><span class="cl">ln -s /usr/sap/&lt;NEWSID&gt;/SYS/exe/dbg run
+</span></span><span class="line"><span class="cl">ln -s /sapmnt/&lt;NEWSID&gt;/exe/uc</span></span></code></pre></div><p>Revisar la ruta de SSFS (Secure Storage in File System) :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">RSEC_SSFS_DATAPATH=/usr/sap/&lt;NEWSID&gt;/SYS/global/security/rsecssfs/data
+</span></span><span class="line"><span class="cl">RSEC_SSFS_KEYPATH=/usr/sap/&lt;NEWSID&gt;/SYS/global/security/rsecssfs/key</span></span></code></pre></div><p>Renombrar SSFS_&lt;OLDSID&gt;.DAT como SSFS_&lt;NEWSID&gt;.DAT</p>
+<p>Reset de usuario SAP* :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> select UFLAG, BNAME, MANDT from SAPSR3.USR02 where BNAME=&#39;SAP*&#39;;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SQL&gt; delete from SAPSR3.USR02 where BNAME=&#39;SAP*&#39; and MANDT=000;</span></span></code></pre></div><p>SAP Profile &lt;NEWSID&gt;_DVEBMGS00_&lt;NEWHOSTNAME&gt; :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">login/no_automatic_user_sapstar=0</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># startsap
+</span></span><span class="line"><span class="cl">Checking &lt;NEWSID&gt; Database
+</span></span><span class="line"><span class="cl">Database is running
+</span></span><span class="line"><span class="cl">-------------------------------------------
+</span></span><span class="line"><span class="cl">Starting Startup Agent sapstartsrv
+</span></span><span class="line"><span class="cl">OK
+</span></span><span class="line"><span class="cl">Instance Service on host &lt;NEWHOSTNAME&gt; started
+</span></span><span class="line"><span class="cl">-------------------------------------------
+</span></span><span class="line"><span class="cl">starting SAP Instance DVEBMGS00
+</span></span><span class="line"><span class="cl">Startup-Log is written to /home/&lt;NEWSID&gt;adm/startsap_DVEBMGS00.log
+</span></span><span class="line"><span class="cl">-------------------------------------------
+</span></span><span class="line"><span class="cl">/usr/sap/&lt;NEWSID&gt;/DVEBMGS00/exe/sapcontrol -prot NI_HTTP -nr 00 -function Start
+</span></span><span class="line"><span class="cl">Instance on host &lt;NEWHOSTNAME&gt; started</span></span></code></pre></div><p>Luego dentro de SAP, deberemos cambiar el nombre lógico por medio de la <strong>Trx. BDLS</strong> o del programa <strong>RBDLS2LS</strong>. Luego rearmamos el landscape de SAP con los equipos de DEV y QA. Para después rearmar sistema de transporte.</p>
+<h2 id="clonación-de-un-sistema-sap">Clonación de un sistema SAP<a class="anchor" href="#clonaci%c3%b3n-de-un-sistema-sap">#</a></h2>
+<h2 id="problemas-comunes">Problemas comunes<a class="anchor" href="#problemas-comunes">#</a></h2>
+<h4 id="analizando-problemas-de-ejecución-poco-descriptivos">Analizando problemas de ejecución poco descriptivos<a class="anchor" href="#analizando-problemas-de-ejecuci%c3%b3n-poco-descriptivos">#</a></h4>
+<p>Muchas veces en SAP nos topamos con problemas poco descriptivos, para analizarlos deberemos analizar principalmente estos achivos de log dentro del directorio work :</p>
+<p>Windows -&gt; <strong>&lt;Drive&gt;:\usr\sap\Sys-ID&gt;\DVEBMGS&lt;Sys-Nr&gt;\Work</strong></p>
+<p>Linux -&gt; <strong>/usr/sap/Sys-ID/DVEBMGS&lt;Sys-Nr&gt;/work</strong></p>
+<ul>
+<li><strong>dev_disp</strong> Dispatcher developer trace</li>
+<li><strong>dev_ms</strong> Message Server developer trace</li>
+<li><strong>dev_w0</strong> Work process 0 developer trace. Contains information about the <strong>latest ABAP work process</strong>. But it can happen at time that the other work processes may fail or create errors. If that is the case , one has to identify the work process by its number and open the log file and examine the issue</li>
+<li><strong>dev_rfc0</strong> RFC 0 developer trace</li>
+<li><strong>dev_rd</strong> Gateway trace file</li>
+<li><strong>dev_icm</strong> Internet Communication Manager developer trace</li>
+<li><strong>STDERR1</strong> Information about the start process of the database system.</li>
+<li><strong>STDERR2</strong> Information about the start process of the message server.</li>
+<li><strong>STDERR3</strong> Information about the start process of the dispatcher.</li>
+</ul>
+<p>Y para analizar mas a fondo, si tenemos SAP corriendo sobre GNU/Linux podemos hacer uso de la herramienta <a href="/notas/strace/">strace</a>.</p>
+<p>Referencias útiles :</p>
+<ul>
+<li><a href="https://wiki.scn.sap.com/wiki/pages/viewpage.action?pageId=326533815">https://wiki.scn.sap.com/wiki/pages/viewpage.action?pageId=326533815</a></li>
+<li><a href="http://itsiti.com/abap-system-logs-traces">http://itsiti.com/abap-system-logs-traces</a></li>
+</ul>
+<h4 id="unknown-webmethod-waitforservicestarted">Unknown webmethod: WaitforServiceStarted<a class="anchor" href="#unknown-webmethod-waitforservicestarted">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sapcpe pf=/usr/sap/&lt;SID&gt;/SYS/profile/&lt;SID&gt;_DVEBMGS00_&lt;hostname&gt;
+</span></span><span class="line"><span class="cl">sapcpe pf=/usr/sap/&lt;SID&gt;/SYS/profile/START_DVEBMGS00_&lt;hostname&gt;</span></span></code></pre></div><h4 id="note-1069225---no-hw-id-received-by-mssg-server">Note 1069225 - NO HW ID RECEIVED BY MSSG SERVER<a class="anchor" href="#note-1069225---no-hw-id-received-by-mssg-server">#</a></h4>
+<p><strong>Symptom</strong></p>
+<p>After you upgrade to 7.00, you can no longer log on to the ABAP system. The system issues an error message on the logon screen to tell you this. Reason and Prerequisites</p>
+<p>There is a conflict with the port numbers. These parameters are valuated as follows:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">rslg/collect_daemon/listen_port   39xx
+</span></span><span class="line"><span class="cl">rslg/collect_daemon/talk_port     40xx
+</span></span><span class="line"><span class="cl">rdisp/msserv_internal             39xx</span></span></code></pre></div><p><strong>Solution</strong></p>
+<p>Delete these from the default profile to ensure that the system uses the default values 14xx and 15xx.</p>
+<p>If these ports are already used by other programs, choose unused port numbers.</p>
+<p>- See more at: <a href="http://www.stechno.net/sap-notes.html?view=sapnote&amp;id=1069225#sthash.0nPTQ8aF.dpuf">http://www.stechno.net/sap-notes.html?view=sapnote&id=1069225#sthash.0nPTQ8aF.dpuf</a></p>
+<h4 id="registrar-programa-rfc">Registrar programa RFC<a class="anchor" href="#registrar-programa-rfc">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">nohup rfcexec -a PROG_TRANSPOR -g server_host -x sapgw00 &amp;</span></span></code></pre></div><p><a href="http://wiki.scn.sap.com/wiki/display/ABAPConn/CPIC&#43;Return&#43;Code&#43;679&#43;-&#43;Transaction&#43;Program&#43;not&#43;Registered">http://wiki.scn.sap.com/wiki/display/ABAPConn/CPIC+Return+Code+679+-+Transaction+Program+not+Registered</a></p>
+<h4 id="convertir-un-certificado-pfx-a-pse">Convertir un certificado PFX a PSE<a class="anchor" href="#convertir-un-certificado-pfx-a-pse">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sapgenpse import_p12 -p  Certificado.pse Certificado.pfx</span></span></code></pre></div><h4 id="webdynpro---503-service-unavailable">WebDynPro - 503 Service Unavailable<a class="anchor" href="#webdynpro---503-service-unavailable">#</a></h4>
+<p><a href="http://hostsap:50000/webdynpro/dispatcher/sap.com/bi~plan~blablabla1/Modeler">http://hostsap:50000/webdynpro/dispatcher/sap.com/bi~plan~blablabla1/Modeler</a></p>
+<p>Si tenemos un error como este :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">503   Service Unavailable
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  SAP WebAS Engine is starting...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">If this state does not change within a few minutes,
+</span></span><span class="line"><span class="cl">please contact your system administrator.
+</span></span><span class="line"><span class="cl">Check the recommendations in SAP Notes: 943498, 764417
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Message: Dispatcher running but no server connected!
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  Details: 	
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  No details available</span></span></code></pre></div><p>Lo primero que debemos revisar son los archivos de Log en <strong>/usr/sap/&lt;SID&gt;/&lt;InstNo&gt;/j2ee/cluster/server0/log</strong></p>
+<p>Si vemos dentro del trace un error como este :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&#34;Start of UME Service Failed&#34;. Technical details: User is locked. Please notify the person responsible</span></span></code></pre></div><p>Deberemos revisar desde ABAP que los usuarios</p>
+<ul>
+<li>SAPJSF</li>
+<li>J2EE_ADMIN</li>
+<li>J2EE_GUEST</li>
+</ul>
+<p>Esten correctos. Si queremos podemos resetearle la contraseña al usuario <strong>SAPJSF</strong> Ademas deberemos ejecutar la configtool <strong>/usr/sap/&lt;SID&gt;/&lt;InstNo&gt;/j2ee/configtool</strong> y actualizar alli la contraseña del usuario del servicio UME</p>
+<ul>
+<li>Global server config -&gt; services -&gt; com.sap.security.core.ume.service
+<ul>
+<li>ume.r3.connection.master.client (100) : aca va el numero de mandante</li>
+<li>ume.r3.connection.master.user (SAPJSF) : aca va el usuario que utilizamos para conectarnos a SAP</li>
+</ul>
+</li>
+</ul>
+<p>Luego de eso por medio de <strong>jcmon pf=/usr/sap/&lt;SID&gt;/&lt;InstNo&gt;/&lt;SID&gt;_&lt;InstNo&gt;_&lt;hostname&gt;</strong>, podremos arrancar el proceso server0</p>
+<p>Si nos da un error como el de abajo, deberemos referinos a la <strong>SAP Note 971249 - JMSServerSecurityException thrown accessing JMS resources</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> {0}#1#javax.jms.JMSSecurityException: You do not have permissions: action create_queue and instance ALL.
+</span></span><span class="line"><span class="cl">	at com.sap.jms.protocol.notification.ServerExceptionResponse.getException(ServerExceptionResponse.java:231)
+</span></span><span class="line"><span class="cl">	at com.sap.jms.client.session.Session.checkReceivedPacket(Session.java:2598)
+</span></span><span class="line"><span class="cl">	at com.sap.jms.client.session.Session.createQueue(Session.java:2425)
+</span></span><span class="line"><span class="cl">	at com.sap.ip.collaboration.core.api.rtmf.core.RTMFMessaging$JMSPolling.startRunning(RTMFMessaging.java:1244)
+</span></span><span class="line"><span class="cl">	at com.sap.ip.collaboration.core.api.rtmf.core.RTMFMessaging$JMSPolling.run(RTMFMessaging.java:1182)
+</span></span><span class="line"><span class="cl">	at java.lang.Thread.run(Thread.java:770)</span></span></code></pre></div><p>FIXME Como TIP de como analizar podemos leer la <strong>SAP Note 764417 - Information for troubleshooting of the SAP J2EE Engine 6.40</strong></p>
+<h4 id="acceso-a-un-webservice-https-con-un-certificado-autofirmado">Acceso a un Webservice HTTPS con un certificado autofirmado<a class="anchor" href="#acceso-a-un-webservice-https-con-un-certificado-autofirmado">#</a></h4>
+<p>Ejemplo del caso un proovedor puede ser privado o una agencia Gubernamental modificó un certificado SSL en su servicio web que necesitamos para ejecutar nuestros procesos de negocio.</p>
+<p>Modificaron su certificado SSL (el cual todavia era válido ) por otro certificado autofirmado el cual por lo tanto no es válido y ninguna librería de SSL por lógica - NO LO VÁLIDA.</p>
+<p><strong>ANTERIOR CERTIFICADO</strong></p>
+<ul>
+<li>Titular : c</li>
+<li>Autoridad certificante :
+<ul>
+<li>CN=GeoTrust SSL CA, O=“GeoTrust, Inc.”, C=US</li>
+</ul>
+</li>
+<li>Válidez :
+<ul>
+<li>Válido de 15.08.2011 01:48:59 A 16.08.2014 23:02:18</li>
+</ul>
+</li>
+</ul>
+<p><strong>CERTIFICADO DEL DIA DE HOY</strong></p>
+<ul>
+<li>Titular : CN=SARAZAZAZA</li>
+<li>Autoridad certificante :
+<ul>
+<li>CN=SARAZAZAZA</li>
+</ul>
+</li>
+<li>Válidez :
+<ul>
+<li>Válido de 14.02.2011 00:00:00 A 01.01.2020 23:59:59</li>
+</ul>
+</li>
+</ul>
+<p>Deberemos hacer uso de esta opcion <strong>icm/HTTPS/verify_client</strong> con un valor <strong>0</strong> dentro del profile de SAP por medio de la <strong>Trx. RZ11</strong></p>
+<ul>
+<li>icm/HTTPS/verify_client = 0
+<ul>
+<li>0: Do not use certificates</li>
+<li>1: Allow certificates (default)</li>
+<li>2: Require certificates</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://help.sap.com/saphelp_nw70/helpdata/en/0d/88153a1a5b4c2de10000000a114084/content.htm">https://help.sap.com/saphelp_nw70/helpdata/en/0d/88153a1a5b4c2de10000000a114084/content.htm</a></p>
+<h2 id="agregando-funcionalidades-y-oscuridades">Agregando funcionalidades y oscuridades<a class="anchor" href="#agregando-funcionalidades-y-oscuridades">#</a></h2>
+<h3 id="oscuridad--librerias-extra-para-sap">Oscuridad : Librerias extra para SAP<a class="anchor" href="#oscuridad--librerias-extra-para-sap">#</a></h3>
+<h4 id="sap-note-1644499---database-connectivity-from-linux-to-sql-server">SAP Note 1644499 - Database connectivity from Linux to SQL Server<a class="anchor" href="#sap-note-1644499---database-connectivity-from-linux-to-sql-server">#</a></h4>
+<p>Se copia esta librería <a href="/aprendiendo_sap/dbmssslib.so.gz">dbmssslib.so.gz</a> a <strong>/usr/sap/&lt;SID&gt;/DVEBMGS00/exe/</strong></p>
+<p>Luego de esto se ejeucuta :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># odbcinst -u -d -n &#34;SQL Server Native Client 11.0&#34;
+</span></span><span class="line"><span class="cl"># odbcinst -i -d -f template.ini</span></span></code></pre></div><p>Luego de esta ejecución deberia quedar un contenido como este en <strong>/etc/odbcinst.ini</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="p">{{:</span><span class="n">aprendiendo_sap</span><span class="p">:</span><span class="n">template</span><span class="o">.</span><span class="n">ini</span><span class="o">.</span><span class="n">gz</span><span class="o">|</span><span class="p">}}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">===</span> <span class="n">Instalacion</span> <span class="n">de</span> <span class="n">Cliente</span> <span class="n">SQL</span> <span class="n">Server</span> <span class="o">===</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">El</span> <span class="n">ODBC</span> <span class="n">de</span> <span class="n">Microsoft</span> <span class="n">se</span> <span class="n">puede</span> <span class="n">instalar</span> <span class="n">en</span> <span class="p">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">**/</span><span class="n">opt</span><span class="o">/</span><span class="n">microsoft</span><span class="o">/</span><span class="n">msodbcsql</span><span class="o">/**</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Microsoft</span><span class="err">®</span> <span class="n">ODBC</span> <span class="n">Driver</span> <span class="mi">11</span> <span class="k">for</span> <span class="n">SQL</span> <span class="n">Server</span><span class="err">®</span> <span class="o">-</span> <span class="n">SUSE</span> <span class="n">Linux</span> <span class="n">Community</span> <span class="n">Technology</span> <span class="n">Preview</span> <span class="o">-</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">microsoft</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">en</span><span class="o">-</span><span class="n">us</span><span class="o">/</span><span class="n">download</span><span class="o">/</span><span class="n">details</span><span class="o">.</span><span class="n">aspx</span><span class="err">?</span><span class="n">id</span><span class="o">=</span><span class="mi">34687</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">./</span><span class="n">build_dm</span><span class="o">.</span><span class="n">sh</span> <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">opt</span><span class="o">/</span><span class="n">microsoft</span><span class="o">/</span><span class="n">msodbcsql</span><span class="o">/</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">./</span><span class="n">install</span><span class="o">.</span><span class="n">sh</span> <span class="n">install</span></span></span></code></pre></div><p>Y el paquete unixODBC esta instalado en :</p>
+<p><strong>/usr/local/unixodbc/</strong></p>
+<p><a href="ftp://ftp.unixodbc.org/pub/unixODBC/">ftp://ftp.unixodbc.org/pub/unixODBC/</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">ln -s /usr/local/unixodbc/bin/* /usr/local/bin</span></span></code></pre></div><h4 id="nota">Nota<a class="anchor" href="#nota">#</a></h4>
+<p>Como el cliente de SAP depende de una version mas vieja de unixODBC que la que esta soportada por el ODBC de Microsoft, debemos instalar los paquetes de la version anterior, ejemplo en SuSE :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">unixODBC-2.2.12-198.17.x86_64.rpm
+</span></span><span class="line"><span class="cl">unixODBC-32bit-2.2.12-198.17.x86_64.rpm
+</span></span><span class="line"><span class="cl">unixODBC-devel-2.2.12-198.17.x86_64.rpm
+</span></span><span class="line"><span class="cl">unixODBC-devel-32bit-2.2.12-198.17.x86_64.rpm</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">/usr/bin/odbcinst -u -d -n &#34;SQL Server Native Client 11.0&#34;
+</span></span><span class="line"><span class="cl">/usr/bin/odbcinst -i -d -f template.ini</span></span></code></pre></div><p>Para testear la conexion podemos hacerlo desde la transacción <strong>DB02</strong>.</p>
+<p>:!: En caso de que tengamos problemas deberemos ver los archivos de los dev_w* que se encuentran dentro de /usr/sap/&lt;SID&gt;/DVEBMGS00/work</p>
+<h4 id="convert-saplogonini-file-to-connections-file-for-sapgui-java">Convert saplogon.ini file to connections file for SAPGUI Java<a class="anchor" href="#convert-saplogonini-file-to-connections-file-for-sapgui-java">#</a></h4>
+<p><a href="/aprendiendo_sap/sapguiinitosapcconverter.jar.gz">sapguiinitosapcconverter.jar.gz</a></p>
+<p>java -jar [complete path to SapGuiIniToSapcConverter.jar] [path to source saplogon.ini file] [path to target connections file]</p>
+<p>/home/scayuqueo/.SAPGUI/connections</p>
+<p>Ref.: <a href="http://scn.sap.com/people/mike.schernbeck2/blog/2011/01/03/convert-saplogonini-file-to-connections-file-for-sapgui-java">http://scn.sap.com/people/mike.schernbeck2/blog/2011/01/03/convert-saplogonini-file-to-connections-file-for-sapgui-java</a></p>
+<h2 id="referencias-1">Referencias<a class="anchor" href="#referencias-1">#</a></h2>
+<ul>
+<li><a href="/manuales/an_introduction_to_linux_shell_scripting_for_dbas/">An Introduction to Linux Shell Scripting for DBAs</a></li>
+<li><a href="http://www.linuxquestions.org/linux/answers/Applications_GUI_Multimedia/HOW_TO_Run_SAP_GUI_On_LINUX_To_Connect_SAP_R3_Systems">HOW TO Run SAP GUI On LINUX To Connect SAP R3 Systems</a></li>
+<li><a href="http://scn.sap.com/people/mike.schernbeck2/blog/2011/01/03/convert-saplogonini-file-to-connections-file-for-sapgui-java">Convert saplogon.ini file to connections file for SAPGUI Java</a></li>
+<li><a href="http://www.orafaq.com/wiki/Alert_log">http://www.orafaq.com/wiki/Alert_log</a></li>
+<li><a href="http://wiki.scn.sap.com/wiki/display/BOBJ/Troubleshooting&#43;BI&#43;on&#43;Linux&#43;with&#43;strace">Troubleshooting BI on Linux with strace</a></li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/enlaces/tcpdump/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>TCPDUMP</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/aprendiendo_sap/sap_hana/" class="flex align-center">
+        <span>SAP HANA</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#que-es-sap">¿Que es SAP?</a></li>
+    <li><a href="#qué-son-los-módulos-sap">¿Qué son los módulos SAP?</a>
+      <ul>
+        <li><a href="#erp">ERP</a></li>
+      </ul>
+    </li>
+    <li><a href="#sap-landscape">SAP Landscape</a></li>
+    <li><a href="#implementando-sap">Implementando SAP</a></li>
+    <li><a href="#administrando-sap---basis">Administrando SAP - Basis</a>
+      <ul>
+        <li><a href="#optimización-del-sistema-sap">Optimización del sistema SAP</a>
+          <ul>
+            <li><a href="#gnulinux">GNU/Linux</a></li>
+            <li><a href="#acerca-de-suse-linux-y-sap">Acerca de SuSE LiNUX y SAP</a></li>
+          </ul>
+        </li>
+        <li><a href="#monitoreo-del-sistema-sap">Monitoreo del sistema SAP</a>
+          <ul>
+            <li><a href="#capas-de-análisis">Capas de análisis</a></li>
+            <li><a href="#checklist-diario">Checklist Diario</a></li>
+            <li><a href="#computing-center-management-system---ccms">Computing Center Management System - CCMS</a></li>
+            <li><a href="#nagios-sap-ccms">Nagios SAP CCMS</a></li>
+          </ul>
+        </li>
+        <li><a href="#permitir-uso-del-usuario-sap">Permitir uso del usuario SAP*</a></li>
+        <li><a href="#ordenes-de-transporte">Ordenes de Transporte</a>
+          <ul>
+            <li><a href="#importar-una-orden-de-transporte-desde-un-sistema-externo">Importar una Orden de Transporte desde un sistema externo</a></li>
+            <li><a href="#se10---transport-organizer">SE10 - Transport Organizer</a></li>
+          </ul>
+        </li>
+        <li><a href="#componentes-del-sistema-sap">Componentes del sistema SAP</a>
+          <ul>
+            <li><a href="#sap-gateway">SAP Gateway</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#base-de-datos-hana">Base de datos HANA</a></li>
+    <li><a href="#base-de-datos-oracle">Base de datos Oracle</a>
+      <ul>
+        <li><a href="#manejo-de-backup-y-restores">Manejo de Backup y Restores</a>
+          <ul>
+            <li><a href="#backup-de-datos">Backup de datos</a></li>
+            <li><a href="#restore-de-datos">Restore de datos</a></li>
+          </ul>
+        </li>
+        <li><a href="#chequeando-consistecia">Chequeando consistecia</a></li>
+        <li><a href="#estadisticas">Estadisticas</a></li>
+        <li><a href="#administrando-oracle">Administrando Oracle</a>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#administrando-sap---funcional">Administrando SAP - Funcional</a>
+      <ul>
+        <li><a href="#apertura-y-cierre-de-mandante">Apertura y cierre de mandante</a></li>
+        <li><a href="#administración-de-jobs">Administración de JOBS</a>
+          <ul>
+            <li><a href="#creación-de-jobs-de-fondo">Creación de JOBS de Fondo</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#utilizando-sap">Utilizando SAP</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#como-conectar-el-sapgui-desde-linux">Como conectar el SAPgui desde Linux</a></li>
+            <li><a href="#script-para-obtener-datos-del-sistema">Script para obtener datos del sistema</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#actualización-de-servidor-sap">Actualización de servidor SAP</a>
+      <ul>
+        <li><a href="#actualización-del-kernel-de-sap">Actualización del Kernel de SAP</a>
+          <ul>
+            <li><a href="#instrucciones-para-actualizar-el-kernel-de-sap-en-windows">Instrucciones para actualizar el Kernel de SAP en Windows</a></li>
+            <li><a href="#instrucciones-para-actualizar-el-kernel-de-sap-en-linux">Instrucciones para actualizar el Kernel de SAP en Linux</a></li>
+            <li><a href="#post-actualización">Post Actualización</a></li>
+          </ul>
+        </li>
+        <li><a href="#administración-del-motor-de-java-de-portal">Administración del motor de Java de PORTAL</a>
+          <ul>
+            <li><a href="#panel-de-administración-de-procesos">Panel de administración de procesos</a></li>
+            <li><a href="#aplicar-un-deploy">Aplicar un deploy</a></li>
+            <li><a href="#reset-de-contraseña-sdm">Reset de contraseña SDM</a></li>
+          </ul>
+        </li>
+        <li><a href="#actualización-del-sistema-operativo-de-sap">Actualización del Sistema Operativo de SAP</a>
+          <ul>
+            <li><a href="#notas-sap">Notas SAP</a></li>
+          </ul>
+        </li>
+        <li><a href="#export--import-de-tablas-de-sap">Export / Import de Tablas de SAP</a></li>
+      </ul>
+    </li>
+    <li><a href="#renombrar-un-sistema-sap">Renombrar un sistema SAP</a>
+      <ul>
+        <li><a href="#relevamiento">Relevamiento</a></li>
+        <li><a href="#modificaciones">Modificaciones</a>
+          <ul>
+            <li><a href="#identificador-de-base-de-datos-oracle">Identificador de Base de Datos Oracle</a></li>
+            <li><a href="#conectividad-interna">Conectividad interna</a></li>
+            <li><a href="#perfiles-de-usuarios-de-sistema">Perfiles de usuarios de sistema</a></li>
+            <li><a href="#iniciando-sap">Iniciando SAP</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#clonación-de-un-sistema-sap">Clonación de un sistema SAP</a></li>
+    <li><a href="#problemas-comunes">Problemas comunes</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#analizando-problemas-de-ejecución-poco-descriptivos">Analizando problemas de ejecución poco descriptivos</a></li>
+            <li><a href="#unknown-webmethod-waitforservicestarted">Unknown webmethod: WaitforServiceStarted</a></li>
+            <li><a href="#note-1069225---no-hw-id-received-by-mssg-server">Note 1069225 - NO HW ID RECEIVED BY MSSG SERVER</a></li>
+            <li><a href="#registrar-programa-rfc">Registrar programa RFC</a></li>
+            <li><a href="#convertir-un-certificado-pfx-a-pse">Convertir un certificado PFX a PSE</a></li>
+            <li><a href="#webdynpro---503-service-unavailable">WebDynPro - 503 Service Unavailable</a></li>
+            <li><a href="#acceso-a-un-webservice-https-con-un-certificado-autofirmado">Acceso a un Webservice HTTPS con un certificado autofirmado</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#agregando-funcionalidades-y-oscuridades">Agregando funcionalidades y oscuridades</a>
+      <ul>
+        <li><a href="#oscuridad--librerias-extra-para-sap">Oscuridad : Librerias extra para SAP</a>
+          <ul>
+            <li><a href="#sap-note-1644499---database-connectivity-from-linux-to-sql-server">SAP Note 1644499 - Database connectivity from Linux to SQL Server</a></li>
+            <li><a href="#nota">Nota</a></li>
+            <li><a href="#convert-saplogonini-file-to-connections-file-for-sapgui-java">Convert saplogon.ini file to connections file for SAPGUI Java</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#referencias-1">Referencias</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

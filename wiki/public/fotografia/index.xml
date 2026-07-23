@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fotografia on Wiki de Sergio Cayuqueo</title>
+    <link>http://localhost:1313/fotografia/</link>
+    <description>Recent content in Fotografia on Wiki de Sergio Cayuqueo</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Wed, 22 Jul 2026 23:28:56 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/fotografia/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sobre el 18-55</title>
+      <link>http://localhost:1313/fotografia/conceptos/</link>
+      <pubDate>Mon, 25 Oct 2010 14:54:09 -0300</pubDate>
+      <guid>http://localhost:1313/fotografia/conceptos/</guid>
+      <description>&lt;h2 id=&#34;sobre-el-18-55&#34;&gt;Sobre el 18-55&lt;a class=&#34;anchor&#34; href=&#34;#sobre-el-18-55&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;Resumiendo muchísimo la teoría de abertura de diafrágmas y rapidez de obturación… es decir el manejo en manual de la cámara.&lt;/p&gt;&#xA;&lt;p&gt;Verás que tu 18-55mm tiene, en el borde el ojo de la lente, estos números: 1:3.5-5.6 . Vale, el 1: está en todos los objetivos y representa la cantidad mayor de luz que puede entrar cualquier objetivo del mundo, es decir 1: es la abertura mayor. Luego el 3.5-5.6 es la cantidad de luz que puede entrar en tu objetivo. Verás, cuanto más pequeño es el número (más cercano a 1 mayor cantidad de luz aceptará.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Firewalls on Wiki de Sergio Cayuqueo</title>
+    <link>http://localhost:1313/redes/firewalls/</link>
+    <description>Recent content in Firewalls on Wiki de Sergio Cayuqueo</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Wed, 22 Jul 2026 23:28:56 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/redes/firewalls/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>pfSense</title>
+      <link>http://localhost:1313/redes/firewalls/pfsense/</link>
+      <pubDate>Thu, 27 Dec 2018 17:58:16 -0300</pubDate>
+      <guid>http://localhost:1313/redes/firewalls/pfsense/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;pfSense&lt;/strong&gt; es una distribución personalizada de FreeBSD adaptado para su uso como Firewall y Router. En mi caso particular instale pfSense sobre un Firewall Checkpoint 2200, en un futuro espero reemplazar pfSense por OPNsense.&lt;/p&gt;&#xA;&lt;h2 id=&#34;referencias-útiles&#34;&gt;Referencias útiles&lt;a class=&#34;anchor&#34; href=&#34;#referencias-%c3%batiles&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;Instalar pfSense en un checkpoint, a mi parecer es la opción mas recomendable para utilizar pfSense&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://gooroo.io/GoorooTHINK/Article/16860/How-to-install-pfSense-onto-a-CheckPoint-Firewall-Appliance/23563#.W-2FOXZKiyI&#34;&gt;https://gooroo.io/GoorooTHINK/Article/16860/How-to-install-pfSense-onto-a-CheckPoint-Firewall-Appliance/23563#.W-2FOXZKiyI&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

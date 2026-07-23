@@ -1,0 +1,4318 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content=" Medición de velocidad de cambio en filesystems en un sistema Linux (físico o virtual) Hardware# Sistema Operativo# Generar estructura de directorios del 1 al 12# === Mostrar permisos númericos de archivos === &lt;code&gt; stat -c &#34;%a %n&#34; *Renombrar archivos con _ en vez de espacios# === Optimizar el formato de un disco USB para archivos grandes === &lt;code&gt; mkfs -t ext4 -m 0 -O sparse_super -T largefile4 /dev/sdb1 echo 1024 &gt; /sys/block/sdb/device/max_sectorsReloading inittab without reboot# Para recargar nuestro inittab sin tener que reiniciar debemos ejecutar “/sbin/init q”
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/notas/linux/">
+  <meta property="og:site_name" content="Wiki de Sergio Cayuqueo">
+  <meta property="og:title" content="Linux">
+  <meta property="og:description" content="Medición de velocidad de cambio en filesystems en un sistema Linux (físico o virtual) Hardware# Sistema Operativo# Generar estructura de directorios del 1 al 12# === Mostrar permisos númericos de archivos === &lt;code&gt; stat -c &#34;%a %n&#34; *Renombrar archivos con _ en vez de espacios# === Optimizar el formato de un disco USB para archivos grandes === &lt;code&gt; mkfs -t ext4 -m 0 -O sparse_super -T largefile4 /dev/sdb1 echo 1024 &gt; /sys/block/sdb/device/max_sectorsReloading inittab without reboot# Para recargar nuestro inittab sin tener que reiniciar debemos ejecutar “/sbin/init q”">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="website">
+
+
+  <meta itemprop="name" content="Linux">
+  <meta itemprop="description" content="Medición de velocidad de cambio en filesystems en un sistema Linux (físico o virtual) Hardware# Sistema Operativo# Generar estructura de directorios del 1 al 12# === Mostrar permisos númericos de archivos === &lt;code&gt; stat -c &#34;%a %n&#34; *Renombrar archivos con _ en vez de espacios# === Optimizar el formato de un disco USB para archivos grandes === &lt;code&gt; mkfs -t ext4 -m 0 -O sparse_super -T largefile4 /dev/sdb1 echo 1024 &gt; /sys/block/sdb/device/max_sectorsReloading inittab without reboot# Para recargar nuestro inittab sin tener que reiniciar debemos ejecutar “/sbin/init q”">
+  <meta itemprop="datePublished" content="2018-11-14T17:16:43-03:00">
+  <meta itemprop="dateModified" content="2026-07-23T18:03:24-03:00">
+  <meta itemprop="wordCount" content="2409">
+
+<title>Linux • Wiki de Sergio Cayuqueo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/notas/linux/">
+<link rel="stylesheet" href="/book.min.b67edd162318c5083c6df0a88fb33841277a463a19631410445e4034ec6e651c.css" integrity="sha256-tn7dFiMYxQg8bfCoj7M4QSd6RjoZYxQQRF5ANOxuZRw=" crossorigin="anonymous">
+
+
+  <script defer type="module" src="/es.search.min.0d8ef5a46e9d73ded2792bc4dc404ee89897a364056761a43c441c32a9c30525.js" integrity="sha256-DY71pG6dc97SeSvE3EBO6JiXo2QFZ2GkPEQcMqnDBSU=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/notas/linux/index.xml" title="Linux" />
+
+  
+</head>
+<body dir="ltr" class="book-kind-section book-type-notas">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Wiki de Sergio Cayuqueo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Buscar"
+    aria-label="Buscar"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Notas</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Hardware</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/" class="">
+      VMWare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/instalar_vmware_tools/" class="">
+      Instalar VMware Tools</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/agregar_cpu_en_caliente_en_vmware/" class="">
+      Agregar CPU en caliente en VMWare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/datetime/" class="">
+      Parametros para Vmware por cambio de hora de servidores</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/idrac/" class="">
+      iDrac Dell</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/strace/" class="">
+      Strace</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/nginx/" class="">
+      Nginx</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/" class="">
+      Squid</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/hearbeat/" class="">
+      LVS - Hearbeat - Ldirectord - Balanceo de carga y alta disponibilidad</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/rhcs/" class="">
+      Squid &#43; Red Hat Cluster Suite</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bind/" class="">
+      Configuración de Servidor DNS Bind</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/" class="active">
+      Linux</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Networking</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/networking/wan_optimization/" class="">
+      WAN Optimization</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/actualizar_suse_linux/" class="">
+      Actualizar SuSE Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/cambiar_planificador_de_disco/" class="">
+      Cambiar planificador de acceso a disco</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/medicion_de_velocidad_de_cambio_en_filesystems_en_un_sistema_linux_fisico_o_virtual/" class="">
+      Medición de velocidad de cambio en filesystems en un sistema Linux (físico o virtual)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/midiendo_el_rendimiento_del_sistema_con_iostat/" class="">
+      Midiendo el rendimiento del sistema con IOSTAT</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/sistema_de_archivos_proc/" class="">
+      Sistema de archivos /proc</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/lvm/" class="">
+      Logical Volume Management 2 (LVM2)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/manejo_de_memoria_en_linux/" class="">
+      Manejo de memoria en Linux</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/manejo_de_memoria_en_linux/hugepages/" class="">
+      Hugepages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/ver_el_dmesg_en_formato_humano/" class="">
+      Ver el dmesg en formato humano</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/midiendo_el_rendimiento_del_sistema_con_sar/" class="">
+      Midiendo el rendimiento del sistema con SAR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/cron/" class="">
+      CRON</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/sed/" class="">
+      SED - Stream EDitor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/configuracion_vpn/" class="">
+      Configuración de acceso VPN desde Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openssh/" class="">
+      OpenSSH</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/compartir_archivos_por_nfs/" class="">
+      Como compartir filesystems por NFS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/" class="">
+      Microsoft</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/windows/" class="">
+      Sistema Operativo Windows</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/windows/scripts_varios_de_powershell/" class="">
+      Scripts varios de PowerShell</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/network_policy_server_nps/" class="">
+      Network Policy Server (NPS)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/apache/" class="">
+      Tips de Apache</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/analisis_forense/" class="">
+      Análisis forense</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/qlikview/" class="">
+      QlikView</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/owncloud/" class="">
+      OwnCloud</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/iptables/" class="">
+      TIPs varios de IPTables</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/celulares/" class="">
+      Teléfonos celulares</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openldap/" class="">
+      Implementacion de un servidor OpenLDAP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/arduino/" class="">
+      Arduino</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/kickstart/" class="">
+      Kickstart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/raspberry_pi/" class="">
+      Raspberry Pi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/postfix/" class="">
+      Postfix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openssl/" class="">
+      OpenSSL</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/" class="">
+      Programación</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Python</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Webscraping</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/webscraping/beautifulsoup/" class="">
+      Beautiful Soup</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/sistema_de_archivos/" class="">
+      Operaciones sobre el sistema de archivos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/django/" class="">
+      Django</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/introduccion_a_awk/" class="">
+      Uso básico de AWK</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/the_linux_cdrom_interface/" class="">
+      The Linux CDROM interface</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/reproductor_de_cd/" class="">
+      Reproductor De Cd</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/console_ioctls_under_linux/" class="">
+      Console IOCTLs Under Linux</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/tools_of_the_trade_--_iostat_vmstat_and_netstat/" class="">
+      Tools of the Trade -- Iostat, Vmstat, and Netstat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/solaris_performance_monitoring/" class="">
+      Solaris Performance Monitoring &amp; Tuning - iostat , vmstat &amp; netstat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/" class="">
+      Bases De Datos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/mysql/" class="">
+      Task MySQL</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/oracle/" class="">
+      Oracle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/mssql/" class="">
+      Microsoft SQL Server</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/postgresql/" class="">
+      PostgreSQL</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/valgrind/" class="">
+      Valgrind</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/kamailio/" class="">
+      Kamailio</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/syslog_centralizado/" class="">
+      Sistema de LOG centralizado</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/inicio_rapido_de_csync2/" class="">
+      Csync para centralizar la configuracion de servicios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/xen_multi_bridge/" class="">
+      Utilizar dos o mas placas de red con Xen</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/sysinfo_dokuwiki/" class="">
+      Dump some hardware info in DokuWiki format</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/ubuntu_domu_en_red_hat/" class="">
+      Xen Red Hat Dom0 y Ubuntu DomU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/enomalism/" class="">
+      Configuraciones a mano</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Fotografia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/fotografia/conceptos/" class="">
+      Sobre el 18-55</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Legales</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Legislacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Nacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/nacion/decreto_155_89/" class="">
+      Decreto 155 89</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/nacion/ley_23302/" class="">
+      LEY 23.302</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/caba/" class="">
+      Legislación Indígena Ciudad Autónoma de Buenos Aires</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/jurisprudencia/" class="">
+      Jurisprudencia</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/" class="">
+      Seguridad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Criptografia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/truecrypt/" class="">
+      Privacidad datos utilizando TrueCrypt</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/veracrypt/" class="">
+      Privacidad datos utilizando VeraCrypt</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/gnupg/" class="">
+      The GNU Privacy Guard</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Gestion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/gestion/itil/" class="">
+      ITIL - Information Technology Infrastructure Library</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      How To</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/how_to/prevent_a_fork_bomb_by_limiting_user_process/" class="">
+      How to: Prevent a fork bomb by limiting user process</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Programacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Redes</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/nodejs/" class="">
+      NodeJS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/python/" class="">
+      Scripts simples en python</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/python/scapy/" class="">
+      Scapy</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/scanner_de_puertos_simple/" class="">
+      Scanner De Puertos Simple</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/shellcode/" class="">
+      Shellcode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/" class="">
+      Seguridad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Certificaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/" class="">
+      Profesional certificado en seguridad ofensiva (OSCP)</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/preparacion_personal/" class="">
+      Preparación personal para rendir la certificación OSCP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/oscp_prep_class/" class="">
+      OSCP Prep class</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/oscp-survival-guide/" class="">
+      OSCP-Survival-Guide</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Exploits</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/exploits/mempodipper/" class="">
+      mempodipper</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/exploits/dirty_cow/" class="">
+      Dirty COW</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/why_i_would_never_buy_a_dell_powerconnect_2724/" class="">
+      Why I would never buy a Dell PowerConnect 2724</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/understanding_bash_fork_bomb/" class="">
+      Understanding Bash fork() bomb ~ :(){ :|:&amp; };:</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/pequena_guia_de_seguridad_informatica/" class="">
+      Pequeña guía de seguridad informática</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/auditd/" class="">
+      Auditoría en Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/process_accounting_psacct/" class="">
+      Process Accounting (PSACCT)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/" class="">
+      Enlaces útiles</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/" class="">
+      Utilidades de Red</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/ngrep/" class="">
+      Network Grep - ngrep</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/msndump/" class="">
+      MSN Dump</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/tcpdump/" class="">
+      TCPDUMP</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/" class="">
+      Aprendiendo SAP</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/sap_hana/" class="">
+      SAP HANA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/desarrollo_y_programacion_en_abap/" class="">
+      Desarrollo y programación en ABAP</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/" class="">
+      Redes y comunicaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Conectividad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/conectividad/fibra_optica/" class="">
+      Fibra óptica</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Firewalls</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/fortinet/" class="">
+      Fortinet</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/fortinet/fortiap/" class="">
+      FortiGate como controlador Wireless</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/pfsense/" class="">
+      pfSense</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Notas</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/notas/nc/" class="">
+      Netcat</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Telefonia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Asterisk</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/" class="">
+      Conectividad con Asterisk</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/spa400/" class="">
+      SPA400</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/tdm400p/" class="">
+      Instalar Placa TDM400P</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Cisco</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/call_manager/" class="">
+      Cisco Call Manager</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/routers/" class="">
+      Routers Cisco</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/telefonos/" class="">
+      Teléfonos CISCO</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Videoconferencia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/videoconferencia/openmcu-ru/" class="">
+      OpenMCU-ru</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/flows/" class="">
+      Network Flow</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/flows/ntop/" class="">
+      Ntop</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/rancid/" class="">
+      Rancid (Really Awesome New Cisco confIg Differ)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/conceptos/" class="">
+      Conceptos de redes informáticas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/" class="">
+      Switches</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Cisco</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/2960c/" class="">
+      CISCO - 2960-C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/2960x/" class="">
+      CISCO - 2960-X</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/sf300/" class="">
+      CISCO - SF300</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/extreme_networks/" class="">
+      Extreme Networks</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/" class="">
+      Hewlett Packard</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/aruba/" class="">
+      Switches Aruba</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/" class="">
+      3COM</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Voice</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/voice/vlan/" class="">
+      VLAN de voz</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/debug_y_analisis_de_equipos_hp_3com/" class="">
+      Debug y análisis de equipos HP/3com</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cumulus_networks/" class="">
+      Cumulus Networks</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/gestion/" class="">
+      Gestión</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/gestion/taiga/" class="">
+      Taiga</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/leyes/" class="">
+      Leyes, Decretos y Ordenanzas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/" class="">
+      Charlas y Eventos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/pueblos_originarios_y_la_industria_del_software/" class="">
+      Pueblos Originarios y la industria del Software</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/uso_de_la_consola_linux/" class="">
+      Taller de uso de Consola Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/lanux_agosto_2010/" class="">
+      Servidores VPS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/" class="">
+      Manuales de proyectos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Tivoli Tsm</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/manual_de_manejo_de_backups_con_tivoli/" class="">
+      Manual de manejo de respaldos con Tivoli</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/tsm_sql_tips/" class="">
+      Mandatos de prueba de validación de la actualización de la base de datos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/tsm_sql_hints/" class="">
+      TSM SQL Hints</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/sql_for_tivoli_storage_manager/" class="">
+      SQL for Tivoli Storage Manager</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/emc_data_domain/" class="">
+      EMC Data Domain</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/" class="">
+      Monitoria y análisis de Red con Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/" class="">
+      Monitoreo de Red con Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Productos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/oracle/" class="">
+      Oracle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/argentina_-_arba_-_codigo_de_operacion_de_traslado_cot/" class="">
+      Argentina - ARBA - Código de Operación de Traslado (COT)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/asterisk/" class="">
+      Asterisk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/riverbed/" class="">
+      Riverbed</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/argentina_-_afip_-_factura_electronica/" class="">
+      Argentina AFIP Factura Electrónica</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/sap/" class="">
+      SAP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/ibm_tivoli_tsm/" class="">
+      Tivoli Storage Manager - TSM</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/brasil_-_nota_fiscal_electronica_nfe/" class="">
+      Brasil - Nota Fiscal Electrónica NFe</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/brasil_-_nota_fiscal_electronica_nfe/referencias_utiles_de_nfe/" class="">
+      Referencias útiles de NFE</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/microstrategy/" class="">
+      MicroStrategy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/qlikview/" class="">
+      QlikView</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/servidor_web/" class="">
+      Configuración del servidor Web</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/pnp4nagios/" class="">
+      PNP4Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/tipos_de_notificaciones/" class="">
+      Tipos de notificaciones</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_referencias_generales/" class="">
+      Referencias generales</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_referencias_generales/sistema_de_inventario/" class="">
+      Sistema de inventario</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagios_network_analyzer/" class="">
+      Nagios Network Analyzer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/" class="">
+      Correlación de eventos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/rsyslog/" class="">
+      Reliable system and kernel logging daemon</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/eventdb/" class="">
+      EventDB</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/syslog_ng/" class="">
+      Syslog-NG</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/implementacion_tecnica/" class="">
+      Implementación Técnica de Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/implementacion_tecnica/implementacion_tecnica_version_ubuntu_server_20.04/" class="">
+      Implementación Técnica de Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/capacitacion_en_monitoreo_de_red/" class="">
+      Capacitación en monitoreo de Red</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Certificaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/capacitacion_en_monitoreo_de_red/certificaciones/sox_-_sarbanes-oxley/" class="">
+      SOX</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/desarrollo_de_plugins_de_nagios/" class="">
+      Desarrollo de plugins de Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/desarrollo_de_plugins_de_nagios/problemas_comunes/" class="">
+      Problemas comunes de los plugins de Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/snmp/" class="">
+      SNMP (Simple Network Management Protocol)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagios_event_radio_dispatcher_nerd/" class="">
+      Nagios Event Radio Dispatcher (NERD)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/mk_livestatus/" class="">
+      MK Livestatus</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/ndo2utils/" class="">
+      NDO2Utils</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagvis/" class="">
+      Nagvis</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagvis/diseno_de_tablero_de_control/" class="">
+      Diseño de tablero de control</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/graficos_en_ajax/" class="">
+      Gráficos en AJAX</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_tips_y_recomendaciones/" class="">
+      TIPS y recomendaciones</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_otras_soluciones_basadas_en_nagios/" class="">
+      Anexo - Otras soluciones basadas en Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_comandos_externos/" class="">
+      Comandos externos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/plugins_usuales_de_nagios/" class="">
+      Plugins usuales de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/icmp/" class="">
+      ICMP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_codigo_fuente_de_nagios/" class="">
+      Análisis del código fuente de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_configuracion_desde_version_3_a_4/" class="">
+      Incompatibilidades de configuración v3 a v4</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/codigo_fuente/" class="">
+      Análisis del código fuente de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/thruk/" class="">
+      Thruk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/portugues/" class="">
+      Monitoração de rede e análise com Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/italiano/" class="">
+      Implementazione di un sistema di rete, monitor con Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_freeradius/" class="">
+      Servidor FreeRadius</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_systemimager/" class="">
+      Proyecto Servidor de Backups</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/an_introduction_to_linux_shell_scripting_for_dbas/" class="">
+      An Introduction to Linux Shell Scripting for DBAs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/filtrador_de_logs/" class="">
+      Filtrador de LOGS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/drbd/" class="">
+      DRBD (Distributed Replicated Block Device)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/" class="">
+      Lotus Notes</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/problemas_winmail.dat_outlook/" class="">
+      Problemas Winmail.dat Outlook</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/listar_ultimo_mes_de_login_de_usuarios/" class="">
+      Listar último mes de login de usuarios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/reemplazar_diseno_base_de_datos/" class="">
+      Reemplazar Diseño Base de Datos</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_squid/" class="">
+      Squid Proxy Server</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/red_restringida/" class="">
+      Red restringida</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/novell_audit/" class="">
+      Novell Identity Audit</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_dhcp/" class="">
+      Servicio DHCP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/ils/" class="">
+      ILS (Internet Locator Server)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Linux</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#hardware">Hardware</a></li>
+    <li><a href="#sistema-operativo">Sistema Operativo</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#generar-estructura-de-directorios-del-1-al-12">Generar estructura de directorios del 1 al 12</a></li>
+            <li><a href="#renombrar-archivos-con-_-en-vez-de-espacios">Renombrar archivos con _ en vez de espacios</a></li>
+            <li><a href="#reloading-inittab-without-reboot">Reloading inittab without reboot</a></li>
+            <li><a href="#ver-cual-de-los-archivos-abiertos-es-el-mas-grande">Ver cual de los archivos abiertos es el mas grande</a></li>
+            <li><a href="#renombrar-múltiples-archivos">Renombrar múltiples archivos</a></li>
+            <li><a href="#renombrar-todos-los-archivos-de-minúsculas-a-mayúsculas-o-viceversa">Renombrar todos los archivos de minúsculas a mayúsculas (o viceversa)</a></li>
+            <li><a href="#ordenar-procesos-medio-muertos">Ordenar procesos medio muertos</a></li>
+            <li><a href="#qlogic-fc-hba-lun-scan-utility">QLogic FC HBA LUN Scan Utility</a></li>
+            <li><a href="#rescan-scsi-bus-script">Rescan SCSI BUS Script</a></li>
+            <li><a href="#reescanear-tabla-de-particiones">Reescanear tabla de particiones</a></li>
+            <li><a href="#copia-de-seguridad-con-rsync">Copia de seguridad con Rsync</a></li>
+            <li><a href="#buscar-archivos-de-determinado-tamaño">Buscar archivos de determinado tamaño</a></li>
+            <li><a href="#formateador-de-disco-para-unidades-usb">Formateador de disco para unidades USB</a></li>
+            <li><a href="#configurar-protecciónprioridades-en-yum">Configurar protección/prioridades en YUM</a></li>
+            <li><a href="#cambiar-la-mac-address">Cambiar la MAC Address</a></li>
+            <li><a href="#servicios-al-inicio-del-sistema">Servicios al inicio del Sistema</a></li>
+            <li><a href="#locales-y-tomcat">Locales y Tomcat</a></li>
+            <li><a href="#how-to-run-sap-gui-on-linux-to-connect-sapr3-systems">HOW TO Run SAP GUI On LINUX To Connect SAP/R3 Systems</a></li>
+            <li><a href="#sap-sysinfo">SAP SysInfo</a></li>
+            <li><a href="#convertidor-del-saplogonini-de-windows-al-connections-de-sapgui-java">Convertidor del SAPLogon.ini de Windows al connections de SAPGui Java</a></li>
+            <li><a href="#formatear-lista-de-filesystems-montados">Formatear lista de filesystems montados</a></li>
+            <li><a href="#reacer-una-tabla-de-particiones-desde-cero">Reacer una tabla de particiones desde cero</a></li>
+            <li><a href="#agregar-memoria-y-cpu-en-caliente-en-vmware">Agregar Memoria y CPU en caliente en VMware</a></li>
+            <li><a href="#copia-rápida-de-seguridad-via-red">Copia rápida de seguridad via red</a></li>
+            <li><a href="#cambiar-cadena-de-texto-dentro-de-archivos">Cambiar cadena de texto dentro de archivos</a></li>
+            <li><a href="#ipcrm-para-determinado-usuario">IPCRM para determinado usuario</a></li>
+            <li><a href="#debian">Debian</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#scripts-para-importar-logs-de-cisco-call-manager-en-mysql-o-postgresql">Scripts para importar LOGS de Cisco Call Manager en Mysql o PostgreSQL</a></li>
+    <li><a href="#script-de-nautilus-para-añadir-una-marca-de-agua-a-una-imagen">Script de Nautilus para añadir una marca de agua a una imagen</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><ul>
+<li><a href="/notas/linux/medicion_de_velocidad_de_cambio_en_filesystems_en_un_sistema_linux_fisico_o_virtual/">Medición de velocidad de cambio en filesystems en un sistema Linux (físico o virtual)</a></li>
+</ul>
+<h2 id="hardware">Hardware<a class="anchor" href="#hardware">#</a></h2>
+<h2 id="sistema-operativo">Sistema Operativo<a class="anchor" href="#sistema-operativo">#</a></h2>
+<h4 id="generar-estructura-de-directorios-del-1-al-12">Generar estructura de directorios del 1 al 12<a class="anchor" href="#generar-estructura-de-directorios-del-1-al-12">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">=== Mostrar permisos númericos de archivos ===
+</span></span><span class="line"><span class="cl">&lt;code&gt;
+</span></span><span class="line"><span class="cl">stat -c &#34;%a %n&#34; *</span></span></code></pre></div><h4 id="renombrar-archivos-con-_-en-vez-de-espacios">Renombrar archivos con _ en vez de espacios<a class="anchor" href="#renombrar-archivos-con-_-en-vez-de-espacios">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">=== Optimizar el formato de un disco USB para archivos grandes ===
+</span></span><span class="line"><span class="cl">&lt;code&gt;
+</span></span><span class="line"><span class="cl">mkfs -t ext4 -m 0 -O sparse_super -T largefile4 /dev/sdb1
+</span></span><span class="line"><span class="cl">echo 1024 &gt; /sys/block/sdb/device/max_sectors</span></span></code></pre></div><h4 id="reloading-inittab-without-reboot">Reloading inittab without reboot<a class="anchor" href="#reloading-inittab-without-reboot">#</a></h4>
+<p>Para recargar nuestro inittab sin tener que reiniciar debemos ejecutar “/sbin/init q”</p>
+<h4 id="ver-cual-de-los-archivos-abiertos-es-el-mas-grande">Ver cual de los archivos abiertos es el mas grande<a class="anchor" href="#ver-cual-de-los-archivos-abiertos-es-el-mas-grande">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># lsof  -nn | sort -k7 -n</span></span></code></pre></div><h4 id="renombrar-múltiples-archivos">Renombrar múltiples archivos<a class="anchor" href="#renombrar-m%c3%baltiples-archivos">#</a></h4>
+<p>Por ejemplo si tenemos archivos <strong>*.cfg</strong> y queremos cambiarle la extension de .cfg a .cfg.old</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">rename s/.cfg/.cfg.old/ *.cfg</span></span></code></pre></div><h4 id="renombrar-todos-los-archivos-de-minúsculas-a-mayúsculas-o-viceversa">Renombrar todos los archivos de minúsculas a mayúsculas (o viceversa)<a class="anchor" href="#renombrar-todos-los-archivos-de-min%c3%basculas-a-may%c3%basculas-o-viceversa">#</a></h4>
+<p>De minúsculas a mayúsculas:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ find . -type f|while read f; do mv $f `echo $f |tr &#34;[:lower:]&#34; &#34;[:upper:]&#34;`; done</span></span></code></pre></div><p>De mayúsculas a minúsculas:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ find . -type f|while read f; do mv $f `echo $f |tr &#34;[:upper:]&#34; &#34;[:lower:]&#34;`; done</span></span></code></pre></div><p>Ref.: <a href="http://www.linux-os.com.ar/linuxos/renombrar-todos-los-archivos-de-minusculas-a-mayusculas-o-viceversa/">http://www.linux-os.com.ar/linuxos/renombrar-todos-los-archivos-de-minusculas-a-mayusculas-o-viceversa/</a></p>
+<h4 id="ordenar-procesos-medio-muertos">Ordenar procesos medio muertos<a class="anchor" href="#ordenar-procesos-medio-muertos">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">top -b -n 1 | awk &#39;{if (NR &lt;=7) print; else if ($8 == &#34;D&#34;) {print; count++} } END {print &#34;Total status D: &#34;count}&#39;
+</span></span><span class="line"><span class="cl">ps axu | awk &#39;{if (NR &lt;=7) print; else if ($8 == &#34;D&#34;) {print; count++} } END {print &#34;Total status D: &#34;count}&#39;</span></span></code></pre></div><h4 id="qlogic-fc-hba-lun-scan-utility">QLogic FC HBA LUN Scan Utility<a class="anchor" href="#qlogic-fc-hba-lun-scan-utility">#</a></h4>
+<p>This utility scans for the newly added LUNs. After adding the new LUNs it is not required to unload/load the QLogic FC driver or reboot the system. To see the newly added LUNs, just run the ql-scan-lun.sh utility.</p>
+<p>The simplest way to use this utility is to run</p>
+<pre><code>  # ./ql-scan-lun.sh
+</code></pre>
+<p>By default the utility would re-scan the QLogic HBAs for new LUNs.</p>
+<p><a href="/notas/ql-scan-lun-1.6.tgz">ql-scan-lun-1.6.tgz</a></p>
+<h4 id="rescan-scsi-bus-script">Rescan SCSI BUS Script<a class="anchor" href="#rescan-scsi-bus-script">#</a></h4>
+<p>Linux allows you to add and remove SCSI devices without rebooting by using the echo “scsi add-single-device H C I L” &gt; /proc/scsi/scsi command (H = host, C = channel, I = SCSI ID, L = SCSI LUN). The remove-single-device command works similarily. Note, however, that the SCSI bus was NOT designed for hot-plugging, so you might be out of luck … And you have to be sure, that termination is OK. All filesystems on a device have to be unmounted before disconnecting it or powering it down.</p>
+<p><a href="/notas/rescan-scsi-bus.sh-1.48.gz">rescan-scsi-bus.sh-1.48.gz</a></p>
+<p><a href="/notas/rescan-scsi-bus.sh-1.56.gz">rescan-scsi-bus.sh-1.56.gz</a></p>
+<p><a href="http://www.garloff.de/kurt/linux/">http://www.garloff.de/kurt/linux/</a></p>
+<h4 id="reescanear-tabla-de-particiones">Reescanear tabla de particiones<a class="anchor" href="#reescanear-tabla-de-particiones">#</a></h4>
+<p>Esto es útil por ejemplo si agregamos un disco desde VMWare o si estiramos un disco y el SO todavia no lo ve.</p>
+<p>Desde una llamada al sistema :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">echo 1 &gt; /sys/block/sdd/device/rescan
+</span></span><span class="line"><span class="cl">fdisk -l
+</span></span><span class="line"><span class="cl">mkfs.ext3 /dev/sdXY</span></span></code></pre></div><p>O podemos hacerlo ejecutando la utilidad <strong>partprobe</strong> sin argumentos, desde una shell con root.</p>
+<h4 id="copia-de-seguridad-con-rsync">Copia de seguridad con Rsync<a class="anchor" href="#copia-de-seguridad-con-rsync">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">rsync -av --progress --rsh ssh root@servidor:/ .</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">rsync --progress -av --delete /home/sergio/ /media/disk/sergio-home/</span></span></code></pre></div><ul>
+<li>progress: nos mostrará el porcentaje de ficheros copiados</li>
+<li>a: Archive, es una forma rápida de decirle que es una copia recursiva y que queremos que todo sea copiado</li>
+<li>v: Verbose, le indica a rsync que de información en pantalla sobre cada transacción</li>
+<li>z: Compress, comprime los ficheros para utilizar menor ancho de banda, así son copiados más rápidamente</li>
+<li>delete: borrará todos los ficheros en el folder destino, que han sido borrados en el folder origen, lo que los hacer estar sincronizados</li>
+</ul>
+<p><strong>script_rsync.sh</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&gt; ${TMPHOSTCHECK}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">if [ -s ${TMPHOSTCHECK} ]; then
+</span></span><span class="line"><span class="cl">                PROPERNAME=`cat /etc/hosts | egrep $2\$ | head -n 1 | awk &#39;{print $2}&#39; | cut -f-1 -d.`
+</span></span><span class="line"><span class="cl">                        if [ ${PROPERNAME} != $2 ]; then
+</span></span><span class="line"><span class="cl">                                echo Hostnames do not match - $2 - ${PROPERNAME}
+</span></span><span class="line"><span class="cl">                                echo exiting
+</span></span><span class="line"><span class="cl">                                exit
+</span></span><span class="line"><span class="cl">                        fi
+</span></span><span class="line"><span class="cl">                rm -rfd ${TMPHOSTCHECK}
+</span></span><span class="line"><span class="cl">        else
+</span></span><span class="line"><span class="cl">                echo host does not exist!!!!
+</span></span><span class="line"><span class="cl">                echo exiting
+</span></span><span class="line"><span class="cl">                rm -rfd ${TMPHOSTCHECK}
+</span></span><span class="line"><span class="cl">                exit
+</span></span><span class="line"><span class="cl">fi
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">if [ -d ${REPOSITORY}/${HOSTDIR} ]; then
+</span></span><span class="line"><span class="cl">                echo ${REPOSITORY}${HOSTDIR} exists
+</span></span><span class="line"><span class="cl">        else
+</span></span><span class="line"><span class="cl">                mkdir ${REPOSITORY}/${HOSTDIR}
+</span></span><span class="line"><span class="cl">fi
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">for i in &#34;${ARCHIVOS[@]}&#34;
+</span></span><span class="line"><span class="cl">do
+</span></span><span class="line"><span class="cl">    rsync -avz --progress -e &#39;ssh &#39; ${USER}@${HOSTNAME}:$i ${REPOSITORY}${HOSTDIR}
+</span></span><span class="line"><span class="cl">done
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">;;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&#39;help&#39;)
+</span></span><span class="line"><span class="cl">echo help screen
+</span></span><span class="line"><span class="cl">;;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">*) echo &#34;usage: $0 &lt;backup server|help&gt;&#34;
+</span></span><span class="line"><span class="cl">esac</span></span></code></pre></div><h4 id="buscar-archivos-de-determinado-tamaño">Buscar archivos de determinado tamaño<a class="anchor" href="#buscar-archivos-de-determinado-tama%c3%b1o">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">find ./ -type f -size +40000k -exec ls -lh {} \; | awk &#39;{ print $9 &#34;: &#34; $5 }</span></span></code></pre></div><h4 id="formateador-de-disco-para-unidades-usb">Formateador de disco para unidades USB<a class="anchor" href="#formateador-de-disco-para-unidades-usb">#</a></h4>
+<p>ufiformat is a command-line utility for formatting floppy disks in UFI- compatible USB floppy drives. It allows disks to be formatted in any format supported by the drive, and can also be used to determine what format a disk is currently using.</p>
+<p>Homepage: <a href="http://www.geocities.jp/tedi_world/format_usbfdd_e.html">http://www.geocities.jp/tedi_world/format_usbfdd_e.html</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">This is formatting disk utility for USB floppy devices.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Usage: ufiformat [OPTION]... [DEVICE]
+</span></span><span class="line"><span class="cl">Format a floppy disk in a USB floppy disk DEVICE.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  -f, --format [SIZE]  specify format capacity SIZE in KB
+</span></span><span class="line"><span class="cl">                       without -f option, the format of the current media will be used.
+</span></span><span class="line"><span class="cl">  -F, --force          do not perform any safety checks
+</span></span><span class="line"><span class="cl">  -i, --inquire        show device information, instead of performing format
+</span></span><span class="line"><span class="cl">                       without DEVICE argument, list USB floppy disk devices
+</span></span><span class="line"><span class="cl">  -v, --verbose        show detailed output
+</span></span><span class="line"><span class="cl">  -q, --quiet          suppress minor output
+</span></span><span class="line"><span class="cl">  -h, --help           show this message
+</span></span><span class="line"><span class="cl">Examples:
+</span></span><span class="line"><span class="cl">        	To format a media keeping its current geometry:  	ufiformat /dev/sda
+</span></span><span class="line"><span class="cl">        	To format a media for 2hd(1.44MB):	ufiformat -f 1440 /dev/sda
+</span></span><span class="line"><span class="cl">        	To list USB floppy devices:	ufiformat -i
+</span></span><span class="line"><span class="cl">        	To show USB floppy device information:	ufiformat -i /dev/sda
+</span></span><span class="line"><span class="cl">To use this program, both /dev/sd* and /dev/sg* need to be accessible.
+</span></span><span class="line"><span class="cl">High-level formatting is usually needed after using this program(ex. mkfs.vfat -I /dev/sda).</span></span></code></pre></div><h4 id="configurar-protecciónprioridades-en-yum">Configurar protección/prioridades en YUM<a class="anchor" href="#configurar-protecci%c3%b3nprioridades-en-yum">#</a></h4>
+<p>El propósito del plugin protectbase es proteger ciertos repositorios de las actualizaciones de otros repositorios. Los repositorios que sean protegidos no serán actualizados por ficheros nuevos en repositorios que no estén protegidos. Este plugin es recomendado para todos aquellos que rutinariamente habilitan repositorios de terceros, debido a que estos repositorios que no son de CentOS pueden actualizar ciertos ficheros del sistema y causar potencialmente que su instalación de CentOS se vuelva inestable.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">yum install yum-protectbase</span></span></code></pre></div><p>Después que el plugin esté instalado, asegúrese de que esté habilitado. Edite el fichero /etc/yum/pluginconf.d/protectbase.conf y asegúrese de que contenga las líneas siguientes:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[main]
+</span></span><span class="line"><span class="cl">enabled = 1</span></span></code></pre></div><p>Luego usted necesita editar todos los ficheros .repo en /etc/yum.repos.d/ y adicionar:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">protect=1</span></span></code></pre></div><p>o</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">protect=0</span></span></code></pre></div><p>Si tenes RH5 con las suscripciones pagas y todo, hay que editar este archivo</p>
+<p><strong>/etc/yum/pluginconf.d/rhnplugin.conf</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[main]
+</span></span><span class="line"><span class="cl">enabled = 1
+</span></span><span class="line"><span class="cl">gpgcheck = 1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># You can specify options per channel, e.g.:
+</span></span><span class="line"><span class="cl">#
+</span></span><span class="line"><span class="cl">[rhel-i386-server-5]
+</span></span><span class="line"><span class="cl">enabled = 1
+</span></span><span class="line"><span class="cl">protect = 0
+</span></span><span class="line"><span class="cl">#
+</span></span><span class="line"><span class="cl">#[some-unsigned-custom-channel]
+</span></span><span class="line"><span class="cl">#gpgcheck = 0</span></span></code></pre></div><p>Ref.:<a href="http://wiki.centos.org/es/PackageManagement/Yum/ProtectBase">http://wiki.centos.org/es/PackageManagement/Yum/ProtectBase</a></p>
+<h4 id="cambiar-la-mac-address">Cambiar la MAC Address<a class="anchor" href="#cambiar-la-mac-address">#</a></h4>
+<p>Primero vemos la MAC Address que tenemos asignada fisicamente</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">$ ifconfig -a | grep HWaddr
+</span></span><span class="line"><span class="cl">eth0  Link encap:Ethernet HWaddr 00:11:85:ee:25:61</span></span></code></pre></div><p>Luego procedemos a cambiarla en modo root</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># ifconfig eth0 down
+</span></span><span class="line"><span class="cl"># ifconfig eth0 hw ether 00:11:85:ee:25:71
+</span></span><span class="line"><span class="cl"># ifconfig eth0 up
+</span></span><span class="line"><span class="cl"># ifconfig eth0 |grep HWaddr</span></span></code></pre></div><h4 id="servicios-al-inicio-del-sistema">Servicios al inicio del Sistema<a class="anchor" href="#servicios-al-inicio-del-sistema">#</a></h4>
+<ul>
+<li>Red Hat
+<ul>
+<li><strong>chkconfig servicio on</strong> o <strong>chkconfig servicio off</strong></li>
+</ul>
+</li>
+</ul>
+<!-- -->
+<ul>
+<li>SuSE
+<ul>
+<li><strong>insserv -d servicvio</strong></li>
+</ul>
+</li>
+</ul>
+<!-- -->
+<ul>
+<li>En ambas distribuciones para ver los estados de ejecucion de los servicios
+<ul>
+<li><strong>chkconfig –list</strong></li>
+<li>Ademas se muestra un apartado con los servicios activos de xinetd</li>
+</ul>
+</li>
+</ul>
+<!-- -->
+<ul>
+<li>Debian
+<ul>
+<li><strong>update-rc.d servicio defaults</strong></li>
+</ul>
+</li>
+</ul>
+<h4 id="locales-y-tomcat">Locales y Tomcat<a class="anchor" href="#locales-y-tomcat">#</a></h4>
+<p>A veces cuando usamos aplicaciones que parcialmente utilizan Tomcat, como es el caso de MicroStrategy podemos tener diferencias con los reportes generados en via web y los generados desde el Intelligence Server, si los generados via web por ejemplo tienen incorrecto los separadores de coma y simbolos de moneda es muy probable que sean las locales, podemos fijarnos en modificar ciertas opciones de arranque del Tomcat.</p>
+<p><strong>/etc/init.d/tomcat5</strong> (al principio del archivo)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="o">**/</span><span class="n">etc</span><span class="o">/</span><span class="n">profile</span><span class="o">**</span> <span class="p">(</span><span class="n">al</span> <span class="n">final</span> <span class="n">del</span> <span class="n">archivo</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="n">code</span> <span class="n">bash</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">export</span> <span class="n">LC_ALL</span><span class="o">=</span><span class="s2">&#34;es_AR.utf8&#34;</span></span></span></code></pre></div><h4 id="how-to-run-sap-gui-on-linux-to-connect-sapr3-systems">HOW TO Run SAP GUI On LINUX To Connect SAP/R3 Systems<a class="anchor" href="#how-to-run-sap-gui-on-linux-to-connect-sapr3-systems">#</a></h4>
+<p>I have created this document for people who need to install SAPGUI into Linux.</p>
+<p>1) Minimum system requirements.<br>
+Linux<br>
+Hardware: CPU: Intel PentiumIII with 800 MHz<br>
+RAM: 256MB<br>
+Software:<br>
+OS: SuSE Linux 9.3 - 10.1, Red Hat Enterprise Linux 3 and 4<br>
+JVM: Sun Java Runtime Evironment 1.4.2 (32-bit) or 5.0 (32-bit) including Java Plugin<br>
+(please see:<br>
+<a href="http://java.sun.com/j2se/1.4.2/install-linux.html">http://java.sun.com/j2se/1.4.2/install-linux.html</a> <a href="http://java.sun.com/j2se/1.4.2/docs/">http://java.sun.com/j2se/1.4.2/docs/</a>…ocale.doc.html<br>
+<a href="http://java.sun.com/j2se/1.5.0/install-linux.html">http://java.sun.com/j2se/1.5.0/install-linux.html</a> <a href="http://java.sun.com/j2se/1.5.0/docs/">http://java.sun.com/j2se/1.5.0/docs/</a>…ocale.doc.html for details)\</p>
+<p>2) Download SAPGUI from:</p>
+<p><a href="ftp://ftp.sap.com/pub/sapgui/java/">ftp://ftp.sap.com/pub/sapgui/java/</a> (anonymous login)</p>
+<p><a href="https://websmp201.sap-ag.de/sapgui-java">https://websmp201.sap-ag.de/sapgui-java</a> (OSS user and pass)</p>
+<p>3) At the /java folder in ftp select:</p>
+<p>File: PlatinGUI-Linux-700.jar 37926 KB 11/07/06 13:58:00</p>
+<p>(note: a more recent version may be available)</p>
+<p>4) In the downloaded folder, execute</p>
+<p>Code:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">java -jar PlatinGUI-Linux-700.jar</span></span></code></pre></div><p>5) Executing SAPGUI</p>
+<p>a) Guilogon:</p>
+<p>Code:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">~/SAPClients/SAPGUI7.00/bin$ ./guilogon
+</span></span><span class="line"><span class="cl">To create servers, touch at new and go to &#34;advanced&#34;.</span></span></code></pre></div><p>– tip “use expert configuration”</p>
+<p>Example:</p>
+<p>For server 10.1.1.6 with system number 01:</p>
+<p>Code:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">conn=/H/10.1.1.6/S/3201</span></span></code></pre></div><p>B) Command line</p>
+<p>For server 10.1.1.6 with system number 01:</p>
+<p>Code:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">~/SAPClients/SAPGUI7.00/bin$ ./sapgui /H/10.1.1.6/S/3201</span></span></code></pre></div><p>If your server using load balancing configuration, use this connection string <strong>conn=/M/(IP_Address_Message_Server)/S/36(system_number)/G/(nama_group)</strong> and use this connection string configuration if yor SAP R/3 server are not using load balancing system, <strong>conn=/H/(IP_Address_server_SAP)/S/32(system_number)</strong>.</p>
+<p><a href="http://sapbasis.wordpress.com/2007/08/22/installation-and-configuration-of-sapgui-for-java-on-linux/">http://sapbasis.wordpress.com/2007/08/22/installation-and-configuration-of-sapgui-for-java-on-linux/</a></p>
+<p><a href="http://www.linuxquestions.org/linux/answers/Applications_GUI_Multimedia/HOW_TO_Run_SAP_GUI_On_LINUX_To_Connect_SAP_R3_Systems">http://www.linuxquestions.org/linux/answers/Applications_GUI_Multimedia/HOW_TO_Run_SAP_GUI_On_LINUX_To_Connect_SAP_R3_Systems</a></p>
+<h4 id="sap-sysinfo">SAP SysInfo<a class="anchor" href="#sap-sysinfo">#</a></h4>
+<p>Script para colectar informacion de tu sistema SAP</p>
+<p><a href="/notas/sapsysinfo.zip">sapsysinfo.zip</a></p>
+<h4 id="convertidor-del-saplogonini-de-windows-al-connections-de-sapgui-java">Convertidor del SAPLogon.ini de Windows al connections de SAPGui Java<a class="anchor" href="#convertidor-del-saplogonini-de-windows-al-connections-de-sapgui-java">#</a></h4>
+<p><a href="/notas/sap_gui_for_java_configuration_generator_scripts.zip">sap_gui_for_java_configuration_generator_scripts.zip</a></p>
+<h4 id="formatear-lista-de-filesystems-montados">Formatear lista de filesystems montados<a class="anchor" href="#formatear-lista-de-filesystems-montados">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="c1"># mount | column -t</span>
+</span></span><span class="line"><span class="cl"><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda1</span>         <span class="n">on</span>  <span class="o">/</span>                         <span class="n">type</span>  <span class="n">ext4</span>                   <span class="p">(</span><span class="n">rw</span><span class="p">,</span><span class="n">errors</span><span class="o">=</span><span class="n">remount</span><span class="o">-</span><span class="n">ro</span><span class="p">,</span><span class="n">commit</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">proc</span>              <span class="n">on</span>  <span class="o">/</span><span class="n">proc</span>                     <span class="n">type</span>  <span class="n">proc</span>                   <span class="p">(</span><span class="n">rw</span><span class="p">,</span><span class="n">noexec</span><span class="p">,</span><span class="n">nosuid</span><span class="p">,</span><span class="n">nodev</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">none</span>              <span class="n">on</span>  <span class="o">/</span><span class="n">sys</span>                      <span class="n">type</span>  <span class="n">sysfs</span>                  <span class="p">(</span><span class="n">rw</span><span class="p">,</span><span class="n">noexec</span><span class="p">,</span><span class="n">nosuid</span><span class="p">,</span><span class="n">nodev</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">fusectl</span>           <span class="n">on</span>  <span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">fs</span><span class="o">/</span><span class="n">fuse</span><span class="o">/</span><span class="n">connections</span>  <span class="n">type</span>  <span class="n">fusectl</span>                <span class="p">(</span><span class="n">rw</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">none</span>              <span class="n">on</span>  <span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">kernel</span><span class="o">/</span><span class="n">debug</span>         <span class="n">type</span>  <span class="n">debugfs</span>                <span class="p">(</span><span class="n">rw</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">none</span>              <span class="n">on</span>  <span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">kernel</span><span class="o">/</span><span class="n">security</span>      <span class="n">type</span>  <span class="n">securityfs</span>             <span class="p">(</span><span class="n">rw</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">none</span>              <span class="n">on</span>  <span class="o">/</span><span class="n">dev</span>                      <span class="n">type</span>  <span class="n">devtmpfs</span>               <span class="p">(</span><span class="n">rw</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="mi">0755</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">none</span>              <span class="n">on</span>  <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">pts</span>                  <span class="n">type</span>  <span class="n">devpts</span>                 <span class="p">(</span><span class="n">rw</span><span class="p">,</span><span class="n">noexec</span><span class="p">,</span><span class="n">nosuid</span><span class="p">,</span><span class="n">gid</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="mi">0620</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">none</span>              <span class="n">on</span>  <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">shm</span>                  <span class="n">type</span>  <span class="n">tmpfs</span>                  <span class="p">(</span><span class="n">rw</span><span class="p">,</span><span class="n">nosuid</span><span class="p">,</span><span class="n">nodev</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">none</span>              <span class="n">on</span>  <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">run</span>                  <span class="n">type</span>  <span class="n">tmpfs</span>                  <span class="p">(</span><span class="n">rw</span><span class="p">,</span><span class="n">nosuid</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="mi">0755</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">none</span>              <span class="n">on</span>  <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lock</span>                 <span class="n">type</span>  <span class="n">tmpfs</span>                  <span class="p">(</span><span class="n">rw</span><span class="p">,</span><span class="n">noexec</span><span class="p">,</span><span class="n">nosuid</span><span class="p">,</span><span class="n">nodev</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda6</span>         <span class="n">on</span>  <span class="o">/</span><span class="n">home</span>                     <span class="n">type</span>  <span class="n">ext4</span>                   <span class="p">(</span><span class="n">rw</span><span class="p">,</span><span class="n">user_xattr</span><span class="p">,</span><span class="n">commit</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">rpc_pipefs</span>        <span class="n">on</span>  <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">nfs</span><span class="o">/</span><span class="n">rpc_pipefs</span>   <span class="n">type</span>  <span class="n">rpc_pipefs</span>             <span class="p">(</span><span class="n">rw</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">nfsd</span>              <span class="n">on</span>  <span class="o">/</span><span class="n">proc</span><span class="o">/</span><span class="n">fs</span><span class="o">/</span><span class="n">nfsd</span>             <span class="n">type</span>  <span class="n">nfsd</span>                   <span class="p">(</span><span class="n">rw</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">binfmt_misc</span>       <span class="n">on</span>  <span class="o">/</span><span class="n">proc</span><span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">fs</span><span class="o">/</span><span class="n">binfmt_misc</span>  <span class="n">type</span>  <span class="n">binfmt_misc</span>            <span class="p">(</span><span class="n">rw</span><span class="p">,</span><span class="n">noexec</span><span class="p">,</span><span class="n">nosuid</span><span class="p">,</span><span class="n">nodev</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">gvfs</span><span class="o">-</span><span class="n">fuse</span><span class="o">-</span><span class="n">daemon</span>  <span class="n">on</span>  <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">sergio</span><span class="o">/.</span><span class="n">gvfs</span>        <span class="n">type</span>  <span class="n">fuse</span><span class="o">.</span><span class="n">gvfs</span><span class="o">-</span><span class="n">fuse</span><span class="o">-</span><span class="n">daemon</span>  <span class="p">(</span><span class="n">rw</span><span class="p">,</span><span class="n">nosuid</span><span class="p">,</span><span class="n">nodev</span><span class="p">,</span><span class="n">user</span><span class="o">=</span><span class="n">sergio</span><span class="p">)</span></span></span></code></pre></div><h4 id="reacer-una-tabla-de-particiones-desde-cero">Reacer una tabla de particiones desde cero<a class="anchor" href="#reacer-una-tabla-de-particiones-desde-cero">#</a></h4>
+<p>Reacer una tabla de particiones desde cero, en por ejemplo una LUN o un disco ya usado que deje restos de otro tipo de tabla de partición incompatible.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">parted /dev/sdc
+</span></span><span class="line"><span class="cl">mklabel msdos
+</span></span><span class="line"><span class="cl">quit</span></span></code></pre></div><h4 id="agregar-memoria-y-cpu-en-caliente-en-vmware">Agregar Memoria y CPU en caliente en VMware<a class="anchor" href="#agregar-memoria-y-cpu-en-caliente-en-vmware">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> &#34;${SPARSEMEM_STATE_FILE}&#34;
+</span></span><span class="line"><span class="cl">        fi
+</span></span><span class="line"><span class="cl">done</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"> &#34;${CPU_STATE_FILE}&#34;
+</span></span><span class="line"><span class="cl">        fi
+</span></span><span class="line"><span class="cl">    else 
+</span></span><span class="line"><span class="cl">        echo -e &#34;\t${CPU} already configured prior to hot-add&#34;
+</span></span><span class="line"><span class="cl">    fi
+</span></span><span class="line"><span class="cl">done</span></span></code></pre></div><h4 id="copia-rápida-de-seguridad-via-red">Copia rápida de seguridad via red<a class="anchor" href="#copia-r%c3%a1pida-de-seguridad-via-red">#</a></h4>
+<p>En el equipo donde vamos a dejar la copia</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">netcat -l -p 7000 &gt; stage.tgz</span></span></code></pre></div><p>Desde donde realizamos la copia, la ip es la del equipo anterior</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">tar cfzp - /oracle/stage | netcat 192.168.1.55 7000</span></span></code></pre></div><h4 id="cambiar-cadena-de-texto-dentro-de-archivos">Cambiar cadena de texto dentro de archivos<a class="anchor" href="#cambiar-cadena-de-texto-dentro-de-archivos">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">find . -name &#39;*.cfg&#39; -type f -print0 | xargs -0 sed -i &#39;s/cadena/reemplazo/g&#39;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">s/cadena/reemplazo/g</span></span></code></pre></div><h4 id="ipcrm-para-determinado-usuario">IPCRM para determinado usuario<a class="anchor" href="#ipcrm-para-determinado-usuario">#</a></h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">) { @a=split(/\s+/); print `ipcrm sem $a[1]`}&#39;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">ipcs -s | grep $USERNAME | awk &#39; { print $2 } &#39; | xargs ipcrm sem</span></span></code></pre></div><h4 id="debian">Debian<a class="anchor" href="#debian">#</a></h4>
+<h5 id="tab-completion-debian-net-install">TAB Completion Debian Net Install<a class="anchor" href="#tab-completion-debian-net-install">#</a></h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">apt-get install bash-completion
+</span></span><span class="line"><span class="cl">exit
+</span></span><span class="line"><span class="cl">login</span></span></code></pre></div><h5 id="compilar-el-kernel-a-lo-debian">Compilar el Kernel a lo Debian<a class="anchor" href="#compilar-el-kernel-a-lo-debian">#</a></h5>
+<p>Esto es lo mismo que hacer un <em>make -j</em>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="k">export</span> <span class="n">CONCURRENCY_LEVEL</span><span class="o">=</span><span class="mi">2</span></span></span></code></pre></div><p>Despues de hacer el menuconfig le damos el make de esta manera.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">make-kpkg --initrd --append-to-version=-some-string-here kernel-image kernel-headers kernel-source</span></span></code></pre></div><p>y listo, vamos a tener dos archivos asi:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">linux-headers-3.0.6-13-generic_3.0.6-13-generic-10.00.Custom_i386.deb
+</span></span><span class="line"><span class="cl">linux-image-3.0.6-13-generic_3.0.6-13-generic-10.00.Custom_i386.deb  </span></span></code></pre></div><h5 id="script-para-modificar-control-file-de-un-deb">Script para modificar control file de un .deb<a class="anchor" href="#script-para-modificar-control-file-de-un-deb">#</a></h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Ref.: http://ubuntuforums.org/showthread.php?t=636724
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">===== Redes sociales =====
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">==== Twitter ====
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Twidge es una aplicación de línea de comandos para solicitar servicios de microblogging a Twitter (funciona también para Identi.ca). Cuenta con múltiples características, a saber:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    * Es fácil de aprender.
+</span></span><span class="line"><span class="cl">    * Cuenta buena documentación.
+</span></span><span class="line"><span class="cl">    * Es compatible con el API de Twitter.
+</span></span><span class="line"><span class="cl">    * Puede acortar URL con tinyurl.com.
+</span></span><span class="line"><span class="cl">    * Está diseñado para ser amigable con scripts para el shell.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Dicho lo anterior, aprendamos Twidge en 8 sencillos pasos:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">1. Instalación. De nueva cuenta, asumo un sistema tipo Debian (también puedes compilarlo para cualquier GNU/Linux).
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      $ sudo apt-get install twidge
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">2. Configuración. Twidge te hará un par de peticiones: usuario y contraseña.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      $ twidge setup
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">3. Los 20 updates más recientes de tus amigos. Twidge desplegará adecuadamente el nick de tu amigo y estado en un par de columnas.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      $ twidge lsrecent
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">4. Actualiza tu estado.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      $ twidge update &#34;Preparando post sobre Twidge&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">5. Sigue a alguien interesante.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      $ twidge follow cayu
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">6. Lo contrario…
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      $ twidge unfollow BillGates
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">7. Conoce a tus seguidores.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      $ twidge lsfollowers
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">8. Acorta URL largas. Twidge lo hace automáticamente.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      $ twidge update &#34;http://software.complete.org/static/twidge/doc/html&#34; 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Ref: http://bitelia.com/2010/02/comando-linux-twidge-un-cliente-para-twitter
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">===== Ubicar la Latitud y Longitud en Google Maps =====
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Una vez seleccionada la dirección o el punto que queremos, en la barra de direcciones del navegador:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;code javascript&gt;
+</span></span><span class="line"><span class="cl">javascript:void(prompt(&#39;&#39;,gApplication.getMap().getCenter()));</span></span></code></pre></div><h2 id="scripts-para-importar-logs-de-cisco-call-manager-en-mysql-o-postgresql">Scripts para importar LOGS de Cisco Call Manager en Mysql o PostgreSQL<a class="anchor" href="#scripts-para-importar-logs-de-cisco-call-manager-en-mysql-o-postgresql">#</a></h2>
+<p><a href="/notas/cdr.tgz">cdr.tgz</a></p>
+<h2 id="script-de-nautilus-para-añadir-una-marca-de-agua-a-una-imagen">Script de Nautilus para añadir una marca de agua a una imagen<a class="anchor" href="#script-de-nautilus-para-a%c3%b1adir-una-marca-de-agua-a-una-imagen">#</a></h2>
+<p>Script muy bueno</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#******************************************************************************************</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Marca de agua</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Versión= 1.0</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Script de Nautilus que añade una marca de agua a una imagen </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># La marca de agua es otra imagen</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Script programado y probado satisfactoriamente en Debian Lenny y Gnome 2.22.3</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Esta programado pensado en ejecutarse como un script de Nautilus aunque es posible </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># usarlo en consola pasandole como parámetro el nombre del fichero de la imagen.  </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#  DEPENDENCIAS</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#  Zenity (http://freshmeat.net/projects/zenity)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#  Necesario para generar los cuadros de dialogo del script</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#  </span>
+</span></span><span class="line"><span class="cl"><span class="c1">#  Imagemagick (http://www.imagemagick.org/)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#  Contiene elprograma composite  necesario para crear el borde </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># INSTALACION:</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 	1. Copiar el script al directorio /home/usuario/.gnome2/nautilus-scripts </span>
+</span></span><span class="line"><span class="cl"><span class="c1">#	2. Dar permisos de ejecución al script</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#	3. En este momento al pulsar con el botón derecho del ratón sobre una imagen nos</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#	   aparece el menú Scripts y dentro de el aparece el script.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Copyright (C) 2009 Carlos Fco. Andión López</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># This program is free software; you can redistribute it and/or modify</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># it under the terms of the GNU General Public License as published by</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># the Free Software Foundation; either version 2 of the License, or</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># (at your option) any later version.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># This program is distributed in the hope that it will be useful,</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># GNU General Public License for more details.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># You should have received a copy of the GNU General Public License along</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># with this program; if not, write to the Free Software Foundation, Inc.,</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># http://www.gnu.org/copyleft/gpl.html</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#******************************************************************************************</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Se comprueba que los programas necesarios para generar el borde estan presentes</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="nb">command</span> in composite
+</span></span><span class="line"><span class="cl"><span class="k">do</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="o">[</span> ! <span class="k">$(</span>which <span class="nv">$command</span><span class="k">)</span> <span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="k">then</span>
+</span></span><span class="line"><span class="cl">    	zenity --error --text <span class="s2">&#34;Falta el programa \&#34;</span><span class="nv">$command</span><span class="s2">\&#34; .\n
+</span></span></span><span class="line"><span class="cl"><span class="s2">		Es necesario instalar el paquete ImageMagick.&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fi</span>
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#Se indica el fichero con la marca de agua y el porcentaje de visibilidad</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nv">WM_FILE</span><span class="o">=</span><span class="sb">`</span>zenity --file-selection --title<span class="o">=</span><span class="s2">&#34;Seleccione un archivo&#34;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">case</span> <span class="nv">$?</span> in
+</span></span><span class="line"><span class="cl">		0<span class="o">)</span>
+</span></span><span class="line"><span class="cl">			<span class="nb">echo</span> <span class="s2">&#34;\&#34;</span><span class="nv">$WM_FILE</span><span class="s2">\&#34; seleccionado.&#34;</span><span class="p">;;</span>
+</span></span><span class="line"><span class="cl">		1<span class="o">)</span>
+</span></span><span class="line"><span class="cl">			<span class="nb">echo</span> <span class="s2">&#34;No ha seleccionado ningún archivo.&#34;</span><span class="p">;;</span>
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">		-1<span class="o">)</span>
+</span></span><span class="line"><span class="cl">			<span class="nb">echo</span> <span class="s2">&#34;No ha seleccionado ningún archivo.&#34;</span><span class="p">;;</span>
+</span></span><span class="line"><span class="cl">			
+</span></span><span class="line"><span class="cl">	<span class="k">esac</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">VISIBILITY</span><span class="o">=</span><span class="sb">`</span>zenity --title<span class="o">=</span><span class="s1">&#39;Marca de agua&#39;</span> --text<span class="o">=</span><span class="s1">&#39;¿Visibilidad en %?&#39;</span> --entry-text<span class="o">=</span><span class="s1">&#39;50&#39;</span> --entry<span class="sb">`</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#Se inicializa la barra de progreso de zenity</span>
+</span></span><span class="line"><span class="cl"><span class="nv">FILES_COUNT</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$#</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">CURRENT_FILE</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> arg<span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">do</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#Se renombra el archivo para evitar sobreescribir el original y crear uno nuevo con la marca</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">IMX_FILE_TARGET</span><span class="o">=</span><span class="s1">&#39;wm_&#39;</span><span class="s2">&#34;</span><span class="nv">$arg</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	composite -dissolve <span class="s2">&#34;</span><span class="nv">$VISIBILITY</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="nv">$WM_FILE</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="nv">$arg</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="nv">$IMX_FILE_TARGET</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">#Actualizo la barra de progreso de Zenity</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">percentage</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$CURRENT_FILE</span><span class="s2"> * 100 / </span><span class="nv">$FILES_COUNT</span><span class="s2">&#34;</span> <span class="p">|</span> bc<span class="k">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">CURRENT_FILE</span><span class="o">=</span><span class="k">$((</span>CURRENT_FILE <span class="o">+</span> <span class="m">1</span><span class="k">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="nv">$percentage</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">done</span> <span class="p">|</span> zenity --progress --title<span class="o">=</span><span class="s2">&#34;Procesando imagenes&#34;</span>  --auto-close</span></span></code></pre></div><p>Ref: <a href="http://elrincondetolgalen.wordpress.com/2009/11/12/script-de-nautilus-para-anadir-una-marca-de-agua-a-una-imagen/">http://elrincondetolgalen.wordpress.com/2009/11/12/script-de-nautilus-para-anadir-una-marca-de-agua-a-una-imagen/</a></p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/notas/bind/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Configuración de Servidor DNS Bind</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/notas/linux/networking/wan_optimization/" class="flex align-center">
+        <span>WAN Optimization</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#hardware">Hardware</a></li>
+    <li><a href="#sistema-operativo">Sistema Operativo</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#generar-estructura-de-directorios-del-1-al-12">Generar estructura de directorios del 1 al 12</a></li>
+            <li><a href="#renombrar-archivos-con-_-en-vez-de-espacios">Renombrar archivos con _ en vez de espacios</a></li>
+            <li><a href="#reloading-inittab-without-reboot">Reloading inittab without reboot</a></li>
+            <li><a href="#ver-cual-de-los-archivos-abiertos-es-el-mas-grande">Ver cual de los archivos abiertos es el mas grande</a></li>
+            <li><a href="#renombrar-múltiples-archivos">Renombrar múltiples archivos</a></li>
+            <li><a href="#renombrar-todos-los-archivos-de-minúsculas-a-mayúsculas-o-viceversa">Renombrar todos los archivos de minúsculas a mayúsculas (o viceversa)</a></li>
+            <li><a href="#ordenar-procesos-medio-muertos">Ordenar procesos medio muertos</a></li>
+            <li><a href="#qlogic-fc-hba-lun-scan-utility">QLogic FC HBA LUN Scan Utility</a></li>
+            <li><a href="#rescan-scsi-bus-script">Rescan SCSI BUS Script</a></li>
+            <li><a href="#reescanear-tabla-de-particiones">Reescanear tabla de particiones</a></li>
+            <li><a href="#copia-de-seguridad-con-rsync">Copia de seguridad con Rsync</a></li>
+            <li><a href="#buscar-archivos-de-determinado-tamaño">Buscar archivos de determinado tamaño</a></li>
+            <li><a href="#formateador-de-disco-para-unidades-usb">Formateador de disco para unidades USB</a></li>
+            <li><a href="#configurar-protecciónprioridades-en-yum">Configurar protección/prioridades en YUM</a></li>
+            <li><a href="#cambiar-la-mac-address">Cambiar la MAC Address</a></li>
+            <li><a href="#servicios-al-inicio-del-sistema">Servicios al inicio del Sistema</a></li>
+            <li><a href="#locales-y-tomcat">Locales y Tomcat</a></li>
+            <li><a href="#how-to-run-sap-gui-on-linux-to-connect-sapr3-systems">HOW TO Run SAP GUI On LINUX To Connect SAP/R3 Systems</a></li>
+            <li><a href="#sap-sysinfo">SAP SysInfo</a></li>
+            <li><a href="#convertidor-del-saplogonini-de-windows-al-connections-de-sapgui-java">Convertidor del SAPLogon.ini de Windows al connections de SAPGui Java</a></li>
+            <li><a href="#formatear-lista-de-filesystems-montados">Formatear lista de filesystems montados</a></li>
+            <li><a href="#reacer-una-tabla-de-particiones-desde-cero">Reacer una tabla de particiones desde cero</a></li>
+            <li><a href="#agregar-memoria-y-cpu-en-caliente-en-vmware">Agregar Memoria y CPU en caliente en VMware</a></li>
+            <li><a href="#copia-rápida-de-seguridad-via-red">Copia rápida de seguridad via red</a></li>
+            <li><a href="#cambiar-cadena-de-texto-dentro-de-archivos">Cambiar cadena de texto dentro de archivos</a></li>
+            <li><a href="#ipcrm-para-determinado-usuario">IPCRM para determinado usuario</a></li>
+            <li><a href="#debian">Debian</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#scripts-para-importar-logs-de-cisco-call-manager-en-mysql-o-postgresql">Scripts para importar LOGS de Cisco Call Manager en Mysql o PostgreSQL</a></li>
+    <li><a href="#script-de-nautilus-para-añadir-una-marca-de-agua-a-una-imagen">Script de Nautilus para añadir una marca de agua a una imagen</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

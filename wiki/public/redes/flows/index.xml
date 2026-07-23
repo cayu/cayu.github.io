@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Network Flow on Wiki de Sergio Cayuqueo</title>
+    <link>http://localhost:1313/redes/flows/</link>
+    <description>Recent content in Network Flow on Wiki de Sergio Cayuqueo</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Wed, 22 Jul 2026 23:28:56 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/redes/flows/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ntop</title>
+      <link>http://localhost:1313/redes/flows/ntop/</link>
+      <pubDate>Mon, 20 Jan 2014 16:09:21 -0300</pubDate>
+      <guid>http://localhost:1313/redes/flows/ntop/</guid>
+      <description>&lt;p&gt;ntop (de Network Top) es una herramienta que permite monitorizar en tiempo real una red. Es útil para controlar los usuarios y aplicaciones que están consumiendo recursos de red en un instante concreto y para ayudarnos a detectar malas configuraciones de algún equipo, (facilitando la tarea ya que. justo al nombre del equipo, aparece sale un banderín amarillo o rojo, dependiendo si es un error leve o grave), o a nivel de servicio. Posee un microservidor web desde el que cualquier usuario con acceso puede ver las estadísticas del monitorizaje.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

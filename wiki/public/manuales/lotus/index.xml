@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lotus Notes on Wiki de Sergio Cayuqueo</title>
+    <link>http://localhost:1313/manuales/lotus/</link>
+    <description>Recent content in Lotus Notes on Wiki de Sergio Cayuqueo</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Wed, 22 Jul 2026 23:28:56 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/manuales/lotus/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Problemas Winmail.dat Outlook</title>
+      <link>http://localhost:1313/manuales/lotus/problemas_winmail.dat_outlook/</link>
+      <pubDate>Mon, 20 Jan 2014 16:04:27 -0300</pubDate>
+      <guid>http://localhost:1313/manuales/lotus/problemas_winmail.dat_outlook/</guid>
+      <description>&lt;h2 id=&#34;problema&#34;&gt;Problema&lt;a class=&#34;anchor&#34; href=&#34;#problema&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;Se han reportado casos de mensajes recibidos desde un usuario usando Microsoft® Exchange en donde envía un archivo adjunto y aparece renombrado como winmail.dat en la base de datos del usuario del cliente de Lotus Notes. No es posible abrir esos archivos con el cliente de Lotus Notes. Al examinar el documento revela que el mensaje enviado contiene: Content-Type: application/ms-tnef; name=“winmail.dat”.&lt;/p&gt;&#xA;&lt;h2 id=&#34;causa&#34;&gt;Causa&lt;a class=&#34;anchor&#34; href=&#34;#causa&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;Este comportamiento es debido a mensajes enviados desde Microsoft® Exchange con la opción de código MIME habilitada. Winmail.dat es adjuntado al mensaje en formato uuencoded. Información de cómo evitar que este archivo sea enviado vía Internet por usuarios que están usando Exchange, está documentado y puede ser accedida desde la página website de Soporte de Microsoft, con el número de artículo Q138053:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Listar último mes de login de usuarios</title>
+      <link>http://localhost:1313/manuales/lotus/listar_ultimo_mes_de_login_de_usuarios/</link>
+      <pubDate>Mon, 20 Jan 2014 16:03:32 -0300</pubDate>
+      <guid>http://localhost:1313/manuales/lotus/listar_ultimo_mes_de_login_de_usuarios/</guid>
+      <description>&lt;ol&gt;&#xA;&lt;li&gt;Launch the Domino administrator client and click the Configuration tab.&lt;/li&gt;&#xA;&lt;li&gt;Click the Server option, followed by the Configurations option.&lt;/li&gt;&#xA;&lt;li&gt;Select the server in which you want to identify inactive users, and select the Edit Configuration option.&lt;/li&gt;&#xA;&lt;li&gt;Click the Basics tab and click the Enabled option to the right of the License Tracking heading.&lt;/li&gt;&#xA;&lt;li&gt;Click “Save and Close” to save the changes.&lt;/li&gt;&#xA;&lt;li&gt;Click the Files tab in the Domino administrator and select the userlicenses.nsf file to open it.&lt;/li&gt;&#xA;&lt;li&gt;View the last access date for each user. Users without a recent last access date are inactive.&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
+    </item>
+    <item>
+      <title>Reemplazar Diseño Base de Datos</title>
+      <link>http://localhost:1313/manuales/lotus/reemplazar_diseno_base_de_datos/</link>
+      <pubDate>Mon, 20 Jan 2014 16:01:41 -0300</pubDate>
+      <guid>http://localhost:1313/manuales/lotus/reemplazar_diseno_base_de_datos/</guid>
+      <description>&lt;ul&gt;&#xA;&lt;li&gt;Para reemplazar el diseño de una base de datos de correo en particular.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;load convert mail\base.nsf * template.ntf&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;Templates utilizado: &lt;strong&gt;mail85.ntf&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Para reemplazar los templates de todas las bases de correo.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;load convert mail\.nsf * template.ntf&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

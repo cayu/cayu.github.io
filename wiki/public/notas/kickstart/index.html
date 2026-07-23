@@ -1,0 +1,4070 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="//Muchos administradores de sistemas preferieren usar un método de instalación automatizado para instalar Red Hat Enterprise Linux en sus máquinas. Para cubrir esta necesidad, Red Hat creó el método de instalación kickstart. Usando kickstart, un administrador de sistemas puede crear un archivo único que contiene las respuestas a todas las preguntas que normalmente se hacen durante una instalación típica.
+Los archivos kickstart se pueden mantener en un servidor de sistema único y ser leídos por computadores individuales durante la instalación. Este método de instalación puede soportar el uso de un sólo archivo kickstart para instalar Red Hat Enterprise Linux en múltiples máquinas, haciéndolo ideal para administradores de sistemas y de red.
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/notas/kickstart/">
+  <meta property="og:site_name" content="Wiki de Sergio Cayuqueo">
+  <meta property="og:title" content="Kickstart">
+  <meta property="og:description" content="//Muchos administradores de sistemas preferieren usar un método de instalación automatizado para instalar Red Hat Enterprise Linux en sus máquinas. Para cubrir esta necesidad, Red Hat creó el método de instalación kickstart. Usando kickstart, un administrador de sistemas puede crear un archivo único que contiene las respuestas a todas las preguntas que normalmente se hacen durante una instalación típica.
+Los archivos kickstart se pueden mantener en un servidor de sistema único y ser leídos por computadores individuales durante la instalación. Este método de instalación puede soportar el uso de un sólo archivo kickstart para instalar Red Hat Enterprise Linux en múltiples máquinas, haciéndolo ideal para administradores de sistemas y de red.">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="notas">
+    <meta property="article:published_time" content="2015-01-09T16:02:09-03:00">
+    <meta property="article:modified_time" content="2026-07-22T23:28:56-03:00">
+
+
+  <meta itemprop="name" content="Kickstart">
+  <meta itemprop="description" content="//Muchos administradores de sistemas preferieren usar un método de instalación automatizado para instalar Red Hat Enterprise Linux en sus máquinas. Para cubrir esta necesidad, Red Hat creó el método de instalación kickstart. Usando kickstart, un administrador de sistemas puede crear un archivo único que contiene las respuestas a todas las preguntas que normalmente se hacen durante una instalación típica.
+Los archivos kickstart se pueden mantener en un servidor de sistema único y ser leídos por computadores individuales durante la instalación. Este método de instalación puede soportar el uso de un sólo archivo kickstart para instalar Red Hat Enterprise Linux en múltiples máquinas, haciéndolo ideal para administradores de sistemas y de red.">
+  <meta itemprop="datePublished" content="2015-01-09T16:02:09-03:00">
+  <meta itemprop="dateModified" content="2026-07-22T23:28:56-03:00">
+  <meta itemprop="wordCount" content="1335">
+
+<title>Kickstart • Wiki de Sergio Cayuqueo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/notas/kickstart/">
+<link rel="stylesheet" href="/book.min.b67edd162318c5083c6df0a88fb33841277a463a19631410445e4034ec6e651c.css" integrity="sha256-tn7dFiMYxQg8bfCoj7M4QSd6RjoZYxQQRF5ANOxuZRw=" crossorigin="anonymous">
+
+
+  <script defer type="module" src="/es.search.min.0d8ef5a46e9d73ded2792bc4dc404ee89897a364056761a43c441c32a9c30525.js" integrity="sha256-DY71pG6dc97SeSvE3EBO6JiXo2QFZ2GkPEQcMqnDBSU=" crossorigin="anonymous"></script>
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-notas">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Wiki de Sergio Cayuqueo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Buscar"
+    aria-label="Buscar"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Notas</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Hardware</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/" class="">
+      VMWare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/instalar_vmware_tools/" class="">
+      Instalar VMware Tools</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/agregar_cpu_en_caliente_en_vmware/" class="">
+      Agregar CPU en caliente en VMWare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/datetime/" class="">
+      Parametros para Vmware por cambio de hora de servidores</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/idrac/" class="">
+      iDrac Dell</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/strace/" class="">
+      Strace</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/nginx/" class="">
+      Nginx</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/" class="">
+      Squid</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/hearbeat/" class="">
+      LVS - Hearbeat - Ldirectord - Balanceo de carga y alta disponibilidad</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/rhcs/" class="">
+      Squid &#43; Red Hat Cluster Suite</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bind/" class="">
+      Configuración de Servidor DNS Bind</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/" class="">
+      Linux</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Networking</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/networking/wan_optimization/" class="">
+      WAN Optimization</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/actualizar_suse_linux/" class="">
+      Actualizar SuSE Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/cambiar_planificador_de_disco/" class="">
+      Cambiar planificador de acceso a disco</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/medicion_de_velocidad_de_cambio_en_filesystems_en_un_sistema_linux_fisico_o_virtual/" class="">
+      Medición de velocidad de cambio en filesystems en un sistema Linux (físico o virtual)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/midiendo_el_rendimiento_del_sistema_con_iostat/" class="">
+      Midiendo el rendimiento del sistema con IOSTAT</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/sistema_de_archivos_proc/" class="">
+      Sistema de archivos /proc</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/lvm/" class="">
+      Logical Volume Management 2 (LVM2)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/manejo_de_memoria_en_linux/" class="">
+      Manejo de memoria en Linux</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/manejo_de_memoria_en_linux/hugepages/" class="">
+      Hugepages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/ver_el_dmesg_en_formato_humano/" class="">
+      Ver el dmesg en formato humano</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/midiendo_el_rendimiento_del_sistema_con_sar/" class="">
+      Midiendo el rendimiento del sistema con SAR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/cron/" class="">
+      CRON</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/sed/" class="">
+      SED - Stream EDitor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/configuracion_vpn/" class="">
+      Configuración de acceso VPN desde Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openssh/" class="">
+      OpenSSH</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/compartir_archivos_por_nfs/" class="">
+      Como compartir filesystems por NFS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/" class="">
+      Microsoft</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/windows/" class="">
+      Sistema Operativo Windows</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/windows/scripts_varios_de_powershell/" class="">
+      Scripts varios de PowerShell</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/network_policy_server_nps/" class="">
+      Network Policy Server (NPS)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/apache/" class="">
+      Tips de Apache</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/analisis_forense/" class="">
+      Análisis forense</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/qlikview/" class="">
+      QlikView</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/owncloud/" class="">
+      OwnCloud</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/iptables/" class="">
+      TIPs varios de IPTables</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/celulares/" class="">
+      Teléfonos celulares</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openldap/" class="">
+      Implementacion de un servidor OpenLDAP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/arduino/" class="">
+      Arduino</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/kickstart/" class="active">
+      Kickstart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/raspberry_pi/" class="">
+      Raspberry Pi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/postfix/" class="">
+      Postfix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openssl/" class="">
+      OpenSSL</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/" class="">
+      Programación</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Python</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Webscraping</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/webscraping/beautifulsoup/" class="">
+      Beautiful Soup</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/sistema_de_archivos/" class="">
+      Operaciones sobre el sistema de archivos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/django/" class="">
+      Django</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/introduccion_a_awk/" class="">
+      Uso básico de AWK</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/the_linux_cdrom_interface/" class="">
+      The Linux CDROM interface</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/reproductor_de_cd/" class="">
+      Reproductor De Cd</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/console_ioctls_under_linux/" class="">
+      Console IOCTLs Under Linux</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/tools_of_the_trade_--_iostat_vmstat_and_netstat/" class="">
+      Tools of the Trade -- Iostat, Vmstat, and Netstat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/solaris_performance_monitoring/" class="">
+      Solaris Performance Monitoring &amp; Tuning - iostat , vmstat &amp; netstat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/" class="">
+      Bases De Datos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/mysql/" class="">
+      Task MySQL</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/oracle/" class="">
+      Oracle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/mssql/" class="">
+      Microsoft SQL Server</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/postgresql/" class="">
+      PostgreSQL</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/valgrind/" class="">
+      Valgrind</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/kamailio/" class="">
+      Kamailio</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/syslog_centralizado/" class="">
+      Sistema de LOG centralizado</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/inicio_rapido_de_csync2/" class="">
+      Csync para centralizar la configuracion de servicios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/xen_multi_bridge/" class="">
+      Utilizar dos o mas placas de red con Xen</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/sysinfo_dokuwiki/" class="">
+      Dump some hardware info in DokuWiki format</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/ubuntu_domu_en_red_hat/" class="">
+      Xen Red Hat Dom0 y Ubuntu DomU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/enomalism/" class="">
+      Configuraciones a mano</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Fotografia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/fotografia/conceptos/" class="">
+      Sobre el 18-55</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Legales</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Legislacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Nacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/nacion/decreto_155_89/" class="">
+      Decreto 155 89</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/nacion/ley_23302/" class="">
+      LEY 23.302</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/caba/" class="">
+      Legislación Indígena Ciudad Autónoma de Buenos Aires</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/jurisprudencia/" class="">
+      Jurisprudencia</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/" class="">
+      Seguridad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Criptografia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/truecrypt/" class="">
+      Privacidad datos utilizando TrueCrypt</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/veracrypt/" class="">
+      Privacidad datos utilizando VeraCrypt</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/gnupg/" class="">
+      The GNU Privacy Guard</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Gestion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/gestion/itil/" class="">
+      ITIL - Information Technology Infrastructure Library</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      How To</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/how_to/prevent_a_fork_bomb_by_limiting_user_process/" class="">
+      How to: Prevent a fork bomb by limiting user process</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Programacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Redes</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/nodejs/" class="">
+      NodeJS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/python/" class="">
+      Scripts simples en python</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/python/scapy/" class="">
+      Scapy</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/scanner_de_puertos_simple/" class="">
+      Scanner De Puertos Simple</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/shellcode/" class="">
+      Shellcode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/" class="">
+      Seguridad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Certificaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/" class="">
+      Profesional certificado en seguridad ofensiva (OSCP)</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/preparacion_personal/" class="">
+      Preparación personal para rendir la certificación OSCP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/oscp_prep_class/" class="">
+      OSCP Prep class</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/oscp-survival-guide/" class="">
+      OSCP-Survival-Guide</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Exploits</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/exploits/mempodipper/" class="">
+      mempodipper</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/exploits/dirty_cow/" class="">
+      Dirty COW</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/why_i_would_never_buy_a_dell_powerconnect_2724/" class="">
+      Why I would never buy a Dell PowerConnect 2724</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/understanding_bash_fork_bomb/" class="">
+      Understanding Bash fork() bomb ~ :(){ :|:&amp; };:</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/pequena_guia_de_seguridad_informatica/" class="">
+      Pequeña guía de seguridad informática</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/auditd/" class="">
+      Auditoría en Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/process_accounting_psacct/" class="">
+      Process Accounting (PSACCT)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/" class="">
+      Enlaces útiles</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/" class="">
+      Utilidades de Red</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/ngrep/" class="">
+      Network Grep - ngrep</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/msndump/" class="">
+      MSN Dump</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/tcpdump/" class="">
+      TCPDUMP</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/" class="">
+      Aprendiendo SAP</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/sap_hana/" class="">
+      SAP HANA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/desarrollo_y_programacion_en_abap/" class="">
+      Desarrollo y programación en ABAP</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/" class="">
+      Redes y comunicaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Conectividad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/conectividad/fibra_optica/" class="">
+      Fibra óptica</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Firewalls</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/fortinet/" class="">
+      Fortinet</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/fortinet/fortiap/" class="">
+      FortiGate como controlador Wireless</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/pfsense/" class="">
+      pfSense</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Notas</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/notas/nc/" class="">
+      Netcat</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Telefonia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Asterisk</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/" class="">
+      Conectividad con Asterisk</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/spa400/" class="">
+      SPA400</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/tdm400p/" class="">
+      Instalar Placa TDM400P</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Cisco</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/call_manager/" class="">
+      Cisco Call Manager</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/routers/" class="">
+      Routers Cisco</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/telefonos/" class="">
+      Teléfonos CISCO</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Videoconferencia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/videoconferencia/openmcu-ru/" class="">
+      OpenMCU-ru</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/flows/" class="">
+      Network Flow</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/flows/ntop/" class="">
+      Ntop</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/rancid/" class="">
+      Rancid (Really Awesome New Cisco confIg Differ)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/conceptos/" class="">
+      Conceptos de redes informáticas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/" class="">
+      Switches</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Cisco</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/2960c/" class="">
+      CISCO - 2960-C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/2960x/" class="">
+      CISCO - 2960-X</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/sf300/" class="">
+      CISCO - SF300</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/extreme_networks/" class="">
+      Extreme Networks</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/" class="">
+      Hewlett Packard</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/aruba/" class="">
+      Switches Aruba</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/" class="">
+      3COM</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Voice</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/voice/vlan/" class="">
+      VLAN de voz</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/debug_y_analisis_de_equipos_hp_3com/" class="">
+      Debug y análisis de equipos HP/3com</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cumulus_networks/" class="">
+      Cumulus Networks</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/gestion/" class="">
+      Gestión</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/gestion/taiga/" class="">
+      Taiga</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/leyes/" class="">
+      Leyes, Decretos y Ordenanzas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/" class="">
+      Charlas y Eventos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/pueblos_originarios_y_la_industria_del_software/" class="">
+      Pueblos Originarios y la industria del Software</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/uso_de_la_consola_linux/" class="">
+      Taller de uso de Consola Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/lanux_agosto_2010/" class="">
+      Servidores VPS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/" class="">
+      Manuales de proyectos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Tivoli Tsm</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/manual_de_manejo_de_backups_con_tivoli/" class="">
+      Manual de manejo de respaldos con Tivoli</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/tsm_sql_tips/" class="">
+      Mandatos de prueba de validación de la actualización de la base de datos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/tsm_sql_hints/" class="">
+      TSM SQL Hints</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/sql_for_tivoli_storage_manager/" class="">
+      SQL for Tivoli Storage Manager</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/emc_data_domain/" class="">
+      EMC Data Domain</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/" class="">
+      Monitoria y análisis de Red con Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/" class="">
+      Monitoreo de Red con Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Productos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/oracle/" class="">
+      Oracle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/argentina_-_arba_-_codigo_de_operacion_de_traslado_cot/" class="">
+      Argentina - ARBA - Código de Operación de Traslado (COT)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/asterisk/" class="">
+      Asterisk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/riverbed/" class="">
+      Riverbed</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/argentina_-_afip_-_factura_electronica/" class="">
+      Argentina AFIP Factura Electrónica</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/sap/" class="">
+      SAP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/ibm_tivoli_tsm/" class="">
+      Tivoli Storage Manager - TSM</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/brasil_-_nota_fiscal_electronica_nfe/" class="">
+      Brasil - Nota Fiscal Electrónica NFe</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/brasil_-_nota_fiscal_electronica_nfe/referencias_utiles_de_nfe/" class="">
+      Referencias útiles de NFE</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/microstrategy/" class="">
+      MicroStrategy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/qlikview/" class="">
+      QlikView</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/servidor_web/" class="">
+      Configuración del servidor Web</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/pnp4nagios/" class="">
+      PNP4Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/tipos_de_notificaciones/" class="">
+      Tipos de notificaciones</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_referencias_generales/" class="">
+      Referencias generales</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_referencias_generales/sistema_de_inventario/" class="">
+      Sistema de inventario</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagios_network_analyzer/" class="">
+      Nagios Network Analyzer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/" class="">
+      Correlación de eventos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/rsyslog/" class="">
+      Reliable system and kernel logging daemon</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/eventdb/" class="">
+      EventDB</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/syslog_ng/" class="">
+      Syslog-NG</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/implementacion_tecnica/" class="">
+      Implementación Técnica de Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/implementacion_tecnica/implementacion_tecnica_version_ubuntu_server_20.04/" class="">
+      Implementación Técnica de Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/capacitacion_en_monitoreo_de_red/" class="">
+      Capacitación en monitoreo de Red</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Certificaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/capacitacion_en_monitoreo_de_red/certificaciones/sox_-_sarbanes-oxley/" class="">
+      SOX</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/desarrollo_de_plugins_de_nagios/" class="">
+      Desarrollo de plugins de Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/desarrollo_de_plugins_de_nagios/problemas_comunes/" class="">
+      Problemas comunes de los plugins de Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/snmp/" class="">
+      SNMP (Simple Network Management Protocol)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagios_event_radio_dispatcher_nerd/" class="">
+      Nagios Event Radio Dispatcher (NERD)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/mk_livestatus/" class="">
+      MK Livestatus</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/ndo2utils/" class="">
+      NDO2Utils</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagvis/" class="">
+      Nagvis</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagvis/diseno_de_tablero_de_control/" class="">
+      Diseño de tablero de control</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/graficos_en_ajax/" class="">
+      Gráficos en AJAX</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_tips_y_recomendaciones/" class="">
+      TIPS y recomendaciones</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_otras_soluciones_basadas_en_nagios/" class="">
+      Anexo - Otras soluciones basadas en Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_comandos_externos/" class="">
+      Comandos externos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/plugins_usuales_de_nagios/" class="">
+      Plugins usuales de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/icmp/" class="">
+      ICMP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_codigo_fuente_de_nagios/" class="">
+      Análisis del código fuente de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_configuracion_desde_version_3_a_4/" class="">
+      Incompatibilidades de configuración v3 a v4</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/codigo_fuente/" class="">
+      Análisis del código fuente de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/thruk/" class="">
+      Thruk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/portugues/" class="">
+      Monitoração de rede e análise com Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/italiano/" class="">
+      Implementazione di un sistema di rete, monitor con Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_freeradius/" class="">
+      Servidor FreeRadius</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_systemimager/" class="">
+      Proyecto Servidor de Backups</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/an_introduction_to_linux_shell_scripting_for_dbas/" class="">
+      An Introduction to Linux Shell Scripting for DBAs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/filtrador_de_logs/" class="">
+      Filtrador de LOGS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/drbd/" class="">
+      DRBD (Distributed Replicated Block Device)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/" class="">
+      Lotus Notes</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/problemas_winmail.dat_outlook/" class="">
+      Problemas Winmail.dat Outlook</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/listar_ultimo_mes_de_login_de_usuarios/" class="">
+      Listar último mes de login de usuarios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/reemplazar_diseno_base_de_datos/" class="">
+      Reemplazar Diseño Base de Datos</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_squid/" class="">
+      Squid Proxy Server</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/red_restringida/" class="">
+      Red restringida</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/novell_audit/" class="">
+      Novell Identity Audit</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_dhcp/" class="">
+      Servicio DHCP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/ils/" class="">
+      ILS (Internet Locator Server)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Kickstart</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#objetivos">Objetivos</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#archivos-creadoso-modificados">Archivos creados/o modificados</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#pruebas-realizadas">Pruebas realizadas</a></li>
+    <li><a href="#referencias-y-notas-personales">Referencias y Notas personales</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><p>//Muchos administradores de sistemas preferieren usar un método de instalación automatizado para instalar Red Hat Enterprise Linux en sus máquinas. Para cubrir esta necesidad, Red Hat creó el método de instalación kickstart. Usando kickstart, un administrador de sistemas puede crear un archivo único que contiene las respuestas a todas las preguntas que normalmente se hacen durante una instalación típica.</p>
+<p>Los archivos kickstart se pueden mantener en un servidor de sistema único y ser leídos por computadores individuales durante la instalación. Este método de instalación puede soportar el uso de un sólo archivo kickstart para instalar Red Hat Enterprise Linux en múltiples máquinas, haciéndolo ideal para administradores de sistemas y de red.</p>
+<p>Kickstart proporciona una forma para que los usuarios puedan automatizar la instalación de Red Hat Enterprise Linux.//</p>
+<p>En resumen cuando realizamos la instalacion de Red Hat, en este caso un EL5 se crea un archivo /root/anaconda-ks.cfg que tiene los datos necesarios para hacer una instalacion duplicada</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">En</span> <span class="n">este</span> <span class="n">paso</span> <span class="n">podemos</span> <span class="n">ver</span> <span class="n">que</span> <span class="n">tiene</span> <span class="n">informacion</span> <span class="n">de</span> <span class="n">los</span> <span class="n">volumenes</span> <span class="n">logicos</span> <span class="n">a</span> <span class="n">crear</span><span class="p">,</span> <span class="n">el</span> <span class="n">tipo</span> <span class="n">de</span> <span class="n">sistema</span> <span class="n">de</span> <span class="n">archivos</span> <span class="n">y</span> <span class="n">los</span> <span class="n">grupos</span> <span class="n">de</span> <span class="n">paquetes</span> <span class="n">a</span> <span class="n">instalar</span><span class="p">,</span> <span class="n">en</span> <span class="n">este</span> <span class="n">caso</span> <span class="n">solo</span> <span class="n">spanish</span><span class="o">-</span><span class="n">support</span> <span class="n">y</span> <span class="n">virtualizacion</span><span class="o">.</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Ademas</span> <span class="n">se</span> <span class="n">incluyo</span> <span class="n">el</span> <span class="n">numero</span> <span class="n">de</span> <span class="n">suscripcion</span> <span class="n">de</span> <span class="n">Red</span> <span class="n">Hat</span> <span class="n">Netwok</span><span class="p">,</span> <span class="n">dispositivo</span> <span class="n">de</span> <span class="n">red</span><span class="p">,</span> <span class="n">medio</span> <span class="n">de</span> <span class="n">instalacion</span><span class="p">,</span> <span class="n">la</span> <span class="n">zona</span> <span class="n">horaria</span> <span class="n">y</span> <span class="n">el</span> <span class="n">password</span> <span class="n">de</span> <span class="n">root</span><span class="o">.</span> <span class="n">Al</span> <span class="n">realizarse</span> <span class="n">la</span> <span class="n">instalacion</span> <span class="n">lo</span> <span class="n">unico</span> <span class="n">que</span> <span class="n">nos</span> <span class="n">pide</span> <span class="n">es</span> <span class="n">que</span> <span class="n">metamos</span> <span class="n">los</span> <span class="n">cds</span> <span class="n">en</span> <span class="n">la</span> <span class="n">lectora</span> <span class="n">de</span> <span class="n">uno</span> <span class="n">en</span> <span class="n">uno</span><span class="o">.</span> <span class="n">Habria</span> <span class="n">que</span> <span class="n">pobrar</span> <span class="n">el</span> <span class="n">metodo</span> <span class="n">http</span> <span class="n">aver</span> <span class="n">si</span> <span class="n">es</span> <span class="n">mas</span> <span class="n">automatizada</span> <span class="n">la</span> <span class="n">instalacion</span> <span class="n">cosa</span> <span class="n">que</span> <span class="n">pregunte</span> <span class="n">menos</span> <span class="n">o</span> <span class="n">sea</span> <span class="n">mas</span> <span class="s2">&#34;SIMPLE&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Red</span> <span class="n">Hat</span> <span class="mi">5</span> <span class="n">en</span> <span class="n">algunas</span> <span class="n">maquinas</span> <span class="n">para</span> <span class="n">poder</span> <span class="n">bootear</span> <span class="n">debe</span> <span class="n">tener</span> <span class="n">la</span> <span class="n">opcion</span> <span class="n">de</span> <span class="n">booteo</span> <span class="n">acpi</span><span class="o">=</span><span class="n">off</span> <span class="n">ya</span> <span class="n">que</span> <span class="n">si</span> <span class="n">no</span> <span class="n">se</span> <span class="n">cuelga</span> <span class="n">el</span> <span class="n">booteo</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">=====</span> <span class="n">Pasos</span> <span class="n">necesarios</span> <span class="o">=====</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="n">Las</span> <span class="n">instalaciones</span> <span class="n">Kickstart</span> <span class="n">pueden</span> <span class="n">realizarse</span> <span class="n">usando</span> <span class="n">un</span> <span class="n">CD</span><span class="o">-</span><span class="n">ROM</span><span class="p">,</span> <span class="n">un</span> <span class="n">disco</span> <span class="n">duro</span> <span class="n">local</span> <span class="n">o</span> <span class="n">a</span> <span class="n">través</span> <span class="n">de</span> <span class="n">NFS</span><span class="p">,</span> <span class="n">FTP</span> <span class="n">o</span> <span class="n">HTTP</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Para</span> <span class="n">usar</span> <span class="n">kickstart</span> <span class="n">se</span> <span class="n">debe</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">-</span>       <span class="n">Crear</span> <span class="n">un</span> <span class="n">archivo</span> <span class="n">kickstart</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">  <span class="o">-</span>       <span class="n">Crear</span> <span class="n">un</span> <span class="n">medio</span> <span class="n">de</span> <span class="n">arranque</span> <span class="n">con</span> <span class="n">el</span> <span class="n">archivo</span> <span class="n">kickstart</span> <span class="n">o</span> <span class="n">hacer</span> <span class="n">que</span> <span class="n">el</span> <span class="n">archivo</span> <span class="n">kickstart</span> <span class="n">esté</span> <span class="n">disponible</span> <span class="n">a</span> <span class="n">través</span> <span class="n">de</span> <span class="n">la</span> <span class="n">red</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">  <span class="o">-</span>       <span class="n">Hacer</span> <span class="n">que</span> <span class="n">el</span> <span class="err">á</span><span class="n">rbol</span> <span class="n">de</span> <span class="n">instalación</span> <span class="n">esté</span> <span class="n">disponible</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">  <span class="o">-</span>       <span class="n">Iniciar</span> <span class="n">la</span> <span class="n">instalación</span> <span class="n">kickstart</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Luego</span> <span class="n">una</span> <span class="n">vez</span> <span class="n">configurador</span> <span class="n">el</span> <span class="n">kickstart</span><span class="p">,</span> <span class="n">necesitamos</span> <span class="n">tener</span> <span class="n">definidos</span> <span class="n">estos</span> <span class="n">parametros</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="n">Para</span> <span class="n">actualizaciones</span> <span class="n">kickstart</span><span class="p">,</span> <span class="n">se</span> <span class="n">requieren</span> <span class="n">los</span> <span class="n">siguientes</span> <span class="n">items</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">*</span>   <span class="n">Idioma</span>
+</span></span><span class="line"><span class="cl">    <span class="o">*</span>   <span class="n">Método</span> <span class="n">de</span> <span class="n">instalación</span>
+</span></span><span class="line"><span class="cl">    <span class="o">*</span>   <span class="n">Especificación</span> <span class="n">de</span> <span class="n">dispositivos</span> <span class="p">(</span><span class="n">si</span> <span class="n">el</span> <span class="n">dispositivo</span> <span class="n">es</span> <span class="n">necesario</span> <span class="n">para</span> <span class="n">ejecutar</span> <span class="n">la</span> <span class="n">instalación</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">*</span>   <span class="n">Configuración</span> <span class="n">del</span> <span class="n">teclado</span>
+</span></span><span class="line"><span class="cl">    <span class="o">*</span>   <span class="n">Configuración</span> <span class="n">del</span> <span class="n">gestor</span> <span class="n">de</span> <span class="n">arranque</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">{{</span><span class="n">notas</span><span class="p">:</span><span class="n">kickstart</span><span class="o">.</span><span class="n">png</span><span class="o">|</span><span class="p">}}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">=====</span> <span class="n">Explicacion</span> <span class="n">del</span> <span class="n">archivo</span> <span class="n">Kickstart</span> <span class="o">=====</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="o">**</span><span class="n">install</span><span class="o">**</span> <span class="o">//</span><span class="n">Aca</span> <span class="n">se</span> <span class="n">explica</span> <span class="n">que</span> <span class="n">debe</span> <span class="n">hacer</span> <span class="n">la</span> <span class="n">ejecucion</span> <span class="n">de</span> <span class="n">Kickstart</span><span class="p">,</span> <span class="n">en</span> <span class="n">este</span> <span class="n">caso</span> <span class="n">intalar</span><span class="p">,</span> <span class="n">en</span> <span class="n">este</span> <span class="n">caso</span> <span class="n">le</span> <span class="n">informa</span> <span class="n">al</span> <span class="n">sistema</span> <span class="n">que</span> <span class="n">instale</span> <span class="n">un</span> <span class="n">sistema</span> <span class="n">en</span> <span class="n">vez</span> <span class="n">de</span> <span class="n">que</span> <span class="n">actualice</span> <span class="n">uno</span> <span class="n">ya</span> <span class="n">existente</span><span class="o">.</span> <span class="n">Este</span> <span class="n">es</span> <span class="n">el</span> <span class="n">modo</span> <span class="n">por</span> <span class="n">defecto</span><span class="o">.</span> <span class="n">Debe</span> <span class="n">especificar</span> <span class="n">el</span> <span class="n">tipo</span> <span class="n">de</span> <span class="n">instalación</span><span class="p">:</span> <span class="n">cdrom</span><span class="p">,</span> <span class="n">harddrive</span><span class="p">,</span> <span class="n">nfs</span> <span class="n">o</span> <span class="n">url</span> <span class="p">(</span><span class="n">para</span> <span class="n">FTP</span> <span class="n">o</span> <span class="n">HTTP</span><span class="p">)</span><span class="o">.//</span> <span class="p">(</span><span class="n">Opcional</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">*</span> <span class="o">**</span><span class="n">cdrom</span><span class="o">**</span>  <span class="o">//</span><span class="n">Especifica</span> <span class="n">desde</span> <span class="n">que</span> <span class="n">medio</span> <span class="n">se</span> <span class="n">va</span> <span class="n">instalar</span><span class="p">,</span> <span class="n">http</span><span class="p">,</span> <span class="n">cdrom</span> <span class="n">etc</span><span class="o">//</span> <span class="p">(</span><span class="n">Requerido</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">*</span> <span class="o">**</span><span class="n">harddrive</span><span class="o">**</span> <span class="o">--</span><span class="n">partition</span><span class="o">=</span><span class="n">hdb2</span> <span class="o">--</span><span class="n">dir</span><span class="o">=/</span><span class="n">tmp</span><span class="o">/</span><span class="n">install</span><span class="o">-</span><span class="n">tree</span>
+</span></span><span class="line"><span class="cl">    <span class="o">*</span> <span class="o">**</span><span class="n">url</span><span class="o">**</span> <span class="o">--</span><span class="n">url</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">servidorlocal</span><span class="o">/</span><span class="n">directorio</span>
+</span></span><span class="line"><span class="cl">    <span class="o">*</span> <span class="o">**</span><span class="n">nfs</span><span class="o">**</span> <span class="o">--</span><span class="n">server</span><span class="o">=</span><span class="n">nfsserver</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span> <span class="o">--</span><span class="n">dir</span><span class="o">=/</span><span class="n">tmp</span><span class="o">/</span><span class="n">install</span><span class="o">-</span><span class="n">tree</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="o">**</span><span class="n">key</span> <span class="mi">6</span><span class="n">c2e</span><span class="o">-</span><span class="mi">0645</span><span class="o">-</span><span class="mi">686</span><span class="n">a</span><span class="o">-</span><span class="mi">4</span><span class="n">a06</span><span class="o">**</span> <span class="o">//</span><span class="n">Codigo</span> <span class="n">de</span> <span class="n">activacion</span> <span class="n">de</span> <span class="n">suscripcion</span><span class="p">,</span> <span class="n">necesario</span> <span class="n">para</span> <span class="n">Xen</span><span class="o">//</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="o">**</span><span class="n">lang</span> <span class="n">es_ES</span><span class="o">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span><span class="o">**</span> <span class="o">//</span><span class="n">Configuracion</span> <span class="n">de</span> <span class="n">los</span> <span class="n">locales</span><span class="o">//</span> <span class="p">(</span><span class="n">Opcional</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="o">**</span><span class="n">keyboard</span> <span class="n">es</span><span class="o">**</span> <span class="o">//</span><span class="n">Configura</span> <span class="n">el</span> <span class="n">tipo</span> <span class="n">de</span> <span class="n">teclado</span> <span class="n">del</span> <span class="n">sistema</span><span class="o">//</span> <span class="p">(</span><span class="n">Requerido</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">*</span> <span class="n">be</span><span class="o">-</span><span class="n">latin1</span><span class="p">,</span> <span class="n">bg</span><span class="p">,</span> <span class="n">br</span><span class="o">-</span><span class="n">abnt2</span><span class="p">,</span> <span class="n">cf</span><span class="p">,</span> <span class="n">cz</span><span class="o">-</span><span class="n">lat2</span><span class="p">,</span> <span class="n">cz</span><span class="o">-</span><span class="n">us</span><span class="o">-</span><span class="n">qwertz</span><span class="p">,</span> <span class="n">de</span><span class="p">,</span> <span class="n">de</span><span class="o">-</span><span class="n">latin1</span><span class="p">,</span> <span class="n">de</span><span class="o">-</span><span class="n">latin1</span><span class="o">-</span><span class="n">nodeadkeys</span><span class="p">,</span> <span class="n">dk</span><span class="p">,</span> <span class="n">dk</span><span class="o">-</span><span class="n">latin1</span><span class="p">,</span> <span class="n">dvorak</span><span class="p">,</span> <span class="n">es</span><span class="p">,</span> <span class="n">et</span><span class="p">,</span> <span class="n">fi</span><span class="p">,</span> <span class="n">fi</span><span class="o">-</span><span class="n">latin1</span><span class="p">,</span> <span class="n">fr</span><span class="p">,</span> <span class="n">fr</span><span class="o">-</span><span class="n">latin0</span><span class="p">,</span> <span class="n">fr</span><span class="o">-</span><span class="n">latin1</span><span class="p">,</span> <span class="n">fr</span><span class="o">-</span><span class="n">pc</span><span class="p">,</span> <span class="n">fr_CH</span><span class="p">,</span> <span class="n">fr_CH</span><span class="o">-</span><span class="n">latin1</span><span class="p">,</span> <span class="n">gr</span><span class="p">,</span> <span class="n">hu</span><span class="p">,</span> <span class="n">hu101</span><span class="p">,</span> <span class="n">is</span><span class="o">-</span><span class="n">latin1</span><span class="p">,</span> <span class="n">it</span><span class="p">,</span> <span class="n">it</span><span class="o">-</span><span class="n">ibm</span><span class="p">,</span> <span class="n">it2</span><span class="p">,</span> <span class="n">jp106</span><span class="p">,</span> <span class="n">la</span><span class="o">-</span><span class="n">latin1</span><span class="p">,</span> <span class="n">mk</span><span class="o">-</span><span class="n">utf</span><span class="p">,</span> <span class="n">no</span><span class="p">,</span> <span class="n">no</span><span class="o">-</span><span class="n">latin1</span><span class="p">,</span> <span class="n">pl</span><span class="p">,</span> <span class="n">pt</span><span class="o">-</span><span class="n">latin1</span><span class="p">,</span> <span class="n">ro_win</span><span class="p">,</span> <span class="n">ru</span><span class="p">,</span> <span class="n">ru</span><span class="o">-</span><span class="n">cp1251</span><span class="p">,</span> <span class="n">ru</span><span class="o">-</span><span class="n">ms</span><span class="p">,</span> <span class="n">ru1</span><span class="p">,</span> <span class="n">ru2</span><span class="p">,</span>  <span class="n">ru_win</span><span class="p">,</span> <span class="n">se</span><span class="o">-</span><span class="n">latin1</span><span class="p">,</span> <span class="n">sg</span><span class="p">,</span> <span class="n">sg</span><span class="o">-</span><span class="n">latin1</span><span class="p">,</span> <span class="n">sk</span><span class="o">-</span><span class="n">qwerty</span><span class="p">,</span> <span class="n">slovene</span><span class="p">,</span> <span class="n">speakup</span><span class="p">,</span>  <span class="n">speakup</span><span class="o">-</span><span class="n">lt</span><span class="p">,</span> <span class="n">sv</span><span class="o">-</span><span class="n">latin1</span><span class="p">,</span> <span class="n">sg</span><span class="p">,</span> <span class="n">sg</span><span class="o">-</span><span class="n">latin1</span><span class="p">,</span> <span class="n">sk</span><span class="o">-</span><span class="n">querty</span><span class="p">,</span> <span class="n">slovene</span><span class="p">,</span> <span class="n">trq</span><span class="p">,</span> <span class="n">ua</span><span class="p">,</span>  <span class="n">uk</span><span class="p">,</span> <span class="n">us</span><span class="p">,</span> <span class="n">us</span><span class="o">-</span><span class="n">acentos</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="o">**</span><span class="n">network</span> <span class="o">--</span><span class="n">device</span> <span class="n">eth0</span> <span class="o">--</span><span class="n">bootproto</span> <span class="n">dhcp</span><span class="o">**</span> <span class="o">//</span> <span class="n">Configura</span> <span class="n">la</span> <span class="n">información</span> <span class="n">de</span> <span class="n">la</span> <span class="n">red</span> <span class="n">para</span> <span class="n">el</span> <span class="n">sistema</span><span class="o">.</span> <span class="n">Si</span> <span class="n">la</span> <span class="n">instalación</span> <span class="n">kickstart</span> <span class="n">no</span> <span class="n">requiere</span> <span class="n">redes</span> <span class="p">(</span><span class="n">en</span> <span class="n">otras</span> <span class="n">palabras</span><span class="p">,</span> <span class="n">no</span> <span class="n">es</span> <span class="n">instalado</span> <span class="n">sobre</span> <span class="n">NFS</span><span class="p">,</span> <span class="n">HTTP</span><span class="p">,</span> <span class="n">o</span> <span class="n">FTP</span><span class="p">),</span> <span class="n">no</span> <span class="n">se</span> <span class="n">configurará</span> <span class="n">la</span> <span class="n">red</span> <span class="n">para</span> <span class="n">el</span> <span class="n">sistema</span><span class="o">.</span> <span class="n">Si</span> <span class="n">la</span> <span class="n">instalación</span> <span class="n">no</span> <span class="n">requiere</span> <span class="n">redes</span> <span class="n">y</span> <span class="n">la</span> <span class="n">información</span> <span class="n">de</span> <span class="n">redes</span> <span class="n">no</span> <span class="n">se</span> <span class="n">proporciona</span> <span class="n">en</span> <span class="n">el</span> <span class="n">archivo</span> <span class="n">kickstart</span><span class="p">,</span> <span class="n">el</span> <span class="n">programa</span> <span class="n">de</span> <span class="n">instalación</span> <span class="n">asume</span> <span class="n">que</span> <span class="n">la</span> <span class="n">instalación</span> <span class="n">debería</span> <span class="n">ser</span> <span class="n">realizada</span> <span class="n">sobre</span> <span class="n">eth0</span> <span class="n">a</span> <span class="n">través</span> <span class="n">de</span> <span class="n">una</span> <span class="n">dirección</span> <span class="ne">IP</span> <span class="n">dinámica</span> <span class="p">(</span><span class="n">BOOTP</span><span class="o">/</span><span class="n">DHCP</span><span class="p">)</span> <span class="n">y</span> <span class="n">configura</span> <span class="n">el</span> <span class="n">sistema</span> <span class="n">instalado</span> <span class="n">final</span> <span class="n">a</span> <span class="n">que</span> <span class="n">determine</span> <span class="n">su</span> <span class="n">dirección</span> <span class="ne">IP</span> <span class="n">dinámicamente</span><span class="o">.</span> <span class="n">La</span> <span class="n">opción</span> <span class="n">network</span> <span class="n">configura</span> <span class="n">la</span> <span class="n">información</span> <span class="n">de</span> <span class="n">red</span> <span class="n">para</span> <span class="n">instalaciones</span> <span class="n">kickstart</span> <span class="n">a</span> <span class="n">través</span> <span class="n">de</span> <span class="n">la</span> <span class="n">red</span> <span class="n">así</span> <span class="n">como</span> <span class="n">también</span> <span class="n">para</span> <span class="n">el</span> <span class="n">sistema</span> <span class="n">instalado</span><span class="o">.</span> <span class="n">Se</span> <span class="n">muestra</span> <span class="n">placa</span> <span class="n">de</span> <span class="n">red</span> <span class="n">a</span> <span class="n">usar</span> <span class="n">y</span> <span class="n">metodo</span> <span class="n">de</span> <span class="n">configuracion</span><span class="p">,</span> <span class="n">statico</span><span class="p">,</span> <span class="n">dhcp</span> <span class="n">etc</span> <span class="o">//</span> <span class="p">(</span><span class="n">Opcional</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="o">*</span> <span class="k">static</span> <span class="o">--</span><span class="n">ip</span><span class="o">=</span><span class="mf">10.0</span><span class="o">.</span><span class="mf">2.15</span> <span class="o">--</span><span class="n">netmask</span><span class="o">=</span><span class="mf">255.255</span><span class="o">.</span><span class="mf">255.0</span> <span class="o">--</span><span class="n">gateway</span><span class="o">=</span><span class="mf">10.0</span><span class="o">.</span><span class="mf">2.254</span> <span class="o">--</span><span class="n">nameserver</span><span class="o">=</span><span class="mf">10.0</span><span class="o">.</span><span class="mf">2.1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="o">**</span><span class="n">rootpw</span> <span class="o">--</span><span class="n">iscrypted</span> <span class="o">$</span><span class="mi">1</span><span class="o">$</span><span class="mi">56</span><span class="n">iPwDr8</span><span class="o">$</span><span class="n">C59yfOfHe</span><span class="o">/</span><span class="n">LZNdmEaGYh4</span><span class="o">/**</span> <span class="o">//</span><span class="n">Password</span> <span class="n">para</span> <span class="n">el</span> <span class="n">usuario</span> <span class="n">root</span><span class="o">//</span> <span class="p">(</span><span class="n">Requerido</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="o">**</span><span class="n">firewall</span> <span class="o">--</span><span class="n">enabled</span> <span class="o">--</span><span class="n">port</span><span class="o">=</span><span class="mi">22</span><span class="p">:</span><span class="n">tcp</span><span class="o">**</span> <span class="o">//</span><span class="n">Configuracion</span> <span class="n">de</span> <span class="n">iptables</span><span class="o">//</span> <span class="p">(</span><span class="n">Opcional</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">     <span class="o">*</span> <span class="n">firewall</span> <span class="o">--</span><span class="n">enabled</span><span class="o">|--</span><span class="n">disabled</span> <span class="p">[</span><span class="o">--</span><span class="n">trust</span><span class="o">=</span><span class="p">]</span> <span class="o">&lt;</span><span class="n">dispositivo</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">--</span><span class="n">port</span><span class="o">=</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="o">**</span><span class="n">authconfig</span> <span class="o">--</span><span class="n">enableshadow</span> <span class="o">--</span><span class="n">enablemd5</span><span class="o">**</span> <span class="o">//</span><span class="n">Establece</span> <span class="n">las</span> <span class="n">opciones</span> <span class="n">de</span> <span class="n">autenticación</span> <span class="n">para</span> <span class="n">el</span> <span class="n">sistema</span><span class="o">.</span> <span class="n">Es</span> <span class="n">similar</span> <span class="n">al</span> <span class="n">comando</span> <span class="n">authconfig</span><span class="p">,</span> <span class="n">el</span> <span class="n">cual</span> <span class="n">puede</span> <span class="n">ser</span> <span class="n">ejecutado</span> <span class="n">después</span> <span class="n">de</span> <span class="n">la</span> <span class="n">instalación</span><span class="o">.</span> <span class="n">Por</span> <span class="n">defecto</span><span class="p">,</span> <span class="n">las</span> <span class="n">contraseñas</span> <span class="n">son</span> <span class="n">encriptadas</span> <span class="n">y</span> <span class="n">no</span> <span class="n">se</span> <span class="n">utilizan</span> <span class="n">sombras</span><span class="o">.//</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="o">**</span><span class="n">selinux</span> <span class="o">--</span><span class="n">enforcing</span><span class="o">**</span> <span class="o">//</span><span class="n">Configuracion</span> <span class="n">de</span> <span class="n">selinux</span><span class="p">,</span> <span class="n">recomendado</span> <span class="n">targeted</span><span class="o">//</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="o">**</span><span class="n">timezone</span> <span class="o">--</span><span class="n">utc</span> <span class="n">America</span><span class="o">/</span><span class="n">Argentina</span><span class="o">/</span><span class="n">Buenos_Aires</span><span class="o">**</span> <span class="o">//</span><span class="n">Zona</span> <span class="n">horaria</span><span class="o">//</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="o">**</span><span class="n">bootloader</span> <span class="o">--</span><span class="n">location</span><span class="o">=</span><span class="n">mbr</span> <span class="o">--</span><span class="n">driveorder</span><span class="o">=</span><span class="n">cciss</span><span class="o">/</span><span class="n">c0d0</span><span class="o">**</span> <span class="o">//</span><span class="n">Especifica</span> <span class="n">cómo</span> <span class="n">se</span> <span class="n">debe</span> <span class="n">instalar</span> <span class="n">el</span> <span class="n">gestor</span> <span class="n">de</span> <span class="n">arranque</span><span class="o">.</span> <span class="n">Esta</span> <span class="n">opción</span> <span class="n">es</span> <span class="n">requerida</span> <span class="n">tanto</span> <span class="n">para</span> <span class="n">las</span> <span class="n">instalaciones</span> <span class="n">como</span> <span class="n">para</span> <span class="n">las</span> <span class="n">actualizaciones</span><span class="o">.</span> <span class="n">En</span> <span class="n">este</span> <span class="n">caso</span> <span class="n">en</span> <span class="n">el</span> <span class="n">primer</span> <span class="n">disco</span> <span class="n">de</span> <span class="n">controlador</span> <span class="n">RAID</span> <span class="n">HP</span><span class="o">//</span> <span class="p">(</span><span class="n">Requerido</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="o">**</span><span class="n">clearpart</span> <span class="o">--</span><span class="n">all</span> <span class="o">--</span><span class="n">drives</span><span class="o">=</span><span class="n">cciss</span><span class="o">/</span><span class="n">c0d0</span><span class="o">**</span> <span class="o">//</span><span class="n">Remueve</span> <span class="n">las</span> <span class="n">particiones</span> <span class="n">del</span> <span class="n">sistema</span> <span class="n">antes</span> <span class="n">de</span> <span class="n">la</span> <span class="n">creación</span> <span class="n">de</span> <span class="n">nuevas</span> <span class="n">particiones</span><span class="o">.</span> <span class="n">Por</span> <span class="n">defecto</span> <span class="n">no</span> <span class="n">se</span> <span class="n">remueve</span> <span class="n">ninguna</span> <span class="n">partición</span><span class="o">.//</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="o">**</span><span class="n">part</span> <span class="o">/</span><span class="n">boot</span> <span class="o">--</span><span class="n">fstype</span> <span class="n">ext3</span> <span class="o">--</span><span class="n">size</span><span class="o">=</span><span class="mi">100</span> <span class="o">--</span><span class="n">ondisk</span><span class="o">=</span><span class="n">cciss</span><span class="o">/</span><span class="n">c0d0</span><span class="o">**</span> <span class="o">//</span><span class="n">Crear</span> <span class="n">particion</span> <span class="n">a</span> <span class="n">montar</span> <span class="n">en</span> <span class="n">boot</span><span class="o">//</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="o">**</span><span class="n">part</span> <span class="n">pv</span><span class="o">.</span><span class="mi">11</span> <span class="o">--</span><span class="n">size</span><span class="o">=</span><span class="mi">0</span> <span class="o">--</span><span class="n">grow</span> <span class="o">--</span><span class="n">ondisk</span><span class="o">=</span><span class="n">cciss</span><span class="o">/</span><span class="n">c0d0</span><span class="o">**</span> <span class="o">//</span><span class="n">Crear</span> <span class="n">particion</span> <span class="n">LVM</span><span class="o">//</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="o">**</span><span class="n">volgroup</span> <span class="n">VolGroup00</span> <span class="o">--</span><span class="n">pesize</span><span class="o">=</span><span class="mi">32768</span> <span class="n">pv</span><span class="o">.</span><span class="mi">11</span><span class="o">**</span> <span class="o">//</span><span class="n">Crear</span> <span class="n">grupo</span> <span class="n">de</span> <span class="n">volumenes</span> <span class="n">logicos</span><span class="o">//</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="o">**</span><span class="n">logvol</span> <span class="o">/</span> <span class="o">--</span><span class="n">fstype</span> <span class="n">ext3</span> <span class="o">--</span><span class="n">name</span><span class="o">=</span><span class="n">LogVol00</span> <span class="o">--</span><span class="n">vgname</span><span class="o">=</span><span class="n">VolGroup00</span> <span class="o">--</span><span class="n">size</span><span class="o">=</span><span class="mi">15184</span><span class="o">**</span> <span class="o">//</span><span class="n">Crear</span> <span class="n">y</span> <span class="n">formatear</span> <span class="n">volumen</span> <span class="n">logico</span> <span class="n">dentro</span> <span class="n">de</span> <span class="n">un</span> <span class="n">LVM</span><span class="o">//</span> <span class="p">(</span><span class="n">Opcional</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="o">**</span><span class="n">logvol</span> <span class="n">swap</span> <span class="o">--</span><span class="n">fstype</span> <span class="n">swap</span> <span class="o">--</span><span class="n">name</span><span class="o">=</span><span class="n">LogVol01</span> <span class="o">--</span><span class="n">vgname</span><span class="o">=</span><span class="n">VolGroup00</span> <span class="o">--</span><span class="n">size</span><span class="o">=</span><span class="mi">596</span> <span class="o">--</span><span class="n">grow</span> <span class="o">--</span><span class="n">maxsize</span><span class="o">=</span><span class="mi">992</span><span class="o">**</span> <span class="o">//</span><span class="n">Crear</span> <span class="n">volumen</span> <span class="n">logico</span> <span class="n">de</span> <span class="n">swap</span><span class="o">//</span>
+</span></span><span class="line"><span class="cl">    <span class="o">*</span> <span class="n">logvol</span> <span class="o">&lt;</span><span class="n">mntpoint</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">vgname</span><span class="o">=&lt;</span><span class="n">nombre</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">size</span><span class="o">=&lt;</span><span class="n">tamaño</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">name</span><span class="o">=&lt;</span><span class="n">nombre</span><span class="o">&gt;&lt;</span><span class="n">opciones</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="o">**%</span><span class="n">packages</span><span class="o">**</span> <span class="o">//</span><span class="n">Paquetes</span> <span class="n">a</span> <span class="n">instalar</span> <span class="n">en</span> <span class="n">particular</span> <span class="n">si</span> <span class="n">hubiera</span><span class="o">//</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="o">**</span><span class="err">@</span><span class="n">spanish</span><span class="o">-</span><span class="n">support</span><span class="o">**</span> <span class="o">//</span><span class="n">Instalar</span> <span class="n">soporte</span> <span class="n">español</span><span class="o">//</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="o">**</span><span class="err">@</span><span class="n">virtualization</span><span class="o">**</span> <span class="o">//</span><span class="n">Instalar</span> <span class="n">soporte</span> <span class="n">de</span> <span class="n">virtualizacion</span><span class="o">//</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">*</span> <span class="o">**%</span><span class="n">post</span><span class="o">**</span> <span class="o">//</span><span class="n">Comandos</span> <span class="n">a</span> <span class="n">ejecutar</span> <span class="n">despues</span> <span class="n">de</span> <span class="n">terminada</span> <span class="n">la</span> <span class="n">instalacion</span> <span class="n">de</span> <span class="n">Red</span> <span class="n">Hat</span><span class="o">//</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">======</span> <span class="n">Kickstart</span> <span class="o">+</span> <span class="n">XEN</span> <span class="o">======</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Kickstart</span> <span class="n">para</span> <span class="n">proxys</span> <span class="n">virtuales</span><span class="p">,</span> <span class="n">veremos</span> <span class="n">un</span> <span class="n">ejemplo</span> <span class="n">de</span> <span class="n">recuperacion</span> <span class="n">de</span> <span class="n">un</span> <span class="n">proxy</span> <span class="n">almacenado</span> <span class="n">en</span> <span class="p">[[</span><span class="n">manuales</span><span class="p">:</span><span class="n">servidor_systemimager</span><span class="o">|</span><span class="n">systemimager</span><span class="p">]]</span> <span class="n">y</span> <span class="n">automágicamente</span> <span class="n">vuelto</span> <span class="n">a</span> <span class="n">generar</span> <span class="n">con</span> <span class="n">Kickstart</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">=====</span> <span class="n">Introducción</span> <span class="n">y</span> <span class="n">tareas</span><span class="o">=====</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Confeccion</span> <span class="n">del</span> <span class="n">archivo</span> <span class="n">de</span> <span class="n">configuracion</span> <span class="n">de</span> <span class="n">arranque</span><span class="p">,</span> <span class="n">en</span> <span class="n">este</span> <span class="n">archivo</span> <span class="n">indicamos</span> <span class="n">que</span> <span class="n">el</span> <span class="n">sistema</span> <span class="n">base</span> <span class="n">Domain0</span><span class="p">,</span> <span class="n">solo</span> <span class="n">utilize</span> <span class="mi">96</span><span class="n">M</span> <span class="n">de</span> <span class="n">memoria</span> <span class="n">fisica</span><span class="p">,</span>  <span class="n">deje</span> <span class="n">el</span> <span class="n">resto</span> <span class="n">para</span> <span class="n">la</span> <span class="n">ejecucion</span> <span class="n">de</span> <span class="n">la</span> <span class="n">maquina</span> <span class="n">virtual</span><span class="o">.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">==</span> <span class="o">/</span><span class="n">boot</span><span class="o">/</span><span class="n">grub</span><span class="o">/</span><span class="n">grub</span><span class="o">.</span><span class="n">conf</span> <span class="o">==</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="n">default</span><span class="o">=</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="n">timeout</span><span class="o">=</span><span class="mi">5</span>
+</span></span><span class="line"><span class="cl"><span class="n">splashimage</span><span class="o">=</span><span class="p">(</span><span class="n">hd0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="n">grub</span><span class="o">/</span><span class="n">splash</span><span class="o">.</span><span class="n">xpm</span><span class="o">.</span><span class="n">gz</span>
+</span></span><span class="line"><span class="cl"><span class="n">hiddenmenu</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span> <span class="n">Red</span> <span class="n">Hat</span> <span class="n">Enterprise</span> <span class="n">Linux</span> <span class="n">Server</span> <span class="p">(</span><span class="mf">2.6</span><span class="o">.</span><span class="mi">18</span><span class="o">-</span><span class="mf">8.</span><span class="n">el5xen</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">root</span> <span class="p">(</span><span class="n">hd0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">kernel</span> <span class="o">/</span><span class="n">xen</span><span class="o">.</span><span class="n">gz</span><span class="o">-</span><span class="mf">2.6</span><span class="o">.</span><span class="mi">18</span><span class="o">-</span><span class="mf">8.</span><span class="n">el5</span>  <span class="n">dom0_mem</span><span class="o">=</span><span class="mi">96</span><span class="n">M</span>
+</span></span><span class="line"><span class="cl">        <span class="n">module</span> <span class="o">/</span><span class="n">vmlinuz</span><span class="o">-</span><span class="mf">2.6</span><span class="o">.</span><span class="mi">18</span><span class="o">-</span><span class="mf">8.</span><span class="n">el5xen</span> <span class="n">ro</span> <span class="n">root</span><span class="o">=/</span><span class="n">dev</span><span class="o">/</span><span class="n">VolGroup00</span><span class="o">/</span><span class="n">LogVol00</span>
+</span></span><span class="line"><span class="cl">        <span class="n">module</span> <span class="o">/</span><span class="n">initrd</span><span class="o">-</span><span class="mf">2.6</span><span class="o">.</span><span class="mi">18</span><span class="o">-</span><span class="mf">8.</span><span class="n">el5xen</span><span class="o">.</span><span class="n">img</span></span></span></code></pre></div><p>Ademas debieron crearse diferentes volumenes logicos dentro de grupo de volumenes ya existente para que el servidor virtual se ubique alli.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">lvcreate</span> <span class="o">-</span><span class="n">L</span> <span class="mi">15</span><span class="n">G</span> <span class="o">-</span><span class="n">n</span> <span class="n">root</span> <span class="n">Volgroup00</span>
+</span></span><span class="line"><span class="cl"><span class="n">lvcreate</span> <span class="o">-</span><span class="n">L</span> <span class="mi">3</span><span class="n">G</span>  <span class="o">-</span><span class="n">n</span> <span class="k">var</span><span class="o">-</span><span class="nb">log</span><span class="o">-</span><span class="n">squid</span> <span class="n">VolGroup00</span>
+</span></span><span class="line"><span class="cl"><span class="n">lvcreate</span> <span class="o">-</span><span class="n">L</span> <span class="mi">10</span><span class="n">G</span> <span class="o">-</span><span class="n">n</span> <span class="k">var</span><span class="o">-</span><span class="n">spool</span><span class="o">-</span><span class="n">squid</span> <span class="n">VolGroup00</span>
+</span></span><span class="line"><span class="cl"><span class="n">lvcreate</span> <span class="o">-</span><span class="n">L</span> <span class="mi">1</span><span class="n">G</span>  <span class="o">-</span><span class="n">n</span> <span class="n">swap</span> <span class="n">VolGroup00</span></span></span></code></pre></div><p>Dejando como resultante esta tabla. En la columna 1 se ve el volumen real, en la otra se ve la representacion virtual de como lo ve el sistema operativo virtual, su tamaño real y sistema de archivos.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Volumenes</th>
+          <th>Virtual</th>
+          <th>Tamaño</th>
+          <th>Montaje</th>
+          <th>Filesystem</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>/dev/VolGroup00/root</td>
+          <td>/dev/hda1</td>
+          <td>15 GB</td>
+          <td>/</td>
+          <td>ext3</td>
+      </tr>
+      <tr>
+          <td>/dev/VolGroup00/var-log-squid</td>
+          <td>/dev/hda2</td>
+          <td>3 GB</td>
+          <td>/var/log/squid</td>
+          <td>ext3</td>
+      </tr>
+      <tr>
+          <td>/dev/VolGroup00/var-spool-squid</td>
+          <td>/dev/hda3</td>
+          <td>10 GB</td>
+          <td>/var/spool/squid</td>
+          <td>ext3</td>
+      </tr>
+      <tr>
+          <td>/dev/VolGroup00/swap</td>
+          <td>/dev/hda4</td>
+          <td>1 GB</td>
+          <td>swap</td>
+          <td>swap</td>
+      </tr>
+  </tbody>
+</table>
+<p>Al terminar la instalacion se debian crear un archivo de configuracion para su posterior ejecucion con Xen.</p>
+<h5 id="etcxenproxy1cfg">/etc/xen/proxy1.cfg<a class="anchor" href="#etcxenproxy1cfg">#</a></h5>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="c1"># Automatically generated xen config file</span>
+</span></span><span class="line"><span class="cl"><span class="n">name</span> <span class="o">=</span> <span class="s2">&#34;proxydmz1&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">memory</span> <span class="o">=</span> <span class="s2">&#34;1916&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">disk</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;phy:/dev/mapper/VolGroup00-root,hda1,w&#39;</span><span class="p">,</span><span class="s1">&#39;phy:/dev/mapper/VolGroup00-var--log--squid,hda2,w&#39;</span><span class="p">,</span><span class="s1">&#39;phy:/dev/mapper/VolGroup00-var--spool--squid,hda3,w&#39;</span><span class="p">,</span><span class="s1">&#39;phy:/dev/mapper/VolGroup00-swap,hda4,w&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">vif</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;mac=00:16:3e:16:aa:98, bridge=xenbr0&#39;</span><span class="p">,</span> <span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">uuid</span> <span class="o">=</span> <span class="s2">&#34;57b1acec-e644-6ed7-0bb7-3153a510df0e&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">bootloader</span><span class="o">=</span><span class="s2">&#34;/usr/bin/pygrub&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">vcpus</span><span class="o">=</span><span class="mi">2</span>
+</span></span><span class="line"><span class="cl"><span class="n">on_reboot</span>   <span class="o">=</span> <span class="s1">&#39;restart&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">on_crash</span>    <span class="o">=</span> <span class="s1">&#39;restart&#39;</span></span></span></code></pre></div><h2 id="objetivos">Objetivos<a class="anchor" href="#objetivos">#</a></h2>
+<p>En caso de desastre recuperar magicamente los servidores, que al ser virtuales no dependeran del hardware, por lo tanto el unico que se vera afectado sera el Domain0, al bootear el DomainU no notara ninguna diferencia y por lo tanto estara operativo la instante siendo antes obtenido desde el servidor de imagenes,</p>
+<h4 id="archivos-creadoso-modificados">Archivos creados/o modificados<a class="anchor" href="#archivos-creadoso-modificados">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>Archivo</th>
+          <th>Descripción</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>proxy.cfg</td>
+          <td>Kickstart del proxy</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="pruebas-realizadas">Pruebas realizadas<a class="anchor" href="#pruebas-realizadas">#</a></h2>
+<h2 id="referencias-y-notas-personales">Referencias y Notas personales<a class="anchor" href="#referencias-y-notas-personales">#</a></h2>
+<p>FIXME Ver en que servidor web de la red crear un repositorio o directorio que contenta todos los kickstart para ser accedido por las instalaciones de Red Hat.</p>
+<h1 id="referencias">Referencias<a class="anchor" href="#referencias">#</a></h1>
+<p>Guia documentacion oficial de Red Hat sobre instalacion</p>
+<p><a href="http://www.redhat.com/docs/manuals/enterprise/RHEL-5-manual/es-ES/Installation_Guide/ch-kickstart2.html">http://www.redhat.com/docs/manuals/enterprise/RHEL-5-manual/es-ES/Installation_Guide/ch-kickstart2.html</a></p>
+<h1 id="notas">Notas<a class="anchor" href="#notas">#</a></h1>
+<p>FIXME Terminar arreglar y completar</p>
+<p>FIXME! Arreglar para ser presentable a un usuario o cliente, redactar hacerlo impersonal etc y completar</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/notas/arduino/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Arduino</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/notas/raspberry_pi/" class="flex align-center">
+        <span>Raspberry Pi</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#objetivos">Objetivos</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#archivos-creadoso-modificados">Archivos creados/o modificados</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#pruebas-realizadas">Pruebas realizadas</a></li>
+    <li><a href="#referencias-y-notas-personales">Referencias y Notas personales</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

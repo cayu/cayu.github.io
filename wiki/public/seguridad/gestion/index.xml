@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gestion on Wiki de Sergio Cayuqueo</title>
+    <link>http://localhost:1313/seguridad/gestion/</link>
+    <description>Recent content in Gestion on Wiki de Sergio Cayuqueo</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Wed, 22 Jul 2026 23:28:56 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/seguridad/gestion/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ITIL - Information Technology Infrastructure Library</title>
+      <link>http://localhost:1313/seguridad/gestion/itil/</link>
+      <pubDate>Wed, 27 Mar 2019 17:11:11 -0300</pubDate>
+      <guid>http://localhost:1313/seguridad/gestion/itil/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/varios/itil_logo.png&#34; class=&#34;align-right&#34; /&gt; La Biblioteca de Infraestructura de Tecnologías de Información, frecuentemente abreviada ITIL (del inglés Information Technology Infrastructure Library), es un conjunto de conceptos y prácticas para la gestión de servicios de tecnologías de la información, el desarrollo de tecnologías de la información y las operaciones relacionadas con la misma en general. ITIL da descripciones detalladas de un extenso conjunto de procedimientos de gestión ideados para ayudar a las organizaciones a lograr calidad y eficiencia en las operaciones de TI. Estos procedimientos son independientes del proveedor y han sido desarrollados para servir como guía que abarque toda infraestructura, desarrollo y operaciones de TI.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

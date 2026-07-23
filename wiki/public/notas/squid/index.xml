@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Squid on Wiki de Sergio Cayuqueo</title>
+    <link>http://localhost:1313/notas/squid/</link>
+    <description>Recent content in Squid on Wiki de Sergio Cayuqueo</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Wed, 22 Jul 2026 23:28:56 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/notas/squid/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LVS - Hearbeat - Ldirectord - Balanceo de carga y alta disponibilidad</title>
+      <link>http://localhost:1313/notas/squid/hearbeat/</link>
+      <pubDate>Fri, 04 Mar 2011 16:46:07 -0300</pubDate>
+      <guid>http://localhost:1313/notas/squid/hearbeat/</guid>
+      <description>&lt;ul&gt;&#xA;&lt;li&gt;LVS: Linux Virtual Server, es una solución para gestionar balanceo de carga en sistemas Linux. Corre en el kernel, no en espacio de usuario.&lt;/li&gt;&#xA;&lt;li&gt;Heartbeat: Se encarga de que los nodos se monitoreen entre sí y acciona si alguno se cae.&lt;/li&gt;&#xA;&lt;li&gt;Ldirectord: Monitorea los servicios y los acopla o retira del balanceo de carga.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;referencias&#34;&gt;Referencias&lt;a class=&#34;anchor&#34; href=&#34;#referencias&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://www.novell.com/communities/node/4846/load-balancing-howto-lvs-ldirectord-heartbeat-2&#34;&gt;http://www.novell.com/communities/node/4846/load-balancing-howto-lvs-ldirectord-heartbeat-2&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Squid &#43; Red Hat Cluster Suite</title>
+      <link>http://localhost:1313/notas/squid/rhcs/</link>
+      <pubDate>Mon, 23 Aug 2010 11:52:24 -0300</pubDate>
+      <guid>http://localhost:1313/notas/squid/rhcs/</guid>
+      <description>&lt;p&gt;Supongamos que tenemos dos servidores proxy 10.1.2.103 y 10.1.2.105 y ambos atienden por una ip virtual 10.1.2.106&lt;/p&gt;&#xA;&lt;h2 id=&#34;lvs&#34;&gt;LVS&lt;a class=&#34;anchor&#34; href=&#34;#lvs&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;Configuracion de la utilidad IPVS de Linux Virtual Server&lt;/p&gt;&#xA;&lt;h5 id=&#34;etcipvsadmrules&#34;&gt;/etc/ipvsadm.rules&lt;a class=&#34;anchor&#34; href=&#34;#etcipvsadmrules&#34;&gt;#&lt;/a&gt;&lt;/h5&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;-A -t 10.1.2.106:8080 -s wlc&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;-a -t 10.1.2.106:8080 -r 10.1.2.105:8080 -g -w 1&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;-a -t 10.1.2.106:8080 -r 10.1.2.103:8080 -g -w 1&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;ipvsadm--l&#34;&gt;ipvsadm -L&lt;a class=&#34;anchor&#34; href=&#34;#ipvsadm--l&#34;&gt;#&lt;/a&gt;&lt;/h5&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;IP Virtual Server version 1.2.1 (size=4096)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Prot LocalAddress:Port Scheduler Flags&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -&amp;gt; RemoteAddress:Port           Forward Weight ActiveConn InActConn&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;TCP  lvs-proxy.cayu.com.ar:       web wlc&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -&amp;gt; proxy2.cayu.com.ar:web Route            1      0          2         &#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  -&amp;gt; proxy1.cayu.com.ar:web Local            1      1          1         &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;El sistema balancea por medio del algoritmo wlc.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

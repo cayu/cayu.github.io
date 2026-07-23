@@ -1,0 +1,30 @@
+baseURL = "https://cayu.github.io/"
+languageCode = "es"
+defaultContentLanguage = "es"
+title = "Wiki de Sergio Cayuqueo"
+theme = "book"
+
+enableGitInfo = true
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[markup.tableOfContents]
+  startLevel = 2
+  endLevel   = 4
+
+[markup.highlight]
+  style       = "monokai"
+  lineNos     = false
+  noClasses   = false
+  guessSyntax = true
+
+[params]
+  BookSection         = "*"
+  BookSearch          = true
+  BookToC             = true
+  BookCollapseSection = true
+
+[sitemap]
+  changefreq = "weekly"
+  priority   = 0.5

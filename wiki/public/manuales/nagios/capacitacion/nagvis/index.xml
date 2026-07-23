@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nagvis on Wiki de Sergio Cayuqueo</title>
+    <link>http://localhost:1313/manuales/nagios/capacitacion/nagvis/</link>
+    <description>Recent content in Nagvis on Wiki de Sergio Cayuqueo</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Wed, 22 Jul 2026 23:28:56 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/manuales/nagios/capacitacion/nagvis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Diseño de tablero de control</title>
+      <link>http://localhost:1313/manuales/nagios/capacitacion/nagvis/diseno_de_tablero_de_control/</link>
+      <pubDate>Tue, 26 Jan 2016 13:07:10 -0300</pubDate>
+      <guid>http://localhost:1313/manuales/nagios/capacitacion/nagvis/diseno_de_tablero_de_control/</guid>
+      <description>&lt;p&gt;Un tablero de control debe estar pensado para permitir que la persona que vaya a visualizarlo pueda individualizar sus componentes fácilmente, reduciendo la posibilidad de interpretación errónea.&lt;/p&gt;&#xA;&lt;p&gt;En el diseño de los cuadros se deberán tener en cuenta&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;En base a determinados criterios comúnes del contexto&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Colores y su combinación&lt;/li&gt;&#xA;&lt;li&gt;Formas gráficas de representación de los sistemas y subsistemas,&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>

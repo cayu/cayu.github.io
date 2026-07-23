@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fortinet on Wiki de Sergio Cayuqueo</title>
+    <link>http://localhost:1313/redes/firewalls/fortinet/</link>
+    <description>Recent content in Fortinet on Wiki de Sergio Cayuqueo</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Wed, 22 Jul 2026 23:28:56 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/redes/firewalls/fortinet/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FortiGate como controlador Wireless</title>
+      <link>http://localhost:1313/redes/firewalls/fortinet/fortiap/</link>
+      <pubDate>Mon, 25 Sep 2017 11:53:29 -0300</pubDate>
+      <guid>http://localhost:1313/redes/firewalls/fortinet/fortiap/</guid>
+      <description>&lt;p&gt;A partir de la versión de FortiOS 4.0 MR2 ya se soporta la funcionalidad de Controlador Wireless o lo que se conoce como Wireless Centralizado. Consiste en una funcionalidad que nos permite tener Access Points distribuidos, pero controlando los accesos y la seguridad desde un punto centralizado.&lt;/p&gt;&#xA;&lt;h2 id=&#34;fortiap&#34;&gt;FortiAP&lt;a class=&#34;anchor&#34; href=&#34;#fortiap&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;administración&#34;&gt;Administración&lt;a class=&#34;anchor&#34; href=&#34;#administraci%c3%b3n&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xA;&lt;p&gt;Ejemplo de configuración de IP y de controlador Wireless&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cfg -a ADDR_MODE=STATIC&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cfg -a AP_IPADDR=192.168.1.100&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cfg -a AP_NETMASK=255.255.255.0&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cfg -a IPGW=192.168.1.1&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cfg -a AC_DISCOVERY_TYPE=1&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cfg -a AC_IPADDR_1=192.168.1.155&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cfg -c&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;fortiap-cli&#34;&gt;FortiAP CLI&lt;a class=&#34;anchor&#34; href=&#34;#fortiap-cli&#34;&gt;#&lt;/a&gt;&lt;/h3&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://help.fortinet.com/fos50hlp/54/Content/FortiOS/fortigate-wireless-54/reference-fortiap-cli.htm&#34;&gt;http://help.fortinet.com/fos50hlp/54/Content/FortiOS/fortigate-wireless-54/reference-fortiap-cli.htm&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

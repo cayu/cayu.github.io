@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hewlett Packard on Wiki de Sergio Cayuqueo</title>
+    <link>http://localhost:1313/redes/switches/hewlett_packard/</link>
+    <description>Recent content in Hewlett Packard on Wiki de Sergio Cayuqueo</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Wed, 22 Jul 2026 23:28:56 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/redes/switches/hewlett_packard/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Switches Aruba</title>
+      <link>http://localhost:1313/redes/switches/hewlett_packard/aruba/</link>
+      <pubDate>Mon, 10 Jun 2019 16:19:00 -0300</pubDate>
+      <guid>http://localhost:1313/redes/switches/hewlett_packard/aruba/</guid>
+      <description>&lt;h2 id=&#34;configurar-autenticación-microsoft-nps&#34;&gt;Configurar autenticación Microsoft NPS&lt;a class=&#34;anchor&#34; href=&#34;#configurar-autenticaci%c3%b3n-microsoft-nps&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;;Disable the telnet server since we don’t want domain creds flying around in plain text no telnet-server&lt;/p&gt;&#xA;&lt;p&gt;;Setup the RADIUS server info radius-server host &amp;lt;NPS Server IP&amp;gt; radius-server key “&amp;lt;Your Secret Key from the RADIUS Client in NPS&amp;gt;”&lt;/p&gt;&#xA;&lt;p&gt;;Set switch to go immediately to enable mode once authenticated aaa authentication login privilege-mode&lt;/p&gt;&#xA;&lt;p&gt;;Configure specific interfaces to use the RADIUS server aaa authentication web login peap-mschapv2 aaa authentication web enable peap-mschapv2 aaa authentication ssh login peap-mschapv2 aaa authentication ssh enable peap-mschapv2&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

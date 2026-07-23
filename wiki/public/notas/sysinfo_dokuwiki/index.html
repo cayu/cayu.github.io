@@ -1,0 +1,4331 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Dump some hardware info in DokuWiki format# Script (sys2wiki.sh) um Hardware Infos unter linux in DokuWiki kompatible format auszulesen.
+#!/bin/bash #make sure tools work as expected LANG=C #this specifies which Headline level is used HL=&#39;====&#39; CPU=`cat /proc/cpuinfo | grep &#39;model name&#39; | awk -F\: &#39;{print $2}&#39;| uniq | sed -e &#39;s/ //&#39;` MHz=`cat /proc/cpuinfo | grep &#39;cpu MHz&#39; | awk -F\: &#39;{print $2}&#39;| uniq | sed -e &#39;s/ //&#39;` CPUCOUNT=`cat /proc/cpuinfo | grep ^processor | wc -l` RAM=`cat /proc/meminfo | grep MemTotal | awk -F\: &#39;{print $2}&#39; | awk -F\ &#39;{print $1 &#34; &#34; $2}&#39;` SWAP=`cat /proc/meminfo | grep SwapTotal | awk -F\: &#39;{print $2}&#39; | awk -F\ &#39;{print $1 &#34; &#34; $2}&#39;` SYSTEM=`uname -sr` HOSTNAME=`(hostname -f || hostname) 2&gt;/dev/null` # look for known Distributions if [ -e /etc/debian_version ]; then OS=&#34;Debian `cat /etc/debian_version`&#34; elif [ -e /etc/redhat-release ]; then OS=`cat /etc/redhat-release` elif [ -e /etc/SuSE-release ]; then OS=`cat /etc/SuSE-release |head -n1` elif [ -e /etc/gentoo-release ]; then OS=`&lt; /etc/gentoo-release` elif [ -e /etc/slackware-version ]; then OS=`&lt; /etc/slackware-version` else OS=&#39;unknown&#39; fi echo &#34; $HL General $HL ^ Hostname | $HOSTNAME | ^ CPU | $CPU | ^ MHz | $MHz | ^ # CPU | $CPUCOUNT | ^ RAM | $RAM | ^ Swap | $SWAP | ^ System | $SYSTEM | ^ OS | $OS | &#34; echo -e &#34;$HL Network $HL\n&#34; for DEV in `/sbin/ifconfig -a | grep &#39;^\w&#39;| awk &#39;!/lo/{print $1}&#39;` do IP=`/sbin/ifconfig $DEV | awk -F\: &#39;/inet / {print $2}&#39;| awk &#39;{print $1}&#39;` echo &#34;^ $DEV | $IP |&#34; done echo echo -e &#34;$HL PCI $HL\n&#34; #lspci |sed &#39;s/^/ /&#39; echo &#34;^ Bus Address ^ Device Class ^ Details ^&#34; /sbin/lspci |sed &#39;s/\([0-9]\{2\}:[0-9a-z]\{2\}.[0-9]\)\([a-zA-Z0-9() ]\&#43;\):\(.*\)$/| \1 | \2 | \3 |/g&#39; echo echo -e &#34;$HL Filesystems $HL\n&#34; df -hPT -x tmpfs | awk &#39;{print &#34;| &#34; $1 &#34; | &#34; $2 &#34; | &#34; $3 &#34; | &#34; $7 &#34; |&#34;}&#39; echo echo -e &#34;$HL IDE devices $HL\n&#34; for DEV in `ls -1d /proc/ide/hd* | sed &#39;s/.*\///&#39;` do MODEL=`cat /proc/ide/$DEV/model` if [ -e /proc/ide/$DEV/capacity ]; then SIZE=`cat /proc/ide/$DEV/capacity` SIZE=`expr $SIZE / 2097152` else if [ -e /sys/block/$DEV/size ]; then SIZE=`cat /sys/block/$DEV/size` SIZE=`expr $SIZE / 2097152` else SIZE=&#39;(unknown)&#39; fi fi echo &#34;| /dev/$DEV | $MODEL | $SIZE GB |&#34; done if [ &#34;$(ls -1d /sys/block/sd* 2&gt; /dev/null)&#34; ]; then echo -e &#34;$HL SCSI devices $HL\n&#34; for DEV in `ls -1d /sys/block/sd* |sed &#39;s/.*\///&#39;` do MODEL=`cat /sys/block/$DEV/device/model` SIZE=`cat /sys/block/$DEV/size` SIZE=`expr $SIZE / 2097152` echo &#34;| /dev/$DEV | $MODEL | $SIZE GB |&#34; done echo fi Hardware Infos unter AIX (getestet unter AIX 5.1)
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/notas/sysinfo_dokuwiki/">
+  <meta property="og:site_name" content="Wiki de Sergio Cayuqueo">
+  <meta property="og:title" content="Dump some hardware info in DokuWiki format">
+  <meta property="og:description" content="Dump some hardware info in DokuWiki format# Script (sys2wiki.sh) um Hardware Infos unter linux in DokuWiki kompatible format auszulesen.
+#!/bin/bash #make sure tools work as expected LANG=C #this specifies which Headline level is used HL=&#39;====&#39; CPU=`cat /proc/cpuinfo | grep &#39;model name&#39; | awk -F\: &#39;{print $2}&#39;| uniq | sed -e &#39;s/ //&#39;` MHz=`cat /proc/cpuinfo | grep &#39;cpu MHz&#39; | awk -F\: &#39;{print $2}&#39;| uniq | sed -e &#39;s/ //&#39;` CPUCOUNT=`cat /proc/cpuinfo | grep ^processor | wc -l` RAM=`cat /proc/meminfo | grep MemTotal | awk -F\: &#39;{print $2}&#39; | awk -F\ &#39;{print $1 &#34; &#34; $2}&#39;` SWAP=`cat /proc/meminfo | grep SwapTotal | awk -F\: &#39;{print $2}&#39; | awk -F\ &#39;{print $1 &#34; &#34; $2}&#39;` SYSTEM=`uname -sr` HOSTNAME=`(hostname -f || hostname) 2&gt;/dev/null` # look for known Distributions if [ -e /etc/debian_version ]; then OS=&#34;Debian `cat /etc/debian_version`&#34; elif [ -e /etc/redhat-release ]; then OS=`cat /etc/redhat-release` elif [ -e /etc/SuSE-release ]; then OS=`cat /etc/SuSE-release |head -n1` elif [ -e /etc/gentoo-release ]; then OS=`&lt; /etc/gentoo-release` elif [ -e /etc/slackware-version ]; then OS=`&lt; /etc/slackware-version` else OS=&#39;unknown&#39; fi echo &#34; $HL General $HL ^ Hostname | $HOSTNAME | ^ CPU | $CPU | ^ MHz | $MHz | ^ # CPU | $CPUCOUNT | ^ RAM | $RAM | ^ Swap | $SWAP | ^ System | $SYSTEM | ^ OS | $OS | &#34; echo -e &#34;$HL Network $HL\n&#34; for DEV in `/sbin/ifconfig -a | grep &#39;^\w&#39;| awk &#39;!/lo/{print $1}&#39;` do IP=`/sbin/ifconfig $DEV | awk -F\: &#39;/inet / {print $2}&#39;| awk &#39;{print $1}&#39;` echo &#34;^ $DEV | $IP |&#34; done echo echo -e &#34;$HL PCI $HL\n&#34; #lspci |sed &#39;s/^/ /&#39; echo &#34;^ Bus Address ^ Device Class ^ Details ^&#34; /sbin/lspci |sed &#39;s/\([0-9]\{2\}:[0-9a-z]\{2\}.[0-9]\)\([a-zA-Z0-9() ]\&#43;\):\(.*\)$/| \1 | \2 | \3 |/g&#39; echo echo -e &#34;$HL Filesystems $HL\n&#34; df -hPT -x tmpfs | awk &#39;{print &#34;| &#34; $1 &#34; | &#34; $2 &#34; | &#34; $3 &#34; | &#34; $7 &#34; |&#34;}&#39; echo echo -e &#34;$HL IDE devices $HL\n&#34; for DEV in `ls -1d /proc/ide/hd* | sed &#39;s/.*\///&#39;` do MODEL=`cat /proc/ide/$DEV/model` if [ -e /proc/ide/$DEV/capacity ]; then SIZE=`cat /proc/ide/$DEV/capacity` SIZE=`expr $SIZE / 2097152` else if [ -e /sys/block/$DEV/size ]; then SIZE=`cat /sys/block/$DEV/size` SIZE=`expr $SIZE / 2097152` else SIZE=&#39;(unknown)&#39; fi fi echo &#34;| /dev/$DEV | $MODEL | $SIZE GB |&#34; done if [ &#34;$(ls -1d /sys/block/sd* 2&gt; /dev/null)&#34; ]; then echo -e &#34;$HL SCSI devices $HL\n&#34; for DEV in `ls -1d /sys/block/sd* |sed &#39;s/.*\///&#39;` do MODEL=`cat /sys/block/$DEV/device/model` SIZE=`cat /sys/block/$DEV/size` SIZE=`expr $SIZE / 2097152` echo &#34;| /dev/$DEV | $MODEL | $SIZE GB |&#34; done echo fi Hardware Infos unter AIX (getestet unter AIX 5.1)">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="notas">
+    <meta property="article:published_time" content="2009-08-10T12:12:33-03:00">
+    <meta property="article:modified_time" content="2026-07-22T23:28:56-03:00">
+
+
+  <meta itemprop="name" content="Dump some hardware info in DokuWiki format">
+  <meta itemprop="description" content="Dump some hardware info in DokuWiki format# Script (sys2wiki.sh) um Hardware Infos unter linux in DokuWiki kompatible format auszulesen.
+#!/bin/bash #make sure tools work as expected LANG=C #this specifies which Headline level is used HL=&#39;====&#39; CPU=`cat /proc/cpuinfo | grep &#39;model name&#39; | awk -F\: &#39;{print $2}&#39;| uniq | sed -e &#39;s/ //&#39;` MHz=`cat /proc/cpuinfo | grep &#39;cpu MHz&#39; | awk -F\: &#39;{print $2}&#39;| uniq | sed -e &#39;s/ //&#39;` CPUCOUNT=`cat /proc/cpuinfo | grep ^processor | wc -l` RAM=`cat /proc/meminfo | grep MemTotal | awk -F\: &#39;{print $2}&#39; | awk -F\ &#39;{print $1 &#34; &#34; $2}&#39;` SWAP=`cat /proc/meminfo | grep SwapTotal | awk -F\: &#39;{print $2}&#39; | awk -F\ &#39;{print $1 &#34; &#34; $2}&#39;` SYSTEM=`uname -sr` HOSTNAME=`(hostname -f || hostname) 2&gt;/dev/null` # look for known Distributions if [ -e /etc/debian_version ]; then OS=&#34;Debian `cat /etc/debian_version`&#34; elif [ -e /etc/redhat-release ]; then OS=`cat /etc/redhat-release` elif [ -e /etc/SuSE-release ]; then OS=`cat /etc/SuSE-release |head -n1` elif [ -e /etc/gentoo-release ]; then OS=`&lt; /etc/gentoo-release` elif [ -e /etc/slackware-version ]; then OS=`&lt; /etc/slackware-version` else OS=&#39;unknown&#39; fi echo &#34; $HL General $HL ^ Hostname | $HOSTNAME | ^ CPU | $CPU | ^ MHz | $MHz | ^ # CPU | $CPUCOUNT | ^ RAM | $RAM | ^ Swap | $SWAP | ^ System | $SYSTEM | ^ OS | $OS | &#34; echo -e &#34;$HL Network $HL\n&#34; for DEV in `/sbin/ifconfig -a | grep &#39;^\w&#39;| awk &#39;!/lo/{print $1}&#39;` do IP=`/sbin/ifconfig $DEV | awk -F\: &#39;/inet / {print $2}&#39;| awk &#39;{print $1}&#39;` echo &#34;^ $DEV | $IP |&#34; done echo echo -e &#34;$HL PCI $HL\n&#34; #lspci |sed &#39;s/^/ /&#39; echo &#34;^ Bus Address ^ Device Class ^ Details ^&#34; /sbin/lspci |sed &#39;s/\([0-9]\{2\}:[0-9a-z]\{2\}.[0-9]\)\([a-zA-Z0-9() ]\&#43;\):\(.*\)$/| \1 | \2 | \3 |/g&#39; echo echo -e &#34;$HL Filesystems $HL\n&#34; df -hPT -x tmpfs | awk &#39;{print &#34;| &#34; $1 &#34; | &#34; $2 &#34; | &#34; $3 &#34; | &#34; $7 &#34; |&#34;}&#39; echo echo -e &#34;$HL IDE devices $HL\n&#34; for DEV in `ls -1d /proc/ide/hd* | sed &#39;s/.*\///&#39;` do MODEL=`cat /proc/ide/$DEV/model` if [ -e /proc/ide/$DEV/capacity ]; then SIZE=`cat /proc/ide/$DEV/capacity` SIZE=`expr $SIZE / 2097152` else if [ -e /sys/block/$DEV/size ]; then SIZE=`cat /sys/block/$DEV/size` SIZE=`expr $SIZE / 2097152` else SIZE=&#39;(unknown)&#39; fi fi echo &#34;| /dev/$DEV | $MODEL | $SIZE GB |&#34; done if [ &#34;$(ls -1d /sys/block/sd* 2&gt; /dev/null)&#34; ]; then echo -e &#34;$HL SCSI devices $HL\n&#34; for DEV in `ls -1d /sys/block/sd* |sed &#39;s/.*\///&#39;` do MODEL=`cat /sys/block/$DEV/device/model` SIZE=`cat /sys/block/$DEV/size` SIZE=`expr $SIZE / 2097152` echo &#34;| /dev/$DEV | $MODEL | $SIZE GB |&#34; done echo fi Hardware Infos unter AIX (getestet unter AIX 5.1)">
+  <meta itemprop="datePublished" content="2009-08-10T12:12:33-03:00">
+  <meta itemprop="dateModified" content="2026-07-22T23:28:56-03:00">
+  <meta itemprop="wordCount" content="1426">
+
+<title>Dump some hardware info in DokuWiki format • Wiki de Sergio Cayuqueo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/notas/sysinfo_dokuwiki/">
+<link rel="stylesheet" href="/book.min.b67edd162318c5083c6df0a88fb33841277a463a19631410445e4034ec6e651c.css" integrity="sha256-tn7dFiMYxQg8bfCoj7M4QSd6RjoZYxQQRF5ANOxuZRw=" crossorigin="anonymous">
+
+
+  <script defer type="module" src="/es.search.min.0d8ef5a46e9d73ded2792bc4dc404ee89897a364056761a43c441c32a9c30525.js" integrity="sha256-DY71pG6dc97SeSvE3EBO6JiXo2QFZ2GkPEQcMqnDBSU=" crossorigin="anonymous"></script>
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-notas">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Wiki de Sergio Cayuqueo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Buscar"
+    aria-label="Buscar"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Notas</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Hardware</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/" class="">
+      VMWare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/instalar_vmware_tools/" class="">
+      Instalar VMware Tools</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/agregar_cpu_en_caliente_en_vmware/" class="">
+      Agregar CPU en caliente en VMWare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/datetime/" class="">
+      Parametros para Vmware por cambio de hora de servidores</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/idrac/" class="">
+      iDrac Dell</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/strace/" class="">
+      Strace</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/nginx/" class="">
+      Nginx</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/" class="">
+      Squid</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/hearbeat/" class="">
+      LVS - Hearbeat - Ldirectord - Balanceo de carga y alta disponibilidad</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/rhcs/" class="">
+      Squid &#43; Red Hat Cluster Suite</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bind/" class="">
+      Configuración de Servidor DNS Bind</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/" class="">
+      Linux</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Networking</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/networking/wan_optimization/" class="">
+      WAN Optimization</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/actualizar_suse_linux/" class="">
+      Actualizar SuSE Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/cambiar_planificador_de_disco/" class="">
+      Cambiar planificador de acceso a disco</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/medicion_de_velocidad_de_cambio_en_filesystems_en_un_sistema_linux_fisico_o_virtual/" class="">
+      Medición de velocidad de cambio en filesystems en un sistema Linux (físico o virtual)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/midiendo_el_rendimiento_del_sistema_con_iostat/" class="">
+      Midiendo el rendimiento del sistema con IOSTAT</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/sistema_de_archivos_proc/" class="">
+      Sistema de archivos /proc</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/lvm/" class="">
+      Logical Volume Management 2 (LVM2)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/manejo_de_memoria_en_linux/" class="">
+      Manejo de memoria en Linux</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/manejo_de_memoria_en_linux/hugepages/" class="">
+      Hugepages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/ver_el_dmesg_en_formato_humano/" class="">
+      Ver el dmesg en formato humano</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/midiendo_el_rendimiento_del_sistema_con_sar/" class="">
+      Midiendo el rendimiento del sistema con SAR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/cron/" class="">
+      CRON</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/sed/" class="">
+      SED - Stream EDitor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/configuracion_vpn/" class="">
+      Configuración de acceso VPN desde Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openssh/" class="">
+      OpenSSH</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/compartir_archivos_por_nfs/" class="">
+      Como compartir filesystems por NFS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/" class="">
+      Microsoft</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/windows/" class="">
+      Sistema Operativo Windows</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/windows/scripts_varios_de_powershell/" class="">
+      Scripts varios de PowerShell</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/network_policy_server_nps/" class="">
+      Network Policy Server (NPS)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/apache/" class="">
+      Tips de Apache</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/analisis_forense/" class="">
+      Análisis forense</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/qlikview/" class="">
+      QlikView</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/owncloud/" class="">
+      OwnCloud</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/iptables/" class="">
+      TIPs varios de IPTables</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/celulares/" class="">
+      Teléfonos celulares</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openldap/" class="">
+      Implementacion de un servidor OpenLDAP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/arduino/" class="">
+      Arduino</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/kickstart/" class="">
+      Kickstart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/raspberry_pi/" class="">
+      Raspberry Pi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/postfix/" class="">
+      Postfix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openssl/" class="">
+      OpenSSL</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/" class="">
+      Programación</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Python</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Webscraping</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/webscraping/beautifulsoup/" class="">
+      Beautiful Soup</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/sistema_de_archivos/" class="">
+      Operaciones sobre el sistema de archivos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/django/" class="">
+      Django</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/introduccion_a_awk/" class="">
+      Uso básico de AWK</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/the_linux_cdrom_interface/" class="">
+      The Linux CDROM interface</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/reproductor_de_cd/" class="">
+      Reproductor De Cd</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/console_ioctls_under_linux/" class="">
+      Console IOCTLs Under Linux</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/tools_of_the_trade_--_iostat_vmstat_and_netstat/" class="">
+      Tools of the Trade -- Iostat, Vmstat, and Netstat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/solaris_performance_monitoring/" class="">
+      Solaris Performance Monitoring &amp; Tuning - iostat , vmstat &amp; netstat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/" class="">
+      Bases De Datos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/mysql/" class="">
+      Task MySQL</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/oracle/" class="">
+      Oracle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/mssql/" class="">
+      Microsoft SQL Server</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/postgresql/" class="">
+      PostgreSQL</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/valgrind/" class="">
+      Valgrind</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/kamailio/" class="">
+      Kamailio</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/syslog_centralizado/" class="">
+      Sistema de LOG centralizado</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/inicio_rapido_de_csync2/" class="">
+      Csync para centralizar la configuracion de servicios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/xen_multi_bridge/" class="">
+      Utilizar dos o mas placas de red con Xen</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/sysinfo_dokuwiki/" class="active">
+      Dump some hardware info in DokuWiki format</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/ubuntu_domu_en_red_hat/" class="">
+      Xen Red Hat Dom0 y Ubuntu DomU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/enomalism/" class="">
+      Configuraciones a mano</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Fotografia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/fotografia/conceptos/" class="">
+      Sobre el 18-55</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Legales</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Legislacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Nacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/nacion/decreto_155_89/" class="">
+      Decreto 155 89</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/nacion/ley_23302/" class="">
+      LEY 23.302</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/caba/" class="">
+      Legislación Indígena Ciudad Autónoma de Buenos Aires</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/jurisprudencia/" class="">
+      Jurisprudencia</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/" class="">
+      Seguridad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Criptografia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/truecrypt/" class="">
+      Privacidad datos utilizando TrueCrypt</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/veracrypt/" class="">
+      Privacidad datos utilizando VeraCrypt</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/gnupg/" class="">
+      The GNU Privacy Guard</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Gestion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/gestion/itil/" class="">
+      ITIL - Information Technology Infrastructure Library</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      How To</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/how_to/prevent_a_fork_bomb_by_limiting_user_process/" class="">
+      How to: Prevent a fork bomb by limiting user process</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Programacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Redes</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/nodejs/" class="">
+      NodeJS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/python/" class="">
+      Scripts simples en python</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/python/scapy/" class="">
+      Scapy</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/scanner_de_puertos_simple/" class="">
+      Scanner De Puertos Simple</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/shellcode/" class="">
+      Shellcode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/" class="">
+      Seguridad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Certificaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/" class="">
+      Profesional certificado en seguridad ofensiva (OSCP)</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/preparacion_personal/" class="">
+      Preparación personal para rendir la certificación OSCP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/oscp_prep_class/" class="">
+      OSCP Prep class</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/oscp-survival-guide/" class="">
+      OSCP-Survival-Guide</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Exploits</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/exploits/mempodipper/" class="">
+      mempodipper</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/exploits/dirty_cow/" class="">
+      Dirty COW</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/why_i_would_never_buy_a_dell_powerconnect_2724/" class="">
+      Why I would never buy a Dell PowerConnect 2724</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/understanding_bash_fork_bomb/" class="">
+      Understanding Bash fork() bomb ~ :(){ :|:&amp; };:</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/pequena_guia_de_seguridad_informatica/" class="">
+      Pequeña guía de seguridad informática</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/auditd/" class="">
+      Auditoría en Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/process_accounting_psacct/" class="">
+      Process Accounting (PSACCT)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/" class="">
+      Enlaces útiles</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/" class="">
+      Utilidades de Red</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/ngrep/" class="">
+      Network Grep - ngrep</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/msndump/" class="">
+      MSN Dump</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/tcpdump/" class="">
+      TCPDUMP</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/" class="">
+      Aprendiendo SAP</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/sap_hana/" class="">
+      SAP HANA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/desarrollo_y_programacion_en_abap/" class="">
+      Desarrollo y programación en ABAP</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/" class="">
+      Redes y comunicaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Conectividad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/conectividad/fibra_optica/" class="">
+      Fibra óptica</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Firewalls</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/fortinet/" class="">
+      Fortinet</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/fortinet/fortiap/" class="">
+      FortiGate como controlador Wireless</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/pfsense/" class="">
+      pfSense</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Notas</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/notas/nc/" class="">
+      Netcat</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Telefonia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Asterisk</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/" class="">
+      Conectividad con Asterisk</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/spa400/" class="">
+      SPA400</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/tdm400p/" class="">
+      Instalar Placa TDM400P</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Cisco</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/call_manager/" class="">
+      Cisco Call Manager</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/routers/" class="">
+      Routers Cisco</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/telefonos/" class="">
+      Teléfonos CISCO</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Videoconferencia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/videoconferencia/openmcu-ru/" class="">
+      OpenMCU-ru</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/flows/" class="">
+      Network Flow</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/flows/ntop/" class="">
+      Ntop</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/rancid/" class="">
+      Rancid (Really Awesome New Cisco confIg Differ)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/conceptos/" class="">
+      Conceptos de redes informáticas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/" class="">
+      Switches</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Cisco</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/2960c/" class="">
+      CISCO - 2960-C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/2960x/" class="">
+      CISCO - 2960-X</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/sf300/" class="">
+      CISCO - SF300</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/extreme_networks/" class="">
+      Extreme Networks</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/" class="">
+      Hewlett Packard</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/aruba/" class="">
+      Switches Aruba</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/" class="">
+      3COM</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Voice</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/voice/vlan/" class="">
+      VLAN de voz</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/debug_y_analisis_de_equipos_hp_3com/" class="">
+      Debug y análisis de equipos HP/3com</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cumulus_networks/" class="">
+      Cumulus Networks</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/gestion/" class="">
+      Gestión</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/gestion/taiga/" class="">
+      Taiga</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/leyes/" class="">
+      Leyes, Decretos y Ordenanzas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/" class="">
+      Charlas y Eventos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/pueblos_originarios_y_la_industria_del_software/" class="">
+      Pueblos Originarios y la industria del Software</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/uso_de_la_consola_linux/" class="">
+      Taller de uso de Consola Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/lanux_agosto_2010/" class="">
+      Servidores VPS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/" class="">
+      Manuales de proyectos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Tivoli Tsm</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/manual_de_manejo_de_backups_con_tivoli/" class="">
+      Manual de manejo de respaldos con Tivoli</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/tsm_sql_tips/" class="">
+      Mandatos de prueba de validación de la actualización de la base de datos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/tsm_sql_hints/" class="">
+      TSM SQL Hints</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/sql_for_tivoli_storage_manager/" class="">
+      SQL for Tivoli Storage Manager</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/emc_data_domain/" class="">
+      EMC Data Domain</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/" class="">
+      Monitoria y análisis de Red con Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/" class="">
+      Monitoreo de Red con Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Productos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/oracle/" class="">
+      Oracle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/argentina_-_arba_-_codigo_de_operacion_de_traslado_cot/" class="">
+      Argentina - ARBA - Código de Operación de Traslado (COT)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/asterisk/" class="">
+      Asterisk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/riverbed/" class="">
+      Riverbed</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/argentina_-_afip_-_factura_electronica/" class="">
+      Argentina AFIP Factura Electrónica</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/sap/" class="">
+      SAP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/ibm_tivoli_tsm/" class="">
+      Tivoli Storage Manager - TSM</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/brasil_-_nota_fiscal_electronica_nfe/" class="">
+      Brasil - Nota Fiscal Electrónica NFe</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/brasil_-_nota_fiscal_electronica_nfe/referencias_utiles_de_nfe/" class="">
+      Referencias útiles de NFE</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/microstrategy/" class="">
+      MicroStrategy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/qlikview/" class="">
+      QlikView</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/servidor_web/" class="">
+      Configuración del servidor Web</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/pnp4nagios/" class="">
+      PNP4Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/tipos_de_notificaciones/" class="">
+      Tipos de notificaciones</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_referencias_generales/" class="">
+      Referencias generales</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_referencias_generales/sistema_de_inventario/" class="">
+      Sistema de inventario</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagios_network_analyzer/" class="">
+      Nagios Network Analyzer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/" class="">
+      Correlación de eventos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/rsyslog/" class="">
+      Reliable system and kernel logging daemon</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/eventdb/" class="">
+      EventDB</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/syslog_ng/" class="">
+      Syslog-NG</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/implementacion_tecnica/" class="">
+      Implementación Técnica de Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/implementacion_tecnica/implementacion_tecnica_version_ubuntu_server_20.04/" class="">
+      Implementación Técnica de Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/capacitacion_en_monitoreo_de_red/" class="">
+      Capacitación en monitoreo de Red</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Certificaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/capacitacion_en_monitoreo_de_red/certificaciones/sox_-_sarbanes-oxley/" class="">
+      SOX</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/desarrollo_de_plugins_de_nagios/" class="">
+      Desarrollo de plugins de Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/desarrollo_de_plugins_de_nagios/problemas_comunes/" class="">
+      Problemas comunes de los plugins de Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/snmp/" class="">
+      SNMP (Simple Network Management Protocol)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagios_event_radio_dispatcher_nerd/" class="">
+      Nagios Event Radio Dispatcher (NERD)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/mk_livestatus/" class="">
+      MK Livestatus</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/ndo2utils/" class="">
+      NDO2Utils</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagvis/" class="">
+      Nagvis</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagvis/diseno_de_tablero_de_control/" class="">
+      Diseño de tablero de control</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/graficos_en_ajax/" class="">
+      Gráficos en AJAX</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_tips_y_recomendaciones/" class="">
+      TIPS y recomendaciones</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_otras_soluciones_basadas_en_nagios/" class="">
+      Anexo - Otras soluciones basadas en Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_comandos_externos/" class="">
+      Comandos externos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/plugins_usuales_de_nagios/" class="">
+      Plugins usuales de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/icmp/" class="">
+      ICMP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_codigo_fuente_de_nagios/" class="">
+      Análisis del código fuente de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_configuracion_desde_version_3_a_4/" class="">
+      Incompatibilidades de configuración v3 a v4</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/codigo_fuente/" class="">
+      Análisis del código fuente de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/thruk/" class="">
+      Thruk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/portugues/" class="">
+      Monitoração de rede e análise com Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/italiano/" class="">
+      Implementazione di un sistema di rete, monitor con Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_freeradius/" class="">
+      Servidor FreeRadius</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_systemimager/" class="">
+      Proyecto Servidor de Backups</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/an_introduction_to_linux_shell_scripting_for_dbas/" class="">
+      An Introduction to Linux Shell Scripting for DBAs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/filtrador_de_logs/" class="">
+      Filtrador de LOGS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/drbd/" class="">
+      DRBD (Distributed Replicated Block Device)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/" class="">
+      Lotus Notes</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/problemas_winmail.dat_outlook/" class="">
+      Problemas Winmail.dat Outlook</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/listar_ultimo_mes_de_login_de_usuarios/" class="">
+      Listar último mes de login de usuarios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/reemplazar_diseno_base_de_datos/" class="">
+      Reemplazar Diseño Base de Datos</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_squid/" class="">
+      Squid Proxy Server</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/red_restringida/" class="">
+      Red restringida</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/novell_audit/" class="">
+      Novell Identity Audit</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_dhcp/" class="">
+      Servicio DHCP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/ils/" class="">
+      ILS (Internet Locator Server)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Dump some hardware info in DokuWiki format</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#dump-some-hardware-info-in-dokuwiki-format">Dump some hardware info in DokuWiki format</a></li>
+    <li><a href="#beispiel">Beispiel</a>
+      <ul>
+        <li><a href="#general">General</a></li>
+        <li><a href="#network">Network</a></li>
+        <li><a href="#pci">PCI</a></li>
+        <li><a href="#filesystems">Filesystems</a></li>
+        <li><a href="#ide-devices">IDE devices</a></li>
+      </ul>
+    </li>
+    <li><a href="#original">Original</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h2 id="dump-some-hardware-info-in-dokuwiki-format">Dump some hardware info in DokuWiki format<a class="anchor" href="#dump-some-hardware-info-in-dokuwiki-format">#</a></h2>
+<p>Script (sys2wiki.sh) um Hardware Infos unter linux in DokuWiki kompatible format auszulesen.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#make sure tools work as expected</span>
+</span></span><span class="line"><span class="cl"><span class="nv">LANG</span><span class="o">=</span>C
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#this specifies which Headline level is used</span>
+</span></span><span class="line"><span class="cl"><span class="nv">HL</span><span class="o">=</span><span class="s1">&#39;====&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">CPU</span><span class="o">=</span><span class="sb">`</span>cat /proc/cpuinfo  <span class="p">|</span> grep <span class="s1">&#39;model name&#39;</span> <span class="p">|</span> awk -F<span class="se">\:</span> <span class="s1">&#39;{print $2}&#39;</span><span class="p">|</span> uniq <span class="p">|</span> sed -e <span class="s1">&#39;s/ //&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nv">MHz</span><span class="o">=</span><span class="sb">`</span>cat /proc/cpuinfo <span class="p">|</span> grep <span class="s1">&#39;cpu MHz&#39;</span> <span class="p">|</span> awk -F<span class="se">\:</span> <span class="s1">&#39;{print $2}&#39;</span><span class="p">|</span> uniq <span class="p">|</span> sed -e <span class="s1">&#39;s/ //&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nv">CPUCOUNT</span><span class="o">=</span><span class="sb">`</span>cat /proc/cpuinfo <span class="p">|</span> grep ^processor <span class="p">|</span> wc -l<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nv">RAM</span><span class="o">=</span><span class="sb">`</span>cat /proc/meminfo <span class="p">|</span> grep MemTotal <span class="p">|</span> awk -F<span class="se">\:</span> <span class="s1">&#39;{print $2}&#39;</span> <span class="p">|</span> awk -F<span class="se">\ </span> <span class="s1">&#39;{print $1 &#34; &#34; $2}&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nv">SWAP</span><span class="o">=</span><span class="sb">`</span>cat /proc/meminfo <span class="p">|</span> grep SwapTotal <span class="p">|</span> awk -F<span class="se">\:</span> <span class="s1">&#39;{print $2}&#39;</span> <span class="p">|</span> awk -F<span class="se">\ </span> <span class="s1">&#39;{print $1 &#34; &#34; $2}&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nv">SYSTEM</span><span class="o">=</span><span class="sb">`</span>uname -sr<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nv">HOSTNAME</span><span class="o">=</span><span class="sb">`</span><span class="o">(</span>hostname -f <span class="o">||</span> hostname<span class="o">)</span> 2&gt;/dev/null<span class="sb">`</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># look for known Distributions</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> -e /etc/debian_version <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">OS</span><span class="o">=</span><span class="s2">&#34;Debian `cat /etc/debian_version`&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">elif</span> <span class="o">[</span> -e /etc/redhat-release <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">OS</span><span class="o">=</span><span class="sb">`</span>cat /etc/redhat-release<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="k">elif</span> <span class="o">[</span> -e /etc/SuSE-release <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">OS</span><span class="o">=</span><span class="sb">`</span>cat /etc/SuSE-release <span class="p">|</span>head -n1<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="k">elif</span> <span class="o">[</span> -e /etc/gentoo-release <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">OS</span><span class="o">=</span><span class="sb">`</span>&lt; /etc/gentoo-release<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="k">elif</span> <span class="o">[</span> -e /etc/slackware-version <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">OS</span><span class="o">=</span><span class="sb">`</span>&lt; /etc/slackware-version<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"> <span class="k">else</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">OS</span><span class="o">=</span><span class="s1">&#39;unknown&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;
+</span></span></span><span class="line"><span class="cl"><span class="nv">$HL</span><span class="s2"> General </span><span class="nv">$HL</span><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">^ Hostname | </span><span class="nv">$HOSTNAME</span><span class="s2"> |
+</span></span></span><span class="line"><span class="cl"><span class="s2">^ CPU      | </span><span class="nv">$CPU</span><span class="s2">      |
+</span></span></span><span class="line"><span class="cl"><span class="s2">^ MHz      | </span><span class="nv">$MHz</span><span class="s2">      |
+</span></span></span><span class="line"><span class="cl"><span class="s2">^ # CPU    | </span><span class="nv">$CPUCOUNT</span><span class="s2"> |
+</span></span></span><span class="line"><span class="cl"><span class="s2">^ RAM      | </span><span class="nv">$RAM</span><span class="s2">      |
+</span></span></span><span class="line"><span class="cl"><span class="s2">^ Swap     | </span><span class="nv">$SWAP</span><span class="s2">     |
+</span></span></span><span class="line"><span class="cl"><span class="s2">^ System   | </span><span class="nv">$SYSTEM</span><span class="s2">   |
+</span></span></span><span class="line"><span class="cl"><span class="s2">^ OS       | </span><span class="nv">$OS</span><span class="s2">       |
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;</span><span class="nv">$HL</span><span class="s2"> Network </span><span class="nv">$HL</span><span class="s2">\n&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> DEV in <span class="sb">`</span>/sbin/ifconfig -a <span class="p">|</span> grep <span class="s1">&#39;^\w&#39;</span><span class="p">|</span> awk <span class="s1">&#39;!/lo/{print $1}&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="k">do</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">IP</span><span class="o">=</span><span class="sb">`</span>/sbin/ifconfig <span class="nv">$DEV</span> <span class="p">|</span> awk -F<span class="se">\:</span> <span class="s1">&#39;/inet / {print $2}&#39;</span><span class="p">|</span> awk <span class="s1">&#39;{print $1}&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="s2">&#34;^ </span><span class="nv">$DEV</span><span class="s2"> | </span><span class="nv">$IP</span><span class="s2"> |&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;</span><span class="nv">$HL</span><span class="s2"> PCI </span><span class="nv">$HL</span><span class="s2">\n&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#lspci |sed &#39;s/^/  /&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;^  Bus Address  ^  Device Class  ^  Details  ^&#34;</span>
+</span></span><span class="line"><span class="cl">/sbin/lspci <span class="p">|</span>sed <span class="s1">&#39;s/\([0-9]\{2\}:[0-9a-z]\{2\}.[0-9]\)\([a-zA-Z0-9() ]\+\):\(.*\)$/|  \1  | \2  |  \3  |/g&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;</span><span class="nv">$HL</span><span class="s2"> Filesystems </span><span class="nv">$HL</span><span class="s2">\n&#34;</span>
+</span></span><span class="line"><span class="cl">df -hPT -x tmpfs <span class="p">|</span> awk <span class="s1">&#39;{print &#34;| &#34; $1 &#34; | &#34; $2 &#34; | &#34; $3 &#34; | &#34; $7 &#34; |&#34;}&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;</span><span class="nv">$HL</span><span class="s2"> IDE devices </span><span class="nv">$HL</span><span class="s2">\n&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> DEV in <span class="sb">`</span>ls -1d /proc/ide/hd* <span class="p">|</span> sed <span class="s1">&#39;s/.*\///&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="k">do</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">MODEL</span><span class="o">=</span><span class="sb">`</span>cat /proc/ide/<span class="nv">$DEV</span>/model<span class="sb">`</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="o">[</span> -e /proc/ide/<span class="nv">$DEV</span>/capacity <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">SIZE</span><span class="o">=</span><span class="sb">`</span>cat /proc/ide/<span class="nv">$DEV</span>/capacity<span class="sb">`</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">SIZE</span><span class="o">=</span><span class="sb">`</span>expr <span class="nv">$SIZE</span> / 2097152<span class="sb">`</span>
+</span></span><span class="line"><span class="cl">  <span class="k">else</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">[</span> -e /sys/block/<span class="nv">$DEV</span>/size <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">SIZE</span><span class="o">=</span><span class="sb">`</span>cat /sys/block/<span class="nv">$DEV</span>/size<span class="sb">`</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">SIZE</span><span class="o">=</span><span class="sb">`</span>expr <span class="nv">$SIZE</span> / 2097152<span class="sb">`</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span>
+</span></span><span class="line"><span class="cl">      <span class="nv">SIZE</span><span class="o">=</span><span class="s1">&#39;(unknown)&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fi</span>
+</span></span><span class="line"><span class="cl">  <span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="s2">&#34;| /dev/</span><span class="nv">$DEV</span><span class="s2"> | </span><span class="nv">$MODEL</span><span class="s2"> | </span><span class="nv">$SIZE</span><span class="s2"> GB |&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="k">$(</span>ls -1d /sys/block/sd* 2&gt; /dev/null<span class="k">)</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> -e <span class="s2">&#34;</span><span class="nv">$HL</span><span class="s2"> SCSI devices </span><span class="nv">$HL</span><span class="s2">\n&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> DEV in <span class="sb">`</span>ls -1d /sys/block/sd* <span class="p">|</span>sed <span class="s1">&#39;s/.*\///&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl">  <span class="k">do</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">MODEL</span><span class="o">=</span><span class="sb">`</span>cat /sys/block/<span class="nv">$DEV</span>/device/model<span class="sb">`</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">SIZE</span><span class="o">=</span><span class="sb">`</span>cat /sys/block/<span class="nv">$DEV</span>/size<span class="sb">`</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">SIZE</span><span class="o">=</span><span class="sb">`</span>expr <span class="nv">$SIZE</span> / 2097152<span class="sb">`</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;| /dev/</span><span class="nv">$DEV</span><span class="s2"> | </span><span class="nv">$MODEL</span><span class="s2"> | </span><span class="nv">$SIZE</span><span class="s2"> GB |&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">done</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span></span></span></code></pre></div><hr>
+<p>Hardware Infos unter AIX (getestet unter AIX 5.1)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/ksh
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#make sure tools work as expected</span>
+</span></span><span class="line"><span class="cl"><span class="nv">LANG</span><span class="o">=</span>C
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#this specifies which Headline level is used</span>
+</span></span><span class="line"><span class="cl"><span class="nv">HL</span><span class="o">=</span><span class="s1">&#39;====&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#CPU</span>
+</span></span><span class="line"><span class="cl"><span class="nv">CPU_NAME</span><span class="o">=</span><span class="k">$(</span>/usr/sbin/lsdev -C <span class="p">|</span> grep Available <span class="p">|</span> grep -i proc <span class="p">|</span> awk <span class="s1">&#39;{print $1}&#39;</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">CPU</span><span class="o">=</span><span class="sb">`</span>/usr/sbin/lsattr -l <span class="nv">$CPU_NAME</span> -E <span class="p">|</span> grep <span class="nb">type</span> <span class="p">|</span> awk <span class="s1">&#39;{print $2}&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#MHz</span>
+</span></span><span class="line"><span class="cl"><span class="nv">MHz</span><span class="o">=</span><span class="sb">`</span>/usr/sbin/lsattr -l <span class="nv">$CPU_NAME</span> -E <span class="p">|</span> grep frequency <span class="p">|</span> awk <span class="s1">&#39;{print $2/1000000}&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nv">CPUCOUNT</span><span class="o">=</span><span class="sb">`</span>/usr/sbin/lsdev -C <span class="p">|</span> grep Available <span class="p">|</span> grep -i proc <span class="p">|</span> awk <span class="s1">&#39;{print $1}&#39;</span> <span class="p">|</span> wc -l<span class="sb">`</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#RAM</span>
+</span></span><span class="line"><span class="cl"><span class="nv">MEM_NAME</span><span class="o">=</span><span class="k">$(</span>/usr/sbin/lsdev -C <span class="p">|</span> grep Available <span class="p">|</span> grep -i mem <span class="p">|</span> awk <span class="s1">&#39;{print $1}&#39;</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">RAM</span><span class="o">=</span><span class="sb">`</span>/usr/sbin/lsattr -l <span class="nv">$MEM_NAME</span> -E <span class="p">|</span> grep Total <span class="p">|</span> awk <span class="s1">&#39;{print $2}&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># SWAP</span>
+</span></span><span class="line"><span class="cl"><span class="nv">SWAP</span><span class="o">=</span><span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> i in <span class="k">$(</span>/usr/sbin/lsvg -o<span class="k">)</span>
+</span></span><span class="line"><span class="cl"> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> lsvg -l <span class="nv">$i</span> <span class="p">|</span> grep paging 2&gt;<span class="p">&amp;</span><span class="m">1</span> 1&gt;/dev/null
+</span></span><span class="line"><span class="cl">	 <span class="k">then</span>
+</span></span><span class="line"><span class="cl">		<span class="nv">PAGEDEV</span><span class="o">=</span><span class="k">$(</span>lsvg -l <span class="nv">$i</span> <span class="p">|</span> grep paging <span class="p">|</span> awk <span class="s1">&#39;{print $1}&#39;</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl">		<span class="nv">PP_SIZE</span><span class="o">=</span><span class="k">$(</span>lslv <span class="nv">$PAGEDEV</span> <span class="p">|</span> grep <span class="s2">&#34;PP SIZE&#34;</span> <span class="p">|</span> awk <span class="s1">&#39;{print $6}&#39;</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl">		<span class="nv">LP_COUNT</span><span class="o">=</span><span class="k">$(</span>lslv <span class="nv">$PAGEDEV</span> <span class="p">|</span> grep <span class="s2">&#34;^LPs&#34;</span> <span class="p">|</span> awk <span class="s1">&#39;{print $2}&#39;</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl">		<span class="nb">let</span> <span class="nv">SWAP</span><span class="o">=</span><span class="nv">$SWAP</span>+<span class="nv">$PP_SIZE</span>*<span class="nv">$LP_COUNT</span>
+</span></span><span class="line"><span class="cl">	<span class="k">fi</span>
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span><span class="line"><span class="cl"><span class="nv">OS</span><span class="o">=</span><span class="sb">`</span><span class="nb">printf</span> <span class="s2">&#34;</span><span class="k">$(</span>/usr/bin/uname<span class="k">)</span><span class="s2"> </span><span class="k">$(</span>/usr/bin/oslevel<span class="k">)</span><span class="s2">&#34;</span><span class="sb">`</span> <span class="c1"># erledigt</span>
+</span></span><span class="line"><span class="cl"><span class="nv">ML</span><span class="o">=</span><span class="sb">`</span>/usr/bin/oslevel -r <span class="p">|</span> awk -F- <span class="s1">&#39;{print $2}&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nv">HOSTNAME</span><span class="o">=</span><span class="sb">`</span>/usr/bin/hostname<span class="sb">`</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;
+</span></span></span><span class="line"><span class="cl"><span class="nv">$HL</span><span class="s2"> General </span><span class="nv">$HL</span><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">^ Hostname | </span><span class="nv">$HOSTNAME</span><span class="s2"> |
+</span></span></span><span class="line"><span class="cl"><span class="s2">^ CPU      | </span><span class="nv">$CPU</span><span class="s2">      |
+</span></span></span><span class="line"><span class="cl"><span class="s2">^ MHz      | </span><span class="nv">$MHz</span><span class="s2">      |
+</span></span></span><span class="line"><span class="cl"><span class="s2">^ # CPU    | </span><span class="nv">$CPUCOUNT</span><span class="s2"> |
+</span></span></span><span class="line"><span class="cl"><span class="s2">^ RAM      | </span><span class="nv">$RAM</span><span class="s2">      |
+</span></span></span><span class="line"><span class="cl"><span class="s2">^ Swap     | </span><span class="nv">$SWAP</span><span class="s2">     |
+</span></span></span><span class="line"><span class="cl"><span class="s2">^ OS       | </span><span class="nv">$OS</span><span class="s2">       |
+</span></span></span><span class="line"><span class="cl"><span class="s2">^ Maintenance-Level       | </span><span class="nv">$ML</span><span class="s2">       |
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$HL</span><span class="s2"> Network </span><span class="nv">$HL</span><span class="s2">\n&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> DEV in <span class="sb">`</span>/usr/sbin/ifconfig -a <span class="p">|</span> egrep -v <span class="s2">&#34;^lo|inet|ether|sendspace&#34;</span> <span class="p">|</span> awk <span class="s1">&#39;{print $1}&#39;</span> <span class="p">|</span> sed -e <span class="s1">&#39;s/://&#39;</span> <span class="p">|</span> uniq<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="k">do</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">IP</span><span class="o">=</span><span class="sb">`</span>/usr/sbin/ifconfig <span class="nv">$DEV</span> <span class="p">|</span> grep inet <span class="p">|</span> awk <span class="s1">&#39;{print $2}&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="s2">&#34;^ </span><span class="nv">$DEV</span><span class="s2"> | </span><span class="nv">$IP</span><span class="s2"> |&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$HL</span><span class="s2"> Devices </span><span class="nv">$HL</span><span class="s2">\n&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;^  Name  ^  Slot  ^  Description  ^&#34;</span>
+</span></span><span class="line"><span class="cl">/usr/sbin/lsdev -C -S Available -F <span class="s2">&#34;name location description&#34;</span> <span class="p">|</span>sort <span class="p">|</span> sed -e <span class="s1">&#39;/^[ ]*$/d&#39;</span> <span class="p">|</span> awk -F<span class="s1">&#39; \{2,\}&#39;</span> <span class="s1">&#39;{print &#34;| &#34; $1 &#34; | &#34; $2 &#34; | &#34; $3 &#34; |&#34;}&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$HL</span><span class="s2"> Volumegroups &amp; Filesystems </span><span class="nv">$HL</span><span class="s2">\n&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;^ Volumegroup ^ Filesystem ^ Size (in KB) ^ Mountpoint ^&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> i in <span class="k">$(</span>/usr/sbin/lsvg -o<span class="k">)</span>
+</span></span><span class="line"><span class="cl"> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> j in <span class="k">$(</span>lsvg -l <span class="nv">$i</span> <span class="p">|</span> egrep -v <span class="s2">&#34;</span><span class="nv">$i</span><span class="s2">:|TYPE|closed|paging|jfslog|jfs2log&#34;</span> <span class="p">|</span> awk <span class="s1">&#39;{print $1}&#39;</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl">	 <span class="k">do</span>
+</span></span><span class="line"><span class="cl">		<span class="nb">echo</span> <span class="s2">&#34;| </span><span class="nv">$i</span><span class="s2"> </span><span class="k">$(</span>df -k <span class="p">|</span> grep <span class="s2">&#34;</span><span class="nv">$j</span><span class="s2"> &#34;</span> <span class="p">|</span> awk <span class="s1">&#39;{print &#34;| &#34; $1 &#34; | &#34; $2 &#34; | &#34; $NF &#34; |&#34;}&#39;</span><span class="k">)</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">done</span>
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span><span class="line"><span class="cl">echo</span></span></code></pre></div><hr>
+<p>Hardware Infos unter Solaris (getestet unter Solaris 9/10 SPARC)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#make sure tools work as expected</span>
+</span></span><span class="line"><span class="cl"><span class="nv">LANG</span><span class="o">=</span>C
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#this specifies which Headline level is used</span>
+</span></span><span class="line"><span class="cl"><span class="nv">HL</span><span class="o">=</span><span class="s1">&#39;====&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">CPU</span><span class="o">=</span><span class="sb">`</span>/usr/bin/kstat cpu_info <span class="p">|</span> grep implementation <span class="p">|</span> sed -e <span class="s1">&#39;s/\([^ *]implementation[ *]\)//g&#39;</span> <span class="p">|</span> sed -e <span class="s1">&#39;s/[ ]\{2,\}//g&#39;</span> <span class="p">|</span>  sed -n <span class="s1">&#39;1p&#39;</span><span class="sb">`</span> <span class="c1"># erledigt</span>
+</span></span><span class="line"><span class="cl"><span class="nv">MHz</span><span class="o">=</span><span class="sb">`</span>/usr/bin/kstat cpu_info <span class="p">|</span> grep clock_MHz <span class="p">|</span> sed -e <span class="s1">&#39;s/\([^ *]clock_MHz[ *]\)//g&#39;</span> <span class="p">|</span> sed -e <span class="s1">&#39;s/[ ]\{2,\}//g&#39;</span> <span class="p">|</span> sed -n <span class="s1">&#39;1p&#39;</span><span class="sb">`</span> <span class="c1"># erledigt</span>
+</span></span><span class="line"><span class="cl"><span class="nv">CPUCOUNT</span><span class="o">=</span><span class="sb">`</span>/usr/bin/kstat cpu_info <span class="p">|</span> grep implementation <span class="p">|</span> wc -l<span class="sb">`</span> <span class="c1"># erledigt</span>
+</span></span><span class="line"><span class="cl"><span class="nv">RAM</span><span class="o">=</span><span class="sb">`</span>/usr/sbin/prtconf <span class="p">|</span> grep Memory <span class="p">|</span> awk <span class="s1">&#39;{print $3*1024}&#39;</span><span class="sb">`</span> <span class="c1"># erledigt</span>
+</span></span><span class="line"><span class="cl"><span class="nv">SWAP</span><span class="o">=</span><span class="sb">`</span><span class="nv">SWAP</span><span class="o">=</span>0<span class="p">;</span> <span class="k">for</span> i in <span class="k">$(</span>/usr/sbin/swap -l <span class="p">|</span> egrep -v swapfile <span class="p">|</span> awk <span class="s1">&#39;{print $5}&#39;</span><span class="k">)</span><span class="p">;</span> <span class="k">do</span> <span class="nb">let</span> <span class="nv">SWAP</span><span class="o">=</span><span class="nv">$SWAP</span>+<span class="nv">$i</span><span class="p">;</span> <span class="k">done</span><span class="p">;</span> <span class="nb">echo</span> <span class="nv">$SWAP</span><span class="sb">`</span> <span class="c1"># erledigt</span>
+</span></span><span class="line"><span class="cl"><span class="nv">OS</span><span class="o">=</span><span class="sb">`</span>uname -sr<span class="sb">`</span> <span class="c1"># erledigt</span>
+</span></span><span class="line"><span class="cl"><span class="nv">HOSTNAME</span><span class="o">=</span><span class="sb">`</span>/usr/bin/hostname<span class="sb">`</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;
+</span></span></span><span class="line"><span class="cl"><span class="nv">$HL</span><span class="s2"> General </span><span class="nv">$HL</span><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">^ Hostname | </span><span class="nv">$HOSTNAME</span><span class="s2"> |
+</span></span></span><span class="line"><span class="cl"><span class="s2">^ CPU      | </span><span class="nv">$CPU</span><span class="s2">      |
+</span></span></span><span class="line"><span class="cl"><span class="s2">^ MHz      | </span><span class="nv">$MHz</span><span class="s2">      |
+</span></span></span><span class="line"><span class="cl"><span class="s2">^ # CPU    | </span><span class="nv">$CPUCOUNT</span><span class="s2"> |
+</span></span></span><span class="line"><span class="cl"><span class="s2">^ RAM      | </span><span class="nv">$RAM</span><span class="s2">      |
+</span></span></span><span class="line"><span class="cl"><span class="s2">^ Swap     | </span><span class="nv">$SWAP</span><span class="s2">     |
+</span></span></span><span class="line"><span class="cl"><span class="s2">^ OS       | </span><span class="nv">$OS</span><span class="s2">       |
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;</span><span class="nv">$HL</span><span class="s2"> Network </span><span class="nv">$HL</span><span class="s2">\n&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> DEV in <span class="sb">`</span>/usr/sbin/ifconfig -a <span class="p">|</span> egrep -v <span class="s2">&#34;^lo|inet|ether&#34;</span> <span class="p">|</span> awk <span class="s1">&#39;{print $1}&#39;</span> <span class="p">|</span> sed -e <span class="s1">&#39;s/://&#39;</span> <span class="p">|</span> uniq<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="k">do</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">IP</span><span class="o">=</span><span class="sb">`</span>/sbin/ifconfig <span class="nv">$DEV</span> <span class="p">|</span> grep inet <span class="p">|</span> awk <span class="s1">&#39;{print $2}&#39;</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">echo</span> <span class="s2">&#34;^ </span><span class="nv">$DEV</span><span class="s2"> | </span><span class="nv">$IP</span><span class="s2"> |&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;</span><span class="nv">$HL</span><span class="s2"> Bus </span><span class="nv">$HL</span><span class="s2">\n&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;^  Board  ^  Bus-Type  ^  MHz  ^  Slot  ^  Name  ^  Model  ^&#34;</span>
+</span></span><span class="line"><span class="cl">/usr/sbin/prtdiag <span class="p">|</span> sed -n -e <span class="s1">&#39;/^     Bus/,/======/ p&#39;</span> <span class="p">|</span> egrep -v <span class="s2">&#34;Freq|---|System|===|Slot&#34;</span> <span class="p">|</span> sed -e <span class="s1">&#39;/^[ ]*$/d&#39;</span> <span class="p">|</span> awk -F<span class="s1">&#39; \{2,\}&#39;</span> <span class="s1">&#39;{print &#34;| &#34; $1 &#34; | &#34; $2 &#34; | &#34; $3 &#34; | &#34; $4 &#34; | &#34; $5 &#34; | &#34; $NF &#34; |&#34;}&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> -e <span class="s2">&#34;</span><span class="nv">$HL</span><span class="s2"> Filesystems </span><span class="nv">$HL</span><span class="s2">\n&#34;</span>
+</span></span><span class="line"><span class="cl">/usr/bin/df -h <span class="p">|</span> egrep -v <span class="s2">&#34;/proc|mnttab|/dev/fd|swap|/devices|ctfs|objfs&#34;</span> <span class="p">|</span> awk <span class="s1">&#39;{print &#34;| &#34; $1 &#34; | &#34; $2 &#34; | &#34; $6 &#34; |&#34;}&#39;</span>
+</span></span><span class="line"><span class="cl">echo</span></span></code></pre></div><h2 id="beispiel">Beispiel<a class="anchor" href="#beispiel">#</a></h2>
+<p>Kann man z.B wie folgt aufrufen</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">fw-failover-2 tmp # ./sys2wiki.sh &gt; fw-failover-2.txt</span></span></code></pre></div><p>und das ganze sieht dan so aus</p>
+<hr>
+<h3 id="general">General<a class="anchor" href="#general">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>Hostname</th>
+          <th>fw-failover-2.mustermann.lan</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>CPU</td>
+          <td>Intel(R) Pentium(R) 4 CPU 2.80GHz</td>
+      </tr>
+      <tr>
+          <td>MHz</td>
+          <td>2800.662</td>
+      </tr>
+      <tr>
+          <td># CPU</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>RAM</td>
+          <td>510068 kB</td>
+      </tr>
+      <tr>
+          <td>Swap</td>
+          <td>1000312 kB</td>
+      </tr>
+      <tr>
+          <td>System</td>
+          <td>Linux 2.6.14-hardened-r5</td>
+      </tr>
+      <tr>
+          <td>OS</td>
+          <td>Gentoo Base System version 1.6.14</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="network">Network<a class="anchor" href="#network">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>eth0</th>
+          <th>192.168.10.241</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>eth0:0</td>
+          <td>192.168.10.4</td>
+      </tr>
+      <tr>
+          <td>eth1</td>
+          <td>212.xx.xxx.xxx</td>
+      </tr>
+      <tr>
+          <td>eth2</td>
+          <td>192.168.100.1</td>
+      </tr>
+      <tr>
+          <td>eth3</td>
+          <td>212.xx.xxx.xx</td>
+      </tr>
+      <tr>
+          <td>ippp0</td>
+          <td>192.168.200.100</td>
+      </tr>
+      <tr>
+          <td>ippp1</td>
+          <td>192.168.0.153</td>
+      </tr>
+      <tr>
+          <td>ippp2</td>
+          <td>192.168.5.100</td>
+      </tr>
+      <tr>
+          <td>ipsec0</td>
+          <td>212.xx.xxx.xx</td>
+      </tr>
+      <tr>
+          <td>ipsec1</td>
+          <td>212.xx.xxx.xxx</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="pci">PCI<a class="anchor" href="#pci">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">Bus Address</th>
+          <th style="text-align: center">Device Class</th>
+          <th style="text-align: center">Details</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">00:00.0</td>
+          <td style="text-align: center">Host bridge</td>
+          <td style="text-align: center">Intel Corporation 82845G/GL[Brookdale-G]/GE/PE DRAM Controller/Host-Hub Interface (rev 03)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">00:01.0</td>
+          <td style="text-align: center">PCI bridge</td>
+          <td style="text-align: center">Intel Corporation 82845G/GL[Brookdale-G]/GE/PE Host-to-AGP Bridge (rev 03)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">00:1d.0</td>
+          <td style="text-align: center">USB Controller</td>
+          <td style="text-align: center">Intel Corporation 82801DB/DBL/DBM (ICH4/ICH4-L/ICH4-M) USB UHCI Controller #1 (rev 02)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">00:1d.1</td>
+          <td style="text-align: center">USB Controller</td>
+          <td style="text-align: center">Intel Corporation 82801DB/DBL/DBM (ICH4/ICH4-L/ICH4-M) USB UHCI Controller #2 (rev 02)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">00:1d.2</td>
+          <td style="text-align: center">USB Controller</td>
+          <td style="text-align: center">Intel Corporation 82801DB/DBL/DBM (ICH4/ICH4-L/ICH4-M) USB UHCI Controller #3 (rev 02)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">00:1d.7</td>
+          <td style="text-align: center">USB Controller</td>
+          <td style="text-align: center">Intel Corporation 82801DB/DBM (ICH4/ICH4-M) USB2 EHCI Controller (rev 02)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">00:1e.0</td>
+          <td style="text-align: center">PCI bridge</td>
+          <td style="text-align: center">Intel Corporation 82801 PCI Bridge (rev 82)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">00:1f.0</td>
+          <td style="text-align: center">ISA bridge</td>
+          <td style="text-align: center">Intel Corporation 82801DB/DBL (ICH4/ICH4-L) LPC Interface Bridge (rev 02)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">00:1f.1</td>
+          <td style="text-align: center">IDE interface</td>
+          <td style="text-align: center">Intel Corporation 82801DB (ICH4) IDE Controller (rev 02)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">00:1f.3</td>
+          <td style="text-align: center">SMBus</td>
+          <td style="text-align: center">Intel Corporation 82801DB/DBL/DBM (ICH4/ICH4-L/ICH4-M) SMBus Controller (rev 02)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">01:00.0</td>
+          <td style="text-align: center">VGA compatible controller</td>
+          <td style="text-align: center">nVidia Corporation NV11 [GeForce2 MX/MX 400] (rev b2)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">02:05.0</td>
+          <td style="text-align: center">Ethernet controller</td>
+          <td style="text-align: center">Realtek Semiconductor Co., Ltd. RTL-8139/8139C/8139C+ (rev 10)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">02:09.0</td>
+          <td style="text-align: center">Ethernet controller</td>
+          <td style="text-align: center">3Com Corporation 3c905C-TX/TX-M [Tornado] (rev 78)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">02:0b.0</td>
+          <td style="text-align: center">Ethernet controller</td>
+          <td style="text-align: center">3Com Corporation 3c905C-TX/TX-M [Tornado] (rev 78)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">02:0c.0</td>
+          <td style="text-align: center">Ethernet controller</td>
+          <td style="text-align: center">3Com Corporation 3c905C-TX/TX-M [Tornado] (rev 78)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">02:0d.0</td>
+          <td style="text-align: center">Ethernet controller</td>
+          <td style="text-align: center">3Com Corporation 3c905C-TX/TX-M [Tornado] (rev 78)</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">02:0e.0</td>
+          <td style="text-align: center">Network controller</td>
+          <td style="text-align: center">AVM Audiovisuelles MKTG &amp; Computer System GmbH Fritz!PCI v2.0 ISDN (rev 02)</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="filesystems">Filesystems<a class="anchor" href="#filesystems">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Filesystem</td>
+          <td>Type</td>
+          <td>Size</td>
+          <td>Mounted</td>
+      </tr>
+      <tr>
+          <td>/dev/md/1</td>
+          <td>reiserfs</td>
+          <td>1.9G</td>
+          <td>/</td>
+      </tr>
+      <tr>
+          <td>/dev/md/0</td>
+          <td>reiserfs</td>
+          <td>96M</td>
+          <td>/boot</td>
+      </tr>
+      <tr>
+          <td>/dev/md/2</td>
+          <td>reiserfs</td>
+          <td>2.4G</td>
+          <td>/usr</td>
+      </tr>
+      <tr>
+          <td>/dev/md/4</td>
+          <td>reiserfs</td>
+          <td>3.8G</td>
+          <td>/var</td>
+      </tr>
+      <tr>
+          <td>/dev/drbd0</td>
+          <td>reiserfs</td>
+          <td>9.6G</td>
+          <td>/shared</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="ide-devices">IDE devices<a class="anchor" href="#ide-devices">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>/dev/hda</td>
+          <td>WDC WD400BB-00JHA0</td>
+          <td>37 GB</td>
+      </tr>
+      <tr>
+          <td>/dev/hdc</td>
+          <td>ST320413A</td>
+          <td>18 GB</td>
+      </tr>
+      <tr>
+          <td>/dev/hdd</td>
+          <td>TSSTcorpDVD-ROM SH-D162C</td>
+          <td>0 GB</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<p>Originalscript zu finden unter <a href="http://wiki.splitbrain.org/sys2wiki.sh">http://wiki.splitbrain.org/sys2wiki.sh</a><br>
+Denn “lspci” ausgabe abschnitt habe ich bischen angepasst.</p>
+<p>Die Ausgabe für den Bereich AIX &amp; Solaris sieht entsprechend der unterschiedlichen Systemarchitektur und Betriebssystemmittel anders aus als der Linux-Bereich. Der Aufruf und die Verarbeitung funktioniert aber analog.</p>
+<h2 id="original">Original<a class="anchor" href="#original">#</a></h2>
+<p>Extraido de <a href="http://www.nagios-wiki.de/nagios/howtos/wiki_hardware">http://www.nagios-wiki.de/nagios/howtos/wiki_hardware</a></p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/notas/xen_multi_bridge/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Utilizar dos o mas placas de red con Xen</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/notas/ubuntu_domu_en_red_hat/" class="flex align-center">
+        <span>Xen Red Hat Dom0 y Ubuntu DomU</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#dump-some-hardware-info-in-dokuwiki-format">Dump some hardware info in DokuWiki format</a></li>
+    <li><a href="#beispiel">Beispiel</a>
+      <ul>
+        <li><a href="#general">General</a></li>
+        <li><a href="#network">Network</a></li>
+        <li><a href="#pci">PCI</a></li>
+        <li><a href="#filesystems">Filesystems</a></li>
+        <li><a href="#ide-devices">IDE devices</a></li>
+      </ul>
+    </li>
+    <li><a href="#original">Original</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

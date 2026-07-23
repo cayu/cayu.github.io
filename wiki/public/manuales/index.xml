@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Manuales de proyectos on Wiki de Sergio Cayuqueo</title>
+    <link>http://localhost:1313/manuales/</link>
+    <description>Recent content in Manuales de proyectos on Wiki de Sergio Cayuqueo</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Thu, 23 Jul 2026 18:03:24 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/manuales/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>EMC Data Domain</title>
+      <link>http://localhost:1313/manuales/emc_data_domain/</link>
+      <pubDate>Tue, 08 Sep 2020 18:16:46 -0300</pubDate>
+      <guid>http://localhost:1313/manuales/emc_data_domain/</guid>
+      <description>&lt;img src=&#34;http://localhost:1313/manuales/emc_data_domain.png&#34; class=&#34;align-right&#34; /&gt;&#xA;&lt;p&gt;Los sistemas de almacenamiento EMC® Data Domain® se utilizan como soporte de Backup en disco, lo que mas los destaca es el foco que tienen sobre el soporte para deduplicación de los datos en línea de alta velocidad. A su vez son un gran avance para pasar de una libreria automatizadas de cintas/tapes a una solución &lt;strong&gt;VTL&lt;/strong&gt; (virtual tape library).&lt;/p&gt;&#xA;&lt;h2 id=&#34;conexión&#34;&gt;Conexión&lt;a class=&#34;anchor&#34; href=&#34;#conexi%c3%b3n&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;comandos&#34;&gt;Comandos&lt;a class=&#34;anchor&#34; href=&#34;#comandos&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;diagnóstico&#34;&gt;Diagnóstico&lt;a class=&#34;anchor&#34; href=&#34;#diagn%c3%b3stico&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;alerts show current&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;alerts notify-list show&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cifs status&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cifs share show&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;nfs show clients&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;nfs status&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ddboost status&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ddboost fc status&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;license show&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;net show settings&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;net show hardware&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;net show all&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mtree retention-lock show&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;system sanitize status&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;quota capacity show&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;quota capacity show all&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;system show performance&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;disk show hardware&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;system show hardware&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;system show meminfo&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;system show modelno&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;system show serialno detailed&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;system show version&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;system status&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;system upgrade history&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vtl port show hardware&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;alerts show all&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;disk show reliability-data &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Servidor FreeRadius</title>
+      <link>http://localhost:1313/manuales/servidor_freeradius/</link>
+      <pubDate>Tue, 07 Apr 2015 16:42:30 -0300</pubDate>
+      <guid>http://localhost:1313/manuales/servidor_freeradius/</guid>
+      <description>&lt;p&gt;RADIUS (acrónimo en inglés de Remote Authentication Dial-In User Server). Es un protocolo de autenticación y autorización para aplicaciones de acceso a la red o movilidad IP. Utiliza el puerto 1813 UDP para establecer sus conexiones.&lt;/p&gt;&#xA;&lt;p&gt;Cuando se realiza la conexión con un ISP mediante módem, DSL, cablemódem, Ethernet o Wi-Fi, se envía una información que generalmente es un nombre de usuario y una contraseña. Esta información se transfiere a un dispositivo NAS (Servidor de Acceso a la Red o Network Access Server (NAS)) sobre el protocolo PPP, quien redirige la petición a un servidor RADIUS sobre el protocolo RADIUS. El servidor RADIUS comprueba que la información es correcta utilizando esquemas de autenticación como PAP, CHAP o EAP. Si es aceptado, el servidor autorizará el acceso al sistema del ISP y le asigna los recursos de red como una dirección IP, y otros parámetros como L2TP, etc.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Proyecto Servidor de Backups</title>
+      <link>http://localhost:1313/manuales/servidor_systemimager/</link>
+      <pubDate>Fri, 09 Jan 2015 16:01:16 -0300</pubDate>
+      <guid>http://localhost:1313/manuales/servidor_systemimager/</guid>
+      <description>&lt;h2 id=&#34;solución-requerida&#34;&gt;Solución requerida&lt;a class=&#34;anchor&#34; href=&#34;#soluci%c3%b3n-requerida&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;En este caso se necesita un sistema de backup y restauración automática de servidores Linux. La idea es mantener un equipos en el cual se almacenen las &lt;em&gt;Imagenes&lt;/em&gt; de los diferentes servidores de la red y que a su vez sea simple agregar equipos a este sistema de backup.&lt;/p&gt;&#xA;&lt;p&gt;La automatización básica se debe dar en :&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Actualización periódica de las Imágenes de los servidores&lt;/li&gt;&#xA;&lt;li&gt;Recuperación de un equipo a partir de una Imagen, minimizando la intervención manual dentro del procedimiento&lt;/li&gt;&#xA;&lt;li&gt;Que se pueda utilizar cualquier hardware disponible sin tener que perder tiempo generando configuraciones especiales&lt;/li&gt;&#xA;&lt;li&gt;Proceso lo mas desatendido posible&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;esquema-de-implementación&#34;&gt;Esquema de implementación&lt;a class=&#34;anchor&#34; href=&#34;#esquema-de-implementaci%c3%b3n&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;Para cumplir estos requerimientos se utilizó el software System Imager&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>An Introduction to Linux Shell Scripting for DBAs</title>
+      <link>http://localhost:1313/manuales/an_introduction_to_linux_shell_scripting_for_dbas/</link>
+      <pubDate>Fri, 09 May 2014 11:42:02 -0300</pubDate>
+      <guid>http://localhost:1313/manuales/an_introduction_to_linux_shell_scripting_for_dbas/</guid>
+      <description>&lt;h2 id=&#34;an-introduction-to-linux-shell-scripting-for-dbas&#34;&gt;An Introduction to Linux Shell Scripting for DBAs&lt;a class=&#34;anchor&#34; href=&#34;#an-introduction-to-linux-shell-scripting-for-dbas&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;by Casimir Saternos&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Learn some basic bash shell scripts for installing, running, and maintaining Oracle databases on Linux&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;Published November 2005&lt;/p&gt;&#xA;&lt;p&gt;About seven years ago, Oracle released the first commercial database on Linux. Since then, Oracle, Red Hat, and Novell/SUSE have been steadily collaborating on changes to Linux kernel as they relate to database and application performance. For that reason, Oracle Database 10g for Linux includes enhancements that are closely related to the operating system. Now more than ever, DBAs need to have knowledge of and experience on this platform to best administer the systems under their watch.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Filtrador de LOGS</title>
+      <link>http://localhost:1313/manuales/filtrador_de_logs/</link>
+      <pubDate>Tue, 08 Apr 2014 12:05:00 -0300</pubDate>
+      <guid>http://localhost:1313/manuales/filtrador_de_logs/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Actualmente: EN DESARROLLO&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;Fecha de inicio 5 de Enero de 2009&lt;/p&gt;&#xA;&lt;h1 id=&#34;monitor-de-logs&#34;&gt;Monitor de LOGS&lt;a class=&#34;anchor&#34; href=&#34;#monitor-de-logs&#34;&gt;#&lt;/a&gt;&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;STATUS: Desarrollo&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;Script en perl para leer archivos de log y en caso de encontrar coincidencias con una expresión regular enviar por mail las lineas filtradas con los mensajes de log.&lt;/p&gt;&#xA;&lt;p&gt;A su vez guarda el estado de lectura de los logs, o sea cuantas lineas de el log leyo para no tener que releer todo el log de nuevo cada vez que quiere acceder a los datos y no mostrar mensajes repetidos.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>DRBD (Distributed Replicated Block Device)</title>
+      <link>http://localhost:1313/manuales/drbd/</link>
+      <pubDate>Thu, 30 Jan 2014 15:58:39 -0300</pubDate>
+      <guid>http://localhost:1313/manuales/drbd/</guid>
+      <description>&lt;p&gt;DRBD permite mantener replicados los sistemas de archivos de &lt;strong&gt;n&lt;/strong&gt; servidores diferentes. Seria como un RAID 1 en Red.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Solo uno de los servidores puede montar la partición DRBD al mismo tiempo.&lt;/li&gt;&#xA;&lt;li&gt;El servidor secundario no puede montar la partición mientras esté montada en el primario.&lt;/li&gt;&#xA;&lt;li&gt;Cada cambio que se produce sobre la partición DRBD del servidor primario, es replicado a través de la red sobre la partición DRBD sobre el servidor secundario.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;notas-extras&#34;&gt;Notas extras&lt;a class=&#34;anchor&#34; href=&#34;#notas-extras&#34;&gt;#&lt;/a&gt;&lt;/h1&gt;&#xA;&lt;p&gt;Podemos optimizar el funcionamiento de DRBD sobre puntos remotos, con WANPROXY.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Squid Proxy Server</title>
+      <link>http://localhost:1313/manuales/servidor_squid/</link>
+      <pubDate>Mon, 16 Apr 2012 12:39:30 -0300</pubDate>
+      <guid>http://localhost:1313/manuales/servidor_squid/</guid>
+      <description>&lt;p&gt;Squid es un popular programa de software libre que implementa un servidor proxy y un dominio para caché de páginas web, publicado bajo licencia GPL. Tiene una amplia variedad de utilidades, desde acelerar un servidor web, guardando en caché peticiones repetidas a DNS y otras búsquedas para un grupo de gente que comparte recursos de la red, hasta caché de web, además de añadir seguridad filtrando el tráfico. Está especialmente diseñado para ejecutarse bajo entornos tipo Unix. Squid ha sido desarrollado durante muchos años y se le considera muy completo y robusto. Aunque orientado a principalmente a HTTP y FTP es compatible con otros protocolos como Internet Gopher. Implementa varias modalidades de cifrado como TLS, SSL, y HTTPS.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Red restringida</title>
+      <link>http://localhost:1313/manuales/red_restringida/</link>
+      <pubDate>Fri, 08 Jul 2011 11:10:58 -0300</pubDate>
+      <guid>http://localhost:1313/manuales/red_restringida/</guid>
+      <description>&lt;p&gt;A menudo en nuestra empresa necesitamos que clientes esporadicos se conecten temporalmente, pero no queremos que accedan a nuestra red corporativa, y para ello elaboramos lo que podriamos decir una red de visitas.&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;Para ello podemos pensar un esquema simple en donde por ejemplo por medio de un equipo wireless damos señal y un equipo Linux se encarga de dar un DHCP propio y hacer de firewall/ruteador hacia nuestra red corporativa&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Novell Identity Audit</title>
+      <link>http://localhost:1313/manuales/novell_audit/</link>
+      <pubDate>Fri, 14 Jan 2011 11:21:22 -0300</pubDate>
+      <guid>http://localhost:1313/manuales/novell_audit/</guid>
+      <description>&lt;p&gt;Novell Identity Audit ofrece un marco sencillo y potente para la búsqueda, generación de informes y avisos sobre eventos de seguridad, sistema y aplicaciones. Acumula datos sobre eventos a partir de una variedad de soluciones de gestión de acceso e identidades de Novell y proporciona informes predefinidos que ayudan a demostrar la conformidad y el cumplimiento, identificar problemas de seguridad potenciales y garantizar que el sistema está funcionando debidamente. Las alertas en tiempo real permiten detectar eventos críticos en el momento que se producen, facilitando a los administradores la información necesaria sobre la actividad del usuario.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Servicio DHCP</title>
+      <link>http://localhost:1313/manuales/servidor_dhcp/</link>
+      <pubDate>Wed, 01 Dec 2010 12:12:14 -0300</pubDate>
+      <guid>http://localhost:1313/manuales/servidor_dhcp/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;DHCP&lt;/strong&gt; (sigla en inglés de &lt;strong&gt;D&lt;/strong&gt;ynamic &lt;strong&gt;H&lt;/strong&gt;ost &lt;strong&gt;C&lt;/strong&gt;onfiguration &lt;strong&gt;P&lt;/strong&gt;rotocol) es un protocolo de red que permite a los nodos de una red IP obtener sus parámetros de configuración automáticamente. Se trata de un protocolo de tipo cliente/servidor en el que generalmente un servidor posee una lista de direcciones IP dinámicas y las va asignando a los clientes conforme éstas van estando libres, sabiendo en todo momento quién ha estado en posesión de esa IP, cuánto tiempo la ha tenido y a quién se la ha asignado después.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>ILS (Internet Locator Server)</title>
+      <link>http://localhost:1313/manuales/ils/</link>
+      <pubDate>Mon, 08 Mar 2010 15:33:05 -0300</pubDate>
+      <guid>http://localhost:1313/manuales/ils/</guid>
+      <description>&lt;p&gt;Un servidor ILS (Internet Locator Server), también conocido como directorio, permite a NetMeeting obtener la dirección IP de una persona que ha iniciado sesión en ese directorio para establecer una llamada. No es más que una lista de personas que están utilizando NetMeeting y desean hacer públicos sus datos para que alguien les pueda localizar y llamar. Para que los datos aparezcan en un directorio se deben registrar en él, desde NetMeeting se puede configurar en el menú Herramientas|Opciones, pestaña general, donde dice ‘Configuración de directorio’.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

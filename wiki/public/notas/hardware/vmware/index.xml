@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VMWare on Wiki de Sergio Cayuqueo</title>
+    <link>http://localhost:1313/notas/hardware/vmware/</link>
+    <description>Recent content in VMWare on Wiki de Sergio Cayuqueo</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Wed, 22 Jul 2026 23:28:56 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/notas/hardware/vmware/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Instalar VMware Tools</title>
+      <link>http://localhost:1313/notas/hardware/vmware/instalar_vmware_tools/</link>
+      <pubDate>Tue, 28 Apr 2015 11:39:59 -0300</pubDate>
+      <guid>http://localhost:1313/notas/hardware/vmware/instalar_vmware_tools/</guid>
+      <description>&lt;p&gt;Desde el vcenter seleccionamos la máquina a instalar, botón derecho-&amp;gt;Guest-&amp;gt;install/Upgrade vmware tools. Desde la consola de la máquina virtual montamos el cdrom, copiamos las VMWare Tools en un directorio temporal, las descomprimimos y ejecutamos el script de instalación:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# mount /dev/cdrom /media&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# cp -a /media/cdrom/VMwareTools*.gz /tmp/.&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# cd /tmp&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# sudo tar -xzvf VMwareTools*.gz&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# cd vmware-tools-distrib/&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# ./vmware-install.pl&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Al ejecutar el script nos hara una serie de preguntas, responder a todas pulsando ‘enter’ y así dejar todas las opciones por defecto.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Agregar CPU en caliente en VMWare</title>
+      <link>http://localhost:1313/notas/hardware/vmware/agregar_cpu_en_caliente_en_vmware/</link>
+      <pubDate>Tue, 28 Apr 2015 11:39:21 -0300</pubDate>
+      <guid>http://localhost:1313/notas/hardware/vmware/agregar_cpu_en_caliente_en_vmware/</guid>
+      <description>&lt;p&gt;Una vez que asignamos CPU’s desde el cliente VMWare, nos fijamos en que estado están ellas en el sistema, tenemos que fijarnos por ejemplo si teniamos dos CPU’s &lt;em&gt;cpu0 cpu1&lt;/em&gt; y agregamos 2 mas &lt;em&gt;cpu2 cpu3&lt;/em&gt; dentro del archivo &lt;strong&gt;/sys/devices/system/cpu/cpu[numero]/online&lt;/strong&gt; si el valor esta en 1 o en 0, si esta en 0 debemos setearlo con un &lt;strong&gt;echo 1 &amp;gt; online&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;To automatically activate a processor when using hot-add, create a file /etc/udev/rules.d/99-vmware-cpuhotplug-udev.rules in your virtual machine with the following contents:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Parametros para Vmware por cambio de hora de servidores</title>
+      <link>http://localhost:1313/notas/hardware/vmware/datetime/</link>
+      <pubDate>Tue, 28 Apr 2015 11:38:12 -0300</pubDate>
+      <guid>http://localhost:1313/notas/hardware/vmware/datetime/</guid>
+      <description>&lt;p&gt;Para el caso de que un servidor virtual, cambie su hora, hay que agregar estos parámetros, con la vm apagada :&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&amp;amp;cmd=displayKC&amp;amp;externalId=1189&#34;&gt;http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&amp;cmd=displayKC&amp;externalId=1189&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&amp;amp;cmd=displayKC&amp;amp;externalId=1006427&#34;&gt;Timekeeping best practices for Linux guests&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;La idea es la de deshabilitar completamente time sync con el host.&lt;/p&gt;&#xA;&lt;p&gt;“…Select the virtual machine in the VMware Infrastructure Client inventory. On the Summary tab, click Edit Settings, then click the Options tab and select General (under Advanced). Click Configuration Parameters, then click Add Row and add this information:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Networking on Wiki de Sergio Cayuqueo</title>
+    <link>http://localhost:1313/notas/linux/networking/</link>
+    <description>Recent content in Networking on Wiki de Sergio Cayuqueo</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Wed, 22 Jul 2026 23:28:56 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/notas/linux/networking/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>WAN Optimization</title>
+      <link>http://localhost:1313/notas/linux/networking/wan_optimization/</link>
+      <pubDate>Mon, 29 Sep 2014 13:31:45 -0300</pubDate>
+      <guid>http://localhost:1313/notas/linux/networking/wan_optimization/</guid>
+      <description>&lt;p&gt;El tráfico WAN es de visibilidad crítica para todas las empresas conectadas globalmente. Por eso es que en el mercado hay diferentes soluciones de optimización de tráfico, que utilizan compresion y/o deduplicación del mismo.&lt;/p&gt;&#xA;&lt;p&gt;Aquí algunas soluciones que corren sobre GNU/Linux :&lt;/p&gt;&#xA;&lt;p&gt;WANProxy: &lt;a href=&#34;http://wanproxy.org/&#34;&gt;http://wanproxy.org/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;OpenNOP: &lt;a href=&#34;http://www.opennop.org/&#34;&gt;http://www.opennop.org/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Traffic Squeezer: &lt;a href=&#34;http://trafficsqueezer.org&#34;&gt;http://trafficsqueezer.org&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Silver-Peak: &lt;a href=&#34;http://www.silver-peak.com/&#34;&gt;http://www.silver-peak.com/&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

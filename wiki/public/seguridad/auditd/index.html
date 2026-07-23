@@ -1,0 +1,4179 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Estas son algunas de las preguntas claves : ¿Cómo auditar los eventos de archivo como de lectura / escritura, etc? ¿Cómo puedo utilizar la auditoría para saber quién cambió un archivo en Linux?
+La respuesta es utilizar el sistema de auditoría del Kernel &gt;= 2.6. Las distribuciones actuales vienen con el demoniio auditd. Es el responsable de escribir los registros de auditoría en el disco. Durante el arranque, carga las reglas almacenadas en /etc/audit.rules
+">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/seguridad/auditd/">
+  <meta property="og:site_name" content="Wiki de Sergio Cayuqueo">
+  <meta property="og:title" content="Auditoría en Linux">
+  <meta property="og:description" content="Estas son algunas de las preguntas claves : ¿Cómo auditar los eventos de archivo como de lectura / escritura, etc? ¿Cómo puedo utilizar la auditoría para saber quién cambió un archivo en Linux?
+La respuesta es utilizar el sistema de auditoría del Kernel &gt;= 2.6. Las distribuciones actuales vienen con el demoniio auditd. Es el responsable de escribir los registros de auditoría en el disco. Durante el arranque, carga las reglas almacenadas en /etc/audit.rules">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="seguridad">
+    <meta property="article:published_time" content="2012-08-24T15:29:46-03:00">
+    <meta property="article:modified_time" content="2026-07-22T23:28:56-03:00">
+
+
+  <meta itemprop="name" content="Auditoría en Linux">
+  <meta itemprop="description" content="Estas son algunas de las preguntas claves : ¿Cómo auditar los eventos de archivo como de lectura / escritura, etc? ¿Cómo puedo utilizar la auditoría para saber quién cambió un archivo en Linux?
+La respuesta es utilizar el sistema de auditoría del Kernel &gt;= 2.6. Las distribuciones actuales vienen con el demoniio auditd. Es el responsable de escribir los registros de auditoría en el disco. Durante el arranque, carga las reglas almacenadas en /etc/audit.rules">
+  <meta itemprop="datePublished" content="2012-08-24T15:29:46-03:00">
+  <meta itemprop="dateModified" content="2026-07-22T23:28:56-03:00">
+  <meta itemprop="wordCount" content="2026">
+
+<title>Auditoría en Linux • Wiki de Sergio Cayuqueo</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/seguridad/auditd/">
+<link rel="stylesheet" href="/book.min.b67edd162318c5083c6df0a88fb33841277a463a19631410445e4034ec6e651c.css" integrity="sha256-tn7dFiMYxQg8bfCoj7M4QSd6RjoZYxQQRF5ANOxuZRw=" crossorigin="anonymous">
+
+
+  <script defer type="module" src="/es.search.min.0d8ef5a46e9d73ded2792bc4dc404ee89897a364056761a43c441c32a9c30525.js" integrity="sha256-DY71pG6dc97SeSvE3EBO6JiXo2QFZ2GkPEQcMqnDBSU=" crossorigin="anonymous"></script>
+
+  
+</head>
+<body dir="ltr" class="book-kind-page book-type-seguridad">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    
+<aside class="book-menu">
+  <div class="book-menu-content">
+    
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Wiki de Sergio Cayuqueo</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input id="book-search-input" type="text" 
+    placeholder="Buscar"
+    aria-label="Buscar"
+    maxlength="64" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Notas</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Hardware</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/" class="">
+      VMWare</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/instalar_vmware_tools/" class="">
+      Instalar VMware Tools</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/agregar_cpu_en_caliente_en_vmware/" class="">
+      Agregar CPU en caliente en VMWare</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/vmware/datetime/" class="">
+      Parametros para Vmware por cambio de hora de servidores</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/hardware/idrac/" class="">
+      iDrac Dell</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/strace/" class="">
+      Strace</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/nginx/" class="">
+      Nginx</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/" class="">
+      Squid</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/hearbeat/" class="">
+      LVS - Hearbeat - Ldirectord - Balanceo de carga y alta disponibilidad</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/squid/rhcs/" class="">
+      Squid &#43; Red Hat Cluster Suite</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bind/" class="">
+      Configuración de Servidor DNS Bind</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/" class="">
+      Linux</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Networking</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/networking/wan_optimization/" class="">
+      WAN Optimization</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/actualizar_suse_linux/" class="">
+      Actualizar SuSE Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/cambiar_planificador_de_disco/" class="">
+      Cambiar planificador de acceso a disco</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/medicion_de_velocidad_de_cambio_en_filesystems_en_un_sistema_linux_fisico_o_virtual/" class="">
+      Medición de velocidad de cambio en filesystems en un sistema Linux (físico o virtual)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/midiendo_el_rendimiento_del_sistema_con_iostat/" class="">
+      Midiendo el rendimiento del sistema con IOSTAT</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/sistema_de_archivos_proc/" class="">
+      Sistema de archivos /proc</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/lvm/" class="">
+      Logical Volume Management 2 (LVM2)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/manejo_de_memoria_en_linux/" class="">
+      Manejo de memoria en Linux</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/manejo_de_memoria_en_linux/hugepages/" class="">
+      Hugepages</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/ver_el_dmesg_en_formato_humano/" class="">
+      Ver el dmesg en formato humano</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/midiendo_el_rendimiento_del_sistema_con_sar/" class="">
+      Midiendo el rendimiento del sistema con SAR</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/linux/cron/" class="">
+      CRON</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/sed/" class="">
+      SED - Stream EDitor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/configuracion_vpn/" class="">
+      Configuración de acceso VPN desde Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openssh/" class="">
+      OpenSSH</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/compartir_archivos_por_nfs/" class="">
+      Como compartir filesystems por NFS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/" class="">
+      Microsoft</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/windows/" class="">
+      Sistema Operativo Windows</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/windows/scripts_varios_de_powershell/" class="">
+      Scripts varios de PowerShell</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/microsoft/network_policy_server_nps/" class="">
+      Network Policy Server (NPS)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/apache/" class="">
+      Tips de Apache</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/analisis_forense/" class="">
+      Análisis forense</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/qlikview/" class="">
+      QlikView</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/owncloud/" class="">
+      OwnCloud</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/iptables/" class="">
+      TIPs varios de IPTables</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/celulares/" class="">
+      Teléfonos celulares</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openldap/" class="">
+      Implementacion de un servidor OpenLDAP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/arduino/" class="">
+      Arduino</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/kickstart/" class="">
+      Kickstart</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/raspberry_pi/" class="">
+      Raspberry Pi</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/postfix/" class="">
+      Postfix</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/openssl/" class="">
+      OpenSSL</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/" class="">
+      Programación</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Python</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Webscraping</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/webscraping/beautifulsoup/" class="">
+      Beautiful Soup</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/sistema_de_archivos/" class="">
+      Operaciones sobre el sistema de archivos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/python/django/" class="">
+      Django</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/introduccion_a_awk/" class="">
+      Uso básico de AWK</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/the_linux_cdrom_interface/" class="">
+      The Linux CDROM interface</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/reproductor_de_cd/" class="">
+      Reproductor De Cd</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/programacion/console_ioctls_under_linux/" class="">
+      Console IOCTLs Under Linux</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/tools_of_the_trade_--_iostat_vmstat_and_netstat/" class="">
+      Tools of the Trade -- Iostat, Vmstat, and Netstat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/solaris_performance_monitoring/" class="">
+      Solaris Performance Monitoring &amp; Tuning - iostat , vmstat &amp; netstat</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/" class="">
+      Bases De Datos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/mysql/" class="">
+      Task MySQL</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/oracle/" class="">
+      Oracle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/mssql/" class="">
+      Microsoft SQL Server</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/bases_de_datos/postgresql/" class="">
+      PostgreSQL</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/valgrind/" class="">
+      Valgrind</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/kamailio/" class="">
+      Kamailio</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/syslog_centralizado/" class="">
+      Sistema de LOG centralizado</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/inicio_rapido_de_csync2/" class="">
+      Csync para centralizar la configuracion de servicios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/xen_multi_bridge/" class="">
+      Utilizar dos o mas placas de red con Xen</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/sysinfo_dokuwiki/" class="">
+      Dump some hardware info in DokuWiki format</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/ubuntu_domu_en_red_hat/" class="">
+      Xen Red Hat Dom0 y Ubuntu DomU</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/notas/enomalism/" class="">
+      Configuraciones a mano</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Fotografia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/fotografia/conceptos/" class="">
+      Sobre el 18-55</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Legales</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Legislacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Nacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/nacion/decreto_155_89/" class="">
+      Decreto 155 89</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/nacion/ley_23302/" class="">
+      LEY 23.302</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/legislacion/caba/" class="">
+      Legislación Indígena Ciudad Autónoma de Buenos Aires</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/legales/jurisprudencia/" class="">
+      Jurisprudencia</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/" class="">
+      Seguridad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Criptografia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/truecrypt/" class="">
+      Privacidad datos utilizando TrueCrypt</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/veracrypt/" class="">
+      Privacidad datos utilizando VeraCrypt</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/criptografia/gnupg/" class="">
+      The GNU Privacy Guard</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Gestion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/gestion/itil/" class="">
+      ITIL - Information Technology Infrastructure Library</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      How To</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/how_to/prevent_a_fork_bomb_by_limiting_user_process/" class="">
+      How to: Prevent a fork bomb by limiting user process</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Programacion</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Redes</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/nodejs/" class="">
+      NodeJS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/python/" class="">
+      Scripts simples en python</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/python/scapy/" class="">
+      Scapy</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/programacion/redes/scanner_de_puertos_simple/" class="">
+      Scanner De Puertos Simple</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/shellcode/" class="">
+      Shellcode</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/" class="">
+      Seguridad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Certificaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/" class="">
+      Profesional certificado en seguridad ofensiva (OSCP)</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/preparacion_personal/" class="">
+      Preparación personal para rendir la certificación OSCP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/oscp_prep_class/" class="">
+      OSCP Prep class</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/certificaciones/oscp/oscp-survival-guide/" class="">
+      OSCP-Survival-Guide</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Exploits</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/exploits/mempodipper/" class="">
+      mempodipper</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/exploits/dirty_cow/" class="">
+      Dirty COW</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/why_i_would_never_buy_a_dell_powerconnect_2724/" class="">
+      Why I would never buy a Dell PowerConnect 2724</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/enlaces/understanding_bash_fork_bomb/" class="">
+      Understanding Bash fork() bomb ~ :(){ :|:&amp; };:</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/pequena_guia_de_seguridad_informatica/" class="">
+      Pequeña guía de seguridad informática</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/auditd/" class="active">
+      Auditoría en Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/seguridad/process_accounting_psacct/" class="">
+      Process Accounting (PSACCT)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/" class="">
+      Enlaces útiles</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/" class="">
+      Utilidades de Red</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/ngrep/" class="">
+      Network Grep - ngrep</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/utilidades_de_red/msndump/" class="">
+      MSN Dump</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/enlaces/tcpdump/" class="">
+      TCPDUMP</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/" class="">
+      Aprendiendo SAP</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/sap_hana/" class="">
+      SAP HANA</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/aprendiendo_sap/desarrollo_y_programacion_en_abap/" class="">
+      Desarrollo y programación en ABAP</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/" class="">
+      Redes y comunicaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Conectividad</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/conectividad/fibra_optica/" class="">
+      Fibra óptica</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Firewalls</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/fortinet/" class="">
+      Fortinet</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/fortinet/fortiap/" class="">
+      FortiGate como controlador Wireless</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/firewalls/pfsense/" class="">
+      pfSense</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Notas</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/notas/nc/" class="">
+      Netcat</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Telefonia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Asterisk</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/" class="">
+      Conectividad con Asterisk</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/spa400/" class="">
+      SPA400</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/asterisk/notas_asterisk/tdm400p/" class="">
+      Instalar Placa TDM400P</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Cisco</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/call_manager/" class="">
+      Cisco Call Manager</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/routers/" class="">
+      Routers Cisco</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/telefonia/cisco/telefonos/" class="">
+      Teléfonos CISCO</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Videoconferencia</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/videoconferencia/openmcu-ru/" class="">
+      OpenMCU-ru</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/flows/" class="">
+      Network Flow</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/flows/ntop/" class="">
+      Ntop</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/rancid/" class="">
+      Rancid (Really Awesome New Cisco confIg Differ)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/conceptos/" class="">
+      Conceptos de redes informáticas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/" class="">
+      Switches</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Cisco</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/2960c/" class="">
+      CISCO - 2960-C</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/2960x/" class="">
+      CISCO - 2960-X</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cisco/sf300/" class="">
+      CISCO - SF300</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/extreme_networks/" class="">
+      Extreme Networks</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/" class="">
+      Hewlett Packard</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/aruba/" class="">
+      Switches Aruba</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/" class="">
+      3COM</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Voice</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/voice/vlan/" class="">
+      VLAN de voz</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/hewlett_packard/3com/debug_y_analisis_de_equipos_hp_3com/" class="">
+      Debug y análisis de equipos HP/3com</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/redes/switches/cumulus_networks/" class="">
+      Cumulus Networks</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/gestion/" class="">
+      Gestión</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/gestion/taiga/" class="">
+      Taiga</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/leyes/" class="">
+      Leyes, Decretos y Ordenanzas</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/" class="">
+      Charlas y Eventos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/pueblos_originarios_y_la_industria_del_software/" class="">
+      Pueblos Originarios y la industria del Software</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/uso_de_la_consola_linux/" class="">
+      Taller de uso de Consola Linux</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/charlas_eventos/lanux_agosto_2010/" class="">
+      Servidores VPS</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/" class="">
+      Manuales de proyectos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Tivoli Tsm</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/manual_de_manejo_de_backups_con_tivoli/" class="">
+      Manual de manejo de respaldos con Tivoli</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/tsm_sql_tips/" class="">
+      Mandatos de prueba de validación de la actualización de la base de datos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/tsm_sql_hints/" class="">
+      TSM SQL Hints</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/tivoli_tsm/sql_for_tivoli_storage_manager/" class="">
+      SQL for Tivoli Storage Manager</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/emc_data_domain/" class="">
+      EMC Data Domain</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/" class="">
+      Monitoria y análisis de Red con Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/" class="">
+      Monitoreo de Red con Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Productos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/oracle/" class="">
+      Oracle</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/argentina_-_arba_-_codigo_de_operacion_de_traslado_cot/" class="">
+      Argentina - ARBA - Código de Operación de Traslado (COT)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/asterisk/" class="">
+      Asterisk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/riverbed/" class="">
+      Riverbed</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/argentina_-_afip_-_factura_electronica/" class="">
+      Argentina AFIP Factura Electrónica</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/sap/" class="">
+      SAP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/ibm_tivoli_tsm/" class="">
+      Tivoli Storage Manager - TSM</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/brasil_-_nota_fiscal_electronica_nfe/" class="">
+      Brasil - Nota Fiscal Electrónica NFe</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/brasil_-_nota_fiscal_electronica_nfe/referencias_utiles_de_nfe/" class="">
+      Referencias útiles de NFE</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/microstrategy/" class="">
+      MicroStrategy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/productos/qlikview/" class="">
+      QlikView</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/servidor_web/" class="">
+      Configuración del servidor Web</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/pnp4nagios/" class="">
+      PNP4Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/tipos_de_notificaciones/" class="">
+      Tipos de notificaciones</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_referencias_generales/" class="">
+      Referencias generales</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_referencias_generales/sistema_de_inventario/" class="">
+      Sistema de inventario</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagios_network_analyzer/" class="">
+      Nagios Network Analyzer</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/" class="">
+      Correlación de eventos</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/rsyslog/" class="">
+      Reliable system and kernel logging daemon</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/eventdb/" class="">
+      EventDB</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/correlacion_de_eventos/syslog_ng/" class="">
+      Syslog-NG</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/implementacion_tecnica/" class="">
+      Implementación Técnica de Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/implementacion_tecnica/implementacion_tecnica_version_ubuntu_server_20.04/" class="">
+      Implementación Técnica de Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/capacitacion_en_monitoreo_de_red/" class="">
+      Capacitación en monitoreo de Red</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a>
+      Certificaciones</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/capacitacion_en_monitoreo_de_red/certificaciones/sox_-_sarbanes-oxley/" class="">
+      SOX</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/desarrollo_de_plugins_de_nagios/" class="">
+      Desarrollo de plugins de Nagios</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/desarrollo_de_plugins_de_nagios/problemas_comunes/" class="">
+      Problemas comunes de los plugins de Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/snmp/" class="">
+      SNMP (Simple Network Management Protocol)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagios_event_radio_dispatcher_nerd/" class="">
+      Nagios Event Radio Dispatcher (NERD)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/mk_livestatus/" class="">
+      MK Livestatus</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/ndo2utils/" class="">
+      NDO2Utils</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagvis/" class="">
+      Nagvis</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/nagvis/diseno_de_tablero_de_control/" class="">
+      Diseño de tablero de control</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/graficos_en_ajax/" class="">
+      Gráficos en AJAX</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_tips_y_recomendaciones/" class="">
+      TIPS y recomendaciones</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_otras_soluciones_basadas_en_nagios/" class="">
+      Anexo - Otras soluciones basadas en Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_comandos_externos/" class="">
+      Comandos externos</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/plugins_usuales_de_nagios/" class="">
+      Plugins usuales de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/icmp/" class="">
+      ICMP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_codigo_fuente_de_nagios/" class="">
+      Análisis del código fuente de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/capacitacion/anexo_-_configuracion_desde_version_3_a_4/" class="">
+      Incompatibilidades de configuración v3 a v4</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/codigo_fuente/" class="">
+      Análisis del código fuente de Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/thruk/" class="">
+      Thruk</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/portugues/" class="">
+      Monitoração de rede e análise com Nagios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/nagios/italiano/" class="">
+      Implementazione di un sistema di rete, monitor con Nagios</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_freeradius/" class="">
+      Servidor FreeRadius</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_systemimager/" class="">
+      Proyecto Servidor de Backups</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/an_introduction_to_linux_shell_scripting_for_dbas/" class="">
+      An Introduction to Linux Shell Scripting for DBAs</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/filtrador_de_logs/" class="">
+      Filtrador de LOGS</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/drbd/" class="">
+      DRBD (Distributed Replicated Block Device)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/" class="">
+      Lotus Notes</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/problemas_winmail.dat_outlook/" class="">
+      Problemas Winmail.dat Outlook</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/listar_ultimo_mes_de_login_de_usuarios/" class="">
+      Listar último mes de login de usuarios</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/lotus/reemplazar_diseno_base_de_datos/" class="">
+      Reemplazar Diseño Base de Datos</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_squid/" class="">
+      Squid Proxy Server</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/red_restringida/" class="">
+      Red restringida</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/novell_audit/" class="">
+      Novell Identity Audit</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/servidor_dhcp/" class="">
+      Servicio DHCP</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/manuales/ils/" class="">
+      ILS (Internet Locator Server)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+
+  </div>
+</aside>
+ 
+
+    <div class="book-page">
+      <header class="book-header hidden">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/icons/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Auditoría en Linux</h3>
+
+  <label for="toc-control">
+    
+    <img src="/icons/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#task-install-audit-package">Task: install audit package</a></li>
+        <li><a href="#how-do-i-set-a-watch-on-a-file-for-auditing">How do I set a watch on a file for auditing?</a></li>
+        <li><a href="#file-system-audit-rules">File System audit rules</a>
+          <ul>
+            <li><a href="#syscall-audit-rule">syscall audit rule</a></li>
+            <li><a href="#file-system-audit-rule">File system audit rule</a></li>
+            <li><a href="#syscall-audit-rule-using-pid">syscall audit rule using pid</a></li>
+          </ul>
+        </li>
+        <li><a href="#how-do-i-find-out-who-changed-or-accessed-a-file-etcpasswd">How do I find out who changed or accessed a file /etc/passwd?</a>
+          <ul>
+            <li><a href="#script-parser-de-auditlog">Script parser de audit.log</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#referencias-útiles">Referencias útiles</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><p>Estas son algunas de las preguntas claves : <strong>¿Cómo auditar los eventos de archivo como de lectura / escritura, etc? ¿Cómo puedo utilizar la auditoría para saber quién cambió un archivo en Linux?</strong></p>
+<p>La respuesta es utilizar el sistema de auditoría del Kernel &gt;= 2.6. Las distribuciones actuales vienen con el demoniio auditd. Es el responsable de escribir los registros de auditoría en el disco. Durante el arranque, carga las reglas almacenadas en /etc/audit.rules</p>
+<p>Para poder aprovechar las posibilidades de auditoria del Kernel Linux deberemos usar el comando =&gt; <strong>auditctl</strong>.</p>
+<p>=&gt; <strong>ausearch</strong> - comando con el que se puede consultar el log de audit basado ​​en diferentes criterios de búsqueda.</p>
+<p>=&gt; <strong>aureport</strong> - herramienta que genera reportes de los sumarios de los logs de audit.</p>
+<p>El demonio auditd permite al administrador de un sistema Linux recibir la información de auditoría de seguridad que el núcleo genera, filtrarla y almacenarla en archivos.</p>
+<p>Esta información tiene el siguiente formato:</p>
+<ul>
+<li>AUDIT_CONNECT pid ruid shost sport dhost dport
+<ul>
+<li>Conexión desde la máquina al host remoto dhost.</li>
+</ul>
+</li>
+<li>AUDIT_ACCEPT pid ruid shost sport dhost dport
+<ul>
+<li>Conexión desde el host remoto dhost a la máquina.</li>
+</ul>
+</li>
+<li>AUDIT_LISTEN pid ruid shost sport
+<ul>
+<li>El puerto indicado está esperando peticiones de servicio.</li>
+</ul>
+</li>
+<li>AUDIT_OPEN pid ruid file
+<ul>
+<li>Se ha abierto el fichero file.</li>
+</ul>
+</li>
+<li>AUDIT_SETUID pid old_ruid ruid euid
+<ul>
+<li>Se ha llamado con éxito a setuid(), modificando el UID de ruid a euid.</li>
+</ul>
+</li>
+<li>AUDIT_EXEC pid ruid file
+<ul>
+<li>Se ha ejecutado el fichero file.</li>
+</ul>
+</li>
+<li>AUDIT_MODINIT pid ruid file
+<ul>
+<li>Se ha insertado en el kernel el módulo file.</li>
+</ul>
+</li>
+</ul>
+<h3 id="task-install-audit-package">Task: install audit package<a class="anchor" href="#task-install-audit-package">#</a></h3>
+<p>The audit package contains the user space utilities for storing and searching the audit records generate by the audit subsystem in the Linux 2.6 kernel. CentOS/Red Hat and Fedora core includes audit rpm package. Use yum or up2date command to install package</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># yum install audit
+</span></span><span class="line"><span class="cl"># up2date install audit</span></span></code></pre></div><p>Auto start auditd service on boot</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># ntsysv
+</span></span><span class="line"><span class="cl"># chkconfig auditd on
+</span></span><span class="line"><span class="cl"># /etc/init.d/auditd start</span></span></code></pre></div><h3 id="how-do-i-set-a-watch-on-a-file-for-auditing">How do I set a watch on a file for auditing?<a class="anchor" href="#how-do-i-set-a-watch-on-a-file-for-auditing">#</a></h3>
+<p>Let us say you would like to audit a /etc/passwd file. You need to type command as follows:<code># auditctl -w /etc/passwd -p war -k password-file</code></p>
+<p>Where,</p>
+<ul>
+<li><strong>-w /etc/passwd</strong> : Insert a watch for the file system object at given path i.e. watch file called /etc/passwd</li>
+<li><strong>-p war</strong> : Set permissions filter for a file system watch. It can be r for read, w for write, x for execute, a for append.</li>
+<li><strong>-k password-file</strong> : Set a filter key on a /etc/passwd file (watch). The password-file is a filterkey (string of text that can be up to 31 bytes long). It can uniquely identify the audit records produced by the watch. You need to use password-file string or phrase while searching audit logs.</li>
+</ul>
+<p>In short you are monitoring (read as watching) a /etc/passwd file for anyone (including syscall) that may perform a write, append or read operation on a file.</p>
+<p>Wait for some time or as a normal user run command as follows:<code>$ grep 'something' /etc/passwd$ vi /etc/passwd</code></p>
+<p>Following are more examples:</p>
+<h3 id="file-system-audit-rules">File System audit rules<a class="anchor" href="#file-system-audit-rules">#</a></h3>
+<p>Add a watch on “/etc/shadow” with the arbitrary filterkey “shadow-file” that generates records for “reads, writes, executes, and appends” on “shadow”</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># auditctl -w /etc/shadow -k shadow-file -p rwxa</span></span></code></pre></div><h4 id="syscall-audit-rule">syscall audit rule<a class="anchor" href="#syscall-audit-rule">#</a></h4>
+<p>The next rule suppresses auditing for mount syscall exits<code># auditctl -a exit,never -S mount</code></p>
+<h4 id="file-system-audit-rule">File system audit rule<a class="anchor" href="#file-system-audit-rule">#</a></h4>
+<p>Add a watch “tmp” with a NULL filterkey that generates records “executes” on “/tmp” (good for a webserver)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># auditctl -w /tmp -p e -k webserver-watch-tmp</span></span></code></pre></div><h4 id="syscall-audit-rule-using-pid">syscall audit rule using pid<a class="anchor" href="#syscall-audit-rule-using-pid">#</a></h4>
+<p>To see all syscalls made by a program called sshd (pid - 1005):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># auditctl -a entry,always -S all -F pid=1005</span></span></code></pre></div><h3 id="how-do-i-find-out-who-changed-or-accessed-a-file-etcpasswd">How do I find out who changed or accessed a file /etc/passwd?<a class="anchor" href="#how-do-i-find-out-who-changed-or-accessed-a-file-etcpasswd">#</a></h3>
+<p>Use ausearch command as follows:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># ausearch -f /etc/passwd
+</span></span><span class="line"><span class="cl"># ausearch -f /etc/passwd | less
+</span></span><span class="line"><span class="cl"># ausearch -f /etc/passwd -i | less</span></span></code></pre></div><p>Where</p>
+<ul>
+<li><strong>-f /etc/passwd</strong> : Only search for this file</li>
+<li><strong>-i</strong> : Interpret numeric entities into text. For example, uid is converted to account name.</li>
+</ul>
+<p>Output:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">type=PATH msg=audit(03/16/2007 14:52:59.985:55) : name=/etc/passwd flags=follow,open inode=23087346 dev=08:02 mode=file,644 ouid=root ogid=root rdev=00:00
+</span></span><span class="line"><span class="cl">type=CWD msg=audit(03/16/2007 14:52:59.985:55) :  cwd=/webroot/home/lighttpd
+</span></span><span class="line"><span class="cl">type=FS_INODE msg=audit(03/16/2007 14:52:59.985:55) : inode=23087346 inode_uid=root inode_gid=root inode_dev=08:02 inode_rdev=00:00
+</span></span><span class="line"><span class="cl">type=FS_WATCH msg=audit(03/16/2007 14:52:59.985:55) : watch_inode=23087346 watch=passwd filterkey=password-file perm=read,write,append perm_mask=read
+</span></span><span class="line"><span class="cl">type=SYSCALL msg=audit(03/16/2007 14:52:59.985:55) : arch=x86_64 syscall=open success=yes exit=3 a0=7fbffffcb4 a1=0 a2=2 a3=6171d0 items=1 pid=12551 auid=unknown(4294967295) uid=lighttpd gid=lighttpd euid=lighttpd suid=lighttpd fsuid=lighttpd egid=lighttpd sgid=lighttpd fsgid=lighttpd comm=grep exe=/bin/grep</span></span></code></pre></div><p>Let us try to understand output</p>
+<ul>
+<li><strong>audit(03/16/2007 14:52:59.985:55)</strong> : Audit log time</li>
+<li><strong>uid=lighttpd gid=lighttpd</strong> : User ids in numerical format. By passing <strong>-i</strong> option to command you can convert most of numeric data to human readable format. In our example user is lighttpd used grep command to open a file</li>
+<li><strong>exe=“/bin/grep”</strong> : Command grep used to access /etc/passwd file</li>
+<li>perm_mask=read : File was open for read operation</li>
+</ul>
+<p>So from log files you can clearly see who read file using grep or made changes to a file using vi/vim text editor. Log provides tons of other information. You need to read man pages and documentation to understand raw log format.</p>
+<h4 id="script-parser-de-auditlog">Script parser de audit.log<a class="anchor" href="#script-parser-de-auditlog">#</a></h4>
+<p>Script para parsear el contenido del audit.log y ver el timestamp en formato humano</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-perl" data-lang="perl"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/perl</span>
+</span></span><span class="line"><span class="cl"><span class="k">use</span> <span class="nn">strict</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># what do I want to look for in the audit log.</span>
+</span></span><span class="line"><span class="cl"><span class="k">my</span> <span class="nv">$pattern</span> <span class="o">=</span> <span class="nv">$ARGV</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Define the audit directory if the user doesn&#39;t provide one.</span>
+</span></span><span class="line"><span class="cl"><span class="k">my</span> <span class="nv">$dir</span> <span class="o">=</span> <span class="s">&#39;/var/log/audit&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$dir</span> <span class="o">=</span> <span class="nv">$ARGV</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="nb">scalar</span><span class="p">(</span><span class="nv">@ARGV</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Strip any trailing slash</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$dir</span> <span class="o">=~</span> <span class="sr">s/\/$//g</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># walk through the directory and save the list of files as an array.</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># find is nice because it gives you full path + executable</span>
+</span></span><span class="line"><span class="cl"><span class="k">my</span> <span class="nv">@files</span> <span class="o">=</span> <span class="sb">`sudo find $dir`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># strip new lines from the array.</span>
+</span></span><span class="line"><span class="cl"><span class="nb">chomp</span><span class="p">(</span><span class="nv">@files</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># loop through each element in the array and do something.</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="k">my</span> <span class="nv">$file</span> <span class="p">(</span><span class="nv">@files</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># declare the empty array before use</span>
+</span></span><span class="line"><span class="cl">  <span class="k">my</span> <span class="nv">@arr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1"># determine if we use zgrep or grep</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># zgrep is needed for gz and grep is for regular files</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span> <span class="nv">$file</span> <span class="o">=~</span><span class="sr"> /gz$/</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">    <span class="nv">@arr</span> <span class="o">=</span> <span class="sb">`sudo zgrep $pattern $file`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">else</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">@arr</span> <span class="o">=</span> <span class="sb">`sudo grep $pattern $file`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1"># print the filename only if we found something in the file</span>
+</span></span><span class="line"><span class="cl">  <span class="k">print</span> <span class="s">&#34;\nFile: $file\n&#34;</span> <span class="k">if</span> <span class="p">(</span> <span class="nb">scalar</span><span class="p">(</span><span class="nv">@arr</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="c1"># for each element in the array translate epoch to human readable</span>
+</span></span><span class="line"><span class="cl">  <span class="k">foreach</span><span class="p">(</span><span class="nv">@arr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">chomp</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># do a little regex for easy matching</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="sr"> /(.*msg=audit\()(\d+)(\.\d+:\d+.*)/</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">convert</span> <span class="n">epoch</span> <span class="n">to</span> <span class="n">human</span> <span class="n">readable</span>
+</span></span><span class="line"><span class="cl">      <span class="k">my</span> <span class="nv">$td</span> <span class="o">=</span> <span class="nb">scalar</span> <span class="nb">localtime</span> <span class="nv">$2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="k">print</span> <span class="s">&#34;$1$td$3\n&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div><p>Original : <a href="http://www.linuxquestions.org/questions/linux-software-2/how-can-i-read-the-audit-time-stamp-msg%3Daudit-1213186256-105-20663-a-648547/">http://www.linuxquestions.org/questions/linux-software-2/how-can-i-read-the-audit-time-stamp-msg%3Daudit-1213186256-105-20663-a-648547/</a></p>
+<p>O ni solución mucho mas simple :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="o">===</span> <span class="n">Archivo</span> <span class="n">de</span> <span class="n">configuración</span> <span class="n">de</span> <span class="n">ejemplo</span> <span class="o">===</span>
+</span></span><span class="line"><span class="cl"><span class="o">**/</span><span class="n">etc</span><span class="o">/</span><span class="n">audit</span><span class="o">/</span><span class="n">auditd</span><span class="o">.</span><span class="n">conf</span><span class="o">**</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="n">log_file</span> <span class="o">=</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nb">log</span><span class="o">/</span><span class="n">audit</span><span class="o">/</span><span class="n">audit</span><span class="o">.</span><span class="n">log</span>
+</span></span><span class="line"><span class="cl"><span class="n">log_format</span> <span class="o">=</span> <span class="n">RAW</span>
+</span></span><span class="line"><span class="cl"><span class="n">log_group</span> <span class="o">=</span> <span class="n">root</span>
+</span></span><span class="line"><span class="cl"><span class="n">priority_boost</span> <span class="o">=</span> <span class="mi">4</span>
+</span></span><span class="line"><span class="cl"><span class="n">flush</span> <span class="o">=</span> <span class="n">INCREMENTAL</span>
+</span></span><span class="line"><span class="cl"><span class="n">freq</span> <span class="o">=</span> <span class="mi">20</span>
+</span></span><span class="line"><span class="cl"><span class="n">num_logs</span> <span class="o">=</span> <span class="mi">4</span>
+</span></span><span class="line"><span class="cl"><span class="n">disp_qos</span> <span class="o">=</span> <span class="n">lossy</span>
+</span></span><span class="line"><span class="cl"><span class="n">dispatcher</span> <span class="o">=</span> <span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">audispd</span>
+</span></span><span class="line"><span class="cl"><span class="n">name_format</span> <span class="o">=</span> <span class="n">NONE</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##name = mydomain</span>
+</span></span><span class="line"><span class="cl"><span class="n">max_log_file_action</span> <span class="o">=</span> <span class="n">keep_logs</span>
+</span></span><span class="line"><span class="cl"><span class="n">max_log_file_action</span> <span class="o">=</span> <span class="n">ROTATE</span>
+</span></span><span class="line"><span class="cl"><span class="n">space_left</span> <span class="o">=</span> <span class="mi">75</span>
+</span></span><span class="line"><span class="cl"><span class="n">space_left_action</span> <span class="o">=</span> <span class="n">SYSLOG</span>
+</span></span><span class="line"><span class="cl"><span class="n">action_mail_acct</span> <span class="o">=</span> <span class="n">root</span>
+</span></span><span class="line"><span class="cl"><span class="n">admin_space_left</span> <span class="o">=</span> <span class="mi">50</span>
+</span></span><span class="line"><span class="cl"><span class="n">admin_space_left_action</span> <span class="o">=</span> <span class="n">SUSPEND</span>
+</span></span><span class="line"><span class="cl"><span class="n">disk_full_action</span> <span class="o">=</span> <span class="n">SUSPEND</span>
+</span></span><span class="line"><span class="cl"><span class="n">disk_error_action</span> <span class="o">=</span> <span class="n">SUSPEND</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##tcp_listen_port = </span>
+</span></span><span class="line"><span class="cl"><span class="n">tcp_listen_queue</span> <span class="o">=</span> <span class="mi">5</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##tcp_client_ports = 1024-65535</span>
+</span></span><span class="line"><span class="cl"><span class="n">tcp_client_max_idle</span> <span class="o">=</span> <span class="mi">0</span></span></span></code></pre></div><p><strong>/etc/audit/audit.rules</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="c1"># This file contains the auditctl rules that are loaded</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># whenever the audit daemon is started via the initscripts.</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># The rules are simply the parameters that would be passed</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># to auditctl.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># First rule - delete all</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">D</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Increase the buffers to survive stress events.</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Make this bigger for busy systems</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">b</span> <span class="mi">320</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Archivos de configuracion de audit</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">audit</span><span class="o">/</span><span class="n">auditd</span><span class="o">.</span><span class="n">conf</span> <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> <span class="o">-</span><span class="n">k</span> <span class="n">audit_conf</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">audit</span><span class="o">/</span><span class="n">audit</span><span class="o">.</span><span class="n">rules</span> <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> <span class="o">-</span><span class="n">k</span> <span class="n">audit_conf</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">libaudit</span><span class="o">.</span><span class="n">conf</span>     <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> <span class="o">-</span><span class="n">k</span> <span class="n">audit_conf</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">sysconfig</span><span class="o">/</span><span class="n">auditd</span>  <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> <span class="o">-</span><span class="n">k</span> <span class="n">audit_conf</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Feel free to add below this line. See auditctl man page</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">fstab</span>   <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> <span class="o">-</span><span class="n">k</span> <span class="n">filesystems</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">hosts</span>   <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> <span class="o">-</span><span class="n">k</span> <span class="n">network</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">sysctl</span><span class="o">.</span><span class="n">conf</span> <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> <span class="o">-</span><span class="n">k</span> <span class="n">sysctl_parameters</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">login</span><span class="o">.</span><span class="n">defs</span>  <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> <span class="o">-</span><span class="n">k</span> <span class="n">auth</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">securetty</span>   <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> <span class="o">-</span><span class="n">k</span> <span class="n">auth</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">sudoers</span>     <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> <span class="o">-</span><span class="n">k</span> <span class="n">auth</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">security</span><span class="o">/</span><span class="n">limits</span><span class="o">.</span><span class="n">conf</span> <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> <span class="o">-</span><span class="n">k</span> <span class="n">auth</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Actividades de sistema</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">a</span> <span class="n">entry</span><span class="p">,</span><span class="n">always</span> <span class="o">-</span><span class="n">S</span> <span class="n">chmod</span> <span class="o">-</span><span class="n">S</span> <span class="n">fchmod</span> <span class="o">-</span><span class="n">S</span> <span class="n">chown</span> <span class="o">-</span><span class="n">S</span> <span class="n">fchown</span> <span class="o">-</span><span class="n">S</span> <span class="n">lchown</span> <span class="o">-</span><span class="n">k</span> <span class="n">attr</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">a</span> <span class="n">entry</span><span class="p">,</span><span class="n">always</span> <span class="o">-</span><span class="n">S</span> <span class="n">mkdir</span> <span class="o">-</span><span class="n">S</span> <span class="n">rmdir</span> <span class="o">-</span><span class="n">k</span> <span class="n">attr</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#-a entry,always -S unlink -S rename -S link -S symlink -k attr</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#-a entry,always -S setxattr -k attr</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#-a entry,always -S lsetxattr -k attr</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#-a entry,always -S fsetxattr -k attr</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#-a entry,always -S removexattr -k attr</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#-a entry,always -S lremovexattr -k attr</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#-a entry,always -S fremovexattr -k attr</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">a</span> <span class="n">entry</span><span class="p">,</span><span class="n">always</span> <span class="o">-</span><span class="n">S</span> <span class="n">mknod</span> <span class="o">-</span><span class="n">k</span> <span class="n">mknod</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">a</span> <span class="n">entry</span><span class="p">,</span><span class="n">always</span> <span class="o">-</span><span class="n">S</span> <span class="n">mount</span> <span class="o">-</span><span class="n">k</span> <span class="n">mount</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">a</span> <span class="n">entry</span><span class="p">,</span><span class="n">always</span> <span class="o">-</span><span class="n">S</span> <span class="n">umount2</span> <span class="o">-</span><span class="n">k</span> <span class="n">umount</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">a</span> <span class="n">exit</span><span class="p">,</span><span class="n">always</span>  <span class="o">-</span><span class="n">S</span> <span class="n">setdomainname</span> <span class="o">-</span><span class="n">k</span> <span class="n">network</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">inittab</span> <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> 
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">d</span><span class="o">/</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">auditd</span> <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Librerias de sistema</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ld</span><span class="o">.</span><span class="n">so</span><span class="o">.</span><span class="n">conf</span> <span class="o">-</span><span class="n">p</span> <span class="n">wa</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">localtime</span> <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Configuracion de modulos</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#-w /etc/modprobe.d/</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#-w /etc/modprobe.conf.local -p wa </span>
+</span></span><span class="line"><span class="cl"><span class="c1">#-w /etc/modprobe.conf -p wa </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Configuración de CRON</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">cron</span><span class="o">.</span><span class="n">allow</span> <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> 
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">cron</span><span class="o">.</span><span class="n">deny</span> <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> 
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">cron</span><span class="o">.</span><span class="n">d</span><span class="o">/</span> <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> 
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">cron</span><span class="o">.</span><span class="n">daily</span><span class="o">/</span> <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> 
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">cron</span><span class="o">.</span><span class="n">hourly</span><span class="o">/</span> <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> 
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">cron</span><span class="o">.</span><span class="n">monthly</span><span class="o">/</span> <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> 
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">cron</span><span class="o">.</span><span class="n">weekly</span><span class="o">/</span> <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> 
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">crontab</span> <span class="o">-</span><span class="n">p</span> <span class="n">wa</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">spool</span><span class="o">/</span><span class="n">cron</span><span class="o">/</span><span class="n">root</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># --- Recomendaciones de la NSA</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#- Records Events that Modify Date and Time Information</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">a</span> <span class="n">always</span><span class="p">,</span><span class="n">exit</span> <span class="o">-</span><span class="n">S</span> <span class="n">settimeofday</span> <span class="o">-</span><span class="n">k</span> <span class="n">time</span><span class="o">-</span><span class="n">change</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">a</span> <span class="n">always</span><span class="p">,</span><span class="n">exit</span> <span class="o">-</span><span class="n">S</span> <span class="n">clock_settime</span> <span class="o">-</span><span class="n">k</span> <span class="n">time</span><span class="o">-</span><span class="n">change</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">localtime</span> <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> <span class="o">-</span><span class="n">k</span> <span class="n">time</span><span class="o">-</span><span class="n">change</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#- Record Events that Modify User/Group Information</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">group</span> <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> <span class="o">-</span><span class="n">k</span> <span class="n">identity</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">passwd</span> <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> <span class="o">-</span><span class="n">k</span> <span class="n">identity</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">gshadow</span> <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> <span class="o">-</span><span class="n">k</span> <span class="n">identity</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">shadow</span> <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> <span class="o">-</span><span class="n">k</span> <span class="n">identity</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#- Record Events that Modify the System’s Network Environment</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">a</span> <span class="n">exit</span><span class="p">,</span><span class="n">always</span> <span class="o">-</span><span class="n">S</span> <span class="n">sethostname</span> <span class="o">-</span><span class="n">S</span> <span class="n">setdomainname</span> <span class="o">-</span><span class="n">k</span> <span class="n">system</span><span class="o">-</span><span class="n">locale</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">issue</span> <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> <span class="o">-</span><span class="n">k</span> <span class="n">system</span><span class="o">-</span><span class="n">locale</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">issue</span><span class="o">.</span><span class="n">net</span> <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> <span class="o">-</span><span class="n">k</span> <span class="n">system</span><span class="o">-</span><span class="n">locale</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">hosts</span> <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> <span class="o">-</span><span class="n">k</span> <span class="n">system</span><span class="o">-</span><span class="n">locale</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">sysconfig</span><span class="o">/</span><span class="n">network</span> <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> <span class="o">-</span><span class="n">k</span> <span class="n">system</span><span class="o">-</span><span class="n">locale</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#- Record Attempts to Alter Logon and Logout Events</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nb">log</span><span class="o">/</span><span class="n">faillog</span> <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> <span class="o">-</span><span class="n">k</span> <span class="n">logins</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nb">log</span><span class="o">/</span><span class="n">lastlog</span> <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> <span class="o">-</span><span class="n">k</span> <span class="n">logins</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#- Record Attempts to Alter Process and Session Initiation Information</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">utmp</span> <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> <span class="o">-</span><span class="n">k</span> <span class="n">session</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nb">log</span><span class="o">/</span><span class="n">btmp</span> <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> <span class="o">-</span><span class="n">k</span> <span class="n">session</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="nb">log</span><span class="o">/</span><span class="n">wtmp</span> <span class="o">-</span><span class="n">p</span> <span class="n">wa</span> <span class="o">-</span><span class="n">k</span> <span class="n">session</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#- Ensure auditd Collects Information on Kernel Module Loading and Unloading</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#-w /sbin/insmod -p x -k modules</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#-w /sbin/rmmod -p x -k modules</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#-w /sbin/modprobe -p x -k modules</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#-a always,exit -S init_module -S delete_module -k modules</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#- Make the auditd Conﬁguration Immutable</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#Add the following as the last rule in /etc/audit/audit.rules in order to make the conﬁguration immutable:</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#-e 2</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#With this setting, a reboot will be required to change any audit rules.</span></span></span></code></pre></div><h1 id="reportes">Reportes<a class="anchor" href="#reportes">#</a></h1>
+<p>Mostar un reporte de los que se loguearon entre ayer y hoy :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># aureport -l -i -ts yesterday -te today</span></span></code></pre></div><p>Generar un conteo de las actividades auditadas :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># aureport --key --summary</span></span></code></pre></div><p>Violaciones de acceso :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># ausearch --key access --raw | aureport --file --summary</span></span></code></pre></div><p>Violaciones de acceso al /etc/shadow :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># ausearch --key access --file /etc/shadow --raw | aureport --user --summary -i</span></span></code></pre></div><p>Sumario de ejecuciones auditadas :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># ausearch --key access --raw | aureport -x --summary</span></span></code></pre></div><p>Reporte de anomalias :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># aureport --anomaly</span></span></code></pre></div><p>Search for events with date and time stamps. if the date is omitted, today is assumed. If the time is omitted, now is assumed. Use 24 hour clock time rather than AM or PM to specify time. An example date is 10/24/05. An example of time is 18:00:00.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># ausearch -ts today -k password-file
+</span></span><span class="line"><span class="cl"># ausearch -ts 3/12/07 -k password-file</span></span></code></pre></div><p>Search for an event matching the given executable name using -x option. For example find out who has accessed /etc/passwd using rm command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># ausearch -ts today -k password-file -x rm
+</span></span><span class="line"><span class="cl"># ausearch -ts 3/12/07 -k password-file -x rm</span></span></code></pre></div><p>Search for an event with the given user name (UID). For example find out if user vivek (uid 506) try to open /etc/passwd:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># ausearch -ts today -k password-file -x rm -ui 506
+</span></span><span class="line"><span class="cl"># ausearch -k password-file -ui 506</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">auditctl -w /etc/fstab -p war -k someconfig-exclude -F auid!=0</span></span></code></pre></div><p>To see all syscalls made by a specific program:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">auditctl -a entry,always -S all -F pid=1005</span></span></code></pre></div><p>To see files opened by a specific user:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">auditctl -a exit,always -S open -F auid=510</span></span></code></pre></div><p>To see unsuccessful open call’s:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">auditctl -a exit,always -S open -F success=0</span></span></code></pre></div><p>To watch a file for changes (2 ways to express):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">auditctl -w /etc/shadow -p wa
+</span></span><span class="line"><span class="cl">auditctl -a exit,always -F path=/etc/shadow -F perm=wa</span></span></code></pre></div><p>To recursively watch a directory for changes (2 ways to express):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">auditctl -w /etc/ -p wa
+</span></span><span class="line"><span class="cl">auditctl -a exit,always -F dir=/etc/ -F perm=wa</span></span></code></pre></div><h2 id="referencias-útiles">Referencias útiles<a class="anchor" href="#referencias-%c3%batiles">#</a></h2>
+<p><a href="http://www.ibm.com/developerworks/linux/library/l-security-audit.html">http://www.ibm.com/developerworks/linux/library/l-security-audit.html</a></p>
+<p><a href="http://www.debian.org/doc/manuals/securing-debian-howto/ch-sec-services.en.html">http://www.debian.org/doc/manuals/securing-debian-howto/ch-sec-services.en.html</a></p>
+<p><a href="http://www.redhat.com/mailman/listinfo/linux-audit">http://www.redhat.com/mailman/listinfo/linux-audit</a></p>
+<p><a href="http://www.nsa.gov/ia/_files/os/redhat/rhel5-guide-i731.pdf">http://www.nsa.gov/ia/_files/os/redhat/rhel5-guide-i731.pdf</a></p>
+<p><a href="http://www.nsa.gov/ia/_files/os/redhat/rhel5-pamphlet-i731.pdf">http://www.nsa.gov/ia/_files/os/redhat/rhel5-pamphlet-i731.pdf</a></p>
+<p><a href="http://www.cyberciti.biz/tips/linux-audit-files-to-see-who-made-changes-to-a-file.html">http://www.cyberciti.biz/tips/linux-audit-files-to-see-who-made-changes-to-a-file.html</a></p>
+<p><a href="http://manpages.ubuntu.com/manpages/gutsy/man8/auditctl.8.html">http://manpages.ubuntu.com/manpages/gutsy/man8/auditctl.8.html</a></p>
+<p><a href="http://www.puschitz.com/SecuringLinux.shtml">http://www.puschitz.com/SecuringLinux.shtml</a></p>
+<p><a href="http://www.cyberciti.biz/faq/linux-kernel-etcsysctl-conf-security-hardening">http://www.cyberciti.biz/faq/linux-kernel-etcsysctl-conf-security-hardening</a></p>
+<p><a href="http://www.cyberciti.biz/files/linux-kernel/Documentation/networking/ip-sysctl.txt">Linux kernel IP sysctl documentation.</a></p>
+<p><a href="http://www.linuxinsight.com/proc_sys_net_ipv4.html">http://www.linuxinsight.com/proc_sys_net_ipv4.html</a></p>
+<p><a href="http://www.novell.com/documentation/sled10/pdfdoc/audit_sp2/audit_sp2.pdf">http://www.novell.com/documentation/sled10/pdfdoc/audit_sp2/audit_sp2.pdf</a></p>
+<p><a href="http://www.cyberciti.biz/tips/linux-audit-files-to-see-who-made-changes-to-a-file.html">http://www.cyberciti.biz/tips/linux-audit-files-to-see-who-made-changes-to-a-file.html</a></p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+<div>
+
+</div>
+
+<div>
+
+</div>
+
+</div>
+
+<div class="flex flex-wrap justify-between">
+    <span>
+    
+      <a href="/seguridad/pequena_guia_de_seguridad_informatica/" class="flex align-center">
+        <img src="/icons/backward.svg" class="book-icon" alt="Backward" />
+        <span>Pequeña guía de seguridad informática</span>
+      </a>
+    
+    </span>
+    <span>
+    
+      <a href="/seguridad/process_accounting_psacct/" class="flex align-center">
+        <span>Process Accounting (PSACCT)</span>
+        <img src="/icons/forward.svg" class="book-icon" alt="Forward" />
+      </a>
+    
+    </span>
+  </div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+        
+        
+  
+ 
+        
+  
+    <script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script>
+  
+
+      </footer>
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#task-install-audit-package">Task: install audit package</a></li>
+        <li><a href="#how-do-i-set-a-watch-on-a-file-for-auditing">How do I set a watch on a file for auditing?</a></li>
+        <li><a href="#file-system-audit-rules">File System audit rules</a>
+          <ul>
+            <li><a href="#syscall-audit-rule">syscall audit rule</a></li>
+            <li><a href="#file-system-audit-rule">File system audit rule</a></li>
+            <li><a href="#syscall-audit-rule-using-pid">syscall audit rule using pid</a></li>
+          </ul>
+        </li>
+        <li><a href="#how-do-i-find-out-who-changed-or-accessed-a-file-etcpasswd">How do I find out who changed or accessed a file /etc/passwd?</a>
+          <ul>
+            <li><a href="#script-parser-de-auditlog">Script parser de audit.log</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#referencias-útiles">Referencias útiles</a></li>
+  </ul>
+</nav>
+
+
+
+    </div>
+  </aside>
+  
+ 
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

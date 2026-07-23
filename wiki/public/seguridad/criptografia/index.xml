@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Criptografia on Wiki de Sergio Cayuqueo</title>
+    <link>http://localhost:1313/seguridad/criptografia/</link>
+    <description>Recent content in Criptografia on Wiki de Sergio Cayuqueo</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Wed, 22 Jul 2026 23:28:56 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/seguridad/criptografia/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Privacidad datos utilizando TrueCrypt</title>
+      <link>http://localhost:1313/seguridad/criptografia/truecrypt/</link>
+      <pubDate>Wed, 08 Apr 2015 12:09:47 -0300</pubDate>
+      <guid>http://localhost:1313/seguridad/criptografia/truecrypt/</guid>
+      <description>&lt;p&gt;TrueCrypt es una aplicación que permite cifrar un archivo a montar como un loop, toda una partición en un disco duro o un dispositivo de almacenamiento, como una unidad flash USB. El cifrado de datos hace que la información no sea accesible a un tercero no autorizado. Si la unidad de almacenamiento sufre de pérdida o robo, nadie puede acceder a los datos cifrados sin conocer la contraseña que ha establecido.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Privacidad datos utilizando VeraCrypt</title>
+      <link>http://localhost:1313/seguridad/criptografia/veracrypt/</link>
+      <pubDate>Wed, 08 Apr 2015 12:09:45 -0300</pubDate>
+      <guid>http://localhost:1313/seguridad/criptografia/veracrypt/</guid>
+      <description>&lt;p&gt;VeraCrypt es una aplicación que permite cifrar un archivo a montar como un loop, toda una partición en un disco duro o un dispositivo de almacenamiento, como una unidad flash USB. El cifrado de datos hace que la información no sea accesible a un tercero no autorizado. Si la unidad de almacenamiento sufre de pérdida o robo, nadie puede acceder a los datos cifrados sin conocer la contraseña que ha establecido.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>The GNU Privacy Guard</title>
+      <link>http://localhost:1313/seguridad/criptografia/gnupg/</link>
+      <pubDate>Thu, 05 Mar 2015 11:54:12 -0300</pubDate>
+      <guid>http://localhost:1313/seguridad/criptografia/gnupg/</guid>
+      <description>&lt;p&gt;GPG o GNU Privacy Guard es una herramienta para cifrado y firmas digitales, que viene a ser un reemplazo del PGP (Pretty Good Privacy) pero con la principal diferencia que es software libre licenciado bajo la GPL. GPG utiliza el estándar del IETF denominado OpenPGP.&lt;/p&gt;&#xA;&lt;h1 id=&#34;usos-de-gpg&#34;&gt;Usos de GPG&lt;a class=&#34;anchor&#34; href=&#34;#usos-de-gpg&#34;&gt;#&lt;/a&gt;&lt;/h1&gt;&#xA;&lt;p&gt;GPG es estable, calificado como un software para el uso en producción y es comúnmente incluido en los sistemas operativos como FreeBSD, OpenBSD, NetBSD y últimamente con todas las distribuciones GNU/Linux.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

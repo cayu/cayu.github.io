@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Seguridad on Wiki de Sergio Cayuqueo</title>
+    <link>http://localhost:1313/seguridad/</link>
+    <description>Recent content in Seguridad on Wiki de Sergio Cayuqueo</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Wed, 22 Jul 2026 23:28:56 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/seguridad/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Shellcode</title>
+      <link>http://localhost:1313/seguridad/shellcode/</link>
+      <pubDate>Mon, 26 Nov 2018 13:08:09 -0300</pubDate>
+      <guid>http://localhost:1313/seguridad/shellcode/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://underc0de.org/foro/hacking/que-es-una-shellcode/&#34;&gt;https://underc0de.org/foro/hacking/que-es-una-shellcode/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://0x00sec.org/t/linux-shellcoding-part-1-0/289&#34;&gt;https://0x00sec.org/t/linux-shellcoding-part-1-0/289&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://packetstormsecurity.com/files/90146/Ascii-To-Shellcode-Encoder-Decoder-Tool.html&#34;&gt;https://packetstormsecurity.com/files/90146/Ascii-To-Shellcode-Encoder-Decoder-Tool.html&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Pequeña guía de seguridad informática</title>
+      <link>http://localhost:1313/seguridad/pequena_guia_de_seguridad_informatica/</link>
+      <pubDate>Wed, 21 Jan 2015 17:41:57 -0300</pubDate>
+      <guid>http://localhost:1313/seguridad/pequena_guia_de_seguridad_informatica/</guid>
+      <description>&lt;p&gt;Política General de Seguridad de la Información&lt;/p&gt;&#xA;&lt;p&gt;Política Corporativa de Seguridad de la Información&lt;/p&gt;&#xA;&lt;p&gt;Políticas Generales de seguridad de la información&lt;/p&gt;&#xA;&lt;p&gt;Acuerdos de confidencialidad&lt;/p&gt;&#xA;&lt;p&gt;Riesgos relacionados con terceros&lt;/p&gt;&#xA;&lt;p&gt;Uso adecuado de los activos&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Acceso a Internet&#xA;Correo electrónico&#xA;Recursos tecnológicos&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Control de acceso físico&lt;/p&gt;&#xA;&lt;p&gt;Protección y ubicación de los equipos&lt;/p&gt;&#xA;&lt;p&gt;Segregación de funciones&lt;/p&gt;&#xA;&lt;p&gt;Protección contra software malicioso&lt;/p&gt;&#xA;&lt;p&gt;Copias de respaldo&lt;/p&gt;&#xA;&lt;p&gt;Gestión de medios removibles&lt;/p&gt;&#xA;&lt;p&gt;Intercambio de información&lt;/p&gt;&#xA;&lt;p&gt;Control de acceso lógico&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Auditoría en Linux</title>
+      <link>http://localhost:1313/seguridad/auditd/</link>
+      <pubDate>Fri, 24 Aug 2012 15:29:46 -0300</pubDate>
+      <guid>http://localhost:1313/seguridad/auditd/</guid>
+      <description>&lt;p&gt;Estas son algunas de las preguntas claves : &lt;strong&gt;¿Cómo auditar los eventos de archivo como de lectura / escritura, etc? ¿Cómo puedo utilizar la auditoría para saber quién cambió un archivo en Linux?&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;La respuesta es utilizar el sistema de auditoría del Kernel &amp;gt;= 2.6. Las distribuciones actuales vienen con el demoniio auditd. Es el responsable de escribir los registros de auditoría en el disco. Durante el arranque, carga las reglas almacenadas en /etc/audit.rules&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Process Accounting (PSACCT)</title>
+      <link>http://localhost:1313/seguridad/process_accounting_psacct/</link>
+      <pubDate>Fri, 24 Aug 2012 15:21:21 -0300</pubDate>
+      <guid>http://localhost:1313/seguridad/process_accounting_psacct/</guid>
+      <description>&lt;p&gt;El paquete psacct contiene diversas utilidades para visualizar la actividad de los procesos, como ac, lastcomm, accton y sa. El comando ac visualiza las estadísticas de los usuarios conectados. El comando lastcomm visualiza la informacióm sobre comandos precedentemente ejecutados. El comando lastcomm resume la información sobre los comandos precedentemente ejecutados.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;El comando &lt;strong&gt;ac&lt;/strong&gt; muestra estadísticas acerca de la cantidad de usuarios y tiempo que se han conectado.&lt;/li&gt;&#xA;&lt;li&gt;El comando &lt;strong&gt;lastcomm&lt;/strong&gt; muestra información sobre los últimos comandos ejecutados.&lt;/li&gt;&#xA;&lt;li&gt;El comando &lt;strong&gt;accton&lt;/strong&gt; convierte la contabilidad de procesos encendido o apagado.&lt;/li&gt;&#xA;&lt;li&gt;El comando &lt;strong&gt;sa&lt;/strong&gt; resume información sobre commmands previamente ejecutadas.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;instalar-las-utilidades&#34;&gt;Instalar las utilidades&lt;a class=&#34;anchor&#34; href=&#34;#instalar-las-utilidades&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;p&gt;Para instalar en RHEL 4.0 :&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Wiki de Sergio Cayuqueo</title>
+    <link>http://localhost:1313/notas/programacion/python/</link>
+    <description>Recent content in Python on Wiki de Sergio Cayuqueo</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <lastBuildDate>Wed, 22 Jul 2026 23:28:56 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/notas/programacion/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Operaciones sobre el sistema de archivos</title>
+      <link>http://localhost:1313/notas/programacion/python/sistema_de_archivos/</link>
+      <pubDate>Mon, 04 Nov 2019 10:14:24 -0300</pubDate>
+      <guid>http://localhost:1313/notas/programacion/python/sistema_de_archivos/</guid>
+      <description>&lt;p&gt;Cambiar la fecha de modificación de un archivo&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;https://nitratine.net/blog/post/change-file-modification-time-in-python/&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Alternativamente el comando **touch** nos puede ayudar&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;code&amp;gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;touch -t 201203101513 archivo&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    <item>
+      <title>Django</title>
+      <link>http://localhost:1313/notas/programacion/python/django/</link>
+      <pubDate>Wed, 29 Apr 2015 11:41:41 -0300</pubDate>
+      <guid>http://localhost:1313/notas/programacion/python/django/</guid>
+      <description>&lt;p&gt;Django es un framework de desarrollo web, escrito en Python,siguiendo el Modelo–vista–controlador.&lt;/p&gt;&#xA;&lt;h2 id=&#34;iniciar-un-proyecto&#34;&gt;Iniciar un proyecto&lt;a class=&#34;anchor&#34; href=&#34;#iniciar-un-proyecto&#34;&gt;#&lt;/a&gt;&lt;/h2&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;django-admin startproject proyecto&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Start Server&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;python manage.py runserver 192.168.1.43:8000&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Creacion de admin:admin&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;python manage.py createsuperuser&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -22,7 +22,7 @@ enableGitInfo = true
 [params]
   BookSection         = "wiki"
   BookSearch          = true
-  BookToC             = false
+  BookToC             = true
   BookCollapseSection = true
 
 [sitemap]

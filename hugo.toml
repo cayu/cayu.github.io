@@ -2,7 +2,7 @@ baseURL = "https://cayu.github.io/"
 languageCode = "es"
 defaultContentLanguage = "es"
 title = "Wiki de Sergio Cayuqueo"
-theme = "hugo-theme-techdoc"
+theme = "techdoc"
 
 enableGitInfo = true
 

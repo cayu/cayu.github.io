@@ -20,7 +20,7 @@ enableGitInfo = true
   guessSyntax = true
 
 [params]
-  BookSection         = "*"
+  BookSection         = "wiki"
   BookSearch          = true
   BookToC             = true
   BookCollapseSection = true
@@ -28,6 +28,3 @@ enableGitInfo = true
 [sitemap]
   changefreq = "weekly"
   priority   = 0.5
-
-[params]
-  BookSection = "wiki"

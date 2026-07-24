@@ -26,3 +26,15 @@ img.align-left {
   display: block;
   overflow-x: auto;
 }
+
+.hint {
+  padding: 0.8rem 1rem;
+  margin: 1rem 0;
+  border-left: 4px solid #999;
+  border-radius: 4px;
+  background: rgba(0,0,0,0.03);
+}
+.hint-info    { border-color: #3b82f6; }
+.hint-success { border-color: #22c55e; }
+.hint-warning { border-color: #f59e0b; }
+.hint-danger  { border-color: #ef4444; }

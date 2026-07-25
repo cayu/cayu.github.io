@@ -19,7 +19,7 @@ enableGitInfo = true
   guessSyntax = true
 
 [params]
-  BookSection         = "wiki"
+  BookSection         = "*"
   BookSearch          = true
   BookToC             = false
   BookCollapseSection = true

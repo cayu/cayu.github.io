@@ -23,6 +23,7 @@ enableGitInfo = true
   BookSearch          = true
   BookToC             = false
   BookCollapseSection = true
+  BookTheme = "auto"
 
 [sitemap]
   changefreq = "weekly"

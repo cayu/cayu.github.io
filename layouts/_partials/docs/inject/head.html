@@ -1,0 +1,25 @@
+{{ if .IsHome }}
+<style>
+
+/* 🔴 Oculta cualquier variante de TOC */
+aside,
+.book-toc,
+[class*="toc"],
+[id*="toc"] {
+  display: none !important;
+}
+
+/* 🔵 Expande contenido */
+.book-page,
+main {
+  max-width: 100% !important;
+  margin: 0 auto !important;
+}
+
+/* 🔵 Oculta sidebar también si querés landing limpia */
+.book-sidebar {
+  display: none !important;
+}
+
+</style>
+{{ end }}

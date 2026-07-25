@@ -3,7 +3,6 @@ languageCode = "es"
 defaultContentLanguage = "es"
 title = "Wiki de Sergio Cayuqueo"
 theme = "book"
-
 enableGitInfo = true
 
 [markup.goldmark.renderer]
@@ -22,7 +21,7 @@ enableGitInfo = true
 [params]
   BookSection         = "wiki"
   BookSearch          = true
-  BookToC             = true
+  BookToC             = false
   BookCollapseSection = true
 
 [sitemap]

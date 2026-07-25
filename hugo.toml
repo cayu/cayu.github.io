@@ -1,5 +1,5 @@
 baseURL = "https://cayu.github.io/"
-languageCode = "es"
+locale = "es"
 defaultContentLanguage = "es"
 title = "Wiki de Sergio Cayuqueo"
 theme = "book"
@@ -19,7 +19,7 @@ enableGitInfo = true
   guessSyntax = true
 
 [params]
-#  BookSection         = "wiki"
+  BookSection         = "wiki"
   BookSearch          = true
   BookToC             = false
   BookCollapseSection = true

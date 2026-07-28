@@ -57,5 +57,5 @@ Una aproximación teórica y practica <img src="/manuales/nagios/nagios_logo.png
 ## Documentación extra
 
 - [Thruk](/wiki/manuales/nagios/thruk/) Interfaz alternativa para Nagios, con varios agregados
-- [Correlación de eventos](/manuales/nagios/capacitacion/Correlación de eventos)
-- [Nagios Network Analyzer](/manuales/nagios/capacitacion/Nagios Network Analyzer) Software de análisis y utilización de ancho de banda sobre Netflow
+- [Correlación de eventos](/wiki/manuales/nagios/capacitacion/Correlación de eventos)
+- [Nagios Network Analyzer](/wiki/manuales/nagios/capacitacion/Nagios Network Analyzer) Software de análisis y utilización de ancho de banda sobre Netflow
